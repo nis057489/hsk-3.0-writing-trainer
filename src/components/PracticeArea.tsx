@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./DrawingPad";
 
@@ -64,6 +64,15 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 {characters.map((char, index) => {
                     const key = `${char}-${index}`;
                     const handler = padHandlers[key];
+                    
+                    const handleUndoClick = useCallback((undo: () => void, hasStrokes: boolean) => {
+                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], undo, hasStrokes } }));
+                    }, [key]);
+                    
+                    const handleClearClick = useCallback((clear: () => void, hasStrokes: boolean) => {
+                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], clear, hasStrokes } }));
+                    }, [key]);
+                    
                     return (
                         <div key={key} className="trace-cell">
                             <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
@@ -73,12 +82,8 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                                     tracingMode={tracingMode}
                                     character={char}
                                     showHoverIndicator={showHoverIndicator}
-                                    onUndoClick={(undo, hasStrokes) => {
-                                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], undo, hasStrokes } }));
-                                    }}
-                                    onClearClick={(clear, hasStrokes) => {
-                                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], clear, hasStrokes } }));
-                                    }}
+                                    onUndoClick={handleUndoClick}
+                                    onClearClick={handleClearClick}
                                 />
                             </div>
                             <div className="trace-char">{char}</div>

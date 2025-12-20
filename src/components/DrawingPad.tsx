@@ -248,7 +248,8 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     useEffect(() => {
         if (onUndoClick) onUndoClick(undo, strokes.length > 0);
         if (onClearClick) onClearClick(clear, strokes.length > 0);
-    }, [strokes.length, onUndoClick, onClearClick]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [strokes.length]);
 
     useEffect(() => {
         const container = containerRef.current;
