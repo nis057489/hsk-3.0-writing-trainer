@@ -299,18 +299,11 @@ export function DrawerMenu(props: DrawerMenuProps) {
                         {t("options.gridVerticalShift")}
                     </label>
 
-                        >
-                    {traceFontOptions.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                    ))}
-                </select>
-            </label>
-
-            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
-                <select
-                    value={props.promptFont}
-                    onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
+                        <select
+                            value={props.promptFont}
+                            onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
                     style={{
                         padding: "8px 10px",
                         borderRadius: 8,
