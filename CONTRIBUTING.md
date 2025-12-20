@@ -61,7 +61,7 @@ npm install
 npm run dev
 ```
 
-3. Keep changes focused and include a clear PR description explaining what you changed and why.
+1. Keep changes focused and include a clear PR description explaining what you changed and why.
 
 ### Translation contributions
 
