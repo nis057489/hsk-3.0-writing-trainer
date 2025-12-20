@@ -53,7 +53,8 @@
         "padSizeXs": "Pocket (XS)",
         "padSizeSmall": "Notebook (small)",
         "padSizeMedium": "Comfort (medium)",
-        "padSizeLarge": "Canvas (large)"
+        "padSizeLarge": "Canvas (large)",
+        "showDetailsDefault": "Show pinyin/meaning by default"
     },
     "help": {
         "title": "Help",

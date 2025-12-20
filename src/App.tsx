@@ -23,6 +23,7 @@ type Prefs = {
     language: string;
     showHoverIndicator: boolean;
     padSizeChoice: PadSizeChoice;
+    showDetailsDefault: boolean;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -55,7 +56,8 @@ export default function App() {
         mode: 'flashcard',
         language: i18n.resolvedLanguage || "en",
         showHoverIndicator: false,
-        padSizeChoice: "small"
+        padSizeChoice: "small",
+        showDetailsDefault: false
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -104,19 +106,24 @@ export default function App() {
 
     const [queue, setQueue] = useState<Card[]>([]);
     const [idx, setIdx] = useState(0);
-    const [reveal, setReveal] = useState(false);
     const [tracingMode, setTracingMode] = useState(storedPrefs.tracingMode ?? false);
     const [showHoverIndicator, setShowHoverIndicator] = useState(storedPrefs.showHoverIndicator ?? false);
     const [mode, setMode] = useState<'flashcard' | 'sentence'>(storedPrefs.mode || 'flashcard');
     const [sentenceText, setSentenceText] = useState("");
     const [padSizeChoice, setPadSizeChoice] = useState<PadSizeChoice>(storedPrefs.padSizeChoice || "small");
+    const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
+    const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
     useEffect(() => {
         setQueue(pickDue(filteredCards, progress));
         setIdx(0);
-        setReveal(false);
-    }, [filteredCards, progress]);
+        setReveal(showDetailsDefault);
+    }, [filteredCards, progress, showDetailsDefault]);
+
+    useEffect(() => {
+        setReveal(showDetailsDefault);
+    }, [showDetailsDefault]);
 
     // Theme application
     useEffect(() => {
@@ -151,10 +158,11 @@ export default function App() {
             showHoverIndicator,
             mode,
             language,
-            padSizeChoice
+            padSizeChoice,
+            showDetailsDefault
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault]);
 
     const padSizeOptions: { value: PadSizeChoice; label: string }[] = [
         { value: "xs", label: t("options.padSizeXs") },
@@ -176,7 +184,7 @@ export default function App() {
     const displayHanzi = card ? (characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi) : "";
 
     const advance = () => {
-        setReveal(false);
+        setReveal(showDetailsDefault);
         setIdx((i: number) => (i + 1) % queue.length);
     };
 
@@ -383,6 +391,15 @@ export default function App() {
                                         onChange={(e) => setShowHoverIndicator(e.target.checked)}
                                     />
                                     {t("options.hoverIndicator")}
+                                </label>
+
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                                    <input
+                                        type="checkbox"
+                                        checked={showDetailsDefault}
+                                        onChange={(e) => setShowDetailsDefault(e.target.checked)}
+                                    />
+                                    {t("options.showDetailsDefault")}
                                 </label>
 
                                 <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>

@@ -326,12 +326,11 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                     />
                 )}
             </div>
-            <div style={{ display: "flex", gap: 10, touchAction: "manipulation", marginTop: 10 }}>
+            <div className="pad-controls">
                 <button
                     onClick={undo}
                     disabled={strokes.length === 0}
                     aria-label={t("controls.undo")}
-                    style={{ touchAction: "manipulation", padding: "8px 10px", fontSize: 18, lineHeight: 1, minWidth: 44 }}
                 >
                     ↩
                 </button>
@@ -339,7 +338,6 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                     onClick={clear}
                     disabled={strokes.length === 0}
                     aria-label={t("controls.clear")}
-                    style={{ touchAction: "manipulation", padding: "8px 10px", fontSize: 18, lineHeight: 1, minWidth: 44 }}
                 >
                     ✕
                 </button>

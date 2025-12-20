@@ -53,7 +53,8 @@
         "padSizeXs": "特小：口袋便攜",
         "padSizeSmall": "小：筆記紙感",
         "padSizeMedium": "中：日常舒適",
-        "padSizeLarge": "大：畫布空間"
+        "padSizeLarge": "大：畫布空間",
+        "showDetailsDefault": "預設顯示拼音/釋義"
     },
     "help": {
         "title": "說明",
