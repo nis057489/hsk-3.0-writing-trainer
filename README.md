@@ -1,52 +1,66 @@
-# HSK 3 Writing Trainer (React + TypeScript + Docker)
+# HSK Writing Trainer (HSK 3.0 friendly)
 
-A simple handwriting practice web app (canvas) optimized for tablet use (iPad + Apple Pencil works in Safari).
+Practice handwriting for the HSK with a tablet-ready React app. Trace characters, drill with spaced repetition, and switch UI languages to match how you study.
 
-The HSK 3.0 test requires handwriting at all levels. I didn't find a good handwriting practice app out there so I vibe coded this one.
+![Home](img/1.PNG)
+![Flashcard + Pad](img/2.PNG)
+![Sentence Practice](img/3.PNG)
 
-## Features
+## Why learners like it
 
-- Flashcard + sentence tracing modes with spaced repetition scheduling
-- i18n with English/中文 (add more in `src/i18n/*.json`)
-- Light/Dark/High-Contrast themes with a user-selectable toggle
-- Tablet-friendly drawing pad with palm/pinch blocking
+- Spaced repetition flashcards plus sentence tracing to mimic HSK writing prompts
+- Tracing grid with palm/pinch blocking; optional Pencil hover indicator (M2 iPad Pro + Pencil 2)
+- Multi-language UI: English, 简体中文, 繁體中文, Español, Français, Tiếng Việt, Filipino, 한국어, العربية, Русский, Türkçe, हिन्दी, فارسی, Português
+- Themes: Light, Dark, High Contrast, or follow system
+- Remembers your language/theme/preferences between sessions
 
-## Dev (Docker)
+## How to use
+
+1) Open the menu (☰) → choose Flashcard or Sentence mode.  
+2) Flashcard mode: tap a card to reveal pinyin/meaning, then grade (Again/Hard/Good/Easy). Queue orders itself with spaced repetition.  
+3) Sentence mode: paste/type characters and trace each box.  
+4) Toggle tracing mode for a light character watermark, and switch Simplified/Traditional display.  
+5) Set left-handed layout if you hold the iPad/Pencil on the left.
+
+## Run locally (Docker)
 
 ```bash
 docker compose up --build
 ```
 
-Open <http://localhost:5173>
+Open <http://localhost:5173>. Everything runs inside Docker—no local Node install needed.
 
-> Everything runs in Docker; no local Node install is required. Add dependencies by editing `package.json` and rebuilding.
-
-## Prod (Docker)
+## Build / preview (Node)
 
 ```bash
-docker build -t hsk3-writing-trainer --target prod .
-docker run --rm -p 8080:80 hsk3-writing-trainer
+npm install
+npm run dev      # localhost:5173
+npm run build    # outputs dist/
+npm run preview  # serves the built app
 ```
 
-Open <http://localhost:8080>
+## Deploy free on GitHub Pages
 
-## Edit vocabulary
+Yes. Vite builds a static site you can host on GitHub Pages for free. Minimal steps:
 
-Replace `src/data/hsk3.sample.json` with your own list, keeping fields:
-`id`, `hanzi`, `pinyin`, `meaning`.
+1) `npm install && npm run build` (or run inside CI).  
+2) Publish the `dist/` folder to GitHub Pages (e.g., a `gh-pages` branch or the official Pages GitHub Action).  
+ - Using Actions: enable Pages → GitHub Actions in repo settings, then add a workflow that runs `npm ci`, `npm run build`, and uploads `dist/` with `actions/upload-pages-artifact` followed by `actions/deploy-pages`.  
+3) If serving from a subpath, set `base` in `vite.config.ts` (e.g., `base: "/your-repo/"`).
+
+## Vocabulary
+
+Vocabulary lives in `src/data/hsk.json` (HSK 3.0 list). To swap in your own list, match the fields: `id`, `hanzi`, `pinyin`, `meaning`, and optional `level`/`pos` arrays.
 
 ## i18n
 
-- Translations live in `src/i18n/en.json` and `src/i18n/zh.json`.
-- To add a language, create `src/i18n/<lang>.json` mirroring the keys and register it in `src/i18n/index.ts`.
-- Language can be switched from the drawer dropdown; browser language is detected by default.
+- All translations sit in `src/i18n/*.json`; register new locales in `src/i18n/index.ts`.
+- The app auto-detects browser language and lets users switch from the drawer.
 
-## Theming
+## Theming tokens
 
-- Theme tokens are defined in `src/index.css` (`--bg`, `--surface`, `--text`, `--accent`, etc.).
-- Supported themes: Light, Dark, High Contrast, and System. Switch themes from the drawer dropdown.
-- Focus outlines use `--focus`; ensure new components respect tokenized colors and borders.
+- Theme variables are defined in `src/index.css` (`--bg`, `--surface`, `--text`, `--accent`, etc.). Respect tokens when styling new components.
 
-## Acknowledgements
+## Credits
 
-Shout out to @drkameleon for the [JSON HSK word lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main) - that made this much easier and better!
+Vocabulary source: [@drkameleon’s HSK lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main). Thanks!
