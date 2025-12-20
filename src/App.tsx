@@ -72,8 +72,8 @@ export default function App() {
         showHoverIndicator: false,
         padSizeChoice: "small",
         showDetailsDefault: false,
-        traceFont: "handwritten",
-        promptFont: "handwritten",
+        traceFont: "cursive",
+        promptFont: "cursive",
         advancedPosFilter: false,
         gridStyle: "rice",
         gridVerticalShift: false
