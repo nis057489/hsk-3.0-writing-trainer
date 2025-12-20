@@ -5,9 +5,10 @@ import { DrawingPad } from "./DrawingPad";
 interface PracticeAreaProps {
     text: string;
     tracingMode: boolean;
+    showHoverIndicator?: boolean;
 }
 
-export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
+export function PracticeArea({ text, tracingMode, showHoverIndicator = false }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
 
@@ -53,7 +54,12 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
                     <div key={`${char}-${index}`} className="trace-cell">
                         <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
                         <div className="trace-pad">
-                            <DrawingPad size={padSize} tracingMode={tracingMode} character={char} />
+                            <DrawingPad
+                                size={padSize}
+                                tracingMode={tracingMode}
+                                character={char}
+                                showHoverIndicator={showHoverIndicator}
+                            />
                         </div>
                         <div className="trace-char">{char}</div>
                     </div>

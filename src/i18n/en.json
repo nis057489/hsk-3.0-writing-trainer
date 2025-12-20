@@ -47,7 +47,8 @@
         "themeLight": "Light",
         "themeDark": "Dark",
         "themeContrast": "High Contrast",
-        "themeSystem": "System"
+        "themeSystem": "System",
+        "hoverIndicator": "Show Pencil hover indicator"
     },
     "help": {
         "title": "Help",

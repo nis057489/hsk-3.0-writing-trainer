@@ -47,7 +47,8 @@
         "themeLight": "淺色",
         "themeDark": "深色",
         "themeContrast": "高對比",
-        "themeSystem": "跟隨系統"
+        "themeSystem": "跟隨系統",
+        "hoverIndicator": "顯示手寫筆懸停指示"
     },
     "help": {
         "title": "說明",

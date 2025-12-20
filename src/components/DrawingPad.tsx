@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 type Point = { x: number; y: number };
 type Stroke = Point[];
 
-export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string }) {
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false }: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string; showHoverIndicator?: boolean }) {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [canvasSize, setCanvasSize] = useState(props.size || 300);
+    const [canvasSize, setCanvasSize] = useState(size || 300);
     const [hoverPoint, setHoverPoint] = useState<Point | null>(null);
 
     // Strokes are stored in normalized coordinates (0-1)
@@ -21,12 +21,12 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
 
     useEffect(() => {
         setStrokes([]);
-    }, [props.character]);
+    }, [character]);
 
     // Handle resizing
     useEffect(() => {
-        if (props.size) {
-            setCanvasSize(props.size);
+        if (size) {
+            setCanvasSize(size);
             return;
         }
 
@@ -44,7 +44,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
 
         observer.observe(el);
         return () => observer.disconnect();
-    }, [props.size]);
+    }, [size]);
 
     function getPos(e: PointerEvent, el: HTMLCanvasElement): Point {
         const r = el.getBoundingClientRect();
@@ -66,7 +66,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         const s = canvasSize * dpr;
 
         // Optional grid
-        if (props.showGrid !== false) {
+        if (showGrid !== false) {
             ctx.save();
             ctx.globalAlpha = 0.15;
             ctx.lineWidth = 1 * dpr;
@@ -88,7 +88,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         }
 
         // Tracing mode
-        if (props.tracingMode && props.character) {
+        if (tracingMode && character) {
             ctx.save();
             ctx.globalAlpha = 0.15;
             const fontSize = s * 0.65;
@@ -100,7 +100,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             const cx = s / 2;
             const cy = s / 2;
             // Adjust vertical alignment slightly if needed
-            ctx.fillText(props.character, cx, cy);
+            ctx.fillText(character, cx, cy);
             ctx.restore();
         }
 
@@ -140,7 +140,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
 
         redraw();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [canvasSize, dpr, strokes, props.tracingMode, props.character]);
+    }, [canvasSize, dpr, strokes, tracingMode, character]);
 
     useEffect(() => {
         const c = canvasRef.current;
@@ -170,7 +170,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         const onPointerMove = (e: PointerEvent) => {
             if (!isDownRef.current) {
                 if (e.pointerType === "pen" && e.buttons === 0) {
-                    setHoverPoint(getPos(e, c));
+                    if (showHoverIndicator) setHoverPoint(getPos(e, c));
                 }
                 return;
             }
@@ -299,7 +299,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
                         objectFit: "contain"
                     }}
                 />
-                {hoverPoint && (
+                {showHoverIndicator && hoverPoint && (
                     <div
                         aria-hidden
                         style={{

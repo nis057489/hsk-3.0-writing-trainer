@@ -19,6 +19,7 @@ type Prefs = {
     tracingMode: boolean;
     mode: 'flashcard' | 'sentence';
     language: string;
+    showHoverIndicator: boolean;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -49,7 +50,8 @@ export default function App() {
         leftHanded: false,
         tracingMode: false,
         mode: 'flashcard',
-        language: i18n.resolvedLanguage || "en"
+        language: i18n.resolvedLanguage || "en",
+        showHoverIndicator: false
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -100,6 +102,7 @@ export default function App() {
     const [idx, setIdx] = useState(0);
     const [reveal, setReveal] = useState(false);
     const [tracingMode, setTracingMode] = useState(storedPrefs.tracingMode ?? false);
+    const [showHoverIndicator, setShowHoverIndicator] = useState(storedPrefs.showHoverIndicator ?? false);
     const [mode, setMode] = useState<'flashcard' | 'sentence'>(storedPrefs.mode || 'flashcard');
     const [sentenceText, setSentenceText] = useState("");
 
@@ -140,11 +143,12 @@ export default function App() {
             characterMode,
             leftHanded,
             tracingMode,
+            showHoverIndicator,
             mode,
             language
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, mode, language]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language]);
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
@@ -349,6 +353,15 @@ export default function App() {
                                         onChange={(e) => setTracingMode(e.target.checked)}
                                     />
                                     {t("options.tracing")}
+                                </label>
+
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                                    <input
+                                        type="checkbox"
+                                        checked={showHoverIndicator}
+                                        onChange={(e) => setShowHoverIndicator(e.target.checked)}
+                                    />
+                                    {t("options.hoverIndicator")}
                                 </label>
 
                                 <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
@@ -574,7 +587,7 @@ export default function App() {
                             </div>
 
                             <div className="card" style={{ flex: "1 1 300px", display: "flex", flexDirection: "column" }}>
-                                <PracticeArea text={displayHanzi} tracingMode={tracingMode} />
+                                <PracticeArea text={displayHanzi} tracingMode={tracingMode} showHoverIndicator={showHoverIndicator} />
                             </div>
                         </>
                     ) : (
@@ -612,7 +625,7 @@ export default function App() {
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 16 }}>
                             {sentenceText.split("").map((char, i) => (
                                 <div key={i} className="card" style={{ padding: 12 }}>
-                                    <DrawingPad tracingMode={tracingMode} character={char} />
+                                    <DrawingPad tracingMode={tracingMode} character={char} showHoverIndicator={showHoverIndicator} />
                                 </div>
                             ))}
                         </div>
