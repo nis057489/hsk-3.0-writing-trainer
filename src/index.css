@@ -264,6 +264,28 @@ body {
     width: 100%;
 }
 
+.pad-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.pad-controls button {
+    background: var(--surface-strong);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: none;
+    padding: 8px 10px;
+    min-width: 44px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.pad-controls button:disabled {
+    opacity: 0.45;
+}
+
 .trace-char {
     font-size: 26px;
     font-weight: 700;
