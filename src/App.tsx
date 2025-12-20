@@ -121,7 +121,7 @@ export default function App() {
     const filteredCards = useMemo(() => {
         return allCards.filter(card => {
             const levelMatch = selectedLevels.length === 0 || (card.level && card.level.some(l => selectedLevels.includes(l)));
-            
+
             // POS filtering with simple/advanced mode
             let posMatch = true;
             if (selectedPos.length > 0 && card.pos) {
@@ -138,7 +138,7 @@ export default function App() {
                     });
                 }
             }
-            
+
             return levelMatch && posMatch;
         });
     }, [selectedLevels, selectedPos, advancedPosFilter]);
