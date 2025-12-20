@@ -61,6 +61,10 @@
         "traceFontCursive": "필기체 (시스템)",
         "traceFontSystem": "시스템 (Sans-serif)",
         "promptFont": "프롬프트 문자 글꼴 스타일",
+        "gridStyle": "연습 격자 스타일",
+        "gridStyleRice": "쌀 (米) - 전통",
+        "gridStyleField": "밭 (田) - 단순",
+        "gridVerticalShift": "40/60 수직 분할 사용",
         "showDetailsDefault": "기본적으로 병음/뜻 표시"
     },
     "help": {

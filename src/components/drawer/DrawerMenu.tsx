@@ -5,6 +5,7 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
 type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
+type GridStyleChoice = "rice" | "field";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -31,6 +32,10 @@ interface DrawerMenuProps {
     setTraceFont: (value: TraceFontChoice) => void;
     promptFont: PromptFontChoice;
     setPromptFont: (value: PromptFontChoice) => void;
+    gridStyle: GridStyleChoice;
+    setGridStyle: (value: GridStyleChoice) => void;
+    gridVerticalShift: boolean;
+    setGridVerticalShift: (value: boolean) => void;
     characterMode: 'simplified' | 'traditional';
     setCharacterMode: (value: 'simplified' | 'traditional') => void;
     language: string;
@@ -266,10 +271,10 @@ export function DrawerMenu(props: DrawerMenuProps) {
                     </label>
 
                     <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                        <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
+                        <span style={{ color: "var(--muted)" }}>{t("options.gridStyle")}</span>
                         <select
-                            value={props.promptFont}
-                            onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
+                            value={props.gridStyle}
+                            onChange={(e) => props.setGridStyle(e.target.value as GridStyleChoice)}
                             style={{
                                 padding: "8px 10px",
                                 borderRadius: 8,
@@ -278,96 +283,132 @@ export function DrawerMenu(props: DrawerMenuProps) {
                                 color: "var(--text)",
                                 fontSize: 14
                             }}
-                            aria-label={t("options.promptFont")}
+                            aria-label={t("options.gridStyle")}
                         >
-                            {promptFontOptions.map(opt => (
-                                <option key={opt.value} value={opt.value}>{opt.label}</option>
-                            ))}
+                            <option value="rice">{t("options.gridStyleRice")}</option>
+                            <option value="field">{t("options.gridStyleField")}</option>
                         </select>
                     </label>
 
-                    <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
-                        <button
-                            onClick={() => props.setCharacterMode('simplified')}
-                            aria-pressed={props.characterMode === 'simplified'}
-                            style={{
-                                flex: 1,
-                                border: "none",
-                                background: props.characterMode === 'simplified' ? "var(--surface)" : "transparent",
-                                boxShadow: props.characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                borderRadius: 6,
-                                padding: "6px 0",
-                                fontSize: 13,
-                                cursor: "pointer",
-                                fontWeight: props.characterMode === 'simplified' ? "bold" : "normal",
-                                color: props.characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
-                            }}
-                        >
-                            {t("options.simplified")}
-                        </button>
-                        <button
-                            onClick={() => props.setCharacterMode('traditional')}
-                            aria-pressed={props.characterMode === 'traditional'}
-                            style={{
-                                flex: 1,
-                                border: "none",
-                                background: props.characterMode === 'traditional' ? "var(--surface)" : "transparent",
-                                boxShadow: props.characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                borderRadius: 6,
-                                padding: "6px 0",
-                                fontSize: 13,
-                                cursor: "pointer",
-                                fontWeight: props.characterMode === 'traditional' ? "bold" : "normal",
-                                color: props.characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
-                            }}
-                        >
-                            {t("options.traditional")}
-                        </button>
-                    </div>
-
-                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                        <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
-                        <select
-                            value={props.language}
-                            onChange={(e) => props.setLanguage(e.target.value)}
-                            style={{
-                                padding: "8px 10px",
-                                borderRadius: 8,
-                                border: "1px solid var(--border)",
-                                background: "var(--surface)",
-                                color: "var(--text)",
-                                fontSize: 14
-                            }}
-                            aria-label={t("options.language")}
-                        >
-                            {languageOptions.map(opt => (
-                                <option key={opt.value} value={opt.value}>{opt.label}</option>
-                            ))}
-                        </select>
+                    <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14 }}>
+                        <input
+                            type="checkbox"
+                            checked={props.gridVerticalShift}
+                            onChange={(e) => props.setGridVerticalShift(e.target.checked)}
+                        />
+                        {t("options.gridVerticalShift")}
                     </label>
 
-                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                        <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
-                        <select
-                            value={props.theme}
-                            onChange={(e) => props.setTheme(e.target.value as ThemeChoice)}
-                            style={{
-                                padding: "8px 10px",
-                                borderRadius: 8,
-                                border: "1px solid var(--border)",
-                                background: "var(--surface)",
-                                color: "var(--text)",
-                                fontSize: 14
-                            }}
-                            aria-label={t("options.theme")}
                         >
-                            {themeOptions.map(opt => (
-                                <option key={opt.value} value={opt.value}>{opt.label}</option>
-                            ))}
-                        </select>
-                    </label>
-                </div>
+                    {traceFontOptions.map(opt => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                </select>
+            </label>
+
+            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
+                <select
+                    value={props.promptFont}
+                    onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
+                    style={{
+                        padding: "8px 10px",
+                        borderRadius: 8,
+                        border: "1px solid var(--border)",
+                        background: "var(--surface)",
+                        color: "var(--text)",
+                        fontSize: 14
+                    }}
+                    aria-label={t("options.promptFont")}
+                >
+                    {promptFontOptions.map(opt => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                </select>
+            </label>
+
+            <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
+                <button
+                    onClick={() => props.setCharacterMode('simplified')}
+                    aria-pressed={props.characterMode === 'simplified'}
+                    style={{
+                        flex: 1,
+                        border: "none",
+                        background: props.characterMode === 'simplified' ? "var(--surface)" : "transparent",
+                        boxShadow: props.characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                        borderRadius: 6,
+                        padding: "6px 0",
+                        fontSize: 13,
+                        cursor: "pointer",
+                        fontWeight: props.characterMode === 'simplified' ? "bold" : "normal",
+                        color: props.characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
+                    }}
+                >
+                    {t("options.simplified")}
+                </button>
+                <button
+                    onClick={() => props.setCharacterMode('traditional')}
+                    aria-pressed={props.characterMode === 'traditional'}
+                    style={{
+                        flex: 1,
+                        border: "none",
+                        background: props.characterMode === 'traditional' ? "var(--surface)" : "transparent",
+                        boxShadow: props.characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                        borderRadius: 6,
+                        padding: "6px 0",
+                        fontSize: 13,
+                        cursor: "pointer",
+                        fontWeight: props.characterMode === 'traditional' ? "bold" : "normal",
+                        color: props.characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
+                    }}
+                >
+                    {t("options.traditional")}
+                </button>
             </div>
+
+            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
+                <select
+                    value={props.language}
+                    onChange={(e) => props.setLanguage(e.target.value)}
+                    style={{
+                        padding: "8px 10px",
+                        borderRadius: 8,
+                        border: "1px solid var(--border)",
+                        background: "var(--surface)",
+                        color: "var(--text)",
+                        fontSize: 14
+                    }}
+                    aria-label={t("options.language")}
+                >
+                    {languageOptions.map(opt => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                </select>
+            </label>
+
+            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
+                <select
+                    value={props.theme}
+                    onChange={(e) => props.setTheme(e.target.value as ThemeChoice)}
+                    style={{
+                        padding: "8px 10px",
+                        borderRadius: 8,
+                        border: "1px solid var(--border)",
+                        background: "var(--surface)",
+                        color: "var(--text)",
+                        fontSize: 14
+                    }}
+                    aria-label={t("options.theme")}
+                >
+                    {themeOptions.map(opt => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                </select>
+            </label>
+        </div >
+            </div >
 
             <div className="filter-section">
                 <h3>{t("help.title")}</h3>

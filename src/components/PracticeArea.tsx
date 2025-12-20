@@ -8,9 +8,11 @@ interface PracticeAreaProps {
     showHoverIndicator?: boolean;
     padSizeChoice: "xs" | "small" | "medium" | "large";
     traceFont?: "handwritten" | "kai" | "system" | "cursive";
+    gridStyle?: "rice" | "cross";
+    gridVerticalShift?: boolean;
 }
 
-export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten" }: PracticeAreaProps) {
+export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
     const [padHandlers, setPadHandlers] = useState<Record<string, { undo: () => void; clear: () => void; hasStrokes: boolean }>>({});
@@ -77,6 +79,8 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                                     character={char}
                                     showHoverIndicator={showHoverIndicator}
                                     traceFont={traceFont}
+                                    gridStyle={gridStyle}
+                                    gridVerticalShift={gridVerticalShift}
                                     onUndoClick={(undo, hasStrokes) => {
                                         setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], undo, hasStrokes } }));
                                     }}

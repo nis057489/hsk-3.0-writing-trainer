@@ -61,6 +61,10 @@
         "traceFontCursive": "El yazısı (Sistem)",
         "traceFontSystem": "Sistem (Sans-serif)",
         "promptFont": "İstem karakteri yazı tipi stili",
+        "gridStyle": "Pratik ızgara stili",
+        "gridStyleRice": "Pirinç (米) - Geleneksel",
+        "gridStyleField": "Tarla (田) - Basit",
+        "gridVerticalShift": "40/60 dikey bölme kullan",
         "showDetailsDefault": "Pinyin/anlamı varsayılan olarak göster"
     },
     "help": {

@@ -61,6 +61,10 @@
         "traceFontCursive": "Курсивный (Системный)",
         "traceFontSystem": "Системный (Sans-serif)",
         "promptFont": "Стиль шрифта для подсказки",
+        "gridStyle": "Стиль практической сетки",
+        "gridStyleRice": "Рис (米) - Традиционный",
+        "gridStyleField": "Поле (田) - Простой",
+        "gridVerticalShift": "Использовать вертикальное разделение 40/60",
         "showDetailsDefault": "Показывать пиньинь/значение по умолчанию"
     },
     "help": {

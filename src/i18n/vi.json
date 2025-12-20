@@ -61,6 +61,10 @@
         "traceFontCursive": "Chữ viết tay (Hệ thống)",
         "traceFontSystem": "Hệ thống (Sans-serif)",
         "promptFont": "Kiểu phông chữ gợi ý",
+        "gridStyle": "Kiểu lưới thực hành",
+        "gridStyleRice": "Gạo (米) - Truyền thống",
+        "gridStyleField": "Ruộng (田) - Đơn giản",
+        "gridVerticalShift": "Sử dụng chia dọc 40/60",
         "showDetailsDefault": "Hiển thị pinyin/nghĩa mặc định"
     },
     "help": {

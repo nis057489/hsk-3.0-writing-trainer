@@ -11,11 +11,13 @@ interface DrawingPadProps {
     character?: string;
     showHoverIndicator?: boolean;
     traceFont?: "handwritten" | "kai" | "system" | "cursive";
+    gridStyle?: "rice" | "cross";
+    gridVerticalShift?: boolean;
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
 }
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", onUndoClick, onClearClick }: DrawingPadProps) {
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, onUndoClick, onClearClick }: DrawingPadProps) {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -75,28 +77,6 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
         ctx.clearRect(0, 0, c.width, c.height);
 
         const s = canvasSize * dpr;
-
-        // Optional grid
-        if (showGrid !== false) {
-            ctx.save();
-            ctx.globalAlpha = 0.15;
-            ctx.lineWidth = 1 * dpr;
-            ctx.strokeStyle = "#000";
-
-            // border
-            ctx.strokeRect(0, 0, s, s);
-
-            // mid lines
-            ctx.beginPath();
-            ctx.moveTo(s / 2, 0); ctx.lineTo(s / 2, s);
-            ctx.moveTo(0, s / 2); ctx.lineTo(s, s / 2);
-
-            // diagonals
-            ctx.moveTo(0, 0); ctx.lineTo(s, s);
-            ctx.moveTo(s, 0); ctx.lineTo(0, s);
-            ctx.stroke();
-            ctx.restore();
-        }
 
         // Tracing mode
         if (tracingMode && character) {
@@ -350,6 +330,18 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                         }}
                     />
                 )}
+                {/* CSS-based grid overlay */}
+                <div
+                    className={`practice-grid practice-grid-${gridStyle}${gridVerticalShift ? ' practice-grid-shifted' : ''}`}
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        pointerEvents: 'none',
+                    }}
+                />
             </div>
         </div>
     );

@@ -61,6 +61,10 @@
         "traceFontCursive": "خط متصل (نظام)",
         "traceFontSystem": "النظام (Sans-serif)",
         "promptFont": "نمط خط حرف التلقين",
+        "gridStyle": "نمط شبكة الممارسة",
+        "gridStyleRice": "أرز (米) - تقليدي",
+        "gridStyleField": "حقل (田) - بسيط",
+        "gridVerticalShift": "استخدام تقسيم عمودي 40/60",
         "showDetailsDefault": "إظهار البينيين/المعنى افتراضياً"
     },
     "help": {

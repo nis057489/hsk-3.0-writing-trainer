@@ -61,6 +61,10 @@
         "traceFontCursive": "Cursive (Système)",
         "traceFontSystem": "Système (Sans-serif)",
         "promptFont": "Style de police pour l'invite",
+        "gridStyle": "Style de grille de pratique",
+        "gridStyleRice": "Riz (米) - Traditionnel",
+        "gridStyleField": "Champ (田) - Simple",
+        "gridVerticalShift": "Utiliser division verticale 40/60",
         "showDetailsDefault": "Afficher pinyin/sens par défaut"
     },
     "help": {

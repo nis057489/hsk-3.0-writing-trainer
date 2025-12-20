@@ -61,6 +61,10 @@
         "traceFontCursive": "草书体（系统）",
         "traceFontSystem": "系统字体（无衬线）",
         "promptFont": "提示字体风格",
+        "gridStyle": "练习网格样式",
+        "gridStyleRice": "米字格 - 传统",
+        "gridStyleField": "田字格 - 简单",
+        "gridVerticalShift": "使用40/60竖向分割",
         "showDetailsDefault": "默认显示拼音/释义"
     },
     "help": {

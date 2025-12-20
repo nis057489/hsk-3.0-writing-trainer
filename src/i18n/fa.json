@@ -61,6 +61,10 @@
         "traceFontCursive": "شکسته (سیستمی)",
         "traceFontSystem": "سیستمی (Sans-serif)",
         "promptFont": "سبک فونت کاراکتر راهنما",
+        "gridStyle": "سبک شبکه تمرین",
+        "gridStyleRice": "برنج (米) - سنتی",
+        "gridStyleField": "مزرعه (田) - ساده",
+        "gridVerticalShift": "استفاده از تقسیم عمودی 40/60",
         "showDetailsDefault": "نمایش پین‌یین/معنی به‌طور پیش‌فرض"
     },
     "help": {

@@ -61,6 +61,10 @@
         "traceFontCursive": "Cursiva (Sistema)",
         "traceFontSystem": "Sistema (Sans-serif)",
         "promptFont": "Estilo de fuente para prompt",
+        "gridStyle": "Estilo de cuadrícula de práctica",
+        "gridStyleRice": "Arroz (米) - Tradicional",
+        "gridStyleField": "Campo (田) - Simple",
+        "gridVerticalShift": "Usar división vertical 40/60",
         "showDetailsDefault": "Mostrar pinyin/significado por defecto"
     },
     "help": {

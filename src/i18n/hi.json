@@ -61,6 +61,10 @@
         "traceFontCursive": "तिरछा (सिस्टम)",
         "traceFontSystem": "सिस्टम (Sans-serif)",
         "promptFont": "प्रॉम्प्ट अक्षर फ़ॉन्ट शैली",
+        "gridStyle": "अभ्यास ग्रिड शैली",
+        "gridStyleRice": "चावल (米) - पारंपरिक",
+        "gridStyleField": "खेत (田) - सरल",
+        "gridVerticalShift": "40/60 लंबवत विभाजन का उपयोग करें",
         "showDetailsDefault": "डिफ़ॉल्ट रूप से पिनयिन/अर्थ दिखाएँ"
     },
     "help": {

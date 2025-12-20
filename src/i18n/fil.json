@@ -61,6 +61,10 @@
         "traceFontCursive": "Cursive (Sistema)",
         "traceFontSystem": "Sistema (Sans-serif)",
         "promptFont": "Estilo ng font ng prompt character",
+        "gridStyle": "Istilo ng grid ng pagsasanay",
+        "gridStyleRice": "Bigas (米) - Tradisyonal",
+        "gridStyleField": "Bukid (田) - Simple",
+        "gridVerticalShift": "Gumamit ng 40/60 vertical split",
         "showDetailsDefault": "Ipakita ang pinyin/kahulugan bilang default"
     },
     "help": {

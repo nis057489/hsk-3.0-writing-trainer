@@ -19,6 +19,7 @@ type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
 type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
 type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
+type GridStyleChoice = "rice" | "field";
 
 type Prefs = {
     selectedLevels: string[];
@@ -34,6 +35,8 @@ type Prefs = {
     traceFont: TraceFontChoice;
     promptFont: PromptFontChoice;
     advancedPosFilter: boolean;
+    gridStyle: GridStyleChoice;
+    gridVerticalShift: boolean;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -71,7 +74,9 @@ export default function App() {
         showDetailsDefault: false,
         traceFont: "handwritten",
         promptFont: "handwritten",
-        advancedPosFilter: false
+        advancedPosFilter: false,
+        gridStyle: "rice",
+        gridVerticalShift: false
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -252,6 +257,8 @@ export default function App() {
     const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
     const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
     const [promptFont, setPromptFont] = useState<PromptFontChoice>(storedPrefs.promptFont || "handwritten");
+    const [gridStyle, setGridStyle] = useState<GridStyleChoice>(storedPrefs.gridStyle || "rice");
+    const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
     const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
@@ -302,7 +309,9 @@ export default function App() {
             showDetailsDefault,
             traceFont,
             promptFont,
-            advancedPosFilter
+            advancedPosFilter,
+            gridStyle,
+            gridVerticalShift
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont]);
@@ -424,6 +433,10 @@ export default function App() {
                         setTraceFont={setTraceFont}
                         promptFont={promptFont}
                         setPromptFont={setPromptFont}
+                        gridStyle={gridStyle}
+                        setGridStyle={setGridStyle}
+                        gridVerticalShift={gridVerticalShift}
+                        setGridVerticalShift={setGridVerticalShift}
                         characterMode={characterMode}
                         setCharacterMode={setCharacterMode}
                         language={language}
@@ -509,6 +522,8 @@ export default function App() {
                             showHoverIndicator={showHoverIndicator}
                             padSizeChoice={padSizeChoice}
                             traceFont={traceFont}
+                            gridStyle={gridStyle}
+                            gridVerticalShift={gridVerticalShift}
                         />
                     )}
                 </div>
