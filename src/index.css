@@ -388,7 +388,6 @@ body {
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s;
 }
 
 .drawer-backdrop.open {
@@ -406,7 +405,6 @@ body {
     background: var(--surface);
     z-index: 1000;
     transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-strong);
     display: flex;
     flex-direction: column;
