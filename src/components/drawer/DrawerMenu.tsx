@@ -271,6 +271,27 @@ export function DrawerMenu(props: DrawerMenuProps) {
                     </label>
 
                     <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
+                        <select
+                            value={props.promptFont}
+                            onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.promptFont")}
+                        >
+                            {promptFontOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
                         <span style={{ color: "var(--muted)" }}>{t("options.gridStyle")}</span>
                         <select
                             value={props.gridStyle}
@@ -298,27 +319,6 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             onChange={(e) => props.setGridVerticalShift(e.target.checked)}
                         />
                         {t("options.gridVerticalShift")}
-                    </label>
-
-                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                        <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
-                        <select
-                            value={props.promptFont}
-                            onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
-                            style={{
-                                padding: "8px 10px",
-                                borderRadius: 8,
-                                border: "1px solid var(--border)",
-                                background: "var(--surface)",
-                                color: "var(--text)",
-                                fontSize: 14
-                            }}
-                            aria-label={t("options.promptFont")}
-                        >
-                            {promptFontOptions.map(opt => (
-                                <option key={opt.value} value={opt.value}>{opt.label}</option>
-                            ))}
-                        </select>
                     </label>
 
                     <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
