@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Card } from "../lib/types";
 
 export function Flashcard(props: {
@@ -7,6 +8,7 @@ export function Flashcard(props: {
   onToggleReveal: () => void;
 }) {
   const { card, reveal } = props;
+  const { t } = useTranslation();
 
   return (
     <div className="card">
@@ -14,7 +16,7 @@ export function Flashcard(props: {
 
       <div className="meta">
         <button onClick={props.onToggleReveal}>
-          {reveal ? "Hide" : "Reveal"} pinyin/meaning
+          {reveal ? t("flashcard.hide") : t("flashcard.reveal")}
         </button>
       </div>
 

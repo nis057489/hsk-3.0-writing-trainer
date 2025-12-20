@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
 import { Toolbar } from "./components/Toolbar";
@@ -8,26 +9,7 @@ import vocab from "./data/hsk.json";
 import { Card, Grade } from "./lib/types";
 import { ensureState, loadProgress, nextState, saveProgress } from "./lib/scheduler";
 
-const LEVELS = [
-    { id: "new-1", label: "HSK 1" },
-    { id: "new-2", label: "HSK 2" },
-    { id: "new-3", label: "HSK 3" },
-    { id: "new-4", label: "HSK 4" },
-    { id: "new-5", label: "HSK 5" },
-    { id: "new-6", label: "HSK 6" },
-    { id: "new-7+", label: "HSK 7-9" },
-];
-
-const POS_GROUPS = [
-    { id: "n", label: "Nouns" },
-    { id: "v", label: "Verbs" },
-    { id: "a", label: "Adjectives" },
-    { id: "d", label: "Adverbs" },
-    { id: "r", label: "Pronouns" },
-    { id: "c", label: "Conjunctions" },
-    { id: "i", label: "Idioms" },
-    { id: "l", label: "Phrases" },
-];
+type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
 function pickDue(cards: Card[], progressMap: Record<string, any>) {
     const now = Date.now();
@@ -36,6 +18,7 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
 }
 
 export default function App() {
+    const { t, i18n } = useTranslation();
     const allCards = vocab as Card[];
 
     const [progress, setProgress] = useState(() => loadProgress());
@@ -47,6 +30,8 @@ export default function App() {
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>('simplified');
     const [leftHanded, setLeftHanded] = useState(false);
     const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips'>('menu');
+    const [theme, setTheme] = useState<ThemeChoice>(() => (localStorage.getItem("theme") as ThemeChoice) || "system");
+    const [language, setLanguage] = useState<string>(i18n.resolvedLanguage || "en");
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -55,7 +40,28 @@ export default function App() {
             const posMatch = selectedPos.length === 0 || (card.pos && card.pos.some(p => selectedPos.includes(p)));
             return levelMatch && posMatch;
         });
-    }, [selectedLevels, selectedPos]);
+    }, [selectedLevels, selectedPos, allCards]);
+
+    const levels = useMemo(() => ([
+        { id: "new-1", label: t("levels.hsk1") },
+        { id: "new-2", label: t("levels.hsk2") },
+        { id: "new-3", label: t("levels.hsk3") },
+        { id: "new-4", label: t("levels.hsk4") },
+        { id: "new-5", label: t("levels.hsk5") },
+        { id: "new-6", label: t("levels.hsk6") },
+        { id: "new-7+", label: t("levels.hsk7") }
+    ]), [t]);
+
+    const posGroups = useMemo(() => ([
+        { id: "n", label: t("pos.n") },
+        { id: "v", label: t("pos.v") },
+        { id: "a", label: t("pos.a") },
+        { id: "d", label: t("pos.d") },
+        { id: "r", label: t("pos.r") },
+        { id: "c", label: t("pos.c") },
+        { id: "i", label: t("pos.i") },
+        { id: "l", label: t("pos.l") }
+    ]), [t]);
 
     const [queue, setQueue] = useState<Card[]>([]);
     const [idx, setIdx] = useState(0);
@@ -71,13 +77,35 @@ export default function App() {
         setReveal(false);
     }, [filteredCards, progress]);
 
-    const card = queue[idx % queue.length];
+    // Theme application
+    useEffect(() => {
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        const resolveTheme = () => theme === "system" ? (media.matches ? "dark" : "light") : theme;
+        const finalTheme = resolveTheme();
+        document.body.dataset.theme = finalTheme;
+        localStorage.setItem("theme", theme);
+        const listener = () => {
+            if (theme === "system") {
+                const next = resolveTheme();
+                document.body.dataset.theme = next;
+            }
+        };
+        media.addEventListener("change", listener);
+        return () => media.removeEventListener("change", listener);
+    }, [theme]);
+
+    // Language application
+    useEffect(() => {
+        i18n.changeLanguage(language);
+    }, [language, i18n]);
+
+    const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
     const displayHanzi = card ? (characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi) : "";
 
     const advance = () => {
         setReveal(false);
-        setIdx((i) => (i + 1) % queue.length);
+        setIdx((i: number) => (i + 1) % queue.length);
     };
 
     const grade = (g: Grade) => {
@@ -91,7 +119,7 @@ export default function App() {
         saveProgress(nextMap);
 
         if (g === "again") {
-            setQueue((q) => {
+            setQueue((q: Card[]) => {
                 const copy = q.slice();
                 const [removed] = copy.splice(idx % copy.length, 1);
                 const insertAt = Math.min(copy.length, (idx % copy.length) + 3);
@@ -104,31 +132,44 @@ export default function App() {
     };
 
     const toggleLevel = (id: string) => {
-        setSelectedLevels(prev =>
-            prev.includes(id) ? prev.filter(l => l !== id) : [...prev, id]
+        setSelectedLevels((prev: string[]) =>
+            prev.includes(id) ? prev.filter((l: string) => l !== id) : [...prev, id]
         );
     };
 
     const togglePos = (id: string) => {
-        setSelectedPos(prev =>
-            prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]
+        setSelectedPos((prev: string[]) =>
+            prev.includes(id) ? prev.filter((p: string) => p !== id) : [...prev, id]
         );
     };
+
+    const themeOptions: { value: ThemeChoice; label: string }[] = [
+        { value: "light", label: t("options.themeLight") },
+        { value: "dark", label: t("options.themeDark") },
+        { value: "contrast", label: t("options.themeContrast") },
+        { value: "system", label: t("options.themeSystem") }
+    ];
+
+    const languageOptions = [
+        { value: "en", label: "English" },
+        { value: "zh", label: "中文" }
+    ];
 
     return (
         <div className="app">
             <div style={{ position: "fixed", top: 20, right: 20, zIndex: 100 }}>
                 <button
                     onClick={() => setIsDrawerOpen(true)}
+                    aria-label={t("app.menu")}
                     style={{
-                        background: "white",
-                        border: "none",
+                        background: "var(--surface-strong)",
+                        border: "1px solid var(--border)",
                         borderRadius: "50%",
                         width: "48px",
                         height: "48px",
                         cursor: "pointer",
-                        color: "#333",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                        color: "var(--text)",
+                        boxShadow: "var(--shadow-strong)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -139,70 +180,80 @@ export default function App() {
                 </button>
             </div>
 
-            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title={drawerView === 'menu' ? "Menu" : drawerView === 'help' ? "Stroke Order" : "Device Tips"}>
+            <Drawer
+                isOpen={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+                title={drawerView === 'menu' ? t("app.menu") : drawerView === 'help' ? t("app.strokeGuide") : t("app.deviceTips")}
+            >
                 {drawerView === 'menu' ? (
                     <>
                         <div style={{ marginBottom: 24 }}>
-                            <h2 style={{ margin: "0 0 8px 0", color: "var(--primary-red)", fontSize: 20 }}>HSK Writing Trainer</h2>
-                            <p style={{ margin: 0, fontSize: 14, opacity: 0.6 }}>Master Chinese characters.</p>
+                            <h2 style={{ margin: "0 0 8px 0", color: "var(--accent)", fontSize: 20 }}>{t("app.title")}</h2>
+                            <p style={{ margin: 0, fontSize: 14, opacity: 0.8 }}>{t("app.subtitle")}</p>
                         </div>
 
                         <div className="filter-section">
-                            <h3>Mode</h3>
+                            <h3>{t("mode.title")}</h3>
                             <div style={{ display: "flex", gap: 8 }}>
                                 <button
                                     onClick={() => { setMode('flashcard'); setIsDrawerOpen(false); }}
+                                    aria-pressed={mode === 'flashcard'}
                                     style={{
                                         flex: 1,
                                         padding: "8px",
                                         borderRadius: "8px",
-                                        border: "none",
-                                        background: mode === 'flashcard' ? "var(--primary-red)" : "#eee",
-                                        color: mode === 'flashcard' ? "white" : "#666",
+                                        border: "1px solid var(--border)",
+                                        background: mode === 'flashcard' ? "var(--accent)" : "var(--surface-strong)",
+                                        color: mode === 'flashcard' ? "var(--accent-contrast)" : "var(--muted)",
                                         cursor: "pointer",
-                                        fontWeight: "bold"
+                                        fontWeight: 700
                                     }}
                                 >
-                                    Flashcards
+                                    {t("mode.flashcard")}
                                 </button>
                                 <button
                                     onClick={() => { setMode('sentence'); setIsDrawerOpen(false); }}
+                                    aria-pressed={mode === 'sentence'}
                                     style={{
                                         flex: 1,
                                         padding: "8px",
                                         borderRadius: "8px",
-                                        border: "none",
-                                        background: mode === 'sentence' ? "var(--primary-red)" : "#eee",
-                                        color: mode === 'sentence' ? "white" : "#666",
+                                        border: "1px solid var(--border)",
+                                        background: mode === 'sentence' ? "var(--accent)" : "var(--surface-strong)",
+                                        color: mode === 'sentence' ? "var(--accent-contrast)" : "var(--muted)",
                                         cursor: "pointer",
-                                        fontWeight: "bold"
+                                        fontWeight: 700
                                     }}
                                 >
-                                    Sentence
+                                    {t("mode.sentence")}
                                 </button>
                             </div>
                         </div>
 
                         <div className="filter-section">
-                            <h3>Layout</h3>
+                            <h3>{t("layout.title")}</h3>
                             <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
                                 <input
                                     type="checkbox"
                                     checked={leftHanded}
                                     onChange={(e) => setLeftHanded(e.target.checked)}
                                 />
-                                Left Handed Mode
+                                {t("layout.leftHanded")}
                             </label>
                         </div>
 
                         <div className="filter-section">
-                            <h3>Levels</h3>
-                            <div className="filter-group">
-                                {LEVELS.map(l => (
+                            <h3>{t("levels.title")}</h3>
+                            <div className="filter-group" role="list">
+                                {levels.map(l => (
                                     <div
                                         key={l.id}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-pressed={selectedLevels.includes(l.id)}
                                         className={`filter-chip ${selectedLevels.includes(l.id) ? 'active' : ''}`}
                                         onClick={() => toggleLevel(l.id)}
+                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleLevel(l.id); }}
                                     >
                                         {l.label}
                                     </div>
@@ -211,13 +262,17 @@ export default function App() {
                         </div>
 
                         <div className="filter-section">
-                            <h3>Parts of Speech</h3>
-                            <div className="filter-group">
-                                {POS_GROUPS.map(p => (
+                            <h3>{t("pos.title")}</h3>
+                            <div className="filter-group" role="list">
+                                {posGroups.map(p => (
                                     <div
                                         key={p.id}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-pressed={selectedPos.includes(p.id)}
                                         className={`filter-chip ${selectedPos.includes(p.id) ? 'active' : ''}`}
                                         onClick={() => togglePos(p.id)}
+                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') togglePos(p.id); }}
                                     >
                                         {p.label}
                                     </div>
@@ -226,7 +281,7 @@ export default function App() {
                         </div>
 
                         <div className="filter-section">
-                            <h3>Options</h3>
+                            <h3>{t("options.title")}</h3>
                             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                                 <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
                                     <input
@@ -234,50 +289,94 @@ export default function App() {
                                         checked={tracingMode}
                                         onChange={(e) => setTracingMode(e.target.checked)}
                                     />
-                                    Tracing Mode
+                                    {t("options.tracing")}
                                 </label>
 
-                                <div style={{ display: "flex", gap: 8, background: "#eee", padding: 4, borderRadius: 8 }}>
+                                <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
                                     <button
                                         onClick={() => setCharacterMode('simplified')}
+                                        aria-pressed={characterMode === 'simplified'}
                                         style={{
                                             flex: 1,
                                             border: "none",
-                                            background: characterMode === 'simplified' ? "white" : "transparent",
+                                            background: characterMode === 'simplified' ? "var(--surface)" : "transparent",
                                             boxShadow: characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
                                             borderRadius: 6,
                                             padding: "6px 0",
                                             fontSize: 13,
                                             cursor: "pointer",
                                             fontWeight: characterMode === 'simplified' ? "bold" : "normal",
-                                            color: characterMode === 'simplified' ? "var(--primary-red)" : "#444"
+                                            color: characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
                                         }}
                                     >
-                                        Simplified
+                                        {t("options.simplified")}
                                     </button>
                                     <button
                                         onClick={() => setCharacterMode('traditional')}
+                                        aria-pressed={characterMode === 'traditional'}
                                         style={{
                                             flex: 1,
                                             border: "none",
-                                            background: characterMode === 'traditional' ? "white" : "transparent",
+                                            background: characterMode === 'traditional' ? "var(--surface)" : "transparent",
                                             boxShadow: characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
                                             borderRadius: 6,
                                             padding: "6px 0",
                                             fontSize: 13,
                                             cursor: "pointer",
                                             fontWeight: characterMode === 'traditional' ? "bold" : "normal",
-                                            color: characterMode === 'traditional' ? "var(--primary-red)" : "#444"
+                                            color: characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
                                         }}
                                     >
-                                        Traditional
+                                        {t("options.traditional")}
                                     </button>
                                 </div>
+
+                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                                    <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
+                                    <select
+                                        value={language}
+                                        onChange={(e) => setLanguage(e.target.value)}
+                                        style={{
+                                            padding: "8px 10px",
+                                            borderRadius: 8,
+                                            border: "1px solid var(--border)",
+                                            background: "var(--surface)",
+                                            color: "var(--text)",
+                                            fontSize: 14
+                                        }}
+                                        aria-label={t("options.language")}
+                                    >
+                                        {languageOptions.map(opt => (
+                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                        ))}
+                                    </select>
+                                </label>
+
+                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                                    <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
+                                    <select
+                                        value={theme}
+                                        onChange={(e) => setTheme(e.target.value as ThemeChoice)}
+                                        style={{
+                                            padding: "8px 10px",
+                                            borderRadius: 8,
+                                            border: "1px solid var(--border)",
+                                            background: "var(--surface)",
+                                            color: "var(--text)",
+                                            fontSize: 14
+                                        }}
+                                        aria-label={t("options.theme")}
+                                    >
+                                        {themeOptions.map(opt => (
+                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                        ))}
+                                    </select>
+                                </label>
                             </div>
                         </div>
 
                         <div className="filter-section">
-                            <h3>Help</h3>
+                            <h3>{t("help.title")}</h3>
                             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                                 <button
                                     onClick={() => setDrawerView('help')}
@@ -285,9 +384,9 @@ export default function App() {
                                         width: "100%",
                                         padding: "12px",
                                         borderRadius: "8px",
-                                        border: "1px solid #eee",
-                                        background: "white",
-                                        color: "#333",
+                                        border: "1px solid var(--border)",
+                                        background: "var(--surface)",
+                                        color: "var(--text)",
                                         cursor: "pointer",
                                         display: "flex",
                                         justifyContent: "space-between",
@@ -295,7 +394,7 @@ export default function App() {
                                         fontSize: "14px"
                                     }}
                                 >
-                                    <span>Stroke Order Guide</span>
+                                    <span>{t("help.stroke")}</span>
                                     <span>→</span>
                                 </button>
                                 <button
@@ -304,9 +403,9 @@ export default function App() {
                                         width: "100%",
                                         padding: "12px",
                                         borderRadius: "8px",
-                                        border: "1px solid #eee",
-                                        background: "white",
-                                        color: "#333",
+                                        border: "1px solid var(--border)",
+                                        background: "var(--surface)",
+                                        color: "var(--text)",
                                         cursor: "pointer",
                                         display: "flex",
                                         justifyContent: "space-between",
@@ -314,14 +413,14 @@ export default function App() {
                                         fontSize: "14px"
                                     }}
                                 >
-                                    <span>iPad / fullscreen tips</span>
+                                    <span>{t("help.tips")}</span>
                                     <span>→</span>
                                 </button>
                             </div>
                         </div>
 
-                        <div style={{ marginTop: 24, fontSize: 13, color: "#999" }}>
-                            {filteredCards.length} words available
+                        <div style={{ marginTop: 24, fontSize: 13, color: "var(--muted)" }}>
+                            {t("stats.available", { count: filteredCards.length })}
                         </div>
                     </>
                 ) : drawerView === 'help' ? (
@@ -332,7 +431,7 @@ export default function App() {
                                 background: "none",
                                 border: "none",
                                 padding: "0 0 16px 0",
-                                color: "#666",
+                                color: "var(--muted)",
                                 cursor: "pointer",
                                 display: "flex",
                                 alignItems: "center",
@@ -340,70 +439,25 @@ export default function App() {
                                 fontSize: "14px"
                             }}
                         >
-                            ← Back to Menu
+                            ← {t("app.back")}
                         </button>
 
                         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                             <section>
-                                <h3 style={{ margin: "0 0 8px 0", color: "var(--primary-red)" }}>General Rules</h3>
-                                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#555" }}>
-                                    Chinese characters are written following a specific stroke order. Following these rules helps write characters faster and more beautifully.
+                                <h3 style={{ margin: "0 0 8px 0", color: "var(--accent)" }}>{t("help.generalRules")}</h3>
+                                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "var(--text)" }}>
+                                    {t("app.subtitle")}
                                 </p>
                             </section>
 
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>1. Top to Bottom</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>三</span> (Three)
-                                    <br />
-                                    Write the top stroke first, then the middle, then the bottom.
-                                </div>
-                            </section>
-
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>2. Left to Right</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>川</span> (River)
-                                    <br />
-                                    Write the left vertical stroke, then the middle, then the right.
-                                </div>
-                            </section>
-
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>3. Horizontal before Vertical</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>十</span> (Ten)
-                                    <br />
-                                    Write the horizontal stroke (一) first, then the vertical stroke (丨).
-                                </div>
-                            </section>
-
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>4. Outside before Inside</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>月</span> (Moon)
-                                    <br />
-                                    Write the outside frame first, then the strokes inside.
-                                </div>
-                            </section>
-
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>5. Inside before Closing</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>日</span> (Sun)
-                                    <br />
-                                    Write the frame, then the inside stroke, then close the bottom.
-                                </div>
-                            </section>
-
-                            <section>
-                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>6. Center before Sides</h4>
-                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
-                                    Example: <span style={{ fontWeight: "bold" }}>小</span> (Small)
-                                    <br />
-                                    Write the center hook first, then the left dot, then the right dot.
-                                </div>
-                            </section>
+                            {[1,2,3,4,5,6].map((n) => (
+                                <section key={n}>
+                                    <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>{n}. {t(`help.rule${n}` as const)}</h4>
+                                    <div style={{ background: "var(--surface-strong)", padding: 12, borderRadius: 8, fontSize: 14, border: "1px solid var(--border)" }}>
+                                        {t(`help.rule${n}Desc` as const)}
+                                    </div>
+                                </section>
+                            ))}
                         </div>
                     </div>
                 ) : (
@@ -414,7 +468,7 @@ export default function App() {
                                 background: "none",
                                 border: "none",
                                 padding: "0 0 16px 0",
-                                color: "#666",
+                                color: "var(--muted)",
                                 cursor: "pointer",
                                 display: "flex",
                                 alignItems: "center",
@@ -422,16 +476,16 @@ export default function App() {
                                 fontSize: "14px"
                             }}
                         >
-                            ← Back to Menu
+                            ← {t("app.back")}
                         </button>
 
                         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                            <h3 style={{ margin: 0, color: "var(--primary-red)" }}>iPad / Fullscreen Tips</h3>
-                            <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.6, color: "#444" }}>
-                                <li>Add to Home Screen in Safari → Share → "Add to Home Screen" for standalone, chrome-free use.</li>
-                                <li>When in Safari, a small scroll down hides the address/tab bars until you scroll up.</li>
-                                <li>Rotate to landscape for more vertical room; the layout auto-compacts to avoid scrolling.</li>
-                                <li>Apple Pencil: keep the tip down—palm touches are ignored and pinch/scroll is blocked here.</li>
+                            <h3 style={{ margin: 0, color: "var(--accent)" }}>{t("help.deviceTitle")}</h3>
+                            <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.6, color: "var(--text)" }}>
+                                <li>{t("help.tip1")}</li>
+                                <li>{t("help.tip2")}</li>
+                                <li>{t("help.tip3")}</li>
+                                <li>{t("help.tip4")}</li>
                             </ul>
                         </div>
                     </div>
@@ -455,7 +509,7 @@ export default function App() {
                                         hanzi: displayHanzi
                                     }}
                                     reveal={reveal}
-                                    onToggleReveal={() => setReveal((r) => !r)}
+                                    onToggleReveal={() => setReveal((r: boolean) => !r)}
                                 />
                                 <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
                             </div>
@@ -466,8 +520,8 @@ export default function App() {
                         </>
                     ) : (
                         <div className="card" style={{ textAlign: "center", padding: 40, width: "100%" }}>
-                            <h3>No cards found</h3>
-                            <p>Try adjusting your filters in Settings to see more words.</p>
+                            <h3>{t("nocards.title")}</h3>
+                            <p>{t("nocards.desc")}</p>
                         </div>
                     )}
                 </div>
@@ -477,21 +531,23 @@ export default function App() {
                         <input
                             value={sentenceText}
                             onChange={(e) => setSentenceText(e.target.value)}
-                            placeholder="Type a phrase or sentence here (e.g. 你好吗)..."
+                            placeholder={t("sentence.placeholder")}
                             style={{
                                 width: "100%",
                                 padding: 16,
                                 fontSize: 20,
                                 borderRadius: 8,
-                                border: "2px solid #eee",
-                                outline: "none"
+                                border: "2px solid var(--border)",
+                                outline: "none",
+                                background: "var(--surface)",
+                                color: "var(--text)"
                             }}
                         />
                     </div>
 
                     {sentenceText.length === 0 ? (
-                        <div style={{ textAlign: "center", color: "#999", padding: 40 }}>
-                            Type some Chinese characters above to practice writing them.
+                        <div style={{ textAlign: "center", color: "var(--muted)", padding: 40 }}>
+                            {t("sentence.empty")}
                         </div>
                     ) : (
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 16 }}>

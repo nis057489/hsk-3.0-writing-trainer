@@ -1,0 +1,103 @@
+{
+    "app": {
+        "title": "HSK Writing Trainer",
+        "subtitle": "Master Chinese characters.",
+        "menu": "Menu",
+        "strokeGuide": "Stroke Order",
+        "deviceTips": "Device Tips",
+        "back": "Back to Menu"
+    },
+    "mode": {
+        "title": "Mode",
+        "flashcard": "Flashcards",
+        "sentence": "Sentence"
+    },
+    "layout": {
+        "title": "Layout",
+        "leftHanded": "Left Handed Mode"
+    },
+    "levels": {
+        "title": "Levels",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Parts of Speech",
+        "n": "Nouns",
+        "v": "Verbs",
+        "a": "Adjectives",
+        "d": "Adverbs",
+        "r": "Pronouns",
+        "c": "Conjunctions",
+        "i": "Idioms",
+        "l": "Phrases"
+    },
+    "options": {
+        "title": "Options",
+        "tracing": "Tracing Mode",
+        "simplified": "Simplified",
+        "traditional": "Traditional",
+        "theme": "Theme",
+        "language": "Language",
+        "themeLight": "Light",
+        "themeDark": "Dark",
+        "themeContrast": "High Contrast",
+        "themeSystem": "System"
+    },
+    "help": {
+        "title": "Help",
+        "stroke": "Stroke Order Guide",
+        "tips": "iPad / fullscreen tips",
+        "deviceTitle": "iPad / Fullscreen Tips",
+        "generalRules": "General Rules",
+        "rule1": "Top to Bottom",
+        "rule2": "Left to Right",
+        "rule3": "Horizontal before Vertical",
+        "rule4": "Outside before Inside",
+        "rule5": "Inside before Closing",
+        "rule6": "Center before Sides",
+        "rule1Desc": "Write the top stroke first, then the middle, then the bottom.",
+        "rule2Desc": "Write the left vertical stroke, then the middle, then the right.",
+        "rule3Desc": "Write the horizontal stroke first, then the vertical stroke.",
+        "rule4Desc": "Write the outside frame first, then the strokes inside.",
+        "rule5Desc": "Write the frame, then the inside stroke, then close the bottom.",
+        "rule6Desc": "Write the center hook first, then the left dot, then the right dot.",
+        "tip1": "Add to Home Screen in Safari → Share → \"Add to Home Screen\" for standalone, chrome-free use.",
+        "tip2": "In Safari, a small scroll down hides the address/tab bars until you scroll up.",
+        "tip3": "Rotate to landscape for more room; the layout auto-compacts to avoid scrolling.",
+        "tip4": "Apple Pencil: keep the tip down—palm touches are ignored and pinch/scroll is blocked here."
+    },
+    "practice": {
+        "header": "Trace each character",
+        "chars": "chars",
+        "empty": "No characters to trace yet."
+    },
+    "flashcard": {
+        "reveal": "Reveal pinyin/meaning",
+        "hide": "Hide pinyin/meaning"
+    },
+    "toolbar": {
+        "queue": "Queue",
+        "again": "Again",
+        "hard": "Hard",
+        "good": "Good",
+        "easy": "Easy",
+        "skip": "Skip"
+    },
+    "sentence": {
+        "placeholder": "Type a phrase or sentence here (e.g. 你好吗)...",
+        "empty": "Type some Chinese characters above to practice writing them."
+    },
+    "nocards": {
+        "title": "No cards found",
+        "desc": "Try adjusting your filters in Settings to see more words."
+    },
+    "stats": {
+        "available": "{{count}} words available"
+    }
+}

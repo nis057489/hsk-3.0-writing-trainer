@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Grade } from "../lib/types";
 
 export function Toolbar(props: {
@@ -6,16 +7,17 @@ export function Toolbar(props: {
   onNext: () => void;
   remaining: number;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="toolbar">
-      <div className="remaining">Queue: {props.remaining}</div>
+      <div className="remaining">{t("toolbar.queue")}: {props.remaining}</div>
       <div className="grades">
-        <button onClick={() => props.onGrade("again")}>Again</button>
-        <button onClick={() => props.onGrade("hard")}>Hard</button>
-        <button onClick={() => props.onGrade("good")}>Good</button>
-        <button onClick={() => props.onGrade("easy")}>Easy</button>
+        <button onClick={() => props.onGrade("again")}>{t("toolbar.again")}</button>
+        <button onClick={() => props.onGrade("hard")}>{t("toolbar.hard")}</button>
+        <button onClick={() => props.onGrade("good")}>{t("toolbar.good")}</button>
+        <button onClick={() => props.onGrade("easy")}>{t("toolbar.easy")}</button>
       </div>
-      <button className="next" onClick={props.onNext}>Skip</button>
+      <button className="next" onClick={props.onNext}>{t("toolbar.skip")}</button>
     </div>
   );
 }

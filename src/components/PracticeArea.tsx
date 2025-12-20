@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./DrawingPad";
 
 interface PracticeAreaProps {
@@ -7,6 +8,7 @@ interface PracticeAreaProps {
 }
 
 export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
+    const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
 
     useEffect(() => {
@@ -27,7 +29,7 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
     if (characters.length === 0) {
         return (
             <div className="practice-empty">
-                No characters to trace yet.
+                {t("practice.empty")}
             </div>
         );
     }
@@ -40,10 +42,10 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
         <div className={`practice-shell${compact ? " compact" : ""}`}>
             <div className="practice-header">
                 <div>
-                    <div className="practice-kicker">Trace each character</div>
+                    <div className="practice-kicker">{t("practice.header")}</div>
                     <div className="practice-title">{text}</div>
                 </div>
-                <div className="practice-count">{characters.length} chars</div>
+                <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
 
             <div className="trace-grid">
