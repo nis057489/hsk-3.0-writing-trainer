@@ -5,7 +5,7 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
 type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
-type GridStyleChoice = "rice" | "field";
+type GridStyleChoice = "rice" | "field" | "none";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -287,6 +287,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
                         >
                             <option value="rice">{t("options.gridStyleRice")}</option>
                             <option value="field">{t("options.gridStyleField")}</option>
+                            <option value="none">{t("options.gridStyleNone")}</option>
                         </select>
                     </label>
 

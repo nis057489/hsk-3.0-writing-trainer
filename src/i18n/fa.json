@@ -64,6 +64,7 @@
         "gridStyle": "سبک شبکه تمرین",
         "gridStyleRice": "برنج (米) - سنتی",
         "gridStyleField": "مزرعه (田) - ساده",
+        "gridStyleNone": "بدون شبکه",
         "gridVerticalShift": "استفاده از تقسیم عمودی 40/60",
         "showDetailsDefault": "نمایش پین‌یین/معنی به‌طور پیش‌فرض"
     },

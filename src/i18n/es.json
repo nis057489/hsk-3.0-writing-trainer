@@ -64,6 +64,7 @@
         "gridStyle": "Estilo de cuadrícula de práctica",
         "gridStyleRice": "Arroz (米) - Tradicional",
         "gridStyleField": "Campo (田) - Simple",
+        "gridStyleNone": "Sin cuadrícula",
         "gridVerticalShift": "Usar división vertical 40/60",
         "showDetailsDefault": "Mostrar pinyin/significado por defecto"
     },

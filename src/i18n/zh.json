@@ -65,6 +65,7 @@
         "gridStyleRice": "米字格 - 传统",
         "gridStyleField": "田字格 - 简单",
         "gridVerticalShift": "使用40/60竖向分割",
+        "gridStyleNone": "无网格",
         "showDetailsDefault": "默认显示拼音/释义"
     },
     "help": {

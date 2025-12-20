@@ -62,6 +62,7 @@
         "traceFontSystem": "Sistem (Sans-serif)",
         "promptFont": "İstem karakteri yazı tipi stili",
         "gridStyle": "Pratik ızgara stili",
+        "gridStyleNone": "Izgara yok",
         "gridStyleRice": "Pirinç (米) - Geleneksel",
         "gridStyleField": "Tarla (田) - Basit",
         "gridVerticalShift": "40/60 dikey bölme kullan",

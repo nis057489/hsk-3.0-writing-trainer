@@ -11,7 +11,7 @@ interface DrawingPadProps {
     character?: string;
     showHoverIndicator?: boolean;
     traceFont?: "handwritten" | "kai" | "system" | "cursive";
-    gridStyle?: "rice" | "field";
+    gridStyle?: "rice" | "field" | "none";
     gridVerticalShift?: boolean;
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
@@ -330,19 +330,21 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                         }}
                     />
                 )}
-                {/* CSS-based grid overlay */}
-                <div
-                    className={`practice-grid practice-grid-${gridStyle}${gridVerticalShift ? ' practice-grid-shifted' : ''}`}
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        zIndex: 1,
-                        pointerEvents: 'none',
-                    }}
-                />
+                {/* CSS-based grid overlay; hide entirely when gridStyle is none */}
+                {gridStyle !== "none" && (
+                    <div
+                        className={`practice-grid practice-grid-${gridStyle}${gridVerticalShift ? ' practice-grid-shifted' : ''}`}
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            zIndex: 1,
+                            pointerEvents: 'none',
+                        }}
+                    />
+                )}
             </div>
         </div>
     );

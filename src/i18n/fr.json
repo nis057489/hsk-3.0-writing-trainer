@@ -130,8 +130,9 @@
     "nocards": {
         "title": "Aucune carte trouvée",
         "desc": "Essayez d'ajuster vos filtres dans Réglages pour voir plus de mots."
-    },
+        "gridStyle": "Style de grille d'entraînement",
     "stats": {
         "available": "{{count}} mots disponibles"
+        "gridStyleNone": "Sans grille",
     }
 }

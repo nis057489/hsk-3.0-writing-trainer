@@ -64,6 +64,7 @@
         "gridStyle": "練習網格樣式",
         "gridStyleRice": "米字格 - 傳統",
         "gridStyleField": "田字格 - 簡單",
+        "gridStyleNone": "無網格",
         "gridVerticalShift": "使用40/60豎向分割",
         "showDetailsDefault": "預設顯示拼音/釋義"
     },

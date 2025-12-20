@@ -19,7 +19,7 @@ type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
 type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
 type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
-type GridStyleChoice = "rice" | "field";
+type GridStyleChoice = "rice" | "field" | "none";
 
 type Prefs = {
     selectedLevels: string[];
@@ -258,7 +258,7 @@ export default function App() {
     const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
     const [promptFont, setPromptFont] = useState<PromptFontChoice>(storedPrefs.promptFont || "handwritten");
     const normalizeGridStyle = (value: string | undefined): GridStyleChoice => {
-        if (value === "field" || value === "rice") return value;
+        if (value === "field" || value === "rice" || value === "none") return value;
         if (value === "cross") return "field";
         return "rice";
     };

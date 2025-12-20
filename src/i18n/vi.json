@@ -64,6 +64,7 @@
         "gridStyle": "Kiểu lưới thực hành",
         "gridStyleRice": "Gạo (米) - Truyền thống",
         "gridStyleField": "Ruộng (田) - Đơn giản",
+        "gridStyleNone": "Không lưới",
         "gridVerticalShift": "Sử dụng chia dọc 40/60",
         "showDetailsDefault": "Hiển thị pinyin/nghĩa mặc định"
     },

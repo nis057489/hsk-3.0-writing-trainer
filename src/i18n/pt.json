@@ -64,6 +64,7 @@
         "gridStyle": "Estilo de grade de prática",
         "gridStyleRice": "Arroz (米) - Tradicional",
         "gridStyleField": "Campo (田) - Simples",
+        "gridStyleNone": "Sem grade",
         "gridVerticalShift": "Usar divisão vertical 40/60",
         "showDetailsDefault": "Mostrar pinyin/significado por padrão"
     },

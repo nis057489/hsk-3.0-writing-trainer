@@ -65,6 +65,7 @@
         "gridStyleRice": "쌀 (米) - 전통",
         "gridStyleField": "밭 (田) - 단순",
         "gridVerticalShift": "40/60 수직 분할 사용",
+        "gridStyleNone": "격자 없음",
         "showDetailsDefault": "기본적으로 병음/뜻 표시"
     },
     "help": {

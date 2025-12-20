@@ -65,6 +65,7 @@
         "gridStyleRice": "أرز (米) - تقليدي",
         "gridStyleField": "حقل (田) - بسيط",
         "gridVerticalShift": "استخدام تقسيم عمودي 40/60",
+        "gridStyleNone": "بدون شبكة",
         "showDetailsDefault": "إظهار البينيين/المعنى افتراضياً"
     },
     "help": {

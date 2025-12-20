@@ -8,7 +8,7 @@ interface PracticeAreaProps {
     showHoverIndicator?: boolean;
     padSizeChoice: "xs" | "small" | "medium" | "large";
     traceFont?: "handwritten" | "kai" | "system" | "cursive";
-    gridStyle?: "rice" | "field";
+    gridStyle?: "rice" | "field" | "none";
     gridVerticalShift?: boolean;
 }
 

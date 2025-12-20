@@ -98,6 +98,7 @@
         "gridStyle": "Practice grid style",
         "gridStyleRice": "Rice (米) - Traditional",
         "gridStyleField": "Field (田) - Simple",
+        "gridStyleNone": "No grid",
         "gridVerticalShift": "Use 40/60 vertical split",
         "showDetailsDefault": "Show pinyin/meaning by default",
         "advancedPosFilter": "Show all detailed categories"
