@@ -4,7 +4,17 @@ import { useTranslation } from "react-i18next";
 type Point = { x: number; y: number };
 type Stroke = Point[];
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, onUndoClick, onClearClick }: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string; showHoverIndicator?: boolean; onUndoClick?: (undo: () => void, hasStrokes: boolean) => void; onClearClick?: (clear: () => void, hasStrokes: boolean) => void }) {
+interface DrawingPadProps {
+    size?: number;
+    showGrid?: boolean;
+    tracingMode?: boolean;
+    character?: string;
+    showHoverIndicator?: boolean;
+    onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
+    onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
+}
+
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, onUndoClick, onClearClick }: DrawingPadProps) {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -242,14 +252,13 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
         };
     }, [dpr, canvasSize, showHoverIndicator]);
 
-    const clear = () => setStrokes([]);
-    const undo = () => setStrokes((prev: Stroke[]) => prev.slice(0, -1));
+    const clear = React.useCallback(() => setStrokes([]), []);
+    const undo = React.useCallback(() => setStrokes((prev: Stroke[]) => prev.slice(0, -1)), []);
 
     useEffect(() => {
         if (onUndoClick) onUndoClick(undo, strokes.length > 0);
         if (onClearClick) onClearClick(clear, strokes.length > 0);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [strokes.length]);
+    }, [strokes.length, undo, clear, onUndoClick, onClearClick]);
 
     useEffect(() => {
         const container = containerRef.current;

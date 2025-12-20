@@ -43,9 +43,10 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
     return due.length ? due : cards;
 }
 
+const allCards = vocab as Card[];
+
 export default function App() {
     const { t, i18n } = useTranslation();
-    const allCards = vocab as Card[];
 
     const prefDefaults: Prefs = {
         selectedLevels: ["new-1"],
@@ -81,7 +82,7 @@ export default function App() {
             const posMatch = selectedPos.length === 0 || (card.pos && card.pos.some(p => selectedPos.includes(p)));
             return levelMatch && posMatch;
         });
-    }, [selectedLevels, selectedPos, allCards]);
+    }, [selectedLevels, selectedPos]);
 
     const levels = useMemo(() => ([
         { id: "new-1", label: t("levels.hsk1") },
@@ -185,7 +186,7 @@ export default function App() {
 
     const advance = () => {
         setReveal(showDetailsDefault);
-        setIdx((i: number) => (i + 1) % queue.length);
+        setIdx(i => (i + 1) % queue.length);
     };
 
     const grade = (g: Grade) => {
@@ -212,14 +213,14 @@ export default function App() {
     };
 
     const toggleLevel = (id: string) => {
-        setSelectedLevels((prev: string[]) =>
-            prev.includes(id) ? prev.filter((l: string) => l !== id) : [...prev, id]
+        setSelectedLevels(prev =>
+            prev.includes(id) ? prev.filter(l => l !== id) : [...prev, id]
         );
     };
 
     const togglePos = (id: string) => {
-        setSelectedPos((prev: string[]) =>
-            prev.includes(id) ? prev.filter((p: string) => p !== id) : [...prev, id]
+        setSelectedPos(prev =>
+            prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]
         );
     };
 
@@ -635,7 +636,7 @@ export default function App() {
                                             hanzi: displayHanzi
                                         }}
                                         reveal={reveal}
-                                        onToggleReveal={() => setReveal((r: boolean) => !r)}
+                                        onToggleReveal={() => setReveal(r => !r)}
                                     />
                                 </div>
                                 <div style={{ flex: "0 0 auto", minWidth: 220 }}>
