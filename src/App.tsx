@@ -391,8 +391,8 @@ export default function App() {
                     display: "flex",
                     flexDirection: leftHanded ? "row-reverse" : "row",
                     flexWrap: "wrap",
-                    gap: 24,
-                    alignItems: "start"
+                    gap: 16,
+                    alignItems: "stretch"
                 }}>
                     {card ? (
                         <>

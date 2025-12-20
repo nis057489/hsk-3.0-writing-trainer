@@ -134,6 +134,22 @@
     height: 100%;
 }
 
+.practice-shell.compact .practice-title {
+    font-size: 20px;
+}
+
+.practice-shell.compact .trace-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.practice-shell.compact .trace-cell {
+    padding: 10px;
+}
+
+.practice-shell.compact .trace-char {
+    font-size: 22px;
+}
+
 .practice-header {
     display: flex;
     justify-content: space-between;
@@ -221,6 +237,31 @@
 
     .trace-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+@media (max-height: 900px) {
+    .app {
+        padding: clamp(8px, 2vw, 16px);
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .hanzi {
+        font-size: 72px;
+    }
+
+    .toolbar {
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    .grades button,
+    .toolbar .next,
+    button {
+        padding: 8px 10px;
     }
 }
 

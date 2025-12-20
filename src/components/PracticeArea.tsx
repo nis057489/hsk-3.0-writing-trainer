@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { DrawingPad } from "./DrawingPad";
 
 interface PracticeAreaProps {
@@ -7,6 +7,19 @@ interface PracticeAreaProps {
 }
 
 export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
+    const [compact, setCompact] = useState(false);
+
+    useEffect(() => {
+        const update = () => {
+            const h = window.innerHeight;
+            const w = window.innerWidth;
+            setCompact(h <= 900 || w <= 1100);
+        };
+        update();
+        window.addEventListener("resize", update);
+        return () => window.removeEventListener("resize", update);
+    }, []);
+
     const characters = useMemo(() => {
         return Array.from(text).filter(ch => ch.trim().length > 0);
     }, [text]);
@@ -19,10 +32,12 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
         );
     }
 
-    const padSize = characters.length === 1 ? 180 : 220;
+    const padSize = compact
+        ? (characters.length === 1 ? 150 : 180)
+        : (characters.length === 1 ? 180 : 220);
 
     return (
-        <div className="practice-shell">
+        <div className={`practice-shell${compact ? " compact" : ""}`}>
             <div className="practice-header">
                 <div>
                     <div className="practice-kicker">Trace each character</div>
