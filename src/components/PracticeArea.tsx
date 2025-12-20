@@ -64,7 +64,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 {characters.map((char, index) => {
                     const key = `${char}-${index}`;
                     const handler = padHandlers[key];
-                    
+
                     return (
                         <div key={key} className="trace-cell">
                             <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
