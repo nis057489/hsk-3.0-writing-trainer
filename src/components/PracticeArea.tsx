@@ -32,6 +32,11 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
         return Array.from(text).filter(ch => ch.trim().length > 0);
     }, [text]);
 
+    // Reset per-character handlers whenever the text changes to avoid retaining stale handlers across sessions
+    useEffect(() => {
+        setPadHandlers({});
+    }, [text]);
+
     if (characters.length === 0) {
         return (
             <div className="practice-empty">
