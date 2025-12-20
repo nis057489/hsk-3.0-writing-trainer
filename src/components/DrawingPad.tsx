@@ -214,6 +214,12 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             redraw();
         };
 
+        const onPointerOver = (e: PointerEvent) => {
+            if (showHoverIndicator && e.pointerType === "pen" && e.buttons === 0) {
+                setHoverPoint(getPos(e, c));
+            }
+        };
+
         const onPointerLeave = (e: PointerEvent) => {
             setHoverPoint(null);
             onPointerUp(e);
@@ -223,6 +229,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
         c.addEventListener("pointermove", onPointerMove, { passive: false });
         c.addEventListener("pointerup", onPointerUp, { passive: false });
         c.addEventListener("pointercancel", onPointerUp, { passive: false });
+        c.addEventListener("pointerover", onPointerOver, { passive: true });
         c.addEventListener("pointerleave", onPointerLeave, { passive: false });
 
         return () => {
@@ -230,9 +237,10 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             c.removeEventListener("pointermove", onPointerMove);
             c.removeEventListener("pointerup", onPointerUp);
             c.removeEventListener("pointercancel", onPointerUp);
+            c.removeEventListener("pointerover", onPointerOver);
             c.removeEventListener("pointerleave", onPointerLeave);
         };
-    }, [dpr, canvasSize]);
+    }, [dpr, canvasSize, showHoverIndicator]);
 
     const clear = () => setStrokes([]);
     const undo = () => setStrokes((prev: Stroke[]) => prev.slice(0, -1));
