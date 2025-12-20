@@ -11,7 +11,7 @@ interface DrawingPadProps {
     character?: string;
     showHoverIndicator?: boolean;
     traceFont?: "handwritten" | "kai" | "system" | "cursive";
-    gridStyle?: "rice" | "cross";
+    gridStyle?: "rice" | "field";
     gridVerticalShift?: boolean;
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
