@@ -3,6 +3,7 @@ import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
 import { Toolbar } from "./components/Toolbar";
 import { Drawer } from "./components/Drawer";
+import { PracticeArea } from "./components/PracticeArea";
 import vocab from "./data/hsk.json";
 import { Card, Grade } from "./lib/types";
 import { ensureState, loadProgress, nextState, saveProgress } from "./lib/scheduler";
@@ -72,6 +73,7 @@ export default function App() {
 
     const card = queue[idx % queue.length];
     const remaining = queue.length;
+    const displayHanzi = card ? (characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi) : "";
 
     const advance = () => {
         setReveal(false);
@@ -398,7 +400,7 @@ export default function App() {
                                 <Flashcard
                                     card={{
                                         ...card,
-                                        hanzi: characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi
+                                        hanzi: displayHanzi
                                     }}
                                     reveal={reveal}
                                     onToggleReveal={() => setReveal((r) => !r)}
@@ -407,13 +409,7 @@ export default function App() {
                             </div>
 
                             <div className="card" style={{ flex: "1 1 300px", display: "flex", flexDirection: "column" }}>
-                                <h3 style={{ marginTop: 0, color: "#888", fontSize: 14, textTransform: "uppercase" }}>Practice Area</h3>
-                                <div style={{ flex: 1, minHeight: 400, display: "flex", flexDirection: "column" }}>
-                                    <DrawingPad
-                                        tracingMode={tracingMode}
-                                        character={characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi}
-                                    />
-                                </div>
+                                <PracticeArea text={displayHanzi} tracingMode={tracingMode} />
                             </div>
                         </>
                     ) : (
