@@ -3,29 +3,29 @@ import { useTranslation } from "react-i18next";
 import { Card } from "../lib/types";
 
 export function Flashcard(props: {
-  card: Card;
-  reveal: boolean;
-  onToggleReveal: () => void;
+    card: Card;
+    reveal: boolean;
+    onToggleReveal: () => void;
 }) {
-  const { card, reveal } = props;
-  const { t } = useTranslation();
+    const { card, reveal } = props;
+    const { t } = useTranslation();
 
-  return (
-    <div className="card">
-      <div className="hanzi">{card.hanzi}</div>
+    return (
+        <div className="card">
+            <div className="hanzi">{card.hanzi}</div>
 
-      <div className="meta">
-        <button onClick={props.onToggleReveal}>
-          {reveal ? t("flashcard.hide") : t("flashcard.reveal")}
-        </button>
-      </div>
+            <div className="meta">
+                <button onClick={props.onToggleReveal}>
+                    {reveal ? t("flashcard.hide") : t("flashcard.reveal")}
+                </button>
+            </div>
 
-      {reveal && (
-        <div className="reveal">
-          <div className="pinyin">{card.pinyin}</div>
-          <div className="meaning">{card.meaning}</div>
+            {reveal && (
+                <div className="reveal">
+                    <div className="pinyin">{card.pinyin}</div>
+                    <div className="meaning">{card.meaning}</div>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }

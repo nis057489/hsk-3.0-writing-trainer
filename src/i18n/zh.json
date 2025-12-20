@@ -1,103 +1,103 @@
 {
-  "app": {
-    "title": "HSK 书写练习",
-    "subtitle": "练习汉字书写。",
-    "menu": "菜单",
-    "strokeGuide": "笔顺指南",
-    "deviceTips": "设备提示",
-    "back": "返回菜单"
-  },
-  "mode": {
-    "title": "模式",
-    "flashcard": "闪卡",
-    "sentence": "句子"
-  },
-  "layout": {
-    "title": "布局",
-    "leftHanded": "左手模式"
-  },
-  "levels": {
-    "title": "等级",
-    "hsk1": "HSK 1",
-    "hsk2": "HSK 2",
-    "hsk3": "HSK 3",
-    "hsk4": "HSK 4",
-    "hsk5": "HSK 5",
-    "hsk6": "HSK 6",
-    "hsk7": "HSK 7-9"
-  },
-  "pos": {
-    "title": "词性",
-    "n": "名词",
-    "v": "动词",
-    "a": "形容词",
-    "d": "副词",
-    "r": "代词",
-    "c": "连词",
-    "i": "成语",
-    "l": "词组"
-  },
-  "options": {
-    "title": "选项",
-    "tracing": "描红模式",
-    "simplified": "简体",
-    "traditional": "繁体",
-    "theme": "主题",
-    "language": "语言",
-    "themeLight": "浅色",
-    "themeDark": "深色",
-    "themeContrast": "高对比",
-    "themeSystem": "跟随系统"
-  },
-  "help": {
-    "title": "帮助",
-    "stroke": "笔顺指南",
-    "tips": "iPad / 全屏提示",
-    "deviceTitle": "iPad / 全屏提示",
-    "generalRules": "基本规则",
-    "rule1": "从上到下",
-    "rule2": "从左到右",
-    "rule3": "先横后竖",
-    "rule4": "先外后内",
-    "rule5": "先内后封口",
-    "rule6": "先中间后两边",
-    "rule1Desc": "先写上面一笔，再写中间，最后写下面。",
-    "rule2Desc": "先写左竖，再写中间，最后写右竖。",
-    "rule3Desc": "先写横，再写竖。",
-    "rule4Desc": "先写外框，再写内部笔画。",
-    "rule5Desc": "先写框，再写里面，最后封口。",
-    "rule6Desc": "先写中间的钩，再写左右点。",
-    "tip1": "在 Safari 中通过分享 → “添加到主屏幕” 以无浏览器栏的独立方式使用。",
-    "tip2": "在 Safari 中，稍微向下滚动即可隐藏地址栏/标签栏，向上滚动会重新出现。",
-    "tip3": "横屏可获得更多空间；布局会自动紧凑以减少滚动。",
-    "tip4": "使用 Apple Pencil 时保持笔尖接触——掌托被忽略，缩放/滚动在此被阻止。"
-  },
-  "practice": {
-    "header": "逐个描写字符",
-    "chars": "个字符",
-    "empty": "还没有可描写的字符。"
-  },
-  "flashcard": {
-    "reveal": "显示拼音/释义",
-    "hide": "隐藏拼音/释义"
-  },
-  "toolbar": {
-    "queue": "队列",
-    "again": "再来一次",
-    "hard": "困难",
-    "good": "良好",
-    "easy": "容易",
-    "skip": "跳过"
-  },
-  "sentence": {
-    "placeholder": "在这里输入短语或句子（例如 你好吗）...",
-    "empty": "在上方输入汉字以开始练习书写。"
-  },
-  "nocards": {
-    "title": "没有找到卡片",
-    "desc": "请在设置中调整筛选以查看更多词汇。"
-  },
-  "stats": {
-    "available": "共有 {{count}} 个词汇"
-  }
+    "app": {
+        "title": "HSK 书写练习",
+        "subtitle": "练习汉字书写。",
+        "menu": "菜单",
+        "strokeGuide": "笔顺指南",
+        "deviceTips": "设备提示",
+        "back": "返回菜单"
+    },
+    "mode": {
+        "title": "模式",
+        "flashcard": "闪卡",
+        "sentence": "句子"
+    },
+    "layout": {
+        "title": "布局",
+        "leftHanded": "左手模式"
+    },
+    "levels": {
+        "title": "等级",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "词性",
+        "n": "名词",
+        "v": "动词",
+        "a": "形容词",
+        "d": "副词",
+        "r": "代词",
+        "c": "连词",
+        "i": "成语",
+        "l": "词组"
+    },
+    "options": {
+        "title": "选项",
+        "tracing": "描红模式",
+        "simplified": "简体",
+        "traditional": "繁体",
+        "theme": "主题",
+        "language": "语言",
+        "themeLight": "浅色",
+        "themeDark": "深色",
+        "themeContrast": "高对比",
+        "themeSystem": "跟随系统"
+    },
+    "help": {
+        "title": "帮助",
+        "stroke": "笔顺指南",
+        "tips": "iPad / 全屏提示",
+        "deviceTitle": "iPad / 全屏提示",
+        "generalRules": "基本规则",
+        "rule1": "从上到下",
+        "rule2": "从左到右",
+        "rule3": "先横后竖",
+        "rule4": "先外后内",
+        "rule5": "先内后封口",
+        "rule6": "先中间后两边",
+        "rule1Desc": "先写上面一笔，再写中间，最后写下面。",
+        "rule2Desc": "先写左竖，再写中间，最后写右竖。",
+        "rule3Desc": "先写横，再写竖。",
+        "rule4Desc": "先写外框，再写内部笔画。",
+        "rule5Desc": "先写框，再写里面，最后封口。",
+        "rule6Desc": "先写中间的钩，再写左右点。",
+        "tip1": "在 Safari 中通过分享 → “添加到主屏幕” 以无浏览器栏的独立方式使用。",
+        "tip2": "在 Safari 中，稍微向下滚动即可隐藏地址栏/标签栏，向上滚动会重新出现。",
+        "tip3": "横屏可获得更多空间；布局会自动紧凑以减少滚动。",
+        "tip4": "使用 Apple Pencil 时保持笔尖接触——掌托被忽略，缩放/滚动在此被阻止。"
+    },
+    "practice": {
+        "header": "逐个描写字符",
+        "chars": "个字符",
+        "empty": "还没有可描写的字符。"
+    },
+    "flashcard": {
+        "reveal": "显示拼音/释义",
+        "hide": "隐藏拼音/释义"
+    },
+    "toolbar": {
+        "queue": "队列",
+        "again": "再来一次",
+        "hard": "困难",
+        "good": "良好",
+        "easy": "容易",
+        "skip": "跳过"
+    },
+    "sentence": {
+        "placeholder": "在这里输入短语或句子（例如 你好吗）...",
+        "empty": "在上方输入汉字以开始练习书写。"
+    },
+    "nocards": {
+        "title": "没有找到卡片",
+        "desc": "请在设置中调整筛选以查看更多词汇。"
+    },
+    "stats": {
+        "available": "共有 {{count}} 个词汇"
+    }
 }

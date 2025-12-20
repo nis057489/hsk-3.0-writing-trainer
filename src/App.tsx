@@ -450,7 +450,7 @@ export default function App() {
                                 </p>
                             </section>
 
-                            {[1,2,3,4,5,6].map((n) => (
+                            {[1, 2, 3, 4, 5, 6].map((n) => (
                                 <section key={n}>
                                     <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>{n}. {t(`help.rule${n}` as const)}</h4>
                                     <div style={{ background: "var(--surface-strong)", padding: 12, borderRadius: 8, fontSize: 14, border: "1px solid var(--border)" }}>

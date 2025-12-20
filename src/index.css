@@ -10,7 +10,7 @@
     --accent: #c41e3a;
     --accent-contrast: #ffffff;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --shadow-strong: 0 4px 12px rgba(0,0,0,0.15);
+    --shadow-strong: 0 4px 12px rgba(0, 0, 0, 0.15);
     --focus: 0 0 0 3px rgba(196, 30, 58, 0.35);
     --input-bg: #ffffff;
     background: var(--bg);
