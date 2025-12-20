@@ -9,6 +9,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [canvasSize, setCanvasSize] = useState(props.size || 300);
+    const [hoverPoint, setHoverPoint] = useState<Point | null>(null);
 
     // Strokes are stored in normalized coordinates (0-1)
     const [strokes, setStrokes] = useState<Stroke[]>([]);
@@ -151,6 +152,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             setIsDown(true);
             isDownRef.current = true;
             currentStroke.current = [getPos(e, c)];
+            setHoverPoint(null);
 
             // Draw dot
             const ctx = c.getContext("2d");
@@ -166,12 +168,16 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         };
 
         const onPointerMove = (e: PointerEvent) => {
-            if (!isDownRef.current) return;
+            if (!isDownRef.current) {
+                if (e.pointerType === "pen" && e.buttons === 0) {
+                    setHoverPoint(getPos(e, c));
+                }
+                return;
+            }
             e.preventDefault();
             const newPt = getPos(e, c);
             currentStroke.current.push(newPt);
 
-            // quick draw without state churn:
             const ctx = c.getContext("2d");
             if (!ctx) return;
             const pts = currentStroke.current;
@@ -208,7 +214,10 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             redraw();
         };
 
-        const onPointerLeave = (e: PointerEvent) => onPointerUp(e);
+        const onPointerLeave = (e: PointerEvent) => {
+            setHoverPoint(null);
+            onPointerUp(e);
+        };
 
         c.addEventListener("pointerdown", onPointerDown, { passive: false });
         c.addEventListener("pointermove", onPointerMove, { passive: false });
@@ -290,6 +299,24 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
                         objectFit: "contain"
                     }}
                 />
+                {hoverPoint && (
+                    <div
+                        aria-hidden
+                        style={{
+                            position: "absolute",
+                            left: `${hoverPoint.x * 100}%`,
+                            top: `${hoverPoint.y * 100}%`,
+                            width: 12,
+                            height: 12,
+                            borderRadius: "50%",
+                            border: "2px solid var(--accent, #3b82f6)",
+                            background: "rgba(59,130,246,0.12)",
+                            transform: "translate(-50%, -50%)",
+                            pointerEvents: "none",
+                            boxShadow: "0 0 0 4px rgba(59,130,246,0.08)"
+                        }}
+                    />
+                )}
             </div>
             <div style={{ display: "flex", gap: 8, touchAction: "manipulation" }}>
                 <button onClick={undo} disabled={strokes.length === 0} style={{ touchAction: "manipulation" }}>{t("controls.undo")}</button>
