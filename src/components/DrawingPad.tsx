@@ -31,10 +31,10 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
 
         const observer = new ResizeObserver((entries) => {
             for (const entry of entries) {
-                const width = entry.contentRect.width;
-                // Keep it square based on width, but don't exceed window height too much if possible?
-                // For now just square based on width is fine.
-                setCanvasSize(width);
+                const { width, height } = entry.contentRect;
+                // Use the smaller dimension to keep it square and fitting
+                const size = Math.min(width, height || width);
+                setCanvasSize(size);
             }
         });
 
@@ -219,18 +219,22 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     const undo = () => setStrokes((prev) => prev.slice(0, -1));
 
     return (
-        <div ref={containerRef} style={{ display: "grid", gap: 10, width: "100%" }}>
-            <canvas
-                ref={canvasRef}
-                style={{
-                    background: "white",
-                    borderRadius: 12,
-                    boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
-                    touchAction: "none",
-                    width: "100%",
-                    display: "block"
-                }}
-            />
+        <div ref={containerRef} style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", height: "100%" }}>
+            <div style={{ flex: 1, minHeight: 0, position: "relative" }}>
+                <canvas
+                    ref={canvasRef}
+                    style={{
+                        background: "white",
+                        borderRadius: 12,
+                        boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
+                        touchAction: "none",
+                        width: "100%",
+                        height: "100%",
+                        display: "block",
+                        objectFit: "contain"
+                    }}
+                />
+            </div>
             <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={undo} disabled={strokes.length === 0}>Undo</button>
                 <button onClick={clear} disabled={strokes.length === 0}>Clear</button>

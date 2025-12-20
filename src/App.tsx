@@ -45,6 +45,7 @@ export default function App() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>('simplified');
     const [leftHanded, setLeftHanded] = useState(false);
+    const [drawerView, setDrawerView] = useState<'menu' | 'help'>('menu');
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -114,161 +115,273 @@ export default function App() {
 
     return (
         <div className="app">
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
+            <div style={{ position: "fixed", top: 20, right: 20, zIndex: 100 }}>
                 <button
                     onClick={() => setIsDrawerOpen(true)}
                     style={{
                         background: "white",
-                        border: "1px solid #ddd",
-                        borderRadius: "8px",
-                        padding: "8px 16px",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "48px",
+                        height: "48px",
                         cursor: "pointer",
-                        fontSize: "14px",
                         color: "#333",
-                        fontWeight: "bold",
-                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px"
                     }}
                 >
-                    Menu
+                    ☰
                 </button>
             </div>
 
-            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Menu">
-                <div style={{ marginBottom: 24 }}>
-                    <h2 style={{ margin: "0 0 8px 0", color: "var(--primary-red)", fontSize: 20 }}>HSK Writing Trainer</h2>
-                    <p style={{ margin: 0, fontSize: 14, opacity: 0.6 }}>Master Chinese characters.</p>
-                </div>
+            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title={drawerView === 'menu' ? "Menu" : "Stroke Order"}>
+                {drawerView === 'menu' ? (
+                    <>
+                        <div style={{ marginBottom: 24 }}>
+                            <h2 style={{ margin: "0 0 8px 0", color: "var(--primary-red)", fontSize: 20 }}>HSK Writing Trainer</h2>
+                            <p style={{ margin: 0, fontSize: 14, opacity: 0.6 }}>Master Chinese characters.</p>
+                        </div>
 
-                <div className="filter-section">
-                    <h3>Mode</h3>
-                    <div style={{ display: "flex", gap: 8 }}>
-                        <button
-                            onClick={() => { setMode('flashcard'); setIsDrawerOpen(false); }}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                borderRadius: "8px",
-                                border: "none",
-                                background: mode === 'flashcard' ? "var(--primary-red)" : "#eee",
-                                color: mode === 'flashcard' ? "white" : "#666",
-                                cursor: "pointer",
-                                fontWeight: "bold"
-                            }}
-                        >
-                            Flashcards
-                        </button>
-                        <button
-                            onClick={() => { setMode('sentence'); setIsDrawerOpen(false); }}
-                            style={{
-                                flex: 1,
-                                padding: "8px",
-                                borderRadius: "8px",
-                                border: "none",
-                                background: mode === 'sentence' ? "var(--primary-red)" : "#eee",
-                                color: mode === 'sentence' ? "white" : "#666",
-                                cursor: "pointer",
-                                fontWeight: "bold"
-                            }}
-                        >
-                            Sentence
-                        </button>
-                    </div>
-                </div>
-
-                <div className="filter-section">
-                    <h3>Layout</h3>
-                    <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                        <input
-                            type="checkbox"
-                            checked={leftHanded}
-                            onChange={(e) => setLeftHanded(e.target.checked)}
-                        />
-                        Left Handed Mode
-                    </label>
-                </div>
-
-                <div className="filter-section">
-                    <h3>Levels</h3>
-                    <div className="filter-group">
-                        {LEVELS.map(l => (
-                            <div
-                                key={l.id}
-                                className={`filter-chip ${selectedLevels.includes(l.id) ? 'active' : ''}`}
-                                onClick={() => toggleLevel(l.id)}
-                            >
-                                {l.label}
+                        <div className="filter-section">
+                            <h3>Mode</h3>
+                            <div style={{ display: "flex", gap: 8 }}>
+                                <button
+                                    onClick={() => { setMode('flashcard'); setIsDrawerOpen(false); }}
+                                    style={{
+                                        flex: 1,
+                                        padding: "8px",
+                                        borderRadius: "8px",
+                                        border: "none",
+                                        background: mode === 'flashcard' ? "var(--primary-red)" : "#eee",
+                                        color: mode === 'flashcard' ? "white" : "#666",
+                                        cursor: "pointer",
+                                        fontWeight: "bold"
+                                    }}
+                                >
+                                    Flashcards
+                                </button>
+                                <button
+                                    onClick={() => { setMode('sentence'); setIsDrawerOpen(false); }}
+                                    style={{
+                                        flex: 1,
+                                        padding: "8px",
+                                        borderRadius: "8px",
+                                        border: "none",
+                                        background: mode === 'sentence' ? "var(--primary-red)" : "#eee",
+                                        color: mode === 'sentence' ? "white" : "#666",
+                                        cursor: "pointer",
+                                        fontWeight: "bold"
+                                    }}
+                                >
+                                    Sentence
+                                </button>
                             </div>
-                        ))}
-                    </div>
-                </div>
+                        </div>
 
-                <div className="filter-section">
-                    <h3>Parts of Speech</h3>
-                    <div className="filter-group">
-                        {POS_GROUPS.map(p => (
-                            <div
-                                key={p.id}
-                                className={`filter-chip ${selectedPos.includes(p.id) ? 'active' : ''}`}
-                                onClick={() => togglePos(p.id)}
-                            >
-                                {p.label}
+                        <div className="filter-section">
+                            <h3>Layout</h3>
+                            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                                <input
+                                    type="checkbox"
+                                    checked={leftHanded}
+                                    onChange={(e) => setLeftHanded(e.target.checked)}
+                                />
+                                Left Handed Mode
+                            </label>
+                        </div>
+
+                        <div className="filter-section">
+                            <h3>Levels</h3>
+                            <div className="filter-group">
+                                {LEVELS.map(l => (
+                                    <div
+                                        key={l.id}
+                                        className={`filter-chip ${selectedLevels.includes(l.id) ? 'active' : ''}`}
+                                        onClick={() => toggleLevel(l.id)}
+                                    >
+                                        {l.label}
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                </div>
+                        </div>
 
-                <div className="filter-section">
-                    <h3>Options</h3>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                        <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                            <input
-                                type="checkbox"
-                                checked={tracingMode}
-                                onChange={(e) => setTracingMode(e.target.checked)}
-                            />
-                            Tracing Mode
-                        </label>
+                        <div className="filter-section">
+                            <h3>Parts of Speech</h3>
+                            <div className="filter-group">
+                                {POS_GROUPS.map(p => (
+                                    <div
+                                        key={p.id}
+                                        className={`filter-chip ${selectedPos.includes(p.id) ? 'active' : ''}`}
+                                        onClick={() => togglePos(p.id)}
+                                    >
+                                        {p.label}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
 
-                        <div style={{ display: "flex", gap: 8, background: "#eee", padding: 4, borderRadius: 8 }}>
+                        <div className="filter-section">
+                            <h3>Options</h3>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                                    <input
+                                        type="checkbox"
+                                        checked={tracingMode}
+                                        onChange={(e) => setTracingMode(e.target.checked)}
+                                    />
+                                    Tracing Mode
+                                </label>
+
+                                <div style={{ display: "flex", gap: 8, background: "#eee", padding: 4, borderRadius: 8 }}>
+                                    <button
+                                        onClick={() => setCharacterMode('simplified')}
+                                        style={{
+                                            flex: 1,
+                                            border: "none",
+                                            background: characterMode === 'simplified' ? "white" : "transparent",
+                                            boxShadow: characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                                            borderRadius: 6,
+                                            padding: "6px 0",
+                                            fontSize: 13,
+                                            cursor: "pointer",
+                                            fontWeight: characterMode === 'simplified' ? "bold" : "normal"
+                                        }}
+                                    >
+                                        Simplified
+                                    </button>
+                                    <button
+                                        onClick={() => setCharacterMode('traditional')}
+                                        style={{
+                                            flex: 1,
+                                            border: "none",
+                                            background: characterMode === 'traditional' ? "white" : "transparent",
+                                            boxShadow: characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                                            borderRadius: 6,
+                                            padding: "6px 0",
+                                            fontSize: 13,
+                                            cursor: "pointer",
+                                            fontWeight: characterMode === 'traditional' ? "bold" : "normal"
+                                        }}
+                                    >
+                                        Traditional
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="filter-section">
+                            <h3>Help</h3>
                             <button
-                                onClick={() => setCharacterMode('simplified')}
+                                onClick={() => setDrawerView('help')}
                                 style={{
-                                    flex: 1,
-                                    border: "none",
-                                    background: characterMode === 'simplified' ? "white" : "transparent",
-                                    boxShadow: characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                    borderRadius: 6,
-                                    padding: "6px 0",
-                                    fontSize: 13,
+                                    width: "100%",
+                                    padding: "12px",
+                                    borderRadius: "8px",
+                                    border: "1px solid #eee",
+                                    background: "white",
+                                    color: "#333",
                                     cursor: "pointer",
-                                    fontWeight: characterMode === 'simplified' ? "bold" : "normal"
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    fontSize: "14px"
                                 }}
                             >
-                                Simplified
-                            </button>
-                            <button
-                                onClick={() => setCharacterMode('traditional')}
-                                style={{
-                                    flex: 1,
-                                    border: "none",
-                                    background: characterMode === 'traditional' ? "white" : "transparent",
-                                    boxShadow: characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                    borderRadius: 6,
-                                    padding: "6px 0",
-                                    fontSize: 13,
-                                    cursor: "pointer",
-                                    fontWeight: characterMode === 'traditional' ? "bold" : "normal"
-                                }}
-                            >
-                                Traditional
+                                <span>Stroke Order Guide</span>
+                                <span>→</span>
                             </button>
                         </div>
-                    </div>
-                </div>
 
-                <div style={{ marginTop: 24, fontSize: 13, color: "#999" }}>
-                    {filteredCards.length} words available
-                </div>
+                        <div style={{ marginTop: 24, fontSize: 13, color: "#999" }}>
+                            {filteredCards.length} words available
+                        </div>
+                    </>
+                ) : (
+                    <div>
+                        <button
+                            onClick={() => setDrawerView('menu')}
+                            style={{
+                                background: "none",
+                                border: "none",
+                                padding: "0 0 16px 0",
+                                color: "#666",
+                                cursor: "pointer",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                fontSize: "14px"
+                            }}
+                        >
+                            ← Back to Menu
+                        </button>
+
+                        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                            <section>
+                                <h3 style={{ margin: "0 0 8px 0", color: "var(--primary-red)" }}>General Rules</h3>
+                                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#555" }}>
+                                    Chinese characters are written following a specific stroke order. Following these rules helps write characters faster and more beautifully.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>1. Top to Bottom</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>三</span> (Three)
+                                    <br />
+                                    Write the top stroke first, then the middle, then the bottom.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>2. Left to Right</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>川</span> (River)
+                                    <br />
+                                    Write the left vertical stroke, then the middle, then the right.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>3. Horizontal before Vertical</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>十</span> (Ten)
+                                    <br />
+                                    Write the horizontal stroke (一) first, then the vertical stroke (丨).
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>4. Outside before Inside</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>月</span> (Moon)
+                                    <br />
+                                    Write the outside frame first, then the strokes inside.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>5. Inside before Closing</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>日</span> (Sun)
+                                    <br />
+                                    Write the frame, then the inside stroke, then close the bottom.
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>6. Center before Sides</h4>
+                                <div style={{ background: "#f5f5f5", padding: 12, borderRadius: 8, fontSize: 14 }}>
+                                    Example: <span style={{ fontWeight: "bold" }}>小</span> (Small)
+                                    <br />
+                                    Write the center hook first, then the left dot, then the right dot.
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                )}
             </Drawer>
 
             {mode === 'flashcard' ? (
@@ -295,7 +408,7 @@ export default function App() {
 
                             <div className="card" style={{ flex: "1 1 300px", display: "flex", flexDirection: "column" }}>
                                 <h3 style={{ marginTop: 0, color: "#888", fontSize: 14, textTransform: "uppercase" }}>Practice Area</h3>
-                                <div style={{ flex: 1, minHeight: 400 }}>
+                                <div style={{ flex: 1, minHeight: 400, display: "flex", flexDirection: "column" }}>
                                     <DrawingPad
                                         tracingMode={tracingMode}
                                         character={characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi}
