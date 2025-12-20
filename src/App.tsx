@@ -219,17 +219,17 @@ export default function App() {
     // Filter POS groups to only show categories with available cards
     const posGroups = useMemo(() => {
         const groups = advancedPosFilter ? advancedPosGroups : simplePosGroups;
-        
+
         // Count cards for each POS category (considering current level filter)
-        const levelFilteredCards = allCards.filter(card => 
+        const levelFilteredCards = allCards.filter(card =>
             selectedLevels.length === 0 || (card.level && card.level.some(l => selectedLevels.includes(l)))
         );
-        
+
         return groups.filter(group => {
             // Check if any cards match this POS category
             return levelFilteredCards.some(card => {
                 if (!card.pos) return false;
-                
+
                 if (advancedPosFilter) {
                     // Advanced mode: exact match
                     return card.pos.includes(group.id);
