@@ -87,7 +87,8 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         if (props.tracingMode && props.character) {
             ctx.save();
             ctx.globalAlpha = 0.15;
-            ctx.font = `${s * 0.8}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
+            const fontSize = s * 0.65;
+            ctx.font = `${fontSize}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "#000";
@@ -219,8 +220,8 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     const undo = () => setStrokes((prev) => prev.slice(0, -1));
 
     return (
-        <div ref={containerRef} style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", height: "100%" }}>
-            <div style={{ flex: 1, minHeight: 0, position: "relative" }}>
+        <div ref={containerRef} style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
+            <div style={{ position: "relative" }}>
                 <canvas
                     ref={canvasRef}
                     style={{
@@ -229,7 +230,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
                         boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
                         touchAction: "none",
                         width: "100%",
-                        height: "100%",
+                        height: "auto",
                         display: "block",
                         objectFit: "contain"
                     }}

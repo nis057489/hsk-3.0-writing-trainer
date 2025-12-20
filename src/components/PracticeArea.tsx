@@ -19,6 +19,8 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
         );
     }
 
+    const padSize = characters.length === 1 ? 180 : 220;
+
     return (
         <div className="practice-shell">
             <div className="practice-header">
@@ -34,7 +36,7 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
                     <div key={`${char}-${index}`} className="trace-cell">
                         <div className="trace-label">Char {index + 1}</div>
                         <div className="trace-pad">
-                            <DrawingPad size={220} tracingMode={tracingMode} character={char} />
+                            <DrawingPad size={padSize} tracingMode={tracingMode} character={char} />
                         </div>
                         <div className="trace-char">{char}</div>
                     </div>
