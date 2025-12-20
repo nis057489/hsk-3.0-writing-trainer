@@ -249,7 +249,8 @@ export default function App() {
                                             padding: "6px 0",
                                             fontSize: 13,
                                             cursor: "pointer",
-                                            fontWeight: characterMode === 'simplified' ? "bold" : "normal"
+                                            fontWeight: characterMode === 'simplified' ? "bold" : "normal",
+                                            color: characterMode === 'simplified' ? "var(--primary-red)" : "#444"
                                         }}
                                     >
                                         Simplified
@@ -265,7 +266,8 @@ export default function App() {
                                             padding: "6px 0",
                                             fontSize: 13,
                                             cursor: "pointer",
-                                            fontWeight: characterMode === 'traditional' ? "bold" : "normal"
+                                            fontWeight: characterMode === 'traditional' ? "bold" : "normal",
+                                            color: characterMode === 'traditional' ? "var(--primary-red)" : "#444"
                                         }}
                                     >
                                         Traditional
