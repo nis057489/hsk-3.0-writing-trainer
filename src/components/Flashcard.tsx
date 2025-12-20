@@ -23,7 +23,14 @@ export function Flashcard(props: {
             {reveal && (
                 <div className="reveal">
                     <div className="pinyin">{card.pinyin}</div>
-                    <div className="meaning">{card.meaning}</div>
+                    <div className="meaning">
+                        {card.pos && card.pos.length > 0 && (
+                            <span style={{ fontStyle: "italic", opacity: 0.7, marginRight: 8 }}>
+                                {card.pos.join(", ")}
+                            </span>
+                        )}
+                        {card.meaning}
+                    </div>
                 </div>
             )}
         </div>
