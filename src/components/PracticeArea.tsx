@@ -7,7 +7,7 @@ interface PracticeAreaProps {
     tracingMode: boolean;
     showHoverIndicator?: boolean;
     padSizeChoice: "xs" | "small" | "medium" | "large";
-    traceFont?: "handwritten" | "kai" | "system";
+    traceFont?: "handwritten" | "kai" | "system" | "cursive";
 }
 
 export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten" }: PracticeAreaProps) {
