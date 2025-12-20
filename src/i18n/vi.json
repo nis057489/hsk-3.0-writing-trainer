@@ -1,0 +1,108 @@
+{
+    "app": {
+        "title": "Trình luyện viết HSK",
+        "subtitle": "Thành thạo chữ Hán.",
+        "menu": "Menu",
+        "strokeGuide": "Thứ tự nét",
+        "deviceTips": "Mẹo thiết bị",
+        "back": "Quay lại menu"
+    },
+    "mode": {
+        "title": "Chế độ",
+        "flashcard": "Thẻ",
+        "sentence": "Câu"
+    },
+    "layout": {
+        "title": "Bố cục",
+        "leftHanded": "Chế độ tay trái"
+    },
+    "levels": {
+        "title": "Cấp độ",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Từ loại",
+        "n": "Danh từ",
+        "v": "Động từ",
+        "a": "Tính từ",
+        "d": "Trạng từ",
+        "r": "Đại từ",
+        "c": "Liên từ",
+        "i": "Thành ngữ",
+        "l": "Cụm từ"
+    },
+    "options": {
+        "title": "Tùy chọn",
+        "tracing": "Chế độ tô nét",
+        "simplified": "Giản thể",
+        "traditional": "Phồn thể",
+        "theme": "Giao diện",
+        "language": "Ngôn ngữ",
+        "themeLight": "Sáng",
+        "themeDark": "Tối",
+        "themeContrast": "Tương phản cao",
+        "themeSystem": "Theo hệ thống"
+    },
+    "help": {
+        "title": "Trợ giúp",
+        "stroke": "Hướng dẫn thứ tự nét",
+        "tips": "Mẹo iPad / toàn màn hình",
+        "deviceTitle": "Mẹo iPad / toàn màn hình",
+        "generalRules": "Quy tắc chung",
+        "rule1": "Từ trên xuống",
+        "rule2": "Từ trái sang phải",
+        "rule3": "Ngang trước dọc",
+        "rule4": "Ngoài trước trong",
+        "rule5": "Trong trước đóng khung",
+        "rule6": "Giữa trước hai bên",
+        "rule1Desc": "Viết nét trên cùng trước, rồi giữa, rồi nét dưới.",
+        "rule2Desc": "Viết nét dọc bên trái trước, rồi giữa, rồi bên phải.",
+        "rule3Desc": "Viết nét ngang trước, sau đó đến nét dọc.",
+        "rule4Desc": "Viết khung ngoài trước, rồi các nét bên trong.",
+        "rule5Desc": "Viết khung, rồi nét bên trong, cuối cùng đóng phía dưới.",
+        "rule6Desc": "Viết nét móc ở giữa trước, rồi hai dấu chấm hai bên.",
+        "tip1": "Thêm vào Màn hình chính trong Safari → Chia sẻ → \"Thêm vào Màn hình chính\" để dùng không thanh trình duyệt.",
+        "tip2": "Trong Safari, cuộn nhẹ xuống để ẩn thanh địa chỉ/tab cho đến khi bạn cuộn lên lại.",
+        "tip3": "Xoay ngang để có nhiều chỗ hơn; bố cục sẽ tự động thu gọn để giảm cuộn.",
+        "tip4": "Apple Pencil: giữ ngòi bút chạm xuống—lòng bàn tay bị bỏ qua và thao tác phóng to/cuộn bị chặn ở đây."
+    },
+    "practice": {
+        "header": "Tô từng chữ",
+        "chars": "chữ",
+        "empty": "Chưa có chữ để tô.",
+        "charLabel": "Chữ {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Hiện pinyin/nghĩa",
+        "hide": "Ẩn pinyin/nghĩa"
+    },
+    "toolbar": {
+        "queue": "Hàng đợi",
+        "again": "Làm lại",
+        "hard": "Khó",
+        "good": "Tốt",
+        "easy": "Dễ",
+        "skip": "Bỏ qua"
+    },
+    "controls": {
+        "undo": "Hoàn tác",
+        "clear": "Xóa"
+    },
+    "sentence": {
+        "placeholder": "Nhập cụm hoặc câu tại đây (vd. 你好吗)...",
+        "empty": "Nhập chữ Hán phía trên để luyện viết."
+    },
+    "nocards": {
+        "title": "Không tìm thấy thẻ",
+        "desc": "Hãy điều chỉnh bộ lọc trong Cài đặt để thấy thêm từ."
+    },
+    "stats": {
+        "available": "Có {{count}} từ"
+    }
+}

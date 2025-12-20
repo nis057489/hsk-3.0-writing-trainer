@@ -4,6 +4,18 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import en from "./en.json";
 import zh from "./zh.json";
+import zhHant from "./zh-Hant.json";
+import es from "./es.json";
+import fr from "./fr.json";
+import vi from "./vi.json";
+import fil from "./fil.json";
+import ko from "./ko.json";
+import ar from "./ar.json";
+import ru from "./ru.json";
+import tr from "./tr.json";
+import hi from "./hi.json";
+import fa from "./fa.json";
+import pt from "./pt.json";
 
 i18n
   .use(LanguageDetector)
@@ -11,7 +23,19 @@ i18n
   .init({
     resources: {
       en: { translation: en },
-      zh: { translation: zh }
+      zh: { translation: zh },
+      "zh-Hant": { translation: zhHant },
+      es: { translation: es },
+      fr: { translation: fr },
+      vi: { translation: vi },
+      fil: { translation: fil },
+      ko: { translation: ko },
+      ar: { translation: ar },
+      ru: { translation: ru },
+      tr: { translation: tr },
+      hi: { translation: hi },
+      fa: { translation: fa },
+      pt: { translation: pt }
     },
     fallbackLng: "en",
     interpolation: {

@@ -1,0 +1,108 @@
+{
+    "app": {
+        "title": "HSK 書寫練習",
+        "subtitle": "練習漢字書寫。",
+        "menu": "選單",
+        "strokeGuide": "筆順指南",
+        "deviceTips": "裝置提示",
+        "back": "返回選單"
+    },
+    "mode": {
+        "title": "模式",
+        "flashcard": "閃卡",
+        "sentence": "句子"
+    },
+    "layout": {
+        "title": "版面",
+        "leftHanded": "慣用左手模式"
+    },
+    "levels": {
+        "title": "等級",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "詞性",
+        "n": "名詞",
+        "v": "動詞",
+        "a": "形容詞",
+        "d": "副詞",
+        "r": "代詞",
+        "c": "連詞",
+        "i": "成語",
+        "l": "詞組"
+    },
+    "options": {
+        "title": "選項",
+        "tracing": "描紅模式",
+        "simplified": "簡體",
+        "traditional": "繁體",
+        "theme": "主題",
+        "language": "語言",
+        "themeLight": "淺色",
+        "themeDark": "深色",
+        "themeContrast": "高對比",
+        "themeSystem": "跟隨系統"
+    },
+    "help": {
+        "title": "說明",
+        "stroke": "筆順指南",
+        "tips": "iPad / 全螢幕提示",
+        "deviceTitle": "iPad / 全螢幕提示",
+        "generalRules": "基本規則",
+        "rule1": "從上到下",
+        "rule2": "從左到右",
+        "rule3": "先橫後豎",
+        "rule4": "先外後內",
+        "rule5": "先內後封口",
+        "rule6": "先中間後兩邊",
+        "rule1Desc": "先寫上方筆畫，再寫中間，最後寫下方。",
+        "rule2Desc": "先寫左側豎畫，再寫中間，最後寫右側。",
+        "rule3Desc": "先寫橫畫，再寫豎畫。",
+        "rule4Desc": "先寫外框，再寫內部筆畫。",
+        "rule5Desc": "先寫框架，再寫裡面，最後封口。",
+        "rule6Desc": "先寫中間的鉤，再寫左右點。",
+        "tip1": "在 Safari 中透過分享 → 「加入主畫面」可無瀏覽器列地使用。",
+        "tip2": "在 Safari 中，稍微往下捲即可隱藏地址/分頁列，往上捲會再出現。",
+        "tip3": "橫向可獲得更多空間；版面會自動緊縮以減少捲動。",
+        "tip4": "使用 Apple Pencil 時保持筆尖接觸——手掌會被忽略，這裡也會阻擋縮放/捲動。"
+    },
+    "practice": {
+        "header": "逐個描寫字元",
+        "chars": "個字元",
+        "empty": "還沒有可描寫的字元。",
+        "charLabel": "第 {{index}} 個"
+    },
+    "flashcard": {
+        "reveal": "顯示拼音/釋義",
+        "hide": "隱藏拼音/釋義"
+    },
+    "toolbar": {
+        "queue": "佇列",
+        "again": "再來一次",
+        "hard": "困難",
+        "good": "良好",
+        "easy": "容易",
+        "skip": "跳過"
+    },
+    "controls": {
+        "undo": "復原",
+        "clear": "清除"
+    },
+    "sentence": {
+        "placeholder": "在這裡輸入短語或句子（例如 你好嗎）...",
+        "empty": "在上方輸入漢字以開始練習書寫。"
+    },
+    "nocards": {
+        "title": "沒有找到卡片",
+        "desc": "請在設定中調整篩選以查看更多詞彙。"
+    },
+    "stats": {
+        "available": "共有 {{count}} 個詞彙"
+    }
+}

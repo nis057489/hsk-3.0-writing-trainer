@@ -1,0 +1,108 @@
+{
+    "app": {
+        "title": "HSK 쓰기 트레이너",
+        "subtitle": "한자를 익히세요.",
+        "menu": "메뉴",
+        "strokeGuide": "필순 안내",
+        "deviceTips": "디바이스 팁",
+        "back": "메뉴로 돌아가기"
+    },
+    "mode": {
+        "title": "모드",
+        "flashcard": "플래시카드",
+        "sentence": "문장"
+    },
+    "layout": {
+        "title": "레이아웃",
+        "leftHanded": "왼손잡이 모드"
+    },
+    "levels": {
+        "title": "레벨",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "품사",
+        "n": "명사",
+        "v": "동사",
+        "a": "형용사",
+        "d": "부사",
+        "r": "대명사",
+        "c": "접속사",
+        "i": "관용구",
+        "l": "구"
+    },
+    "options": {
+        "title": "옵션",
+        "tracing": "트레이싱 모드",
+        "simplified": "간체",
+        "traditional": "번체",
+        "theme": "테마",
+        "language": "언어",
+        "themeLight": "라이트",
+        "themeDark": "다크",
+        "themeContrast": "고대비",
+        "themeSystem": "시스템"
+    },
+    "help": {
+        "title": "도움말",
+        "stroke": "필순 가이드",
+        "tips": "iPad / 전체 화면 팁",
+        "deviceTitle": "iPad / 전체 화면 팁",
+        "generalRules": "기본 규칙",
+        "rule1": "위에서 아래로",
+        "rule2": "왼쪽에서 오른쪽으로",
+        "rule3": "가로 후 세로",
+        "rule4": "바깥쪽 후 안쪽",
+        "rule5": "안쪽 후 닫기",
+        "rule6": "중앙 후 양옆",
+        "rule1Desc": "위쪽 획을 먼저, 그다음 가운데, 마지막으로 아래쪽을 씁니다.",
+        "rule2Desc": "왼쪽 세로획, 가운데, 오른쪽 순서로 씁니다.",
+        "rule3Desc": "가로획을 먼저, 그다음 세로획을 씁니다.",
+        "rule4Desc": "바깥 테두리를 먼저, 그다음 안쪽 획을 씁니다.",
+        "rule5Desc": "틀을 그리고, 안을 쓴 뒤, 마지막에 아래를 닫습니다.",
+        "rule6Desc": "중앙의 갈고리를 먼저, 그다음 좌우 점을 씁니다.",
+        "tip1": "Safari → 공유 → \"홈 화면에 추가\"로 추가하면 브라우저 바 없이 사용할 수 있습니다.",
+        "tip2": "Safari에서 조금만 아래로 스크롤하면 주소/탭 바가 숨겨지고, 위로 올리면 다시 나타납니다.",
+        "tip3": "가로 화면으로 돌리면 공간이 늘어나며, 레이아웃이 자동으로 컴팩트해집니다.",
+        "tip4": "Apple Pencil: 펜촉을 대고 쓰세요—손바닥은 무시되고, 이 영역에서는 핀치/스크롤이 차단됩니다."
+    },
+    "practice": {
+        "header": "각 글자를 따라 쓰세요",
+        "chars": "글자",
+        "empty": "아직 따라 쓸 글자가 없습니다.",
+        "charLabel": "글자 {{index}}"
+    },
+    "flashcard": {
+        "reveal": "병음/뜻 보기",
+        "hide": "병음/뜻 숨기기"
+    },
+    "toolbar": {
+        "queue": "대기열",
+        "again": "다시",
+        "hard": "어려움",
+        "good": "좋음",
+        "easy": "쉬움",
+        "skip": "건너뛰기"
+    },
+    "controls": {
+        "undo": "실행 취소",
+        "clear": "지우기"
+    },
+    "sentence": {
+        "placeholder": "여기에 구나 문장을 입력하세요 (예: 你好吗)...",
+        "empty": "위에 한자를 입력해 연습하세요."
+    },
+    "nocards": {
+        "title": "카드를 찾을 수 없음",
+        "desc": "더 많은 단어를 보려면 설정에서 필터를 조정하세요."
+    },
+    "stats": {
+        "available": "{{count}}개 단어 이용 가능"
+    }
+}

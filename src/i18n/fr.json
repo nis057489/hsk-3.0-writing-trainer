@@ -1,0 +1,108 @@
+{
+    "app": {
+        "title": "Entraîneur d'écriture HSK",
+        "subtitle": "Maîtrisez les caractères chinois.",
+        "menu": "Menu",
+        "strokeGuide": "Ordre des traits",
+        "deviceTips": "Astuces appareil",
+        "back": "Retour au menu"
+    },
+    "mode": {
+        "title": "Mode",
+        "flashcard": "Cartes",
+        "sentence": "Phrase"
+    },
+    "layout": {
+        "title": "Mise en page",
+        "leftHanded": "Mode gaucher"
+    },
+    "levels": {
+        "title": "Niveaux",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Catégories grammaticales",
+        "n": "Noms",
+        "v": "Verbes",
+        "a": "Adjectifs",
+        "d": "Adverbes",
+        "r": "Pronoms",
+        "c": "Conjonctions",
+        "i": "Idiomes",
+        "l": "Expressions"
+    },
+    "options": {
+        "title": "Options",
+        "tracing": "Mode de tracé",
+        "simplified": "Simplifié",
+        "traditional": "Traditionnel",
+        "theme": "Thème",
+        "language": "Langue",
+        "themeLight": "Clair",
+        "themeDark": "Sombre",
+        "themeContrast": "Contraste élevé",
+        "themeSystem": "Système"
+    },
+    "help": {
+        "title": "Aide",
+        "stroke": "Guide d'ordre des traits",
+        "tips": "Astuces iPad / plein écran",
+        "deviceTitle": "Astuces iPad / plein écran",
+        "generalRules": "Règles générales",
+        "rule1": "De haut en bas",
+        "rule2": "De gauche à droite",
+        "rule3": "Horizontal avant vertical",
+        "rule4": "Extérieur avant intérieur",
+        "rule5": "Intérieur avant de fermer",
+        "rule6": "Centre avant les côtés",
+        "rule1Desc": "Écris d'abord le trait du haut, puis le milieu, puis le bas.",
+        "rule2Desc": "Écris le trait vertical gauche, puis le milieu, puis le droit.",
+        "rule3Desc": "Écris d'abord l'horizontal puis le vertical.",
+        "rule4Desc": "Écris d'abord le cadre extérieur puis les traits intérieurs.",
+        "rule5Desc": "Écris le cadre, puis le trait intérieur, puis ferme en bas.",
+        "rule6Desc": "Écris d'abord le crochet central, puis les points gauche et droit.",
+        "tip1": "Ajoutez à l'écran d'accueil dans Safari → Partager → \"Ajouter à l'écran d'accueil\" pour une expérience sans barre.",
+        "tip2": "Dans Safari, un léger défilement vers le bas masque les barres d'adresse/onglets jusqu'à ce que vous remontiez.",
+        "tip3": "Passez en paysage pour plus d'espace ; la mise en page se compacte pour limiter le défilement.",
+        "tip4": "Apple Pencil : gardez la pointe posée—les paumes sont ignorées et le pincement/défilement est bloqué ici."
+    },
+    "practice": {
+        "header": "Trace chaque caractère",
+        "chars": "caractères",
+        "empty": "Aucun caractère à tracer pour l'instant.",
+        "charLabel": "Caractère {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Afficher pinyin/sens",
+        "hide": "Masquer pinyin/sens"
+    },
+    "toolbar": {
+        "queue": "File",
+        "again": "Encore",
+        "hard": "Difficile",
+        "good": "Bien",
+        "easy": "Facile",
+        "skip": "Passer"
+    },
+    "controls": {
+        "undo": "Annuler",
+        "clear": "Effacer"
+    },
+    "sentence": {
+        "placeholder": "Tapez ici une phrase ou une proposition (ex. 你好吗)...",
+        "empty": "Tapez des caractères chinois ci-dessus pour vous entraîner."
+    },
+    "nocards": {
+        "title": "Aucune carte trouvée",
+        "desc": "Essayez d'ajuster vos filtres dans Réglages pour voir plus de mots."
+    },
+    "stats": {
+        "available": "{{count}} mots disponibles"
+    }
+}

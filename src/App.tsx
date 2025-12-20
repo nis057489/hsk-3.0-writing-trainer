@@ -152,7 +152,19 @@ export default function App() {
 
     const languageOptions = [
         { value: "en", label: "English" },
-        { value: "zh", label: "中文" }
+        { value: "zh", label: "中文" },
+        { value: "zh-Hant", label: "繁體中文" },
+        { value: "es", label: "Español" },
+        { value: "fr", label: "Français" },
+        { value: "vi", label: "Tiếng Việt" },
+        { value: "fil", label: "Filipino" },
+        { value: "ko", label: "한국어" },
+        { value: "ar", label: "العربية" },
+        { value: "ru", label: "Русский" },
+        { value: "tr", label: "Türkçe" },
+        { value: "hi", label: "हिन्दी" },
+        { value: "fa", label: "فارسی" },
+        { value: "pt", label: "Português" }
     ];
 
     return (

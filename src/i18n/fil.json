@@ -1,0 +1,108 @@
+{
+    "app": {
+        "title": "Tagasanay sa Pagsulat ng HSK",
+        "subtitle": "Sanayin ang mga karakter sa Tsino.",
+        "menu": "Menu",
+        "strokeGuide": "Ayos ng mga stroke",
+        "deviceTips": "Mga tip sa device",
+        "back": "Bumalik sa menu"
+    },
+    "mode": {
+        "title": "Mode",
+        "flashcard": "Mga flashcard",
+        "sentence": "Pangungusap"
+    },
+    "layout": {
+        "title": "Ayos",
+        "leftHanded": "Mode para sa kaliwete"
+    },
+    "levels": {
+        "title": "Mga antas",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Bahagi ng pananalita",
+        "n": "Pangngalan",
+        "v": "Pandiwa",
+        "a": "Pang-uri",
+        "d": "Pang-abay",
+        "r": "Panghalip",
+        "c": "Pang-ugnay",
+        "i": "Idyoma",
+        "l": "Parirala"
+    },
+    "options": {
+        "title": "Mga opsyon",
+        "tracing": "Mode na pag-trace",
+        "simplified": "Pinapasimple",
+        "traditional": "Tradisyonal",
+        "theme": "Tema",
+        "language": "Wika",
+        "themeLight": "Maliwanag",
+        "themeDark": "Madilim",
+        "themeContrast": "Mataas na contrast",
+        "themeSystem": "Sistema"
+    },
+    "help": {
+        "title": "Tulong",
+        "stroke": "Gabay sa ayos ng stroke",
+        "tips": "Mga tip para sa iPad / full screen",
+        "deviceTitle": "Mga tip para sa iPad / full screen",
+        "generalRules": "Pangkalahatang tuntunin",
+        "rule1": "Mula itaas pababa",
+        "rule2": "Mula kaliwa pakanan",
+        "rule3": "Pahalang bago patayo",
+        "rule4": "Labas muna bago loob",
+        "rule5": "Loob muna bago isara",
+        "rule6": "Gitna muna bago gilid",
+        "rule1Desc": "Isulat muna ang itaas na stroke, saka gitna, saka ibaba.",
+        "rule2Desc": "Isulat ang kaliwang patayong stroke, saka gitna, saka kanan.",
+        "rule3Desc": "Isulat ang pahalang muna, saka patayo.",
+        "rule4Desc": "Isulat muna ang panlabas na balangkas, saka ang mga stroke sa loob.",
+        "rule5Desc": "Isulat ang balangkas, saka ang loob, saka isara sa ibaba.",
+        "rule6Desc": "Isulat muna ang hook sa gitna, saka ang tuldok sa kaliwa at kanan.",
+        "tip1": "Idagdag sa Home Screen sa Safari → Ibahagi → \"Idagdag sa Home Screen\" para walang mga bar.",
+        "tip2": "Sa Safari, bahagyang pag-scroll pababa ay nagtatago ng address/tab bar hanggang mag-scroll ka pataas.",
+        "tip3": "I-rotate patagilid para mas maluwag; kusang siksik ang layout para bawas scroll.",
+        "tip4": "Apple Pencil: panatilihing nakadikit ang dulo—hindi papansinin ang palad at naka-block ang pinch/scroll dito."
+    },
+    "practice": {
+        "header": "I-trace ang bawat karakter",
+        "chars": "karakter",
+        "empty": "Wala pang mga karakter na ita-trace.",
+        "charLabel": "Karakter {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Ipakita ang pinyin/kahulugan",
+        "hide": "Itago ang pinyin/kahulugan"
+    },
+    "toolbar": {
+        "queue": "Pila",
+        "again": "Ulitin",
+        "hard": "Mahirap",
+        "good": "Ayos",
+        "easy": "Madali",
+        "skip": "Laktawan"
+    },
+    "controls": {
+        "undo": "I-undo",
+        "clear": "I-clear"
+    },
+    "sentence": {
+        "placeholder": "Mag-type ng parirala o pangungusap dito (hal. 你好吗)...",
+        "empty": "Mag-type ng mga karakter sa itaas para magsanay magsulat."
+    },
+    "nocards": {
+        "title": "Walang nahanap na mga card",
+        "desc": "Subukang ayusin ang mga filter sa Settings para makakita ng mas maraming salita."
+    },
+    "stats": {
+        "available": "{{count}} salitang available"
+    }
+}
