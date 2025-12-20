@@ -54,6 +54,10 @@
         "padSizeSmall": "Notebook (small)",
         "padSizeMedium": "Comfort (medium)",
         "padSizeLarge": "Canvas (large)",
+        "traceFont": "Trace character font style",
+        "traceFontHandwritten": "Handwritten (Brush)",
+        "traceFontKai": "Kai (Traditional)",
+        "traceFontSystem": "System (Sans-serif)",
         "showDetailsDefault": "Show pinyin/meaning by default"
     },
     "help": {

@@ -54,6 +54,10 @@
         "padSizeSmall": "小：笔记纸感",
         "padSizeMedium": "中：日常舒适",
         "padSizeLarge": "大：画布空间",
+        "traceFont": "描红字体风格",
+        "traceFontHandwritten": "手写体（毛笔）",
+        "traceFontKai": "楷体（传统）",
+        "traceFontSystem": "系统字体（无衬线）",
         "showDetailsDefault": "默认显示拼音/释义"
     },
     "help": {

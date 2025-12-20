@@ -13,6 +13,8 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
+type TraceFontChoice = "handwritten" | "kai" | "system";
+
 type Prefs = {
     selectedLevels: string[];
     selectedPos: string[];
@@ -24,6 +26,7 @@ type Prefs = {
     showHoverIndicator: boolean;
     padSizeChoice: PadSizeChoice;
     showDetailsDefault: boolean;
+    traceFont: TraceFontChoice;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -58,7 +61,8 @@ export default function App() {
         language: i18n.resolvedLanguage || "en",
         showHoverIndicator: false,
         padSizeChoice: "small",
-        showDetailsDefault: false
+        showDetailsDefault: false,
+        traceFont: "handwritten"
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -113,6 +117,7 @@ export default function App() {
     const [sentenceText, setSentenceText] = useState("");
     const [padSizeChoice, setPadSizeChoice] = useState<PadSizeChoice>(storedPrefs.padSizeChoice || "small");
     const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
+    const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
@@ -160,16 +165,23 @@ export default function App() {
             mode,
             language,
             padSizeChoice,
-            showDetailsDefault
+            showDetailsDefault,
+            traceFont
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont]);
 
     const padSizeOptions: { value: PadSizeChoice; label: string }[] = [
         { value: "xs", label: t("options.padSizeXs") },
         { value: "small", label: t("options.padSizeSmall") },
         { value: "medium", label: t("options.padSizeMedium") },
         { value: "large", label: t("options.padSizeLarge") }
+    ];
+
+    const traceFontOptions: { value: TraceFontChoice; label: string }[] = [
+        { value: "handwritten", label: t("options.traceFontHandwritten") },
+        { value: "kai", label: t("options.traceFontKai") },
+        { value: "system", label: t("options.traceFontSystem") }
     ];
 
     const basePadSize = padSizeChoice === "xs"
@@ -424,6 +436,27 @@ export default function App() {
                                     </select>
                                 </label>
 
+                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                                    <span style={{ color: "var(--muted)" }}>{t("options.traceFont")}</span>
+                                    <select
+                                        value={traceFont}
+                                        onChange={(e) => setTraceFont(e.target.value as TraceFontChoice)}
+                                        style={{
+                                            padding: "8px 10px",
+                                            borderRadius: 8,
+                                            border: "1px solid var(--border)",
+                                            background: "var(--surface)",
+                                            color: "var(--text)",
+                                            fontSize: 14
+                                        }}
+                                        aria-label={t("options.traceFont")}
+                                    >
+                                        {traceFontOptions.map(opt => (
+                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                        ))}
+                                    </select>
+                                </label>
+
                                 <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
                                     <button
                                         onClick={() => setCharacterMode('simplified')}
@@ -650,6 +683,7 @@ export default function App() {
                                     tracingMode={tracingMode}
                                     padSizeChoice={padSizeChoice}
                                     showHoverIndicator={showHoverIndicator}
+                                    traceFont={traceFont}
                                 />
                             </div>
                         </>
@@ -690,6 +724,7 @@ export default function App() {
                             tracingMode={tracingMode}
                             showHoverIndicator={showHoverIndicator}
                             padSizeChoice={padSizeChoice}
+                            traceFont={traceFont}
                         />
                     )}
                 </div>

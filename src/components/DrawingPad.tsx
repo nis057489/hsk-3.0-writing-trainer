@@ -10,11 +10,12 @@ interface DrawingPadProps {
     tracingMode?: boolean;
     character?: string;
     showHoverIndicator?: boolean;
+    traceFont?: "handwritten" | "kai" | "system";
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
 }
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, onUndoClick, onClearClick }: DrawingPadProps) {
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", onUndoClick, onClearClick }: DrawingPadProps) {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -102,7 +103,17 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             ctx.save();
             ctx.globalAlpha = 0.15;
             const fontSize = s * 0.65;
-            ctx.font = `${fontSize}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
+            
+            let fontStack: string;
+            if (traceFont === "handwritten") {
+                fontStack = '"Ma Shan Zheng", "ZCOOL KuaiLe", cursive';
+            } else if (traceFont === "kai") {
+                fontStack = '"KaiTi", "Kaiti SC", "STKaiti", "BiauKai", "DFKai-SB", "TW-Kai", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", serif';
+            } else {
+                fontStack = 'system-ui, -apple-system, sans-serif';
+            }
+            
+            ctx.font = `${fontSize}px ${fontStack}`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "#000";
@@ -150,7 +161,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
 
         redraw();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [canvasSize, dpr, strokes, tracingMode, character]);
+    }, [canvasSize, dpr, strokes, tracingMode, character, traceFont]);
 
     useEffect(() => {
         const c = canvasRef.current;
