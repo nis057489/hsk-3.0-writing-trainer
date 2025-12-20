@@ -1,0 +1,117 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #111;
+  background: #f6f7fb;
+}
+
+* { 
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+}
+
+.header p { margin: 0; opacity: 0.75; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.hanzi {
+  font-size: 96px;
+  line-height: 1.05;
+  text-align: center;
+  margin: 6px 0 12px;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+}
+
+.reveal {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.pinyin {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.meaning {
+  margin-top: 6px;
+  opacity: 0.8;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.remaining { opacity: 0.75; margin-right: auto; }
+
+.grades button, .toolbar .next, button {
+  border: 0;
+  background: #111;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toolbar .next {
+  background: #444;
+}
+
+.tip {
+  margin-top: 10px;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+.footer {
+  margin-top: 16px;
+  opacity: 0.7;
+  font-size: 13px;
+}
