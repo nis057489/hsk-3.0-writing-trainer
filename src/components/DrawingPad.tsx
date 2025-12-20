@@ -226,9 +226,30 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     const clear = () => setStrokes([]);
     const undo = () => setStrokes((prev: Stroke[]) => prev.slice(0, -1));
 
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const blockScroll = (e: Event) => {
+            // Prevent the page from scrolling while writing
+            e.preventDefault();
+        };
+
+        container.addEventListener("touchmove", blockScroll, { passive: false });
+        container.addEventListener("wheel", blockScroll, { passive: false });
+
+        return () => {
+            container.removeEventListener("touchmove", blockScroll);
+            container.removeEventListener("wheel", blockScroll);
+        };
+    }, []);
+
     return (
-        <div ref={containerRef} style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
-            <div style={{ position: "relative" }}>
+        <div
+            ref={containerRef}
+            style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", touchAction: "none" }}
+        >
+            <div style={{ position: "relative", touchAction: "none" }}>
                 <canvas
                     ref={canvasRef}
                     style={{
