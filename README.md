@@ -26,8 +26,6 @@ Try the hosted version: <https://nis057489.github.io/hsk-3.0-writing-trainer/>
 4) Toggle tracing mode for a light character watermark, and switch Simplified/Traditional display.  
 5) Set left-handed layout if you hold the iPad/Pencil on the left.
 
-## Tip
-
 ## Tip — install on iPad (recommended)
 
 For the best tablet experience (no browser chrome, better fullscreen), add the site to your iPad Home Screen from Safari.
