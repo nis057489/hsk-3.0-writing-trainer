@@ -5,6 +5,9 @@ export default defineConfig({
   base: "/hsk-3.0-writing-trainer/",
   plugins: [react()],
   server: {
-    strictPort: true
+    strictPort: true,
+    hmr: {
+      overlay: false
+    }
   }
 });
