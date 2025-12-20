@@ -59,6 +59,7 @@
         "traceFontHandwritten": "Handwritten (Brush)",
         "traceFontKai": "Kai (Traditional)",
         "traceFontSystem": "System (Sans-serif)",
+        "promptFont": "Prompt character font style",
         "showDetailsDefault": "Show pinyin/meaning by default"
     },
     "help": {

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 type TraceFontChoice = "handwritten" | "kai" | "system";
+type PromptFontChoice = "handwritten" | "kai" | "system";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -26,6 +27,8 @@ interface DrawerMenuProps {
     setPadSizeChoice: (value: PadSizeChoice) => void;
     traceFont: TraceFontChoice;
     setTraceFont: (value: TraceFontChoice) => void;
+    promptFont: PromptFontChoice;
+    setPromptFont: (value: PromptFontChoice) => void;
     characterMode: 'simplified' | 'traditional';
     setCharacterMode: (value: 'simplified' | 'traditional') => void;
     language: string;
@@ -48,6 +51,12 @@ export function DrawerMenu(props: DrawerMenuProps) {
     ];
 
     const traceFontOptions: { value: TraceFontChoice; label: string }[] = [
+        { value: "handwritten", label: t("options.traceFontHandwritten") },
+        { value: "kai", label: t("options.traceFontKai") },
+        { value: "system", label: t("options.traceFontSystem") }
+    ];
+
+    const promptFontOptions: { value: PromptFontChoice; label: string }[] = [
         { value: "handwritten", label: t("options.traceFontHandwritten") },
         { value: "kai", label: t("options.traceFontKai") },
         { value: "system", label: t("options.traceFontSystem") }
@@ -239,6 +248,27 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             aria-label={t("options.traceFont")}
                         >
                             {traceFontOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
+                        <select
+                            value={props.promptFont}
+                            onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.promptFont")}
+                        >
+                            {promptFontOptions.map(opt => (
                                 <option key={opt.value} value={opt.value}>{opt.label}</option>
                             ))}
                         </select>

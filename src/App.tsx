@@ -18,6 +18,7 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
 type TraceFontChoice = "handwritten" | "kai" | "system";
+type PromptFontChoice = "handwritten" | "kai" | "system";
 
 type Prefs = {
     selectedLevels: string[];
@@ -31,6 +32,7 @@ type Prefs = {
     padSizeChoice: PadSizeChoice;
     showDetailsDefault: boolean;
     traceFont: TraceFontChoice;
+    promptFont: PromptFontChoice;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -66,7 +68,8 @@ export default function App() {
         showHoverIndicator: false,
         padSizeChoice: "small",
         showDetailsDefault: false,
-        traceFont: "handwritten"
+        traceFont: "handwritten",
+        promptFont: "handwritten"
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -122,6 +125,7 @@ export default function App() {
     const [padSizeChoice, setPadSizeChoice] = useState<PadSizeChoice>(storedPrefs.padSizeChoice || "small");
     const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
     const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
+    const [promptFont, setPromptFont] = useState<PromptFontChoice>(storedPrefs.promptFont || "handwritten");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
@@ -170,10 +174,11 @@ export default function App() {
             language,
             padSizeChoice,
             showDetailsDefault,
-            traceFont
+            traceFont,
+            promptFont
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
@@ -288,6 +293,8 @@ export default function App() {
                         setPadSizeChoice={setPadSizeChoice}
                         traceFont={traceFont}
                         setTraceFont={setTraceFont}
+                        promptFont={promptFont}
+                        setPromptFont={setPromptFont}
                         characterMode={characterMode}
                         setCharacterMode={setCharacterMode}
                         language={language}
@@ -317,6 +324,7 @@ export default function App() {
                                         }}
                                         reveal={reveal}
                                         onToggleReveal={() => setReveal(r => !r)}
+                                        promptFont={promptFont}
                                     />
                                 </div>
                                 <div style={{ flex: "0 0 auto", minWidth: 220 }}>

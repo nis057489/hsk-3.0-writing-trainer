@@ -59,6 +59,7 @@
         "traceFontHandwritten": "手寫體（毛筆）",
         "traceFontKai": "楷體（傳統）",
         "traceFontSystem": "系統字型（無襯線）",
+        "promptFont": "提示字型風格",
         "showDetailsDefault": "預設顯示拼音/釋義"
     },
     "help": {
