@@ -75,7 +75,7 @@ export default function App() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>(storedPrefs.characterMode || 'simplified');
     const [leftHanded, setLeftHanded] = useState(storedPrefs.leftHanded ?? true);
-    const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips'>('menu');
+    const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips' | 'pos-help'>('menu');
     const [theme, setTheme] = useState<ThemeChoice>(() => (localStorage.getItem("theme") as ThemeChoice) || "system");
     const [language, setLanguage] = useState<string>(storedPrefs.language || i18n.resolvedLanguage || "en");
 
@@ -288,7 +288,7 @@ export default function App() {
             <Drawer
                 isOpen={isDrawerOpen}
                 onClose={() => setIsDrawerOpen(false)}
-                title={drawerView === 'menu' ? t("app.menu") : drawerView === 'help' ? t("app.strokeGuide") : t("app.deviceTips")}
+                title={drawerView === 'menu' ? t("app.menu") : drawerView === 'help' ? t("app.strokeGuide") : drawerView === 'tips' ? t("app.deviceTips") : t("app.posGuide")}
             >
                 {drawerView === 'menu' ? (
                     <>
@@ -581,6 +581,25 @@ export default function App() {
                                     <span>{t("help.tips")}</span>
                                     <span>→</span>
                                 </button>
+                                <button
+                                    onClick={() => setDrawerView('pos-help')}
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--border)",
+                                        background: "var(--surface)",
+                                        color: "var(--text)",
+                                        cursor: "pointer",
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }}
+                                >
+                                    <span>{t("help.posAbbrev")}</span>
+                                    <span>→</span>
+                                </button>
                             </div>
                         </div>
 
@@ -654,6 +673,69 @@ export default function App() {
                             </ul>
                         </div>
                     </div>
+                ) : (
+                <div>
+                    <button
+                        onClick={() => setDrawerView('menu')}
+                        style={{
+                            background: "none",
+                            border: "none",
+                            padding: "0 0 16px 0",
+                            color: "var(--muted)",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            fontSize: "14px"
+                        }}
+                    >
+                        ← {t("app.back")}
+                    </button>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                        <section>
+                            <h3 style={{ margin: "0 0 12px 0", color: "var(--accent)" }}>{t("help.posTitle")}</h3>
+                            <p style={{ margin: "0 0 16px 0", fontSize: 14, lineHeight: 1.6, color: "var(--muted)" }}>
+                                {t("help.posDesc")}
+                            </p>
+                        </section>
+
+                        {[
+                            { abbrev: "n", full: t("pos.n"), desc: t("help.posN") },
+                            { abbrev: "v", full: t("pos.v"), desc: t("help.posV") },
+                            { abbrev: "a", full: t("pos.a"), desc: t("help.posA") },
+                            { abbrev: "d", full: t("pos.d"), desc: t("help.posD") },
+                            { abbrev: "r", full: t("pos.r"), desc: t("help.posR") },
+                            { abbrev: "c", full: t("pos.c"), desc: t("help.posC") },
+                            { abbrev: "i", full: t("pos.i"), desc: t("help.posI") },
+                            { abbrev: "l", full: t("pos.l"), desc: t("help.posL") }
+                        ].map((item) => (
+                            <section key={item.abbrev} style={{
+                                background: "var(--surface-strong)",
+                                padding: 12,
+                                borderRadius: 8,
+                                border: "1px solid var(--border)"
+                            }}>
+                                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
+                                    <code style={{
+                                        background: "var(--accent)",
+                                        color: "var(--accent-contrast)",
+                                        padding: "2px 6px",
+                                        borderRadius: 4,
+                                        fontSize: 13,
+                                        fontWeight: 700
+                                    }}>
+                                        {item.abbrev}
+                                    </code>
+                                    <span style={{ fontSize: 15, fontWeight: 600 }}>{item.full}</span>
+                                </div>
+                                <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.5 }}>
+                                    {item.desc}
+                                </div>
+                            </section>
+                        ))}
+                    </div>
+                </div>
                 )}
             </Drawer>
 
