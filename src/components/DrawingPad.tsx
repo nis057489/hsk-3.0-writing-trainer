@@ -339,6 +339,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                         left: 0,
                         width: '100%',
                         height: '100%',
+                        zIndex: 1,
                         pointerEvents: 'none',
                     }}
                 />
