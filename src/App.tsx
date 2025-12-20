@@ -11,6 +11,27 @@ import { ensureState, loadProgress, nextState, saveProgress } from "./lib/schedu
 
 type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
+type Prefs = {
+    selectedLevels: string[];
+    selectedPos: string[];
+    characterMode: 'simplified' | 'traditional';
+    leftHanded: boolean;
+    tracingMode: boolean;
+    mode: 'flashcard' | 'sentence';
+    language: string;
+};
+
+function readPrefs<T>(key: string, fallback: T): T {
+    try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        return { ...fallback, ...parsed };
+    } catch {
+        return fallback;
+    }
+}
+
 function pickDue(cards: Card[], progressMap: Record<string, any>) {
     const now = Date.now();
     const due = cards.filter(c => ensureState(c.id, progressMap).due <= now);
@@ -21,17 +42,29 @@ export default function App() {
     const { t, i18n } = useTranslation();
     const allCards = vocab as Card[];
 
+    const prefDefaults: Prefs = {
+        selectedLevels: ["new-1"],
+        selectedPos: [],
+        characterMode: 'simplified',
+        leftHanded: false,
+        tracingMode: false,
+        mode: 'flashcard',
+        language: i18n.resolvedLanguage || "en"
+    };
+
+    const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
+
     const [progress, setProgress] = useState(() => loadProgress());
 
     // Filters
-    const [selectedLevels, setSelectedLevels] = useState<string[]>(["new-1"]);
-    const [selectedPos, setSelectedPos] = useState<string[]>([]);
+    const [selectedLevels, setSelectedLevels] = useState<string[]>(storedPrefs.selectedLevels || ["new-1"]);
+    const [selectedPos, setSelectedPos] = useState<string[]>(storedPrefs.selectedPos || []);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>('simplified');
-    const [leftHanded, setLeftHanded] = useState(false);
+    const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>(storedPrefs.characterMode || 'simplified');
+    const [leftHanded, setLeftHanded] = useState(storedPrefs.leftHanded ?? false);
     const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips'>('menu');
     const [theme, setTheme] = useState<ThemeChoice>(() => (localStorage.getItem("theme") as ThemeChoice) || "system");
-    const [language, setLanguage] = useState<string>(i18n.resolvedLanguage || "en");
+    const [language, setLanguage] = useState<string>(storedPrefs.language || i18n.resolvedLanguage || "en");
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -66,8 +99,8 @@ export default function App() {
     const [queue, setQueue] = useState<Card[]>([]);
     const [idx, setIdx] = useState(0);
     const [reveal, setReveal] = useState(false);
-    const [tracingMode, setTracingMode] = useState(false);
-    const [mode, setMode] = useState<'flashcard' | 'sentence'>('flashcard');
+    const [tracingMode, setTracingMode] = useState(storedPrefs.tracingMode ?? false);
+    const [mode, setMode] = useState<'flashcard' | 'sentence'>(storedPrefs.mode || 'flashcard');
     const [sentenceText, setSentenceText] = useState("");
 
     // Initialize queue when filters change
@@ -98,6 +131,20 @@ export default function App() {
     useEffect(() => {
         i18n.changeLanguage(language);
     }, [language, i18n]);
+
+    // Persist user preferences
+    useEffect(() => {
+        const payload: Prefs = {
+            selectedLevels,
+            selectedPos,
+            characterMode,
+            leftHanded,
+            tracingMode,
+            mode,
+            language
+        };
+        localStorage.setItem("prefs.state", JSON.stringify(payload));
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, mode, language]);
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
