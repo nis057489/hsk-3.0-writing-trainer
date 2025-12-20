@@ -60,7 +60,8 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
 
-            <div className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 8, justifyContent: "flex-start" }}>
+            {/* key={text} ensures all drawing pads remount when word changes, clearing previous strokes */}
+            <div key={text} className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 8, justifyContent: "flex-start" }}>
                 {characters.map((char, index) => {
                     const key = `${char}-${index}`;
                     const handler = padHandlers[key];
