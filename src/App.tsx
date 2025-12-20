@@ -5,6 +5,10 @@ import { Flashcard } from "./components/Flashcard";
 import { Toolbar } from "./components/Toolbar";
 import { Drawer } from "./components/Drawer";
 import { PracticeArea } from "./components/PracticeArea";
+import { DrawerMenu } from "./components/drawer/DrawerMenu";
+import { DrawerHelp } from "./components/drawer/DrawerHelp";
+import { DrawerTips } from "./components/drawer/DrawerTips";
+import { DrawerPosHelp } from "./components/drawer/DrawerPosHelp";
 import vocab from "./data/hsk.json";
 import { Card, Grade } from "./lib/types";
 import { ensureState, loadProgress, nextState, saveProgress } from "./lib/scheduler";
@@ -171,19 +175,6 @@ export default function App() {
         localStorage.setItem("prefs.state", JSON.stringify(payload));
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont]);
 
-    const padSizeOptions: { value: PadSizeChoice; label: string }[] = [
-        { value: "xs", label: t("options.padSizeXs") },
-        { value: "small", label: t("options.padSizeSmall") },
-        { value: "medium", label: t("options.padSizeMedium") },
-        { value: "large", label: t("options.padSizeLarge") }
-    ];
-
-    const traceFontOptions: { value: TraceFontChoice; label: string }[] = [
-        { value: "handwritten", label: t("options.traceFontHandwritten") },
-        { value: "kai", label: t("options.traceFontKai") },
-        { value: "system", label: t("options.traceFontSystem") }
-    ];
-
     const basePadSize = padSizeChoice === "xs"
         ? 90
         : padSizeChoice === "small"
@@ -236,29 +227,14 @@ export default function App() {
         );
     };
 
-    const themeOptions: { value: ThemeChoice; label: string }[] = [
-        { value: "light", label: t("options.themeLight") },
-        { value: "dark", label: t("options.themeDark") },
-        { value: "contrast", label: t("options.themeContrast") },
-        { value: "system", label: t("options.themeSystem") }
-    ];
-
-    const languageOptions = [
-        { value: "en", label: "English" },
-        { value: "zh", label: "中文" },
-        { value: "zh-Hant", label: "繁體中文" },
-        { value: "es", label: "Español" },
-        { value: "fr", label: "Français" },
-        { value: "vi", label: "Tiếng Việt" },
-        { value: "fil", label: "Filipino" },
-        { value: "ko", label: "한국어" },
-        { value: "ar", label: "العربية" },
-        { value: "ru", label: "Русский" },
-        { value: "tr", label: "Türkçe" },
-        { value: "hi", label: "हिन्दी" },
-        { value: "fa", label: "فارسی" },
-        { value: "pt", label: "Português" }
-    ];
+    const getDrawerTitle = () => {
+        switch (drawerView) {
+            case 'menu': return t("app.menu");
+            case 'help': return t("app.strokeGuide");
+            case 'tips': return t("app.deviceTips");
+            case 'pos-help': return t("app.posGuide");
+        }
+    };
 
     return (
         <div className="app">
@@ -288,455 +264,44 @@ export default function App() {
             <Drawer
                 isOpen={isDrawerOpen}
                 onClose={() => setIsDrawerOpen(false)}
-                title={drawerView === 'menu' ? t("app.menu") : drawerView === 'help' ? t("app.strokeGuide") : drawerView === 'tips' ? t("app.deviceTips") : t("app.posGuide")}
+                title={getDrawerTitle()}
             >
-                {drawerView === 'menu' ? (
-                    <>
-                        <div style={{ marginBottom: 24 }}>
-                            <h2 style={{ margin: "0 0 8px 0", color: "var(--accent)", fontSize: 20 }}>{t("app.title")}</h2>
-                            <p style={{ margin: 0, fontSize: 14, opacity: 0.8 }}>{t("app.subtitle")}</p>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("mode.title")}</h3>
-                            <div style={{ display: "flex", gap: 8 }}>
-                                <button
-                                    onClick={() => { setMode('flashcard'); setIsDrawerOpen(false); }}
-                                    aria-pressed={mode === 'flashcard'}
-                                    style={{
-                                        flex: 1,
-                                        padding: "8px",
-                                        borderRadius: "8px",
-                                        border: "1px solid var(--border)",
-                                        background: mode === 'flashcard' ? "var(--accent)" : "var(--surface-strong)",
-                                        color: mode === 'flashcard' ? "var(--accent-contrast)" : "var(--muted)",
-                                        cursor: "pointer",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    {t("mode.flashcard")}
-                                </button>
-                                <button
-                                    onClick={() => { setMode('sentence'); setIsDrawerOpen(false); }}
-                                    aria-pressed={mode === 'sentence'}
-                                    style={{
-                                        flex: 1,
-                                        padding: "8px",
-                                        borderRadius: "8px",
-                                        border: "1px solid var(--border)",
-                                        background: mode === 'sentence' ? "var(--accent)" : "var(--surface-strong)",
-                                        color: mode === 'sentence' ? "var(--accent-contrast)" : "var(--muted)",
-                                        cursor: "pointer",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    {t("mode.sentence")}
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("layout.title")}</h3>
-                            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                                <input
-                                    type="checkbox"
-                                    checked={leftHanded}
-                                    onChange={(e) => setLeftHanded(e.target.checked)}
-                                />
-                                {t("layout.leftHanded")}
-                            </label>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("levels.title")}</h3>
-                            <div className="filter-group" role="list">
-                                {levels.map(l => (
-                                    <div
-                                        key={l.id}
-                                        role="button"
-                                        tabIndex={0}
-                                        aria-pressed={selectedLevels.includes(l.id)}
-                                        className={`filter-chip ${selectedLevels.includes(l.id) ? 'active' : ''}`}
-                                        onClick={() => toggleLevel(l.id)}
-                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleLevel(l.id); }}
-                                    >
-                                        {l.label}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("pos.title")}</h3>
-                            <div className="filter-group" role="list">
-                                {posGroups.map(p => (
-                                    <div
-                                        key={p.id}
-                                        role="button"
-                                        tabIndex={0}
-                                        aria-pressed={selectedPos.includes(p.id)}
-                                        className={`filter-chip ${selectedPos.includes(p.id) ? 'active' : ''}`}
-                                        onClick={() => togglePos(p.id)}
-                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') togglePos(p.id); }}
-                                    >
-                                        {p.label}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("options.title")}</h3>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                                    <input
-                                        type="checkbox"
-                                        checked={tracingMode}
-                                        onChange={(e) => setTracingMode(e.target.checked)}
-                                    />
-                                    {t("options.tracing")}
-                                </label>
-
-                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                                    <input
-                                        type="checkbox"
-                                        checked={showHoverIndicator}
-                                        onChange={(e) => setShowHoverIndicator(e.target.checked)}
-                                    />
-                                    {t("options.hoverIndicator")}
-                                </label>
-
-                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
-                                    <input
-                                        type="checkbox"
-                                        checked={showDetailsDefault}
-                                        onChange={(e) => setShowDetailsDefault(e.target.checked)}
-                                    />
-                                    {t("options.showDetailsDefault")}
-                                </label>
-
-                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                                    <span style={{ color: "var(--muted)" }}>{t("options.padSize")}</span>
-                                    <select
-                                        value={padSizeChoice}
-                                        onChange={(e) => setPadSizeChoice(e.target.value as PadSizeChoice)}
-                                        style={{
-                                            padding: "8px 10px",
-                                            borderRadius: 8,
-                                            border: "1px solid var(--border)",
-                                            background: "var(--surface)",
-                                            color: "var(--text)",
-                                            fontSize: 14
-                                        }}
-                                        aria-label={t("options.padSize")}
-                                    >
-                                        {padSizeOptions.map(opt => (
-                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                        ))}
-                                    </select>
-                                </label>
-
-                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                                    <span style={{ color: "var(--muted)" }}>{t("options.traceFont")}</span>
-                                    <select
-                                        value={traceFont}
-                                        onChange={(e) => setTraceFont(e.target.value as TraceFontChoice)}
-                                        style={{
-                                            padding: "8px 10px",
-                                            borderRadius: 8,
-                                            border: "1px solid var(--border)",
-                                            background: "var(--surface)",
-                                            color: "var(--text)",
-                                            fontSize: 14
-                                        }}
-                                        aria-label={t("options.traceFont")}
-                                    >
-                                        {traceFontOptions.map(opt => (
-                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                        ))}
-                                    </select>
-                                </label>
-
-                                <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
-                                    <button
-                                        onClick={() => setCharacterMode('simplified')}
-                                        aria-pressed={characterMode === 'simplified'}
-                                        style={{
-                                            flex: 1,
-                                            border: "none",
-                                            background: characterMode === 'simplified' ? "var(--surface)" : "transparent",
-                                            boxShadow: characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                            borderRadius: 6,
-                                            padding: "6px 0",
-                                            fontSize: 13,
-                                            cursor: "pointer",
-                                            fontWeight: characterMode === 'simplified' ? "bold" : "normal",
-                                            color: characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
-                                        }}
-                                    >
-                                        {t("options.simplified")}
-                                    </button>
-                                    <button
-                                        onClick={() => setCharacterMode('traditional')}
-                                        aria-pressed={characterMode === 'traditional'}
-                                        style={{
-                                            flex: 1,
-                                            border: "none",
-                                            background: characterMode === 'traditional' ? "var(--surface)" : "transparent",
-                                            boxShadow: characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                                            borderRadius: 6,
-                                            padding: "6px 0",
-                                            fontSize: 13,
-                                            cursor: "pointer",
-                                            fontWeight: characterMode === 'traditional' ? "bold" : "normal",
-                                            color: characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
-                                        }}
-                                    >
-                                        {t("options.traditional")}
-                                    </button>
-                                </div>
-
-                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                                    <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
-                                    <select
-                                        value={language}
-                                        onChange={(e) => setLanguage(e.target.value)}
-                                        style={{
-                                            padding: "8px 10px",
-                                            borderRadius: 8,
-                                            border: "1px solid var(--border)",
-                                            background: "var(--surface)",
-                                            color: "var(--text)",
-                                            fontSize: 14
-                                        }}
-                                        aria-label={t("options.language")}
-                                    >
-                                        {languageOptions.map(opt => (
-                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                        ))}
-                                    </select>
-                                </label>
-
-                                <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                                    <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
-                                    <select
-                                        value={theme}
-                                        onChange={(e) => setTheme(e.target.value as ThemeChoice)}
-                                        style={{
-                                            padding: "8px 10px",
-                                            borderRadius: 8,
-                                            border: "1px solid var(--border)",
-                                            background: "var(--surface)",
-                                            color: "var(--text)",
-                                            fontSize: 14
-                                        }}
-                                        aria-label={t("options.theme")}
-                                    >
-                                        {themeOptions.map(opt => (
-                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                        ))}
-                                    </select>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div className="filter-section">
-                            <h3>{t("help.title")}</h3>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                                <button
-                                    onClick={() => setDrawerView('help')}
-                                    style={{
-                                        width: "100%",
-                                        padding: "12px",
-                                        borderRadius: "8px",
-                                        border: "1px solid var(--border)",
-                                        background: "var(--surface)",
-                                        color: "var(--text)",
-                                        cursor: "pointer",
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        fontSize: "14px"
-                                    }}
-                                >
-                                    <span>{t("help.stroke")}</span>
-                                    <span>→</span>
-                                </button>
-                                <button
-                                    onClick={() => setDrawerView('tips')}
-                                    style={{
-                                        width: "100%",
-                                        padding: "12px",
-                                        borderRadius: "8px",
-                                        border: "1px solid var(--border)",
-                                        background: "var(--surface)",
-                                        color: "var(--text)",
-                                        cursor: "pointer",
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        fontSize: "14px"
-                                    }}
-                                >
-                                    <span>{t("help.tips")}</span>
-                                    <span>→</span>
-                                </button>
-                                <button
-                                    onClick={() => setDrawerView('pos-help')}
-                                    style={{
-                                        width: "100%",
-                                        padding: "12px",
-                                        borderRadius: "8px",
-                                        border: "1px solid var(--border)",
-                                        background: "var(--surface)",
-                                        color: "var(--text)",
-                                        cursor: "pointer",
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        fontSize: "14px"
-                                    }}
-                                >
-                                    <span>{t("help.posAbbrev")}</span>
-                                    <span>→</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div style={{ marginTop: 24, fontSize: 13, color: "var(--muted)" }}>
-                            {t("stats.available", { count: filteredCards.length })}
-                        </div>
-                    </>
-                ) : drawerView === 'help' ? (
-                    <div>
-                        <button
-                            onClick={() => setDrawerView('menu')}
-                            style={{
-                                background: "none",
-                                border: "none",
-                                padding: "0 0 16px 0",
-                                color: "var(--muted)",
-                                cursor: "pointer",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
-                                fontSize: "14px"
-                            }}
-                        >
-                            ← {t("app.back")}
-                        </button>
-
-                        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                            <section>
-                                <h3 style={{ margin: "0 0 8px 0", color: "var(--accent)" }}>{t("help.generalRules")}</h3>
-                                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "var(--text)" }}>
-                                    {t("app.subtitle")}
-                                </p>
-                            </section>
-
-                            {[1, 2, 3, 4, 5, 6].map((n) => (
-                                <section key={n}>
-                                    <h4 style={{ margin: "0 0 8px 0", fontSize: 15 }}>{n}. {t(`help.rule${n}` as const)}</h4>
-                                    <div style={{ background: "var(--surface-strong)", padding: 12, borderRadius: 8, fontSize: 14, border: "1px solid var(--border)" }}>
-                                        {t(`help.rule${n}Desc` as const)}
-                                    </div>
-                                </section>
-                            ))}
-                        </div>
-                    </div>
-                ) : (
-                    <div>
-                        <button
-                            onClick={() => setDrawerView('menu')}
-                            style={{
-                                background: "none",
-                                border: "none",
-                                padding: "0 0 16px 0",
-                                color: "var(--muted)",
-                                cursor: "pointer",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
-                                fontSize: "14px"
-                            }}
-                        >
-                            ← {t("app.back")}
-                        </button>
-
-                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                            <h3 style={{ margin: 0, color: "var(--accent)" }}>{t("help.deviceTitle")}</h3>
-                            <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.6, color: "var(--text)" }}>
-                                <li>{t("help.tip1")}</li>
-                                <li>{t("help.tip2")}</li>
-                                <li>{t("help.tip3")}</li>
-                                <li>{t("help.tip4")}</li>
-                            </ul>
-                        </div>
-                    </div>
-                ) : (
-                <div>
-                    <button
-                        onClick={() => setDrawerView('menu')}
-                        style={{
-                            background: "none",
-                            border: "none",
-                            padding: "0 0 16px 0",
-                            color: "var(--muted)",
-                            cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            fontSize: "14px"
-                        }}
-                    >
-                        ← {t("app.back")}
-                    </button>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                        <section>
-                            <h3 style={{ margin: "0 0 12px 0", color: "var(--accent)" }}>{t("help.posTitle")}</h3>
-                            <p style={{ margin: "0 0 16px 0", fontSize: 14, lineHeight: 1.6, color: "var(--muted)" }}>
-                                {t("help.posDesc")}
-                            </p>
-                        </section>
-
-                        {[
-                            { abbrev: "n", full: t("pos.n"), desc: t("help.posN") },
-                            { abbrev: "v", full: t("pos.v"), desc: t("help.posV") },
-                            { abbrev: "a", full: t("pos.a"), desc: t("help.posA") },
-                            { abbrev: "d", full: t("pos.d"), desc: t("help.posD") },
-                            { abbrev: "r", full: t("pos.r"), desc: t("help.posR") },
-                            { abbrev: "c", full: t("pos.c"), desc: t("help.posC") },
-                            { abbrev: "i", full: t("pos.i"), desc: t("help.posI") },
-                            { abbrev: "l", full: t("pos.l"), desc: t("help.posL") }
-                        ].map((item) => (
-                            <section key={item.abbrev} style={{
-                                background: "var(--surface-strong)",
-                                padding: 12,
-                                borderRadius: 8,
-                                border: "1px solid var(--border)"
-                            }}>
-                                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
-                                    <code style={{
-                                        background: "var(--accent)",
-                                        color: "var(--accent-contrast)",
-                                        padding: "2px 6px",
-                                        borderRadius: 4,
-                                        fontSize: 13,
-                                        fontWeight: 700
-                                    }}>
-                                        {item.abbrev}
-                                    </code>
-                                    <span style={{ fontSize: 15, fontWeight: 600 }}>{item.full}</span>
-                                </div>
-                                <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.5 }}>
-                                    {item.desc}
-                                </div>
-                            </section>
-                        ))}
-                    </div>
-                </div>
+                {drawerView === 'menu' && (
+                    <DrawerMenu
+                        mode={mode}
+                        setMode={setMode}
+                        leftHanded={leftHanded}
+                        setLeftHanded={setLeftHanded}
+                        levels={levels}
+                        selectedLevels={selectedLevels}
+                        toggleLevel={toggleLevel}
+                        posGroups={posGroups}
+                        selectedPos={selectedPos}
+                        togglePos={togglePos}
+                        tracingMode={tracingMode}
+                        setTracingMode={setTracingMode}
+                        showHoverIndicator={showHoverIndicator}
+                        setShowHoverIndicator={setShowHoverIndicator}
+                        showDetailsDefault={showDetailsDefault}
+                        setShowDetailsDefault={setShowDetailsDefault}
+                        padSizeChoice={padSizeChoice}
+                        setPadSizeChoice={setPadSizeChoice}
+                        traceFont={traceFont}
+                        setTraceFont={setTraceFont}
+                        characterMode={characterMode}
+                        setCharacterMode={setCharacterMode}
+                        language={language}
+                        setLanguage={setLanguage}
+                        theme={theme}
+                        setTheme={setTheme}
+                        filteredCardsCount={filteredCards.length}
+                        onNavigate={setDrawerView}
+                        onClose={() => setIsDrawerOpen(false)}
+                    />
                 )}
+                {drawerView === 'help' && <DrawerHelp onBack={() => setDrawerView('menu')} />}
+                {drawerView === 'tips' && <DrawerTips onBack={() => setDrawerView('menu')} />}
+                {drawerView === 'pos-help' && <DrawerPosHelp onBack={() => setDrawerView('menu')} />}
             </Drawer>
 
             {mode === 'flashcard' ? (
