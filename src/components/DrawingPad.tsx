@@ -103,7 +103,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             ctx.save();
             ctx.globalAlpha = 0.15;
             const fontSize = s * 0.65;
-            
+
             let fontStack: string;
             if (traceFont === "handwritten") {
                 fontStack = '"Ma Shan Zheng", "ZCOOL KuaiLe", cursive';
@@ -112,7 +112,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             } else {
                 fontStack = 'system-ui, -apple-system, sans-serif';
             }
-            
+
             ctx.font = `${fontSize}px ${fontStack}`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
