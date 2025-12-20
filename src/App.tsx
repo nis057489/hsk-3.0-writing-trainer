@@ -684,20 +684,12 @@ export default function App() {
                             {t("sentence.empty")}
                         </div>
                     ) : (
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 16 }}>
-                            {sentenceText.split("").map((char, i) => (
-                                <div key={i} className="card" style={{ padding: 12 }}>
-                                    <div style={{ width: `${basePadSize}px`, height: `${basePadSize}px`, maxWidth: "100%", margin: "0 auto" }}>
-                                        <DrawingPad
-                                            tracingMode={tracingMode}
-                                            character={char}
-                                            showHoverIndicator={showHoverIndicator}
-                                            size={basePadSize}
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <PracticeArea
+                            text={sentenceText}
+                            tracingMode={tracingMode}
+                            showHoverIndicator={showHoverIndicator}
+                            padSizeChoice={padSizeChoice}
+                        />
                     )}
                 </div>
             )}
