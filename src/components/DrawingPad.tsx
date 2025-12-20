@@ -104,7 +104,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.strokeStyle = "#111";
-        ctx.lineWidth = 10 * dpr; // Fixed width or relative? Fixed is probably better for feel.
+        ctx.lineWidth = (canvasSize / 30) * dpr;
 
         for (const stroke of strokes) {
             if (stroke.length < 2) continue;
@@ -155,7 +155,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             ctx.save();
             ctx.fillStyle = "#111";
             ctx.beginPath();
-            ctx.arc(pt.x * s, pt.y * s, 5 * dpr, 0, Math.PI * 2);
+            ctx.arc(pt.x * s, pt.y * s, (canvasSize / 60) * dpr, 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
         };
@@ -179,7 +179,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
             ctx.strokeStyle = "#111";
-            ctx.lineWidth = 10 * dpr;
+            ctx.lineWidth = (canvasSize / 30) * dpr;
             ctx.beginPath();
             ctx.moveTo(a.x * s, a.y * s);
             ctx.lineTo(b.x * s, b.y * s);

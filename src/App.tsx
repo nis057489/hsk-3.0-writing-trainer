@@ -44,6 +44,7 @@ export default function App() {
     const [selectedPos, setSelectedPos] = useState<string[]>([]);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>('simplified');
+    const [leftHanded, setLeftHanded] = useState(false);
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -113,19 +114,40 @@ export default function App() {
 
     return (
         <div className="app">
-            <header className="header">
-                <div>
-                    <h1>HSK Writing Trainer</h1>
-                    <p>Master Chinese characters with spaced repetition and stroke practice.</p>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
+                <button
+                    onClick={() => setIsDrawerOpen(true)}
+                    style={{
+                        background: "white",
+                        border: "1px solid #ddd",
+                        borderRadius: "8px",
+                        padding: "8px 16px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        color: "#333",
+                        fontWeight: "bold",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
+                    }}
+                >
+                    Menu
+                </button>
+            </div>
+
+            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Menu">
+                <div style={{ marginBottom: 24 }}>
+                    <h2 style={{ margin: "0 0 8px 0", color: "var(--primary-red)", fontSize: 20 }}>HSK Writing Trainer</h2>
+                    <p style={{ margin: 0, fontSize: 14, opacity: 0.6 }}>Master Chinese characters.</p>
                 </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+
+                <div className="filter-section">
+                    <h3>Mode</h3>
                     <div style={{ display: "flex", gap: 8 }}>
                         <button
-                            className={mode === 'flashcard' ? 'active' : ''}
-                            onClick={() => setMode('flashcard')}
+                            onClick={() => { setMode('flashcard'); setIsDrawerOpen(false); }}
                             style={{
-                                padding: "8px 16px",
-                                borderRadius: "20px",
+                                flex: 1,
+                                padding: "8px",
+                                borderRadius: "8px",
                                 border: "none",
                                 background: mode === 'flashcard' ? "var(--primary-red)" : "#eee",
                                 color: mode === 'flashcard' ? "white" : "#666",
@@ -136,11 +158,11 @@ export default function App() {
                             Flashcards
                         </button>
                         <button
-                            className={mode === 'sentence' ? 'active' : ''}
-                            onClick={() => setMode('sentence')}
+                            onClick={() => { setMode('sentence'); setIsDrawerOpen(false); }}
                             style={{
-                                padding: "8px 16px",
-                                borderRadius: "20px",
+                                flex: 1,
+                                padding: "8px",
+                                borderRadius: "8px",
                                 border: "none",
                                 background: mode === 'sentence' ? "var(--primary-red)" : "#eee",
                                 color: mode === 'sentence' ? "white" : "#666",
@@ -148,27 +170,23 @@ export default function App() {
                                 fontWeight: "bold"
                             }}
                         >
-                            Sentence Mode
+                            Sentence
                         </button>
                     </div>
-                    <button
-                        onClick={() => setIsDrawerOpen(true)}
-                        style={{
-                            background: "none",
-                            border: "1px solid #ddd",
-                            borderRadius: "8px",
-                            padding: "8px 12px",
-                            cursor: "pointer",
-                            fontSize: "14px",
-                            color: "#333"
-                        }}
-                    >
-                        Settings
-                    </button>
                 </div>
-            </header>
 
-            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Settings">
+                <div className="filter-section">
+                    <h3>Layout</h3>
+                    <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                        <input
+                            type="checkbox"
+                            checked={leftHanded}
+                            onChange={(e) => setLeftHanded(e.target.checked)}
+                        />
+                        Left Handed Mode
+                    </label>
+                </div>
+
                 <div className="filter-section">
                     <h3>Levels</h3>
                     <div className="filter-group">
@@ -254,39 +272,43 @@ export default function App() {
             </Drawer>
 
             {mode === 'flashcard' ? (
-                <div className="grid">
-                    <main style={{ gridColumn: "1 / -1", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: 24 }}>
-                        {card ? (
-                            <>
-                                <div>
-                                    <Flashcard
-                                        card={{
-                                            ...card,
-                                            hanzi: characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi
-                                        }}
-                                        reveal={reveal}
-                                        onToggleReveal={() => setReveal((r) => !r)}
-                                    />
-                                    <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
-                                </div>
-
-                                <div className="card" style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ marginTop: 0, color: "#888", fontSize: 14, textTransform: "uppercase" }}>Practice Area</h3>
-                                    <div style={{ flex: 1, minHeight: 300 }}>
-                                        <DrawingPad
-                                            tracingMode={tracingMode}
-                                            character={characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi}
-                                        />
-                                    </div>
-                                </div>
-                            </>
-                        ) : (
-                            <div className="card" style={{ textAlign: "center", padding: 40, gridColumn: "1 / -1" }}>
-                                <h3>No cards found</h3>
-                                <p>Try adjusting your filters in Settings to see more words.</p>
+                <div className="practice-container" style={{
+                    display: "flex",
+                    flexDirection: leftHanded ? "row-reverse" : "row",
+                    flexWrap: "wrap",
+                    gap: 24,
+                    alignItems: "start"
+                }}>
+                    {card ? (
+                        <>
+                            <div style={{ flex: "1 1 300px" }}>
+                                <Flashcard
+                                    card={{
+                                        ...card,
+                                        hanzi: characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi
+                                    }}
+                                    reveal={reveal}
+                                    onToggleReveal={() => setReveal((r) => !r)}
+                                />
+                                <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
                             </div>
-                        )}
-                    </main>
+
+                            <div className="card" style={{ flex: "1 1 300px", display: "flex", flexDirection: "column" }}>
+                                <h3 style={{ marginTop: 0, color: "#888", fontSize: 14, textTransform: "uppercase" }}>Practice Area</h3>
+                                <div style={{ flex: 1, minHeight: 400 }}>
+                                    <DrawingPad
+                                        tracingMode={tracingMode}
+                                        character={characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi}
+                                    />
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="card" style={{ textAlign: "center", padding: 40, width: "100%" }}>
+                            <h3>No cards found</h3>
+                            <p>Try adjusting your filters in Settings to see more words.</p>
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div style={{ maxWidth: 900, margin: "0 auto" }}>
@@ -313,7 +335,7 @@ export default function App() {
                     ) : (
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 16 }}>
                             {sentenceText.split("").map((char, i) => (
-                                <div key={i} className="card" style={{ padding: 12, aspectRatio: "1/1" }}>
+                                <div key={i} className="card" style={{ padding: 12 }}>
                                     <DrawingPad tracingMode={tracingMode} character={char} />
                                 </div>
                             ))}
