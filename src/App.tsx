@@ -216,7 +216,31 @@ export default function App() {
         { id: "z", label: t("pos.z") }
     ]), [t]);
 
-    const posGroups = advancedPosFilter ? advancedPosGroups : simplePosGroups;
+    // Filter POS groups to only show categories with available cards
+    const posGroups = useMemo(() => {
+        const groups = advancedPosFilter ? advancedPosGroups : simplePosGroups;
+        
+        // Count cards for each POS category (considering current level filter)
+        const levelFilteredCards = allCards.filter(card => 
+            selectedLevels.length === 0 || (card.level && card.level.some(l => selectedLevels.includes(l)))
+        );
+        
+        return groups.filter(group => {
+            // Check if any cards match this POS category
+            return levelFilteredCards.some(card => {
+                if (!card.pos) return false;
+                
+                if (advancedPosFilter) {
+                    // Advanced mode: exact match
+                    return card.pos.includes(group.id);
+                } else {
+                    // Simple mode: check if any card POS maps to this simple category
+                    const mappedCodes = posMapping[group.id] || [group.id];
+                    return card.pos.some(p => mappedCodes.includes(p));
+                }
+            });
+        });
+    }, [advancedPosFilter, advancedPosGroups, simplePosGroups, selectedLevels, allCards, posMapping]);
 
     const [queue, setQueue] = useState<Card[]>([]);
     const [idx, setIdx] = useState(0);
