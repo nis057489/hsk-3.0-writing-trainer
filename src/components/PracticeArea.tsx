@@ -12,6 +12,7 @@ interface PracticeAreaProps {
 export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
+    const [padHandlers, setPadHandlers] = useState<Record<string, { undo: () => void; clear: () => void; hasStrokes: boolean }>>({});
 
     useEffect(() => {
         const update = () => {
@@ -60,20 +61,46 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
             </div>
 
             <div className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 8, justifyContent: "flex-start" }}>
-                {characters.map((char, index) => (
-                    <div key={`${char}-${index}`} className="trace-cell">
-                        <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
-                        <div className="trace-pad" style={{ width: `${padSize}px`, height: `${padSize}px`, maxWidth: "100%" }}>
-                            <DrawingPad
-                                size={padSize}
-                                tracingMode={tracingMode}
-                                character={char}
-                                showHoverIndicator={showHoverIndicator}
-                            />
+                {characters.map((char, index) => {
+                    const key = `${char}-${index}`;
+                    const handler = padHandlers[key];
+                    return (
+                        <div key={key} className="trace-cell">
+                            <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
+                            <div className="trace-pad" style={{ width: `${padSize}px`, height: `${padSize}px`, maxWidth: "100%" }}>
+                                <DrawingPad
+                                    size={padSize}
+                                    tracingMode={tracingMode}
+                                    character={char}
+                                    showHoverIndicator={showHoverIndicator}
+                                    onUndoClick={(undo, hasStrokes) => {
+                                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], undo, hasStrokes } }));
+                                    }}
+                                    onClearClick={(clear, hasStrokes) => {
+                                        setPadHandlers(prev => ({ ...prev, [key]: { ...prev[key], clear, hasStrokes } }));
+                                    }}
+                                />
+                            </div>
+                            <div className="trace-char">{char}</div>
+                            <div className="pad-controls">
+                                <button
+                                    onClick={() => handler?.undo()}
+                                    disabled={!handler?.hasStrokes}
+                                    aria-label={t("controls.undo")}
+                                >
+                                    ↩
+                                </button>
+                                <button
+                                    onClick={() => handler?.clear()}
+                                    disabled={!handler?.hasStrokes}
+                                    aria-label={t("controls.clear")}
+                                >
+                                    ✕
+                                </button>
+                            </div>
                         </div>
-                        <div className="trace-char">{char}</div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

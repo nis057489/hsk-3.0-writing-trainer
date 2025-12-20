@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 type Point = { x: number; y: number };
 type Stroke = Point[];
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false }: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string; showHoverIndicator?: boolean }) {
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, onUndoClick, onClearClick }: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string; showHoverIndicator?: boolean; onUndoClick?: (undo: () => void, hasStrokes: boolean) => void; onClearClick?: (clear: () => void, hasStrokes: boolean) => void }) {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -246,6 +246,11 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     const undo = () => setStrokes((prev: Stroke[]) => prev.slice(0, -1));
 
     useEffect(() => {
+        if (onUndoClick) onUndoClick(undo, strokes.length > 0);
+        if (onClearClick) onClearClick(clear, strokes.length > 0);
+    }, [strokes.length, onUndoClick, onClearClick]);
+
+    useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
@@ -322,22 +327,6 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                         }}
                     />
                 )}
-            </div>
-            <div className="pad-controls">
-                <button
-                    onClick={undo}
-                    disabled={strokes.length === 0}
-                    aria-label={t("controls.undo")}
-                >
-                    ↩
-                </button>
-                <button
-                    onClick={clear}
-                    disabled={strokes.length === 0}
-                    aria-label={t("controls.clear")}
-                >
-                    ✕
-                </button>
             </div>
         </div>
     );
