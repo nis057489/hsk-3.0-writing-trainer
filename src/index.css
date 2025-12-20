@@ -388,7 +388,6 @@ body {
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 89ms;
 }
 
 .drawer-backdrop.open {
