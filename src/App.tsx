@@ -257,7 +257,13 @@ export default function App() {
     const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
     const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
     const [promptFont, setPromptFont] = useState<PromptFontChoice>(storedPrefs.promptFont || "handwritten");
-    const [gridStyle, setGridStyle] = useState<GridStyleChoice>(storedPrefs.gridStyle || "rice");
+    const normalizeGridStyle = (value: string | undefined): GridStyleChoice => {
+        if (value === "field" || value === "rice") return value;
+        if (value === "cross") return "field";
+        return "rice";
+    };
+
+    const [gridStyle, setGridStyle] = useState<GridStyleChoice>(normalizeGridStyle(storedPrefs.gridStyle));
     const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
     const [reveal, setReveal] = useState(showDetailsDefault);
 
@@ -314,7 +320,7 @@ export default function App() {
             gridVerticalShift
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, gridStyle, gridVerticalShift]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
@@ -481,6 +487,8 @@ export default function App() {
                                     padSizeChoice={padSizeChoice}
                                     showHoverIndicator={showHoverIndicator}
                                     traceFont={traceFont}
+                                    gridStyle={gridStyle}
+                                    gridVerticalShift={gridVerticalShift}
                                 />
                             </div>
                         </>
