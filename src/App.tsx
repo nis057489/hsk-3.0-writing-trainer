@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
@@ -58,6 +58,34 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
 
 const allCards = vocab as Card[];
 
+// Map detailed POS codes to simple categories - moved outside component to prevent recreation
+const posMapping: Record<string, string[]> = {
+    "n": ["n", "ng", "nr", "ns", "nt", "nx", "nz"],
+    "v": ["v", "vd", "vg", "vn"],
+    "a": ["a", "ad", "ag", "an", "b"],
+    "d": ["d", "dg"],
+    "r": ["r", "rg"],
+    "c": ["c"],
+    "i": ["i", "j"],
+    "l": ["l"],
+    "m": ["m", "mg"],
+    "t": ["t", "tg"],
+    "e": ["e"],
+    "f": ["f"],
+    "g": ["g"],
+    "h": ["h"],
+    "k": ["k"],
+    "o": ["o"],
+    "p": ["p"],
+    "q": ["q"],
+    "s": ["s"],
+    "u": ["u"],
+    "w": ["w"],
+    "x": ["x"],
+    "y": ["y"],
+    "z": ["z"]
+};
+
 export default function App() {
     const { t, i18n } = useTranslation();
 
@@ -93,34 +121,6 @@ export default function App() {
     const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips' | 'pos-help'>('menu');
     const [theme, setTheme] = useState<ThemeChoice>(() => (localStorage.getItem("theme") as ThemeChoice) || "system");
     const [language, setLanguage] = useState<string>(storedPrefs.language || i18n.resolvedLanguage || "en");
-
-    // Map detailed POS codes to simple categories
-    const posMapping: Record<string, string[]> = {
-        "n": ["n", "ng", "nr", "ns", "nt", "nx", "nz"],
-        "v": ["v", "vd", "vg", "vn"],
-        "a": ["a", "ad", "ag", "an", "b"],
-        "d": ["d", "dg"],
-        "r": ["r", "rg"],
-        "c": ["c"],
-        "i": ["i", "j"],
-        "l": ["l"],
-        "m": ["m", "mg"],
-        "t": ["t", "tg"],
-        "e": ["e"],
-        "f": ["f"],
-        "g": ["g"],
-        "h": ["h"],
-        "k": ["k"],
-        "o": ["o"],
-        "p": ["p"],
-        "q": ["q"],
-        "s": ["s"],
-        "u": ["u"],
-        "w": ["w"],
-        "x": ["x"],
-        "y": ["y"],
-        "z": ["z"]
-    };
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -267,6 +267,9 @@ export default function App() {
     const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
     const [reveal, setReveal] = useState(showDetailsDefault);
 
+    // Use ref to track debounce timer for localStorage writes
+    const saveTimeoutRef = useRef<number | null>(null);
+
     // Initialize queue when filters change
     useEffect(() => {
         setQueue(pickDue(filteredCards, progress));
@@ -300,27 +303,42 @@ export default function App() {
         i18n.changeLanguage(language);
     }, [language, i18n]);
 
-    // Persist user preferences
+    // Persist user preferences with debouncing to reduce constant localStorage writes
     useEffect(() => {
-        const payload: Prefs = {
-            selectedLevels,
-            selectedPos,
-            characterMode,
-            leftHanded,
-            tracingMode,
-            showHoverIndicator,
-            mode,
-            language,
-            padSizeChoice,
-            showDetailsDefault,
-            traceFont,
-            promptFont,
-            advancedPosFilter,
-            gridStyle,
-            gridVerticalShift
+        // Clear any existing timeout
+        if (saveTimeoutRef.current !== null) {
+            clearTimeout(saveTimeoutRef.current);
+        }
+
+        // Set a new timeout to save after 500ms of inactivity
+        saveTimeoutRef.current = window.setTimeout(() => {
+            const payload: Prefs = {
+                selectedLevels,
+                selectedPos,
+                characterMode,
+                leftHanded,
+                tracingMode,
+                showHoverIndicator,
+                mode,
+                language,
+                padSizeChoice,
+                showDetailsDefault,
+                traceFont,
+                promptFont,
+                advancedPosFilter,
+                gridStyle,
+                gridVerticalShift
+            };
+            localStorage.setItem("prefs.state", JSON.stringify(payload));
+        }, 500);
+
+        // Cleanup function to clear timeout on unmount
+        return () => {
+            if (saveTimeoutRef.current !== null) {
+                clearTimeout(saveTimeoutRef.current);
+            }
         };
-        localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, gridStyle, gridVerticalShift]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
