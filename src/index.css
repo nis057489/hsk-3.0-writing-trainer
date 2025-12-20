@@ -244,7 +244,6 @@ body {
     gap: 8px;
     box-shadow: var(--shadow);
     position: relative;
-    padding-bottom: 52px;
 }
 
 .trace-label {
@@ -269,6 +268,7 @@ body {
 .pad-shell {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
 }
 
@@ -279,29 +279,26 @@ body {
 
 .pad-controls {
     display: flex;
-    gap: 0;
     justify-content: space-between;
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    padding: 0;
-    pointer-events: none;
+    margin-top: 12px;
+    padding: 0 4px;
+    width: 100%;
 }
 
 .pad-controls button {
-    background: var(--surface-strong);
-    color: var(--text);
-    border: 1px solid var(--border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    padding: 0;
     width: 40px;
     height: 40px;
-    font-size: 18px;
-    line-height: 1;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
     border-radius: 10px;
-    pointer-events: auto;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0.92;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.15s ease;
 }
 
 .pad-controls button:hover:not(:disabled) {
