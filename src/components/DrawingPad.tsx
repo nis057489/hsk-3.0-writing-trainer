@@ -330,16 +330,18 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                 <button
                     onClick={undo}
                     disabled={strokes.length === 0}
-                    style={{ touchAction: "manipulation", padding: "10px 14px" }}
+                    aria-label={t("controls.undo")}
+                    style={{ touchAction: "manipulation", padding: "8px 10px", fontSize: 18, lineHeight: 1, minWidth: 44 }}
                 >
-                    {t("controls.undo")}
+                    ↩
                 </button>
                 <button
                     onClick={clear}
                     disabled={strokes.length === 0}
-                    style={{ touchAction: "manipulation", padding: "10px 14px" }}
+                    aria-label={t("controls.clear")}
+                    style={{ touchAction: "manipulation", padding: "8px 10px", fontSize: 18, lineHeight: 1, minWidth: 44 }}
                 >
-                    {t("controls.clear")}
+                    ✕
                 </button>
             </div>
         </div>
