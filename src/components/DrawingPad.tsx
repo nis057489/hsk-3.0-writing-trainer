@@ -314,14 +314,14 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                             position: "absolute",
                             left: `${hoverPoint.x * 100}%`,
                             top: `${hoverPoint.y * 100}%`,
-                            width: 12,
-                            height: 12,
+                            width: 10,
+                            height: 10,
                             borderRadius: "50%",
-                            border: "2px solid var(--accent, #3b82f6)",
-                            background: "rgba(59,130,246,0.12)",
+                            border: "2px solid var(--accent, #2563eb)",
+                            background: "rgba(37,99,235,0.08)",
                             transform: "translate(-50%, -50%)",
                             pointerEvents: "none",
-                            boxShadow: "0 0 0 4px rgba(59,130,246,0.08)"
+                            boxShadow: "0 0 0 1px rgba(37,99,235,0.05)"
                         }}
                     />
                 )}
