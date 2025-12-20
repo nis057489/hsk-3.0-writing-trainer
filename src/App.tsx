@@ -46,7 +46,7 @@ export default function App() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>('simplified');
     const [leftHanded, setLeftHanded] = useState(false);
-    const [drawerView, setDrawerView] = useState<'menu' | 'help'>('menu');
+    const [drawerView, setDrawerView] = useState<'menu' | 'help' | 'tips'>('menu');
 
     // Filtered pool
     const filteredCards = useMemo(() => {
@@ -139,7 +139,7 @@ export default function App() {
                 </button>
             </div>
 
-            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title={drawerView === 'menu' ? "Menu" : "Stroke Order"}>
+            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title={drawerView === 'menu' ? "Menu" : drawerView === 'help' ? "Stroke Order" : "Device Tips"}>
                 {drawerView === 'menu' ? (
                     <>
                         <div style={{ marginBottom: 24 }}>
@@ -276,32 +276,53 @@ export default function App() {
 
                         <div className="filter-section">
                             <h3>Help</h3>
-                            <button
-                                onClick={() => setDrawerView('help')}
-                                style={{
-                                    width: "100%",
-                                    padding: "12px",
-                                    borderRadius: "8px",
-                                    border: "1px solid #eee",
-                                    background: "white",
-                                    color: "#333",
-                                    cursor: "pointer",
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    fontSize: "14px"
-                                }}
-                            >
-                                <span>Stroke Order Guide</span>
-                                <span>→</span>
-                            </button>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                                <button
+                                    onClick={() => setDrawerView('help')}
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid #eee",
+                                        background: "white",
+                                        color: "#333",
+                                        cursor: "pointer",
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }}
+                                >
+                                    <span>Stroke Order Guide</span>
+                                    <span>→</span>
+                                </button>
+                                <button
+                                    onClick={() => setDrawerView('tips')}
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid #eee",
+                                        background: "white",
+                                        color: "#333",
+                                        cursor: "pointer",
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        fontSize: "14px"
+                                    }}
+                                >
+                                    <span>iPad / fullscreen tips</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
                         </div>
 
                         <div style={{ marginTop: 24, fontSize: 13, color: "#999" }}>
                             {filteredCards.length} words available
                         </div>
                     </>
-                ) : (
+                ) : drawerView === 'help' ? (
                     <div>
                         <button
                             onClick={() => setDrawerView('menu')}
@@ -381,6 +402,35 @@ export default function App() {
                                     Write the center hook first, then the left dot, then the right dot.
                                 </div>
                             </section>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <button
+                            onClick={() => setDrawerView('menu')}
+                            style={{
+                                background: "none",
+                                border: "none",
+                                padding: "0 0 16px 0",
+                                color: "#666",
+                                cursor: "pointer",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                fontSize: "14px"
+                            }}
+                        >
+                            ← Back to Menu
+                        </button>
+
+                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                            <h3 style={{ margin: 0, color: "var(--primary-red)" }}>iPad / Fullscreen Tips</h3>
+                            <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.6, color: "#444" }}>
+                                <li>Add to Home Screen in Safari → Share → "Add to Home Screen" for standalone, chrome-free use.</li>
+                                <li>When in Safari, a small scroll down hides the address/tab bars until you scroll up.</li>
+                                <li>Rotate to landscape for more vertical room; the layout auto-compacts to avoid scrolling.</li>
+                                <li>Apple Pencil: keep the tip down—palm touches are ignored and pinch/scroll is blocked here.</li>
+                            </ul>
                         </div>
                     </div>
                 )}
