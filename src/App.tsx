@@ -75,15 +75,15 @@ export default function App() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
           <div style={{ display: "flex", gap: 8 }}>
-            <button 
-              onClick={() => setMode('flashcard')} 
+            <button
+              onClick={() => setMode('flashcard')}
               disabled={mode === 'flashcard'}
               style={{ opacity: mode === 'flashcard' ? 1 : 0.6 }}
             >
               Flashcards
             </button>
-            <button 
-              onClick={() => setMode('sentence')} 
+            <button
+              onClick={() => setMode('sentence')}
               disabled={mode === 'sentence'}
               style={{ opacity: mode === 'sentence' ? 1 : 0.6 }}
             >
@@ -137,7 +137,7 @@ export default function App() {
               }}
             />
           </div>
-          
+
           {sentenceText.length === 0 ? (
             <div style={{ textAlign: "center", color: "#666", padding: 40 }}>
               Type some Chinese characters above to practice writing them.
