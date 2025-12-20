@@ -269,6 +269,8 @@ body {
     flex-direction: column;
     gap: 10px;
     width: 100%;
+    position: relative;
+    padding-bottom: 56px;
 }
 
 .pad-surface {
@@ -278,10 +280,13 @@ body {
 
 .pad-controls {
     display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 8px;
-    padding: 6px 0 2px;
+    gap: 0;
+    justify-content: space-between;
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 0;
 }
 
 .pad-controls button {
@@ -289,11 +294,12 @@ body {
     color: var(--text);
     border: 1px solid var(--border);
     box-shadow: none;
-    padding: 8px 10px;
-    min-width: 44px;
-    font-size: 16px;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
     line-height: 1;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .pad-controls button:disabled {
