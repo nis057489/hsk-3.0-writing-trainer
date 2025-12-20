@@ -326,9 +326,21 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                     />
                 )}
             </div>
-            <div style={{ display: "flex", gap: 8, touchAction: "manipulation" }}>
-                <button onClick={undo} disabled={strokes.length === 0} style={{ touchAction: "manipulation" }}>{t("controls.undo")}</button>
-                <button onClick={clear} disabled={strokes.length === 0} style={{ touchAction: "manipulation" }}>{t("controls.clear")}</button>
+            <div style={{ display: "flex", gap: 10, touchAction: "manipulation", marginTop: 10 }}>
+                <button
+                    onClick={undo}
+                    disabled={strokes.length === 0}
+                    style={{ touchAction: "manipulation", padding: "10px 14px" }}
+                >
+                    {t("controls.undo")}
+                </button>
+                <button
+                    onClick={clear}
+                    disabled={strokes.length === 0}
+                    style={{ touchAction: "manipulation", padding: "10px 14px" }}
+                >
+                    {t("controls.clear")}
+                </button>
             </div>
         </div>
     );
