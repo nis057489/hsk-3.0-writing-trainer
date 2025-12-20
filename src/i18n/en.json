@@ -14,7 +14,7 @@
     },
     "layout": {
         "title": "Layout",
-        "leftHanded": "Left Handed Mode"
+        "leftHanded": "Swap writing area"
     },
     "levels": {
         "title": "Levels",
@@ -48,7 +48,11 @@
         "themeDark": "Dark",
         "themeContrast": "High Contrast",
         "themeSystem": "System",
-        "hoverIndicator": "Show Pencil hover indicator"
+        "hoverIndicator": "Show Pencil hover indicator",
+        "padSize": "Writing pad size",
+        "padSizeSmall": "Notebook (small)",
+        "padSizeMedium": "Comfort (medium)",
+        "padSizeLarge": "Canvas (large)"
     },
     "help": {
         "title": "Help",

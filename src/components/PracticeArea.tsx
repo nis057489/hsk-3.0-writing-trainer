@@ -6,9 +6,10 @@ interface PracticeAreaProps {
     text: string;
     tracingMode: boolean;
     showHoverIndicator?: boolean;
+    padSizeChoice: "small" | "medium" | "large";
 }
 
-export function PracticeArea({ text, tracingMode, showHoverIndicator = false }: PracticeAreaProps) {
+export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
 
@@ -35,9 +36,15 @@ export function PracticeArea({ text, tracingMode, showHoverIndicator = false }: 
         );
     }
 
-    const padSize = compact
-        ? (characters.length === 1 ? 150 : 180)
-        : (characters.length === 1 ? 180 : 220);
+    const padSize = useMemo(() => {
+        const baseSizes = {
+            small: 170,
+            medium: 200,
+            large: 230
+        } as const;
+        const scale = compact ? 0.85 : 1;
+        return Math.round(baseSizes[padSizeChoice] * scale);
+    }, [compact, padSizeChoice]);
 
     return (
         <div className={`practice-shell${compact ? " compact" : ""}`}>

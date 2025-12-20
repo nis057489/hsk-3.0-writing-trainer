@@ -14,7 +14,7 @@
     },
     "layout": {
         "title": "布局",
-        "leftHanded": "左手模式"
+        "leftHanded": "交换书写区"
     },
     "levels": {
         "title": "等级",
@@ -48,7 +48,11 @@
         "themeDark": "深色",
         "themeContrast": "高对比",
         "themeSystem": "跟随系统",
-        "hoverIndicator": "显示手写笔悬停指示"
+        "hoverIndicator": "显示手写笔悬停指示",
+        "padSize": "书写格大小",
+        "padSizeSmall": "小：笔记纸感",
+        "padSizeMedium": "中：日常舒适",
+        "padSizeLarge": "大：画布空间"
     },
     "help": {
         "title": "帮助",
