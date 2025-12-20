@@ -21,6 +21,8 @@ export default function App() {
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
   const [tracingMode, setTracingMode] = useState(false);
+  const [mode, setMode] = useState<'flashcard' | 'sentence'>('flashcard');
+  const [sentenceText, setSentenceText] = useState("");
   const card = queue[idx % queue.length];
 
   const remaining = useMemo(() => queue.length, [queue.length]);
@@ -72,7 +74,23 @@ export default function App() {
           <p>Draw the character. Reveal pinyin/meaning only after you attempt it.</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
-          <button onClick={resetProgress}>Reset progress</button>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button 
+              onClick={() => setMode('flashcard')} 
+              disabled={mode === 'flashcard'}
+              style={{ opacity: mode === 'flashcard' ? 1 : 0.6 }}
+            >
+              Flashcards
+            </button>
+            <button 
+              onClick={() => setMode('sentence')} 
+              disabled={mode === 'sentence'}
+              style={{ opacity: mode === 'sentence' ? 1 : 0.6 }}
+            >
+              Sentence Mode
+            </button>
+          </div>
+          {mode === 'flashcard' && <button onClick={resetProgress}>Reset progress</button>}
           <label style={{ fontSize: "0.9rem" }}>
             <input
               type="checkbox"
@@ -84,29 +102,59 @@ export default function App() {
         </div>
       </header>
 
-      <div className="grid">
-        <div>
-          <Flashcard
-            card={card}
-            reveal={reveal}
-            onToggleReveal={() => setReveal((r) => !r)}
-          />
-          <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
-        </div>
+      {mode === 'flashcard' ? (
+        <div className="grid">
+          <div>
+            <Flashcard
+              card={card}
+              reveal={reveal}
+              onToggleReveal={() => setReveal((r) => !r)}
+            />
+            <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
+          </div>
 
-        <div>
-          <h3 style={{ marginTop: 0 }}>Write here</h3>
-          <DrawingPad tracingMode={tracingMode} character={card.hanzi} />
-          <div className="tip">
-            Tip: try writing the character <b>big</b>, centered, and in one smooth stroke per stroke.
+          <div>
+            <h3 style={{ marginTop: 0 }}>Write here</h3>
+            <DrawingPad tracingMode={tracingMode} character={card.hanzi} />
+            <div className="tip">
+              Tip: try writing the character <b>big</b>, centered, and in one smooth stroke per stroke.
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div style={{ maxWidth: 800, margin: "0 auto", width: "100%" }}>
+          <div style={{ marginBottom: 24 }}>
+            <input
+              value={sentenceText}
+              onChange={(e) => setSentenceText(e.target.value)}
+              placeholder="Type a phrase or sentence here (e.g. 你好吗)..."
+              style={{
+                width: "100%",
+                padding: 12,
+                fontSize: 18,
+                borderRadius: 8,
+                border: "1px solid #ccc"
+              }}
+            />
+          </div>
+          
+          {sentenceText.length === 0 ? (
+            <div style={{ textAlign: "center", color: "#666", padding: 40 }}>
+              Type some Chinese characters above to practice writing them.
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
+              {sentenceText.split("").map((char, i) => (
+                <div key={i}>
+                  <DrawingPad tracingMode={tracingMode} character={char} size={180} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       <footer className="footer">
-        <span>
-          Replace <code>src/data/hsk3.sample.json</code> with your own list for the new HSK 3.
-        </span>
       </footer>
     </div>
   );

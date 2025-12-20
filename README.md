@@ -2,6 +2,9 @@
 
 A simple handwriting practice web app (canvas) optimized for tablet use (iPad + Apple Pencil works in Safari).
 
+The HSK 3.0 test requires handwriting at all levels. I didn't find a good handwriting practice app out there so I vibe coded this one.
+
+
 ## Dev (Docker)
 ```bash
 docker compose up --build

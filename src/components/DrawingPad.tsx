@@ -19,6 +19,10 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
 
   const dpr = useMemo(() => window.devicePixelRatio || 1, []);
 
+  useEffect(() => {
+    setStrokes([]);
+  }, [props.character]);
+
   function redraw() {
     const c = canvasRef.current;
     if (!c) return;
@@ -55,7 +59,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     if (props.tracingMode && props.character) {
       ctx.save();
       ctx.globalAlpha = 0.15;
-      ctx.font = `${size * dpr * 0.8}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
+      ctx.font = `${size * dpr * 0.6}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "#000";
