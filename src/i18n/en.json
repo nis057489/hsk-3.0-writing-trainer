@@ -75,7 +75,8 @@
     "practice": {
         "header": "Trace each character",
         "chars": "chars",
-        "empty": "No characters to trace yet."
+        "empty": "No characters to trace yet.",
+        "charLabel": "Char {{index}}"
     },
     "flashcard": {
         "reveal": "Reveal pinyin/meaning",
@@ -88,6 +89,10 @@
         "good": "Good",
         "easy": "Easy",
         "skip": "Skip"
+    },
+    "controls": {
+        "undo": "Undo",
+        "clear": "Clear"
     },
     "sentence": {
         "placeholder": "Type a phrase or sentence here (e.g. 你好吗)...",

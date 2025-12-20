@@ -75,7 +75,8 @@
     "practice": {
         "header": "逐个描写字符",
         "chars": "个字符",
-        "empty": "还没有可描写的字符。"
+        "empty": "还没有可描写的字符。",
+        "charLabel": "第 {{index}} 个"
     },
     "flashcard": {
         "reveal": "显示拼音/释义",
@@ -88,6 +89,10 @@
         "good": "良好",
         "easy": "容易",
         "skip": "跳过"
+    },
+    "controls": {
+        "undo": "撤销",
+        "clear": "清除"
     },
     "sentence": {
         "placeholder": "在这里输入短语或句子（例如 你好吗）...",

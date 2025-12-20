@@ -51,7 +51,7 @@ export function PracticeArea({ text, tracingMode }: PracticeAreaProps) {
             <div className="trace-grid">
                 {characters.map((char, index) => (
                     <div key={`${char}-${index}`} className="trace-cell">
-                        <div className="trace-label">Char {index + 1}</div>
+                        <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
                         <div className="trace-pad">
                             <DrawingPad size={padSize} tracingMode={tracingMode} character={char} />
                         </div>

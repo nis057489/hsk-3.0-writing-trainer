@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Point = { x: number; y: number };
 type Stroke = Point[];
 
 export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string }) {
+    const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [canvasSize, setCanvasSize] = useState(props.size || 300);
@@ -230,18 +232,22 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         const container = containerRef.current;
         if (!container) return;
 
+        const isControlTarget = (target: EventTarget | null) => {
+            return target instanceof HTMLElement && target.closest("button, select, option, input, label");
+        };
+
         const blockScroll = (e: Event) => {
-            // Prevent the page from scrolling while writing
+            if (isControlTarget(e.target)) return;
             e.preventDefault();
         };
 
         const blockPinch = (e: TouchEvent) => {
-            // Stop pinch-zoom/resize gestures inside the pad
+            if (isControlTarget(e.target)) return;
             if (e.touches.length > 1) e.preventDefault();
         };
 
         const blockGesture = (e: Event) => {
-            // Safari emits gesturestart/gesturechange for pinch
+            if (isControlTarget(e.target)) return;
             e.preventDefault();
         };
 
@@ -285,9 +291,9 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
                     }}
                 />
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
-                <button onClick={undo} disabled={strokes.length === 0}>Undo</button>
-                <button onClick={clear} disabled={strokes.length === 0}>Clear</button>
+            <div style={{ display: "flex", gap: 8, touchAction: "manipulation" }}>
+                <button onClick={undo} disabled={strokes.length === 0} style={{ touchAction: "manipulation" }}>{t("controls.undo")}</button>
+                <button onClick={clear} disabled={strokes.length === 0} style={{ touchAction: "manipulation" }}>{t("controls.clear")}</button>
             </div>
         </div>
     );
