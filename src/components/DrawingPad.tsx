@@ -289,11 +289,8 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     }, []);
 
     return (
-        <div
-            ref={containerRef}
-            style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", touchAction: "none" }}
-        >
-            <div style={{ position: "relative", touchAction: "none" }}>
+        <div ref={containerRef} className="pad-shell" style={{ touchAction: "none" }}>
+            <div className="pad-surface">
                 <canvas
                     ref={canvasRef}
                     style={{

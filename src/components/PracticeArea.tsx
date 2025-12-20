@@ -55,10 +55,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
     return (
         <div className={`practice-shell${compact ? " compact" : ""}`}>
             <div className="practice-header">
-                <div>
-                    <div className="practice-kicker">{t("practice.header")}</div>
-                    <div className="practice-title">{text}</div>
-                </div>
+                <div className="practice-kicker">{t("practice.header")}</div>
                 <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
 
