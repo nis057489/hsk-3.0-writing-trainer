@@ -11,7 +11,7 @@ import { ensureState, loadProgress, nextState, saveProgress } from "./lib/schedu
 
 type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
-type PadSizeChoice = "small" | "medium" | "large";
+type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
 type Prefs = {
     selectedLevels: string[];
@@ -157,12 +157,19 @@ export default function App() {
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice]);
 
     const padSizeOptions: { value: PadSizeChoice; label: string }[] = [
+        { value: "xs", label: t("options.padSizeXs") },
         { value: "small", label: t("options.padSizeSmall") },
         { value: "medium", label: t("options.padSizeMedium") },
         { value: "large", label: t("options.padSizeLarge") }
     ];
 
-    const basePadSize = padSizeChoice === "small" ? 170 : padSizeChoice === "large" ? 230 : 200;
+    const basePadSize = padSizeChoice === "xs"
+        ? 90
+        : padSizeChoice === "small"
+            ? 110
+            : padSizeChoice === "large"
+                ? 190
+                : 150;
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;

@@ -50,6 +50,7 @@
         "themeSystem": "跟随系统",
         "hoverIndicator": "显示手写笔悬停指示",
         "padSize": "书写格大小",
+        "padSizeXs": "特小：口袋便携",
         "padSizeSmall": "小：笔记纸感",
         "padSizeMedium": "中：日常舒适",
         "padSizeLarge": "大：画布空间"

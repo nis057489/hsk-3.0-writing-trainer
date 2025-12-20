@@ -6,7 +6,7 @@ interface PracticeAreaProps {
     text: string;
     tracingMode: boolean;
     showHoverIndicator?: boolean;
-    padSizeChoice: "small" | "medium" | "large";
+    padSizeChoice: "xs" | "small" | "medium" | "large";
 }
 
 export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false }: PracticeAreaProps) {
@@ -38,13 +38,19 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
 
     const padSize = useMemo(() => {
         const baseSizes = {
-            small: 170,
-            medium: 200,
-            large: 230
+            xs: 90,
+            small: 110,
+            medium: 150,
+            large: 190
         } as const;
-        const scale = compact ? 0.85 : 1;
+        const scale = compact ? 0.9 : 1;
         return Math.round(baseSizes[padSizeChoice] * scale);
     }, [compact, padSizeChoice]);
+
+    const gridTemplate = useMemo(() => {
+        const min = Math.max(120, padSize + 24);
+        return `repeat(auto-fit, minmax(${min}px, 1fr))`;
+    }, [padSize]);
 
     return (
         <div className={`practice-shell${compact ? " compact" : ""}`}>
@@ -56,7 +62,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
 
-            <div className="trace-grid">
+            <div className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 10 }}>
                 {characters.map((char, index) => (
                     <div key={`${char}-${index}`} className="trace-cell">
                         <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>

@@ -50,6 +50,7 @@
         "themeSystem": "System",
         "hoverIndicator": "Show Pencil hover indicator",
         "padSize": "Writing pad size",
+        "padSizeXs": "Pocket (XS)",
         "padSizeSmall": "Notebook (small)",
         "padSizeMedium": "Comfort (medium)",
         "padSizeLarge": "Canvas (large)"
