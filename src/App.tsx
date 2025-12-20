@@ -220,7 +220,7 @@ export default function App() {
 
     return (
         <div className="app">
-            <div style={{ position: "fixed", top: 20, right: 20, zIndex: 100 }}>
+            <div style={{ position: "fixed", bottom: 20, left: 20, zIndex: 100 }}>
                 <button
                     onClick={() => setIsDrawerOpen(true)}
                     aria-label={t("app.menu")}
