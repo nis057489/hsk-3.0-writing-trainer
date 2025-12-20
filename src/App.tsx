@@ -607,28 +607,26 @@ export default function App() {
             </Drawer>
 
             {mode === 'flashcard' ? (
-                <div className="practice-container" style={{
-                    display: "flex",
-                    flexDirection: leftHanded ? "row-reverse" : "row",
-                    flexWrap: "wrap",
-                    gap: 16,
-                    alignItems: "stretch"
-                }}>
+                <div className="practice-container writing-first">
                     {card ? (
                         <>
-                            <div style={{ flex: "1 1 300px" }}>
-                                <Flashcard
-                                    card={{
-                                        ...card,
-                                        hanzi: displayHanzi
-                                    }}
-                                    reveal={reveal}
-                                    onToggleReveal={() => setReveal((r: boolean) => !r)}
-                                />
-                                <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
+                            <div className="card" style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "flex-start", justifyContent: "space-between" }}>
+                                <div style={{ flex: "1 1 320px", minWidth: 280, maxWidth: 640 }}>
+                                    <Flashcard
+                                        card={{
+                                            ...card,
+                                            hanzi: displayHanzi
+                                        }}
+                                        reveal={reveal}
+                                        onToggleReveal={() => setReveal((r: boolean) => !r)}
+                                    />
+                                </div>
+                                <div style={{ flex: "0 0 auto", minWidth: 220 }}>
+                                    <Toolbar onGrade={grade} onNext={advance} remaining={remaining} />
+                                </div>
                             </div>
 
-                            <div className="card" style={{ flex: "1 1 300px", display: "flex", flexDirection: "column" }}>
+                            <div className="card" style={{ padding: 16 }}>
                                 <PracticeArea
                                     text={displayHanzi}
                                     tracingMode={tracingMode}

@@ -275,6 +275,16 @@ body {
     padding: 40px 0;
 }
 
+.practice-container.writing-first {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.practice-container.writing-first .card {
+    width: 100%;
+}
+
 @media (max-width: 600px) {
     .practice-title {
         font-size: 20px;
