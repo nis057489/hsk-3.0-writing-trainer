@@ -11,6 +11,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
     // Strokes are stored in normalized coordinates (0-1)
     const [strokes, setStrokes] = useState<Stroke[]>([]);
     const [isDown, setIsDown] = useState(false);
+    const isDownRef = useRef(false);
 
     const currentStroke = useRef<Stroke>([]);
     const dpr = useMemo(() => window.devicePixelRatio || 1, []);
@@ -146,6 +147,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             e.preventDefault();
             c.setPointerCapture(e.pointerId);
             setIsDown(true);
+            isDownRef.current = true;
             currentStroke.current = [getPos(e, c)];
 
             // Draw dot
@@ -162,7 +164,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         };
 
         const onPointerMove = (e: PointerEvent) => {
-            if (!isDown) return;
+            if (!isDownRef.current) return;
             e.preventDefault();
             const newPt = getPos(e, c);
             currentStroke.current.push(newPt);
@@ -189,12 +191,13 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
         };
 
         const onPointerUp = (e: PointerEvent) => {
-            if (!isDown) return;
+            if (!isDownRef.current) return;
             e.preventDefault();
             setIsDown(false);
+            isDownRef.current = false;
             const done = currentStroke.current;
             currentStroke.current = [];
-            if (done.length > 0) setStrokes((prev) => [...prev, done]);
+            if (done.length > 0) setStrokes((prev: Stroke[]) => [...prev, done]);
             else redraw(); // Clear the dot if it was just a click without move? No, dot is fine.
             // Actually if we just clicked, we have 1 point.
             // If we have 1 point, we should probably store it as a dot.
@@ -203,21 +206,25 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMo
             redraw();
         };
 
+        const onPointerLeave = (e: PointerEvent) => onPointerUp(e);
+
         c.addEventListener("pointerdown", onPointerDown, { passive: false });
         c.addEventListener("pointermove", onPointerMove, { passive: false });
         c.addEventListener("pointerup", onPointerUp, { passive: false });
         c.addEventListener("pointercancel", onPointerUp, { passive: false });
+        c.addEventListener("pointerleave", onPointerLeave, { passive: false });
 
         return () => {
             c.removeEventListener("pointerdown", onPointerDown);
             c.removeEventListener("pointermove", onPointerMove);
             c.removeEventListener("pointerup", onPointerUp);
             c.removeEventListener("pointercancel", onPointerUp);
+            c.removeEventListener("pointerleave", onPointerLeave);
         };
-    }, [isDown, dpr, canvasSize]); // Added canvasSize dependency
+    }, [dpr, canvasSize]);
 
     const clear = () => setStrokes([]);
-    const undo = () => setStrokes((prev) => prev.slice(0, -1));
+    const undo = () => setStrokes((prev: Stroke[]) => prev.slice(0, -1));
 
     return (
         <div ref={containerRef} style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
