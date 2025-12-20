@@ -56,7 +56,8 @@ body[data-theme="contrast"] {
     -webkit-touch-callout: none;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
