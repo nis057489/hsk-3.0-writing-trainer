@@ -48,8 +48,8 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
     }, [compact, padSizeChoice]);
 
     const gridTemplate = useMemo(() => {
-        const min = Math.max(120, padSize + 24);
-        return `repeat(auto-fit, minmax(${min}px, 1fr))`;
+        const col = padSize + 12; // pad plus a small gutter
+        return `repeat(auto-fit, minmax(${col}px, ${col}px))`;
     }, [padSize]);
 
     return (
@@ -62,7 +62,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
 
-            <div className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 10 }}>
+            <div className="trace-grid" style={{ gridTemplateColumns: gridTemplate, gap: 8, justifyContent: "flex-start" }}>
                 {characters.map((char, index) => (
                     <div key={`${char}-${index}`} className="trace-cell">
                         <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
