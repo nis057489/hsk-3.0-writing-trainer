@@ -43,4 +43,4 @@ Note: Pencil hover and some fullscreen behaviors require Safari and recent iPad 
 
 ## Credits
 
-Vocabulary source: [@drkameleon’s HSK lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main). Thanks!
+Shout out to @drkameleon for the JSON vocabulary source: [@drkameleon’s HSK lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main). Thanks!
