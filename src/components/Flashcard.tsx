@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Card } from "../lib/types";
 
-type PromptFontChoice = "handwritten" | "kai" | "system";
+type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
 
 export function Flashcard(props: {
     card: Card;
@@ -18,6 +18,8 @@ export function Flashcard(props: {
             return '"Ma Shan Zheng", "ZCOOL KuaiLe", cursive';
         } else if (promptFont === "kai") {
             return '"KaiTi", "Kaiti SC", "STKaiti", "BiauKai", "DFKai-SB", "TW-Kai", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", serif';
+        } else if (promptFont === "cursive") {
+            return 'cursive, "Comic Sans MS", "Apple Chancery", "Brush Script MT", fantasy';
         } else {
             return 'system-ui, -apple-system, sans-serif';
         }

@@ -58,6 +58,7 @@
         "traceFont": "描红字体风格",
         "traceFontHandwritten": "手写体（毛笔）",
         "traceFontKai": "楷体（传统）",
+        "traceFontCursive": "草书体（系统）",
         "traceFontSystem": "系统字体（无衬线）",
         "promptFont": "提示字体风格",
         "showDetailsDefault": "默认显示拼音/释义"

@@ -10,7 +10,7 @@ interface DrawingPadProps {
     tracingMode?: boolean;
     character?: string;
     showHoverIndicator?: boolean;
-    traceFont?: "handwritten" | "kai" | "system";
+    traceFont?: "handwritten" | "kai" | "system" | "cursive";
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
 }
@@ -109,6 +109,8 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                 fontStack = '"Ma Shan Zheng", "ZCOOL KuaiLe", cursive';
             } else if (traceFont === "kai") {
                 fontStack = '"KaiTi", "Kaiti SC", "STKaiti", "BiauKai", "DFKai-SB", "TW-Kai", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", serif';
+            } else if (traceFont === "cursive") {
+                fontStack = 'cursive, "Comic Sans MS", "Apple Chancery", "Brush Script MT", fantasy';
             } else {
                 fontStack = 'system-ui, -apple-system, sans-serif';
             }

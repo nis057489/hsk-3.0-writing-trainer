@@ -57,7 +57,8 @@
         "padSizeLarge": "Canvas (large)",
         "traceFont": "Trace character font style",
         "traceFontHandwritten": "Handwritten (Brush)",
-        "traceFontKai": "Kai (Traditional)",
+        "traceFontKai": "Kai",
+        "traceFontCursive": "Cursive (System)",
         "traceFontSystem": "System (Sans-serif)",
         "promptFont": "Prompt character font style",
         "showDetailsDefault": "Show pinyin/meaning by default"

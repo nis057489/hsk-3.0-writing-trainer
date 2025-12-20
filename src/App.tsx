@@ -17,8 +17,8 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
-type TraceFontChoice = "handwritten" | "kai" | "system";
-type PromptFontChoice = "handwritten" | "kai" | "system";
+type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
+type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
 
 type Prefs = {
     selectedLevels: string[];

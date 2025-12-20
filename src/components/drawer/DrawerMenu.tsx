@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 
 type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
-type TraceFontChoice = "handwritten" | "kai" | "system";
-type PromptFontChoice = "handwritten" | "kai" | "system";
+type TraceFontChoice = "handwritten" | "kai" | "system" | "cursive";
+type PromptFontChoice = "handwritten" | "kai" | "system" | "cursive";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -53,12 +53,14 @@ export function DrawerMenu(props: DrawerMenuProps) {
     const traceFontOptions: { value: TraceFontChoice; label: string }[] = [
         { value: "handwritten", label: t("options.traceFontHandwritten") },
         { value: "kai", label: t("options.traceFontKai") },
+        { value: "cursive", label: t("options.traceFontCursive") },
         { value: "system", label: t("options.traceFontSystem") }
     ];
 
     const promptFontOptions: { value: PromptFontChoice; label: string }[] = [
         { value: "handwritten", label: t("options.traceFontHandwritten") },
         { value: "kai", label: t("options.traceFontKai") },
+        { value: "cursive", label: t("options.traceFontCursive") },
         { value: "system", label: t("options.traceFontSystem") }
     ];
 
