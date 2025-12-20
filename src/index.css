@@ -1,252 +1,266 @@
 :root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  color: #333;
-  background: #f8f1f1; /* Very light red/warm gray */
-  --primary-red: #c41e3a; /* Chinese Red */
-  --secondary-gold: #d4af37; /* Gold accent */
-  --bg-warm: #fdfbfb;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #333;
+    background: #f8f1f1;
+    /* Very light red/warm gray */
+    --primary-red: #c41e3a;
+    /* Chinese Red */
+    --secondary-gold: #d4af37;
+    /* Gold accent */
+    --bg-warm: #fdfbfb;
 }
 
-* { 
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
+* {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 24px;
-  background: white;
-  padding: 16px 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
-  border-left: 6px solid var(--primary-red);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
+    border-left: 6px solid var(--primary-red);
 }
 
 .header h1 {
-  margin: 0;
-  font-size: 24px;
-  color: var(--primary-red);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary-red);
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-.header p { margin: 0; opacity: 0.6; font-size: 14px; }
+.header p {
+    margin: 0;
+    opacity: 0.6;
+    font-size: 14px;
+}
 
 .grid {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 24px;
-  align-items: start;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    align-items: start;
 }
 
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .sidebar {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  position: sticky;
-  top: 20px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 20px;
 }
 
 .filter-section {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .filter-section h3 {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #888;
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
 }
 
 .filter-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .filter-chip {
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: 1px solid #eee;
-  background: #fff;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    background: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .filter-chip:hover {
-  border-color: var(--primary-red);
-  color: var(--primary-red);
+    border-color: var(--primary-red);
+    color: var(--primary-red);
 }
 
 .filter-chip.active {
-  background: var(--primary-red);
-  color: white;
-  border-color: var(--primary-red);
-  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+    background: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+    box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
 }
 
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.02);
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 /* Drawer Styles */
 .drawer-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    /* transition: opacity 0.3s; */
 }
 
 .drawer-backdrop.open {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  max-width: 85%;
-  height: 100%;
-  background: white;
-  z-index: 1000;
-  transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 4px 0 24px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: 85%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    transform: translateX(-100%);
+    /* transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
 }
 
 .drawer.open {
-  transform: translateX(0);
+    transform: translateX(0);
 }
 
 .drawer-header {
-  padding: 20px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .drawer-header h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
+    margin: 0;
+    font-size: 18px;
+    color: #333;
 }
 
 .drawer-close {
-  background: none;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  color: #999;
-  padding: 0;
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
 }
 
 .drawer-close:hover {
-  color: #333;
+    color: #333;
 }
 
 .drawer-content {
-  padding: 20px;
-  overflow-y: auto;
-  flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
 }
 
 .hanzi {
-  font-size: 96px;
-  line-height: 1.05;
-  text-align: center;
-  margin: 6px 0 12px;
+    font-size: 96px;
+    line-height: 1.05;
+    text-align: center;
+    margin: 6px 0 12px;
 }
 
 .meta {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .reveal {
-  margin-top: 12px;
-  text-align: center;
+    margin-top: 12px;
+    text-align: center;
 }
 
 .pinyin {
-  font-size: 20px;
-  font-weight: 600;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .meaning {
-  margin-top: 6px;
-  opacity: 0.8;
+    margin-top: 6px;
+    opacity: 0.8;
 }
 
 .toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.remaining { opacity: 0.75; margin-right: auto; }
+.remaining {
+    opacity: 0.75;
+    margin-right: auto;
+}
 
-.grades button, .toolbar .next, button {
-  border: 0;
-  background: #111;
-  color: white;
-  padding: 10px 12px;
-  border-radius: 10px;
-  cursor: pointer;
+.grades button,
+.toolbar .next,
+button {
+    border: 0;
+    background: #111;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .toolbar .next {
-  background: #444;
+    background: #444;
 }
 
 .tip {
-  margin-top: 10px;
-  opacity: 0.75;
-  font-size: 14px;
+    margin-top: 10px;
+    opacity: 0.75;
+    font-size: 14px;
 }
 
 .footer {
-  margin-top: 16px;
-  opacity: 0.7;
-  font-size: 13px;
+    margin-top: 16px;
+    opacity: 0.7;
+    font-size: 13px;
 }
