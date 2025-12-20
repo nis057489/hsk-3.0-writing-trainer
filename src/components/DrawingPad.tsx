@@ -322,22 +322,22 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                         }}
                     />
                 )}
-                <div className="pad-controls">
-                    <button
-                        onClick={undo}
-                        disabled={strokes.length === 0}
-                        aria-label={t("controls.undo")}
-                    >
-                        ↩
-                    </button>
-                    <button
-                        onClick={clear}
-                        disabled={strokes.length === 0}
-                        aria-label={t("controls.clear")}
-                    >
-                        ✕
-                    </button>
-                </div>
+            </div>
+            <div className="pad-controls">
+                <button
+                    onClick={undo}
+                    disabled={strokes.length === 0}
+                    aria-label={t("controls.undo")}
+                >
+                    ↩
+                </button>
+                <button
+                    onClick={clear}
+                    disabled={strokes.length === 0}
+                    aria-label={t("controls.clear")}
+                >
+                    ✕
+                </button>
             </div>
         </div>
     );
