@@ -95,7 +95,8 @@
         "traceFontCursive": "Cursive (System)",
         "traceFontSystem": "System (Sans-serif)",
         "promptFont": "Prompt character font style",
-        "showDetailsDefault": "Show pinyin/meaning by default"
+        "showDetailsDefault": "Show pinyin/meaning by default",
+        "advancedPosFilter": "Show all detailed categories"
     },
     "help": {
         "title": "Help",

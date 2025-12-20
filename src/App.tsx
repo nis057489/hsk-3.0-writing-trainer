@@ -33,6 +33,7 @@ type Prefs = {
     showDetailsDefault: boolean;
     traceFont: TraceFontChoice;
     promptFont: PromptFontChoice;
+    advancedPosFilter: boolean;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -69,7 +70,8 @@ export default function App() {
         padSizeChoice: "small",
         showDetailsDefault: false,
         traceFont: "handwritten",
-        promptFont: "handwritten"
+        promptFont: "handwritten",
+        advancedPosFilter: false
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -79,6 +81,7 @@ export default function App() {
     // Filters
     const [selectedLevels, setSelectedLevels] = useState<string[]>(storedPrefs.selectedLevels || ["new-1"]);
     const [selectedPos, setSelectedPos] = useState<string[]>(storedPrefs.selectedPos || []);
+    const [advancedPosFilter, setAdvancedPosFilter] = useState<boolean>(storedPrefs.advancedPosFilter ?? false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>(storedPrefs.characterMode || 'simplified');
     const [leftHanded, setLeftHanded] = useState(storedPrefs.leftHanded ?? true);
@@ -86,14 +89,59 @@ export default function App() {
     const [theme, setTheme] = useState<ThemeChoice>(() => (localStorage.getItem("theme") as ThemeChoice) || "system");
     const [language, setLanguage] = useState<string>(storedPrefs.language || i18n.resolvedLanguage || "en");
 
+    // Map detailed POS codes to simple categories
+    const posMapping: Record<string, string[]> = {
+        "n": ["n", "ng", "nr", "ns", "nt", "nx", "nz"],
+        "v": ["v", "vd", "vg", "vn"],
+        "a": ["a", "ad", "ag", "an", "b"],
+        "d": ["d", "dg"],
+        "r": ["r", "rg"],
+        "c": ["c"],
+        "i": ["i", "j"],
+        "l": ["l"],
+        "m": ["m", "mg"],
+        "t": ["t", "tg"],
+        "e": ["e"],
+        "f": ["f"],
+        "g": ["g"],
+        "h": ["h"],
+        "k": ["k"],
+        "o": ["o"],
+        "p": ["p"],
+        "q": ["q"],
+        "s": ["s"],
+        "u": ["u"],
+        "w": ["w"],
+        "x": ["x"],
+        "y": ["y"],
+        "z": ["z"]
+    };
+
     // Filtered pool
     const filteredCards = useMemo(() => {
         return allCards.filter(card => {
             const levelMatch = selectedLevels.length === 0 || (card.level && card.level.some(l => selectedLevels.includes(l)));
-            const posMatch = selectedPos.length === 0 || (card.pos && card.pos.some(p => selectedPos.includes(p)));
+            
+            // POS filtering with simple/advanced mode
+            let posMatch = true;
+            if (selectedPos.length > 0 && card.pos) {
+                if (advancedPosFilter) {
+                    // Advanced mode: exact match
+                    posMatch = card.pos.some(p => selectedPos.includes(p));
+                } else {
+                    // Simple mode: match any detailed code that maps to selected simple category
+                    posMatch = card.pos.some(cardPosTag => {
+                        return selectedPos.some(selectedSimple => {
+                            const mappedCodes = posMapping[selectedSimple] || [selectedSimple];
+                            return mappedCodes.includes(cardPosTag);
+                        });
+                    });
+                }
+            }
+            
             return levelMatch && posMatch;
         });
-    }, [selectedLevels, selectedPos]);
+    }, [selectedLevels, selectedPos, advancedPosFilter]);
 
     const levels = useMemo(() => ([
         { id: "new-1", label: t("levels.hsk1") },
@@ -105,7 +153,25 @@ export default function App() {
         { id: "new-7+", label: t("levels.hsk7") }
     ]), [t]);
 
-    const posGroups = useMemo(() => ([
+    const simplePosGroups = useMemo(() => ([
+        { id: "n", label: t("pos.n") },
+        { id: "v", label: t("pos.v") },
+        { id: "a", label: t("pos.a") },
+        { id: "d", label: t("pos.d") },
+        { id: "r", label: t("pos.r") },
+        { id: "c", label: t("pos.c") },
+        { id: "i", label: t("pos.i") },
+        { id: "l", label: t("pos.l") },
+        { id: "m", label: t("pos.m") },
+        { id: "t", label: t("pos.t") },
+        { id: "p", label: t("pos.p") },
+        { id: "q", label: t("pos.q") },
+        { id: "e", label: t("pos.e") },
+        { id: "u", label: t("pos.u") },
+        { id: "y", label: t("pos.y") }
+    ]), [t]);
+
+    const advancedPosGroups = useMemo(() => ([
         { id: "a", label: t("pos.a") },
         { id: "ad", label: t("pos.ad") },
         { id: "ag", label: t("pos.ag") },
@@ -149,6 +215,8 @@ export default function App() {
         { id: "y", label: t("pos.y") },
         { id: "z", label: t("pos.z") }
     ]), [t]);
+
+    const posGroups = advancedPosFilter ? advancedPosGroups : simplePosGroups;
 
     const [queue, setQueue] = useState<Card[]>([]);
     const [idx, setIdx] = useState(0);
@@ -209,7 +277,8 @@ export default function App() {
             padSizeChoice,
             showDetailsDefault,
             traceFont,
-            promptFont
+            promptFont,
+            advancedPosFilter
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont]);
@@ -317,6 +386,8 @@ export default function App() {
                         posGroups={posGroups}
                         selectedPos={selectedPos}
                         togglePos={togglePos}
+                        advancedPosFilter={advancedPosFilter}
+                        setAdvancedPosFilter={setAdvancedPosFilter}
                         tracingMode={tracingMode}
                         setTracingMode={setTracingMode}
                         showHoverIndicator={showHoverIndicator}

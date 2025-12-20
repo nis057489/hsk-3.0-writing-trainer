@@ -17,6 +17,8 @@ interface DrawerMenuProps {
     posGroups: Array<{ id: string; label: string }>;
     selectedPos: string[];
     togglePos: (id: string) => void;
+    advancedPosFilter: boolean;
+    setAdvancedPosFilter: (value: boolean) => void;
     tracingMode: boolean;
     setTracingMode: (value: boolean) => void;
     showHoverIndicator: boolean;
@@ -166,6 +168,14 @@ export function DrawerMenu(props: DrawerMenuProps) {
 
             <div className="filter-section">
                 <h3>{t("pos.title")}</h3>
+                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer", marginBottom: 12 }}>
+                    <input
+                        type="checkbox"
+                        checked={props.advancedPosFilter}
+                        onChange={(e) => props.setAdvancedPosFilter(e.target.checked)}
+                    />
+                    {t("options.advancedPosFilter")}
+                </label>
                 <div className="filter-group" role="list">
                     {props.posGroups.map(p => (
                         <div
