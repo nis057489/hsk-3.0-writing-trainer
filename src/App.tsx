@@ -47,7 +47,7 @@ export default function App() {
         selectedLevels: ["new-1"],
         selectedPos: [],
         characterMode: 'simplified',
-        leftHanded: false,
+        leftHanded: true,
         tracingMode: false,
         mode: 'flashcard',
         language: i18n.resolvedLanguage || "en",

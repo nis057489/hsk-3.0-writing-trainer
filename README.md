@@ -2,13 +2,13 @@
 
 Practice handwriting for the HSK with a tablet-ready React app. Trace characters, drill with spaced repetition, and switch UI languages to match how you study.
 
-![Home](img/1.PNG)
-![Flashcard + Pad](img/2.PNG)
-![Sentence Practice](img/3.PNG)
-
 ## Live demo
 
 Try the hosted version: <https://nis057489.github.io/hsk-3.0-writing-trainer/>
+
+![Home](img/1.PNG)
+![Flashcard + Pad](img/2.PNG)
+![Sentence Practice](img/3.PNG)
 
 ## Why learners like it
 
@@ -26,46 +26,22 @@ Try the hosted version: <https://nis057489.github.io/hsk-3.0-writing-trainer/>
 4) Toggle tracing mode for a light character watermark, and switch Simplified/Traditional display.  
 5) Set left-handed layout if you hold the iPad/Pencil on the left.
 
-## Run locally (Docker)
+## Tip
 
-```bash
-docker compose up --build
-```
+## Tip — install on iPad (recommended)
 
-Open <http://localhost:5173>. Everything runs inside Docker—no local Node install needed.
+For the best tablet experience (no browser chrome, better fullscreen), add the site to your iPad Home Screen from Safari.
 
-## Build / preview (Node)
+1. Open the site in Safari on your iPad.
+2. Tap the Share button (the square with an arrow).
+3. Choose "Add to Home Screen".
+4. In the add dialog, confirm the name and tap "Add". If an "Open as Web App" / "Open as App" option appears, keep it enabled so the site launches fullscreen.
+5. Launch the app from your Home Screen.
 
-```bash
-npm install
-npm run dev      # localhost:5173
-npm run build    # outputs dist/
-npm run preview  # serves the built app
-```
+Note: Pencil hover and some fullscreen behaviors require Safari and recent iPad hardware (e.g., M2 iPad Pro + Apple Pencil 2). PWAs or other browsers may behave differently.
 
-## Deploy free on GitHub Pages
-
-Yes. Vite builds a static site you can host on GitHub Pages for free. Minimal steps:
-
-1) `npm install && npm run build` (or run inside CI).  
-2) Publish the `dist/` folder to GitHub Pages (e.g., a `gh-pages` branch or the official Pages GitHub Action).  
-
-- Using Actions: enable Pages → GitHub Actions in repo settings, then add a workflow that runs `npm ci`, `npm run build`, and uploads `dist/` with `actions/upload-pages-artifact` followed by `actions/deploy-pages`.  
-
-3) If serving from a subpath, set `base` in `vite.config.ts` (e.g., `base: "/your-repo/"`).
-
-## Vocabulary
-
-Vocabulary lives in `src/data/hsk.json` (HSK 3.0 list). To swap in your own list, match the fields: `id`, `hanzi`, `pinyin`, `meaning`, and optional `level`/`pos` arrays.
-
-## i18n
-
-- All translations sit in `src/i18n/*.json`; register new locales in `src/i18n/index.ts`.
-- The app auto-detects browser language and lets users switch from the drawer.
-
-## Theming tokens
-
-- Theme variables are defined in `src/index.css` (`--bg`, `--surface`, `--text`, `--accent`, etc.). Respect tokens when styling new components.
+![Share and add to Home Screen](img/4.PNG)
+![Adding as Web App](img/5.PNG)
 
 ## Credits
 
