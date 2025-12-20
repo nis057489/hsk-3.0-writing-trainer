@@ -280,9 +280,10 @@ body {
 .pad-controls {
     display: flex;
     justify-content: space-between;
-    margin-top: 12px;
+    margin-top: 16px;
     padding: 0 4px;
     width: 100%;
+    gap: 8px;
 }
 
 .pad-controls button {
