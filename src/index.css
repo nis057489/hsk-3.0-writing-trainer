@@ -267,10 +267,7 @@ body {
 .pad-shell {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     width: 100%;
-    position: relative;
-    padding-bottom: 56px;
 }
 
 .pad-surface {
@@ -283,23 +280,31 @@ body {
     gap: 0;
     justify-content: space-between;
     position: absolute;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
     padding: 0;
+    pointer-events: none;
 }
 
 .pad-controls button {
     background: var(--surface-strong);
     color: var(--text);
     border: 1px solid var(--border);
-    box-shadow: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     padding: 0;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     font-size: 18px;
     line-height: 1;
-    border-radius: 12px;
+    border-radius: 10px;
+    pointer-events: auto;
+    opacity: 0.92;
+}
+
+.pad-controls button:hover:not(:disabled) {
+    opacity: 1;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
 .pad-controls button:disabled {
