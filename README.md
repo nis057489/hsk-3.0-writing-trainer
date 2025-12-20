@@ -6,6 +6,10 @@ Practice handwriting for the HSK with a tablet-ready React app. Trace characters
 ![Flashcard + Pad](img/2.PNG)
 ![Sentence Practice](img/3.PNG)
 
+## Live demo
+
+Try the hosted version: <https://nis057489.github.io/hsk-3.0-writing-trainer/>
+
 ## Why learners like it
 
 - Spaced repetition flashcards plus sentence tracing to mimic HSK writing prompts
@@ -45,7 +49,9 @@ Yes. Vite builds a static site you can host on GitHub Pages for free. Minimal st
 
 1) `npm install && npm run build` (or run inside CI).  
 2) Publish the `dist/` folder to GitHub Pages (e.g., a `gh-pages` branch or the official Pages GitHub Action).  
- - Using Actions: enable Pages → GitHub Actions in repo settings, then add a workflow that runs `npm ci`, `npm run build`, and uploads `dist/` with `actions/upload-pages-artifact` followed by `actions/deploy-pages`.  
+
+- Using Actions: enable Pages → GitHub Actions in repo settings, then add a workflow that runs `npm ci`, `npm run build`, and uploads `dist/` with `actions/upload-pages-artifact` followed by `actions/deploy-pages`.  
+
 3) If serving from a subpath, set `base` in `vite.config.ts` (e.g., `base: "/your-repo/"`).
 
 ## Vocabulary
