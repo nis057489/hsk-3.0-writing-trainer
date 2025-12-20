@@ -304,103 +304,103 @@ export function DrawerMenu(props: DrawerMenuProps) {
                         <select
                             value={props.promptFont}
                             onChange={(e) => props.setPromptFont(e.target.value as PromptFontChoice)}
-                    style={{
-                        padding: "8px 10px",
-                        borderRadius: 8,
-                        border: "1px solid var(--border)",
-                        background: "var(--surface)",
-                        color: "var(--text)",
-                        fontSize: 14
-                    }}
-                    aria-label={t("options.promptFont")}
-                >
-                    {promptFontOptions.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                    ))}
-                </select>
-            </label>
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.promptFont")}
+                        >
+                            {promptFontOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
 
-            <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
-                <button
-                    onClick={() => props.setCharacterMode('simplified')}
-                    aria-pressed={props.characterMode === 'simplified'}
-                    style={{
-                        flex: 1,
-                        border: "none",
-                        background: props.characterMode === 'simplified' ? "var(--surface)" : "transparent",
-                        boxShadow: props.characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                        borderRadius: 6,
-                        padding: "6px 0",
-                        fontSize: 13,
-                        cursor: "pointer",
-                        fontWeight: props.characterMode === 'simplified' ? "bold" : "normal",
-                        color: props.characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
-                    }}
-                >
-                    {t("options.simplified")}
-                </button>
-                <button
-                    onClick={() => props.setCharacterMode('traditional')}
-                    aria-pressed={props.characterMode === 'traditional'}
-                    style={{
-                        flex: 1,
-                        border: "none",
-                        background: props.characterMode === 'traditional' ? "var(--surface)" : "transparent",
-                        boxShadow: props.characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                        borderRadius: 6,
-                        padding: "6px 0",
-                        fontSize: 13,
-                        cursor: "pointer",
-                        fontWeight: props.characterMode === 'traditional' ? "bold" : "normal",
-                        color: props.characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
-                    }}
-                >
-                    {t("options.traditional")}
-                </button>
-            </div>
+                    <div style={{ display: "flex", gap: 8, background: "var(--surface-strong)", padding: 4, borderRadius: 8, border: "1px solid var(--border)" }}>
+                        <button
+                            onClick={() => props.setCharacterMode('simplified')}
+                            aria-pressed={props.characterMode === 'simplified'}
+                            style={{
+                                flex: 1,
+                                border: "none",
+                                background: props.characterMode === 'simplified' ? "var(--surface)" : "transparent",
+                                boxShadow: props.characterMode === 'simplified' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                                borderRadius: 6,
+                                padding: "6px 0",
+                                fontSize: 13,
+                                cursor: "pointer",
+                                fontWeight: props.characterMode === 'simplified' ? "bold" : "normal",
+                                color: props.characterMode === 'simplified' ? "var(--accent)" : "var(--text)"
+                            }}
+                        >
+                            {t("options.simplified")}
+                        </button>
+                        <button
+                            onClick={() => props.setCharacterMode('traditional')}
+                            aria-pressed={props.characterMode === 'traditional'}
+                            style={{
+                                flex: 1,
+                                border: "none",
+                                background: props.characterMode === 'traditional' ? "var(--surface)" : "transparent",
+                                boxShadow: props.characterMode === 'traditional' ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                                borderRadius: 6,
+                                padding: "6px 0",
+                                fontSize: 13,
+                                cursor: "pointer",
+                                fontWeight: props.characterMode === 'traditional' ? "bold" : "normal",
+                                color: props.characterMode === 'traditional' ? "var(--accent)" : "var(--text)"
+                            }}
+                        >
+                            {t("options.traditional")}
+                        </button>
+                    </div>
 
-            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
-                <select
-                    value={props.language}
-                    onChange={(e) => props.setLanguage(e.target.value)}
-                    style={{
-                        padding: "8px 10px",
-                        borderRadius: 8,
-                        border: "1px solid var(--border)",
-                        background: "var(--surface)",
-                        color: "var(--text)",
-                        fontSize: 14
-                    }}
-                    aria-label={t("options.language")}
-                >
-                    {languageOptions.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                    ))}
-                </select>
-            </label>
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
+                        <select
+                            value={props.language}
+                            onChange={(e) => props.setLanguage(e.target.value)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.language")}
+                        >
+                            {languageOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
 
-            <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
-                <select
-                    value={props.theme}
-                    onChange={(e) => props.setTheme(e.target.value as ThemeChoice)}
-                    style={{
-                        padding: "8px 10px",
-                        borderRadius: 8,
-                        border: "1px solid var(--border)",
-                        background: "var(--surface)",
-                        color: "var(--text)",
-                        fontSize: 14
-                    }}
-                    aria-label={t("options.theme")}
-                >
-                    {themeOptions.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                    ))}
-                </select>
-            </label>
-        </div >
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.theme")}</span>
+                        <select
+                            value={props.theme}
+                            onChange={(e) => props.setTheme(e.target.value as ThemeChoice)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.theme")}
+                        >
+                            {themeOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
+                </div >
             </div >
 
             <div className="filter-section">
