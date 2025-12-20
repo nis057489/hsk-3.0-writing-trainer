@@ -8,7 +8,7 @@ function getPos(e: PointerEvent, el: HTMLCanvasElement) {
   return { x: e.clientX - r.left, y: e.clientY - r.top };
 }
 
-export function DrawingPad(props: { size?: number; showGrid?: boolean }) {
+export function DrawingPad(props: { size?: number; showGrid?: boolean; tracingMode?: boolean; character?: string }) {
   const size = props.size ?? 360;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -51,6 +51,22 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean }) {
       ctx.restore();
     }
 
+    // Tracing mode
+    if (props.tracingMode && props.character) {
+      ctx.save();
+      ctx.globalAlpha = 0.15;
+      ctx.font = `${size * dpr * 0.8}px "KaiTi", "Kaiti SC", "STKaiti", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai MO", "AR PL KaitiM GB", "KaiTi_GB2312", "DFKai-SB", "TW-Kai", serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#000";
+      // Center of the canvas
+      const cx = (size * dpr) / 2;
+      const cy = (size * dpr) / 2;
+      // Adjust vertical alignment slightly if needed, but middle baseline usually works well for single chars
+      ctx.fillText(props.character, cx, cy);
+      ctx.restore();
+    }
+
     // Draw strokes
     ctx.save();
     ctx.lineCap = "round";
@@ -81,7 +97,7 @@ export function DrawingPad(props: { size?: number; showGrid?: boolean }) {
 
     redraw();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [size, dpr, strokes]);
+  }, [size, dpr, strokes, props.tracingMode, props.character]);
 
   useEffect(() => {
     const c = canvasRef.current;

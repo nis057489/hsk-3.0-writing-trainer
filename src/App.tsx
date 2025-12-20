@@ -20,6 +20,7 @@ export default function App() {
   const [queue, setQueue] = useState<Card[]>(() => pickDue(cards, progress));
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
+  const [tracingMode, setTracingMode] = useState(false);
   const card = queue[idx % queue.length];
 
   const remaining = useMemo(() => queue.length, [queue.length]);
@@ -70,7 +71,17 @@ export default function App() {
           <h1>HSK 3 Writing Trainer</h1>
           <p>Draw the character. Reveal pinyin/meaning only after you attempt it.</p>
         </div>
-        <button onClick={resetProgress}>Reset progress</button>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
+          <button onClick={resetProgress}>Reset progress</button>
+          <label style={{ fontSize: "0.9rem" }}>
+            <input
+              type="checkbox"
+              checked={tracingMode}
+              onChange={(e) => setTracingMode(e.target.checked)}
+            />{" "}
+            Tracing Mode
+          </label>
+        </div>
       </header>
 
       <div className="grid">
@@ -85,7 +96,7 @@ export default function App() {
 
         <div>
           <h3 style={{ marginTop: 0 }}>Write here</h3>
-          <DrawingPad />
+          <DrawingPad tracingMode={tracingMode} character={card.hanzi} />
           <div className="tip">
             Tip: try writing the character <b>big</b>, centered, and in one smooth stroke per stroke.
           </div>
