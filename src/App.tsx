@@ -55,7 +55,7 @@ export default function App() {
         mode: 'flashcard',
         language: i18n.resolvedLanguage || "en",
         showHoverIndicator: false,
-        padSizeChoice: "medium"
+        padSizeChoice: "small"
     };
 
     const storedPrefs = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -109,7 +109,7 @@ export default function App() {
     const [showHoverIndicator, setShowHoverIndicator] = useState(storedPrefs.showHoverIndicator ?? false);
     const [mode, setMode] = useState<'flashcard' | 'sentence'>(storedPrefs.mode || 'flashcard');
     const [sentenceText, setSentenceText] = useState("");
-    const [padSizeChoice, setPadSizeChoice] = useState<PadSizeChoice>(storedPrefs.padSizeChoice || "medium");
+    const [padSizeChoice, setPadSizeChoice] = useState<PadSizeChoice>(storedPrefs.padSizeChoice || "small");
 
     // Initialize queue when filters change
     useEffect(() => {
@@ -665,12 +665,14 @@ export default function App() {
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 16 }}>
                             {sentenceText.split("").map((char, i) => (
                                 <div key={i} className="card" style={{ padding: 12 }}>
-                                    <DrawingPad
-                                        tracingMode={tracingMode}
-                                        character={char}
-                                        showHoverIndicator={showHoverIndicator}
-                                        size={basePadSize}
-                                    />
+                                    <div style={{ width: `${basePadSize}px`, height: `${basePadSize}px`, maxWidth: "100%", margin: "0 auto" }}>
+                                        <DrawingPad
+                                            tracingMode={tracingMode}
+                                            character={char}
+                                            showHoverIndicator={showHoverIndicator}
+                                            size={basePadSize}
+                                        />
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -60,7 +60,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                 {characters.map((char, index) => (
                     <div key={`${char}-${index}`} className="trace-cell">
                         <div className="trace-label">{t("practice.charLabel", { index: index + 1 })}</div>
-                        <div className="trace-pad">
+                        <div className="trace-pad" style={{ width: `${padSize}px`, height: `${padSize}px`, maxWidth: "100%" }}>
                             <DrawingPad
                                 size={padSize}
                                 tracingMode={tracingMode}
