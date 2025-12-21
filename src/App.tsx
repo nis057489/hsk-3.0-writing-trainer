@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
@@ -58,7 +58,7 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
 
 const allCards = vocab as Card[];
 
-// Map detailed POS codes to simple categories - moved outside component to prevent recreation
+// Map detailed POS codes to simple categories - moved outside component to prevent recreation on every render
 const posMapping: Record<string, string[]> = {
     "n": ["n", "ng", "nr", "ns", "nt", "nx", "nz"],
     "v": ["v", "vd", "vg", "vn"],
@@ -267,9 +267,6 @@ export default function App() {
     const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
     const [reveal, setReveal] = useState(showDetailsDefault);
 
-    // Use ref to track debounce timer for localStorage writes
-    const saveTimeoutRef = useRef<number | null>(null);
-
     // Initialize queue when filters change
     useEffect(() => {
         setQueue(pickDue(filteredCards, progress));
@@ -304,13 +301,15 @@ export default function App() {
     }, [language, i18n]);
 
     // Persist user preferences with debouncing to reduce constant localStorage writes
+    const saveTimeoutRef = useRef<number | null>(null);
+    
     useEffect(() => {
-        // Clear any existing timeout
+        // Clear previous timeout if it exists
         if (saveTimeoutRef.current !== null) {
             clearTimeout(saveTimeoutRef.current);
         }
-
-        // Set a new timeout to save after 500ms of inactivity
+        
+        // Set a new timeout to save after 500ms of no changes
         saveTimeoutRef.current = window.setTimeout(() => {
             const payload: Prefs = {
                 selectedLevels,
@@ -330,14 +329,8 @@ export default function App() {
                 gridVerticalShift
             };
             localStorage.setItem("prefs.state", JSON.stringify(payload));
+            saveTimeoutRef.current = null;
         }, 500);
-
-        // Cleanup function to clear timeout on unmount
-        return () => {
-            if (saveTimeoutRef.current !== null) {
-                clearTimeout(saveTimeoutRef.current);
-            }
-        };
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift]);
 
     const basePadSize = padSizeChoice === "xs"

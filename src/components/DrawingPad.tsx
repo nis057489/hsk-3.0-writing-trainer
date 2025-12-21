@@ -32,7 +32,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     const currentStroke = useRef<Stroke>([]);
     const dpr = useMemo(() => window.devicePixelRatio || 1, []);
     
-    // Use ref to throttle hover indicator updates
+    // Use ref to throttle hover indicator updates (reduces excessive state updates)
     const hoverThrottleRef = useRef<number>(0);
     const HOVER_THROTTLE_MS = 16; // ~60fps
 
@@ -178,7 +178,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             if (!isDownRef.current) {
                 if (e.pointerType === "pen" && e.buttons === 0) {
                     if (showHoverIndicator) {
-                        // Throttle hover indicator updates to reduce state changes
+                        // Throttle hover indicator updates to ~60fps to reduce state changes
                         const now = Date.now();
                         if (now - hoverThrottleRef.current >= HOVER_THROTTLE_MS) {
                             setHoverPoint(getPos(e, c));
@@ -230,7 +230,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
 
         const onPointerOver = (e: PointerEvent) => {
             if (showHoverIndicator && e.pointerType === "pen" && e.buttons === 0) {
-                // Throttle hover indicator updates to reduce state changes
+                // Throttle hover indicator updates to ~60fps to reduce state changes
                 const now = Date.now();
                 if (now - hoverThrottleRef.current >= HOVER_THROTTLE_MS) {
                     setHoverPoint(getPos(e, c));
