@@ -301,7 +301,7 @@ export default function App() {
     }, [language, i18n]);
 
     // Persist user preferences with debouncing to reduce constant localStorage writes
-    const saveTimeoutRef = useRef<number | null>(null);
+    const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     
     useEffect(() => {
         // Clear previous timeout if it exists
@@ -310,7 +310,7 @@ export default function App() {
         }
         
         // Set a new timeout to save after 500ms of no changes
-        saveTimeoutRef.current = window.setTimeout(() => {
+        saveTimeoutRef.current = setTimeout(() => {
             const payload: Prefs = {
                 selectedLevels,
                 selectedPos,

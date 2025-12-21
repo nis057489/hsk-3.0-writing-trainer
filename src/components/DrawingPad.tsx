@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 type Point = { x: number; y: number };
 type Stroke = Point[];
 
+// Throttle hover indicator updates to ~60fps to reduce excessive state changes
+const HOVER_THROTTLE_MS = 16;
+
 interface DrawingPadProps {
     size?: number;
     showGrid?: boolean;
@@ -34,7 +37,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     
     // Use ref to throttle hover indicator updates (reduces excessive state updates)
     const hoverThrottleRef = useRef<number>(0);
-    const HOVER_THROTTLE_MS = 16; // ~60fps
+
 
     useEffect(() => {
         setStrokes([]);
