@@ -4,7 +4,7 @@
   (e.g. GitHub Pages) uses short Cache-Control TTLs.
 */
 
-const CACHE_VERSION = "v3";
+const CACHE_VERSION = "v4";
 const ASSET_CACHE = `assets-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
