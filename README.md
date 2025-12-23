@@ -49,7 +49,7 @@ For the best tablet experience (no browser chrome, better fullscreen), add the s
 2. Choose "Add to Home screen" or "Install app".
 3. Follow the prompts.
 
-Note: Certain Apple Pencil hover require Safari and recent iPad hardware (e.g., M2 iPad Pro + Apple Pencil 2).
+Note: Certain Apple Pencil hover features require Safari and recent iPad hardware (e.g., M2 iPad Pro + Apple Pencil 2).
 
 ![Share and add to Home Screen](img/4.PNG)
 ![Adding as Web App](img/5.PNG)
