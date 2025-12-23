@@ -1,0 +1,139 @@
+{
+    "app": {
+        "title": "HSK Yazma Eğitmeni",
+        "subtitle": "Çince karakterlerde ustalaşın.",
+        "menu": "Menü",
+        "strokeGuide": "Vuruş sırası",
+        "deviceTips": "Cihaz ipuçları",
+        "posGuide": "Sözcük türleri",
+        "back": "Menüye dön"
+    },
+    "mode": {
+        "title": "Mod",
+        "flashcard": "Kartlar",
+        "sentence": "Cümle"
+    },
+    "layout": {
+        "title": "Düzen",
+        "leftHanded": "Solak modu"
+    },
+    "levels": {
+        "title": "Seviyeler",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Sözcük türleri",
+        "n": "İsimler",
+        "v": "Fiiller",
+        "a": "Sıfatlar",
+        "d": "Zarflar",
+        "r": "Zamirler",
+        "c": "Bağlaçlar",
+        "i": "Deyimler",
+        "l": "İfadeler"
+    },
+    "options": {
+        "title": "Ayarlar",
+        "tracing": "Çizim modu",
+        "simplified": "Basitleştirilmiş",
+        "traditional": "Geleneksel",
+        "theme": "Tema",
+        "language": "Dil",
+        "themeLight": "Açık",
+        "themeDark": "Koyu",
+        "themeContrast": "Yüksek kontrast",
+        "themeSystem": "Sistem",
+        "hoverIndicator": "Kalem göstergesini göster",
+        "padSize": "Yazma alanı boyutu",
+        "padSizeXs": "Cep (XS)",
+        "padSizeSmall": "Defter (küçük)",
+        "padSizeMedium": "Rahat (orta)",
+        "padSizeLarge": "Tuval (büyük)",
+        "traceFont": "İz karakteri yazı tipi stili",
+        "traceFontHandwritten": "El yazısı (Fırça)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "El yazısı (Sistem)",
+        "traceFontSystem": "Sistem (Sans-serif)",
+        "promptFont": "İstem karakteri yazı tipi stili",
+        "gridStyle": "Pratik ızgara stili",
+        "gridStyleNone": "Izgara yok",
+        "gridStyleRice": "Pirinç (米) - Geleneksel",
+        "gridStyleField": "Tarla (田) - Basit",
+        "gridVerticalShift": "40/60 dikey bölme kullan",
+        "showDetailsDefault": "Pinyin/anlamı varsayılan olarak göster"
+    },
+    "help": {
+        "title": "Yardım",
+        "stroke": "Vuruş sırası rehberi",
+        "tips": "iPad / tam ekran ipuçları",
+        "posAbbrev": "Sözcük türü kısaltmaları",
+        "deviceTitle": "iPad / tam ekran ipuçları",
+        "generalRules": "Genel kurallar",
+        "posTitle": "Sözcük türü kısaltmaları",
+        "posDesc": "Kelimeler dilbilgisel işlevlerini belirtmek için bu kısaltmalarla etiketlenmiştir.",
+        "posN": "İnsanları, yerleri, şeyleri veya fikirleri isimlendiren kelimeler (örn., 学生 xuésheng \"öğrenci\", 书 shū \"kitap\").",
+        "posV": "Eylemleri veya durumları tanımlayan kelimeler (örn., 学习 xuéxí \"çalışmak\", 是 shì \"olmak\").",
+        "posA": "İsimleri tanımlayan veya değiştiren kelimeler (örn., 好 hǎo \"iyi\", 大 dà \"büyük\").",
+        "posD": "Fiilleri, sıfatları veya diğer zarfları değiştiren kelimeler (örn., 很 hěn \"çok\", 都 dōu \"hepsi\").",
+        "posR": "İsimlerin yerini alan kelimeler (örn., 我 wǒ \"ben\", 这 zhè \"bu\").",
+        "posC": "Cümle veya tümceleri birleştiren kelimeler (örn., 和 hé \"ve\", 但是 dànshì \"ama\").",
+        "posI": "Mecazi anlamları olan sabit ifadeler (örn., 一言为定 yīyánwéidìng \"anlaştık\").",
+        "posL": "Çok kelimeli ifadeler veya kalıp sözler (örn., 不客气 bù kèqi \"rica ederim\").",
+        "rule1": "Yukarıdan aşağıya",
+        "rule2": "Soldan sağa",
+        "rule3": "Yatay önce, dikey sonra",
+        "rule4": "Önce dış, sonra iç",
+        "rule5": "Kapatmadan önce iç",
+        "rule6": "Önce merkez, sonra kenarlar",
+        "rule1Desc": "Önce üst vuruşu, sonra orta ve en son alt vuruşu yazın.",
+        "rule2Desc": "Önce sol dikey, sonra orta ve sağ dikeyi yazın.",
+        "rule3Desc": "Önce yatay, sonra dikey yazın.",
+        "rule4Desc": "Önce dış çerçeveyi, sonra iç vuruşları yazın.",
+        "rule5Desc": "Önce çerçeveyi, sonra iç vuruşu yazıp en son altı kapatın.",
+        "rule6Desc": "Önce ortadaki kancayı, sonra sol ve sağ noktaları yazın.",
+        "tip1": "Safari → Paylaş → \"Ana Ekrana Ekle\" ile ekleyip çubuksuz kullanın.",
+        "tip2": "Safari'de hafif aşağı kaydırma adres/sekme çubuklarını gizler, yukarı kaydırınca geri gelir.",
+        "tip3": "Daha çok alan için yatay döndürün; düzen kaydırmayı azaltmak için sıkışır.",
+        "tip4": "Apple Pencil: ucu ekranda tutun—avuç içi yok sayılır, yakınlaştırma/kaydırma burada engellenir."
+    },
+    "practice": {
+        "header": "Her karakteri çizin",
+        "chars": "karakter",
+        "empty": "Çizilecek karakter yok.",
+        "charLabel": "Karakter {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Pinyin/anlamı göster",
+        "hide": "Pinyin/anlamı gizle"
+    },
+    "toolbar": {
+        "queue": "Kuyruk",
+        "again": "Tekrar",
+        "hard": "Zor",
+        "good": "İyi",
+        "easy": "Kolay",
+        "skip": "Atla"
+    },
+    "controls": {
+        "undo": "Geri al",
+        "clear": "Temizle"
+    },
+    "sentence": {
+        "placeholder": "Buraya ifade ya da cümle yazın (örn. 你好吗)...",
+        "empty": "Yazma pratiği için yukarıya Çince karakterler girin."
+    },
+    "nocards": {
+        "title": "Kart bulunamadı",
+        "desc": "Daha fazla kelime görmek için Ayarlar'da filtreleri ayarlayın."
+    },
+    "stats": {
+        "available": "{{count}} kelime mevcut"
+    }
+}

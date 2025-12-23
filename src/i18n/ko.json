@@ -1,0 +1,139 @@
+{
+    "app": {
+        "title": "HSK 쓰기 트레이너",
+        "subtitle": "한자를 익히세요.",
+        "menu": "메뉴",
+        "strokeGuide": "필순 안내",
+        "deviceTips": "디바이스 팁",
+        "posGuide": "품사",
+        "back": "메뉴로 돌아가기"
+    },
+    "mode": {
+        "title": "모드",
+        "flashcard": "플래시카드",
+        "sentence": "문장"
+    },
+    "layout": {
+        "title": "레이아웃",
+        "leftHanded": "왼손잡이 모드"
+    },
+    "levels": {
+        "title": "레벨",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "품사",
+        "n": "명사",
+        "v": "동사",
+        "a": "형용사",
+        "d": "부사",
+        "r": "대명사",
+        "c": "접속사",
+        "i": "관용구",
+        "l": "구"
+    },
+    "options": {
+        "title": "옵션",
+        "tracing": "트레이싱 모드",
+        "simplified": "간체",
+        "traditional": "번체",
+        "theme": "테마",
+        "language": "언어",
+        "themeLight": "라이트",
+        "themeDark": "다크",
+        "themeContrast": "고대비",
+        "themeSystem": "시스템",
+        "hoverIndicator": "연필 호버 표시 보기",
+        "padSize": "쓰기 영역 크기",
+        "padSizeXs": "포켓 (XS)",
+        "padSizeSmall": "노트북 (소형)",
+        "padSizeMedium": "편안함 (중형)",
+        "padSizeLarge": "캔버스 (대형)",
+        "traceFont": "따라쓰기 문자 글꼴 스타일",
+        "traceFontHandwritten": "손글씨 (붓글씨)",
+        "traceFontKai": "해서체",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "필기체 (시스템)",
+        "traceFontSystem": "시스템 (Sans-serif)",
+        "promptFont": "프롬프트 문자 글꼴 스타일",
+        "gridStyle": "연습 격자 스타일",
+        "gridStyleRice": "쌀 (米) - 전통",
+        "gridStyleField": "밭 (田) - 단순",
+        "gridVerticalShift": "40/60 수직 분할 사용",
+        "gridStyleNone": "격자 없음",
+        "showDetailsDefault": "기본적으로 병음/뜻 표시"
+    },
+    "help": {
+        "title": "도움말",
+        "stroke": "필순 가이드",
+        "tips": "iPad / 전체 화면 팁",
+        "posAbbrev": "품사 약어",
+        "deviceTitle": "iPad / 전체 화면 팁",
+        "generalRules": "기본 규칙",
+        "posTitle": "품사 약어",
+        "posDesc": "단어들은 문법적 기능을 나타내기 위해 이러한 약어로 표시됩니다.",
+        "posN": "사람, 장소, 사물 또는 개념을 명명하는 단어 (예: 学生 xuésheng \"학생\", 书 shū \"책\").",
+        "posV": "행동이나 상태를 설명하는 단어 (예: 学习 xuéxí \"공부하다\", 是 shì \"~이다\").",
+        "posA": "명사를 설명하거나 수식하는 단어 (예: 好 hǎo \"좋다\", 大 dà \"크다\").",
+        "posD": "동사, 형용사 또는 다른 부사를 수식하는 단어 (예: 很 hěn \"매우\", 都 dōu \"모두\").",
+        "posR": "명사를 대체하는 단어 (예: 我 wǒ \"나\", 这 zhè \"이것\").",
+        "posC": "절이나 문장을 연결하는 단어 (예: 和 hé \"그리고\", 但是 dànshì \"그러나\").",
+        "posI": "비유적 의미를 가진 고정 표현 (예: 一言为定 yīyánwéidìng \"결정됐어\").",
+        "posL": "다단어 표현 또는 관용구 (예: 不客气 bù kèqi \"천만에요\").",
+        "rule1": "위에서 아래로",
+        "rule2": "왼쪽에서 오른쪽으로",
+        "rule3": "가로 후 세로",
+        "rule4": "바깥쪽 후 안쪽",
+        "rule5": "안쪽 후 닫기",
+        "rule6": "중앙 후 양옆",
+        "rule1Desc": "위쪽 획을 먼저, 그다음 가운데, 마지막으로 아래쪽을 씁니다.",
+        "rule2Desc": "왼쪽 세로획, 가운데, 오른쪽 순서로 씁니다.",
+        "rule3Desc": "가로획을 먼저, 그다음 세로획을 씁니다.",
+        "rule4Desc": "바깥 테두리를 먼저, 그다음 안쪽 획을 씁니다.",
+        "rule5Desc": "틀을 그리고, 안을 쓴 뒤, 마지막에 아래를 닫습니다.",
+        "rule6Desc": "중앙의 갈고리를 먼저, 그다음 좌우 점을 씁니다.",
+        "tip1": "Safari → 공유 → \"홈 화면에 추가\"로 추가하면 브라우저 바 없이 사용할 수 있습니다.",
+        "tip2": "Safari에서 조금만 아래로 스크롤하면 주소/탭 바가 숨겨지고, 위로 올리면 다시 나타납니다.",
+        "tip3": "가로 화면으로 돌리면 공간이 늘어나며, 레이아웃이 자동으로 컴팩트해집니다.",
+        "tip4": "Apple Pencil: 펜촉을 대고 쓰세요—손바닥은 무시되고, 이 영역에서는 핀치/스크롤이 차단됩니다."
+    },
+    "practice": {
+        "header": "각 글자를 따라 쓰세요",
+        "chars": "글자",
+        "empty": "아직 따라 쓸 글자가 없습니다.",
+        "charLabel": "글자 {{index}}"
+    },
+    "flashcard": {
+        "reveal": "병음/뜻 보기",
+        "hide": "병음/뜻 숨기기"
+    },
+    "toolbar": {
+        "queue": "대기열",
+        "again": "다시",
+        "hard": "어려움",
+        "good": "좋음",
+        "easy": "쉬움",
+        "skip": "건너뛰기"
+    },
+    "controls": {
+        "undo": "실행 취소",
+        "clear": "지우기"
+    },
+    "sentence": {
+        "placeholder": "여기에 구나 문장을 입력하세요 (예: 你好吗)...",
+        "empty": "위에 한자를 입력해 연습하세요."
+    },
+    "nocards": {
+        "title": "카드를 찾을 수 없음",
+        "desc": "더 많은 단어를 보려면 설정에서 필터를 조정하세요."
+    },
+    "stats": {
+        "available": "{{count}}개 단어 이용 가능"
+    }
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.6459074"
+     inkscape:cx="167.99244"
+     inkscape:cy="301.04974"
+     inkscape:window-width="1368"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="bg"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#aa251C"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#a50009"
+         id="stop2" />
+    </linearGradient>
+    <filter
+       id="shadow"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feDropShadow
+         dx="0"
+         dy="14"
+         stdDeviation="18"
+         flood-color="#000"
+         flood-opacity="0.35" />
+    </filter>
+  </defs>
+  <!-- rounded-square background -->
+  <rect
+     x="36"
+     y="36"
+     width="440"
+     height="440"
+     rx="96"
+     fill="url(#bg)"
+     id="rect2" />
+  <!-- subtle inner panel -->
+  <rect
+     x="66"
+     y="66"
+     width="380"
+     height="380"
+     rx="84"
+     fill="#ffffff"
+     opacity="0.06"
+     id="rect3" />
+  <!-- the character -->
+  <g
+     filter="url(#shadow)"
+     id="g3">
+    <text
+       x="258"
+       y="318.26108"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-size="344px"
+       font-weight="400"
+       font-family="YShi-Written, '写意体', KaiTi, 'Kaiti SC', STKaiti, serif"
+       fill="#f8fafc"
+       style="stroke-width:10px;paint-order:stroke"
+       id="text3">写</text>
+  </g>
+</svg>

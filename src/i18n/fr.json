@@ -1,0 +1,140 @@
+{
+    "app": {
+        "title": "Entraîneur d'écriture HSK",
+        "subtitle": "Maîtrisez les caractères chinois.",
+        "menu": "Menu",
+        "strokeGuide": "Ordre des traits",
+        "deviceTips": "Astuces appareil",
+        "posGuide": "Catégories grammaticales",
+        "back": "Retour au menu"
+    },
+    "mode": {
+        "title": "Mode",
+        "flashcard": "Cartes",
+        "sentence": "Phrase"
+    },
+    "layout": {
+        "title": "Mise en page",
+        "leftHanded": "Mode gaucher"
+    },
+    "levels": {
+        "title": "Niveaux",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Catégories grammaticales",
+        "n": "Noms",
+        "v": "Verbes",
+        "a": "Adjectifs",
+        "d": "Adverbes",
+        "r": "Pronoms",
+        "c": "Conjonctions",
+        "i": "Idiomes",
+        "l": "Expressions"
+    },
+    "options": {
+        "title": "Options",
+        "tracing": "Mode de tracé",
+        "simplified": "Simplifié",
+        "traditional": "Traditionnel",
+        "theme": "Thème",
+        "language": "Langue",
+        "themeLight": "Clair",
+        "themeDark": "Sombre",
+        "themeContrast": "Contraste élevé",
+        "themeSystem": "Système",
+        "hoverIndicator": "Afficher l'indicateur de crayon au survol",
+        "padSize": "Taille de la zone d'écriture",
+        "padSizeXs": "Poche (XS)",
+        "padSizeSmall": "Cahier (petit)",
+        "padSizeMedium": "Confort (moyen)",
+        "padSizeLarge": "Toile (grand)",
+        "traceFont": "Style de police pour le tracé",
+        "traceFontHandwritten": "Manuscrite (Pinceau)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "Cursive (Système)",
+        "traceFontSystem": "Système (Sans-serif)",
+        "promptFont": "Style de police pour l'invite",
+        "gridStyle": "Style de grille de pratique",
+        "gridStyleRice": "Riz (米) - Traditionnel",
+        "gridStyleField": "Champ (田) - Simple",
+        "gridVerticalShift": "Utiliser division verticale 40/60",
+        "showDetailsDefault": "Afficher pinyin/sens par défaut"
+    },
+    "help": {
+        "title": "Aide",
+        "stroke": "Guide d'ordre des traits",
+        "tips": "Astuces iPad / plein écran",
+        "posAbbrev": "Abréviations des catégories grammaticales",
+        "deviceTitle": "Astuces iPad / plein écran",
+        "generalRules": "Règles générales",
+        "posTitle": "Abréviations des catégories grammaticales",
+        "posDesc": "Les mots sont étiquetés avec ces abréviations pour indiquer leur fonction grammaticale.",
+        "posN": "Mots qui nomment des personnes, lieux, choses ou idées (par ex., 学生 xuésheng \"étudiant\", 书 shū \"livre\").",
+        "posV": "Mots qui décrivent des actions ou états (par ex., 学习 xuéxí \"étudier\", 是 shì \"être\").",
+        "posA": "Mots qui décrivent ou modifient des noms (par ex., 好 hǎo \"bon\", 大 dà \"grand\").",
+        "posD": "Mots qui modifient des verbes, adjectifs ou autres adverbes (par ex., 很 hěn \"très\", 都 dōu \"tous\").",
+        "posR": "Mots qui remplacent des noms (par ex., 我 wǒ \"je/moi\", 这 zhè \"ceci\").",
+        "posC": "Mots qui relient des propositions ou phrases (par ex., 和 hé \"et\", 但是 dànshì \"mais\").",
+        "posI": "Expressions fixes avec sens figuratif (par ex., 一言为定 yīyánwéidìng \"c'est entendu\").",
+        "posL": "Expressions de plusieurs mots ou locutions figées (par ex., 不客气 bù kèqi \"de rien\").",
+        "rule1": "De haut en bas",
+        "rule2": "De gauche à droite",
+        "rule3": "Horizontal avant vertical",
+        "rule4": "Extérieur avant intérieur",
+        "rule5": "Intérieur avant de fermer",
+        "rule6": "Centre avant les côtés",
+        "rule1Desc": "Écris d'abord le trait du haut, puis le milieu, puis le bas.",
+        "rule2Desc": "Écris le trait vertical gauche, puis le milieu, puis le droit.",
+        "rule3Desc": "Écris d'abord l'horizontal puis le vertical.",
+        "rule4Desc": "Écris d'abord le cadre extérieur puis les traits intérieurs.",
+        "rule5Desc": "Écris le cadre, puis le trait intérieur, puis ferme en bas.",
+        "rule6Desc": "Écris d'abord le crochet central, puis les points gauche et droit.",
+        "tip1": "Ajoutez à l'écran d'accueil dans Safari → Partager → \"Ajouter à l'écran d'accueil\" pour une expérience sans barre.",
+        "tip2": "Dans Safari, un léger défilement vers le bas masque les barres d'adresse/onglets jusqu'à ce que vous remontiez.",
+        "tip3": "Passez en paysage pour plus d'espace ; la mise en page se compacte pour limiter le défilement.",
+        "tip4": "Apple Pencil : gardez la pointe posée—les paumes sont ignorées et le pincement/défilement est bloqué ici."
+    },
+    "practice": {
+        "header": "Trace chaque caractère",
+        "chars": "caractères",
+        "empty": "Aucun caractère à tracer pour l'instant.",
+        "charLabel": "Caractère {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Afficher pinyin/sens",
+        "hide": "Masquer pinyin/sens"
+    },
+    "toolbar": {
+        "queue": "File",
+        "again": "Encore",
+        "hard": "Difficile",
+        "good": "Bien",
+        "easy": "Facile",
+        "skip": "Passer"
+    },
+    "controls": {
+        "undo": "Annuler",
+        "clear": "Effacer"
+    },
+    "sentence": {
+        "placeholder": "Tapez ici une phrase ou une proposition (ex. 你好吗)...",
+        "empty": "Tapez des caractères chinois ci-dessus pour vous entraîner."
+    },
+    "nocards": {
+        "title": "Aucune carte trouvée",
+        "desc": "Essayez d'ajuster vos filtres dans Réglages pour voir plus de mots.",
+        "gridStyle": "Style de grille d'entraînement",
+        "stats": {
+            "available": "{{count}} mots disponibles",
+            "gridStyleNone": "Sans grille"
+        }
+    }
+}

@@ -1,0 +1,139 @@
+{
+    "app": {
+        "title": "Treinador de Escrita HSK",
+        "subtitle": "Domine os caracteres chineses.",
+        "menu": "Menu",
+        "strokeGuide": "Ordem dos traços",
+        "deviceTips": "Dicas do dispositivo",
+        "posGuide": "Classes de palavras",
+        "back": "Voltar ao menu"
+    },
+    "mode": {
+        "title": "Modo",
+        "flashcard": "Cartões",
+        "sentence": "Frase"
+    },
+    "layout": {
+        "title": "Layout",
+        "leftHanded": "Modo canhoto"
+    },
+    "levels": {
+        "title": "Níveis",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Classes de palavras",
+        "n": "Substantivos",
+        "v": "Verbos",
+        "a": "Adjetivos",
+        "d": "Advérbios",
+        "r": "Pronomes",
+        "c": "Conjunções",
+        "i": "Expressões idiomáticas",
+        "l": "Expressões"
+    },
+    "options": {
+        "title": "Opções",
+        "tracing": "Modo de contorno",
+        "simplified": "Simplificado",
+        "traditional": "Tradicional",
+        "theme": "Tema",
+        "language": "Idioma",
+        "themeLight": "Claro",
+        "themeDark": "Escuro",
+        "themeContrast": "Alto contraste",
+        "themeSystem": "Sistema",
+        "hoverIndicator": "Mostrar indicador de lápis ao passar",
+        "padSize": "Tamanho da área de escrita",
+        "padSizeXs": "Bolso (XS)",
+        "padSizeSmall": "Caderno (pequeno)",
+        "padSizeMedium": "Conforto (médio)",
+        "padSizeLarge": "Tela (grande)",
+        "traceFont": "Estilo de fonte para traçar",
+        "traceFontHandwritten": "Manuscrita (Pincel)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "Cursiva (Sistema)",
+        "traceFontSystem": "Sistema (Sans-serif)",
+        "promptFont": "Estilo de fonte para prompt",
+        "gridStyle": "Estilo de grade de prática",
+        "gridStyleRice": "Arroz (米) - Tradicional",
+        "gridStyleField": "Campo (田) - Simples",
+        "gridStyleNone": "Sem grade",
+        "gridVerticalShift": "Usar divisão vertical 40/60",
+        "showDetailsDefault": "Mostrar pinyin/significado por padrão"
+    },
+    "help": {
+        "title": "Ajuda",
+        "stroke": "Guia de ordem dos traços",
+        "tips": "Dicas para iPad / tela cheia",
+        "posAbbrev": "Abreviações de classes de palavras",
+        "deviceTitle": "Dicas para iPad / tela cheia",
+        "generalRules": "Regras gerais",
+        "posTitle": "Abreviações de classes de palavras",
+        "posDesc": "As palavras são rotuladas com essas abreviações para indicar sua função gramatical.",
+        "posN": "Palavras que nomeiam pessoas, lugares, coisas ou ideias (ex., 学生 xuésheng \"estudante\", 书 shū \"livro\").",
+        "posV": "Palavras que descrevem ações ou estados (ex., 学习 xuéxí \"estudar\", 是 shì \"ser\").",
+        "posA": "Palavras que descrevem ou modificam substantivos (ex., 好 hǎo \"bom\", 大 dà \"grande\").",
+        "posD": "Palavras que modificam verbos, adjetivos ou outros advérbios (ex., 很 hěn \"muito\", 都 dōu \"todos\").",
+        "posR": "Palavras que substituem substantivos (ex., 我 wǒ \"eu\", 这 zhè \"isto\").",
+        "posC": "Palavras que conectam cláusulas ou frases (ex., 和 hé \"e\", 但是 dànshì \"mas\").",
+        "posI": "Expressões fixas com significados figurativos (ex., 一言为定 yīyánwéidìng \"está combinado\").",
+        "posL": "Expressões de várias palavras ou frases fixas (ex., 不客气 bù kèqi \"de nada\").",
+        "rule1": "De cima para baixo",
+        "rule2": "Da esquerda para a direita",
+        "rule3": "Horizontal antes de vertical",
+        "rule4": "Exterior antes do interior",
+        "rule5": "Interior antes de fechar",
+        "rule6": "Centro antes dos lados",
+        "rule1Desc": "Escreva primeiro o traço superior, depois o do meio e por fim o inferior.",
+        "rule2Desc": "Escreva o traço vertical esquerdo, depois o do meio e depois o direito.",
+        "rule3Desc": "Escreva o traço horizontal antes do vertical.",
+        "rule4Desc": "Desenhe primeiro a moldura externa e depois os traços internos.",
+        "rule5Desc": "Desenhe a moldura, depois o interior e feche por baixo.",
+        "rule6Desc": "Faça primeiro o gancho central e depois os pontos esquerdo e direito.",
+        "tip1": "Adicione à tela inicial em Safari → Compartilhar → \"Adicionar à Tela de Início\" para usar sem barras.",
+        "tip2": "No Safari, um leve rolar para baixo oculta as barras de endereço/abas até que você role para cima.",
+        "tip3": "Vire para paisagem para mais espaço; o layout se compacta para reduzir rolagem.",
+        "tip4": "Apple Pencil: mantenha a ponta apoiada—palmas são ignoradas e pinça/rolagem são bloqueados aqui."
+    },
+    "practice": {
+        "header": "Trace cada caractere",
+        "chars": "caracteres",
+        "empty": "Ainda não há caracteres para traçar.",
+        "charLabel": "Caractere {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Mostrar pinyin/significado",
+        "hide": "Ocultar pinyin/significado"
+    },
+    "toolbar": {
+        "queue": "Fila",
+        "again": "De novo",
+        "hard": "Difícil",
+        "good": "Bom",
+        "easy": "Fácil",
+        "skip": "Pular"
+    },
+    "controls": {
+        "undo": "Desfazer",
+        "clear": "Limpar"
+    },
+    "sentence": {
+        "placeholder": "Digite aqui uma frase (ex.: 你好吗)...",
+        "empty": "Digite caracteres chineses acima para praticar."
+    },
+    "nocards": {
+        "title": "Nenhum cartão encontrado",
+        "desc": "Ajuste os filtros em Configurações para ver mais palavras."
+    },
+    "stats": {
+        "available": "{{count}} palavras disponíveis"
+    }
+}

@@ -1,0 +1,142 @@
+{
+    "app": {
+        "title": "HSK 書寫練習",
+        "subtitle": "練習漢字書寫。",
+        "menu": "選單",
+        "strokeGuide": "筆順指南",
+        "deviceTips": "裝置提示",
+        "posGuide": "詞性說明",
+        "back": "返回選單"
+    },
+    "mode": {
+        "title": "模式",
+        "flashcard": "閃卡",
+        "sentence": "句子"
+    },
+    "layout": {
+        "title": "版面",
+        "leftHanded": "交換書寫區"
+    },
+    "levels": {
+        "title": "等級",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "詞性",
+        "n": "名詞",
+        "v": "動詞",
+        "a": "形容詞",
+        "d": "副詞",
+        "r": "代詞",
+        "c": "連詞",
+        "i": "成語",
+        "l": "詞組"
+    },
+    "options": {
+        "title": "選項",
+        "tracing": "描紅模式",
+        "simplified": "簡體",
+        "traditional": "繁體",
+        "theme": "主題",
+        "language": "語言",
+        "themeLight": "淺色",
+        "themeDark": "深色",
+        "themeContrast": "高對比",
+        "themeSystem": "跟隨系統",
+        "hoverIndicator": "顯示手寫筆懸停指示",
+        "padSize": "書寫格大小",
+        "padSizeXs": "特小：口袋便攜",
+        "padSizeSmall": "小：筆記紙感",
+        "padSizeMedium": "中：日常舒適",
+        "padSizeLarge": "大：畫布空間",
+        "traceFont": "描紅字型風格",
+        "traceFontHandwritten": "手寫體（毛筆）",
+        "traceFontKai": "楷體（傳統）",
+        "traceFontYShi": "寫意體SC（YShi-Written SC）",
+        "traceFontCursive": "草書體（系統）",
+        "traceFontSystem": "系統字型（無襯線）",
+        "promptFont": "提示字型風格",
+        "gridStyle": "練習網格樣式",
+        "gridStyleRice": "米字格 - 傳統",
+        "gridStyleField": "田字格 - 簡單",
+        "gridStyleNone": "無網格",
+        "gridVerticalShift": "使用40/60豎向分割",
+        "showDetailsDefault": "預設顯示拼音/釋義",
+        "randomizeNext": "隨機下一張卡片",
+        "reviewGrades": "僅練習這些結果",
+        "includeNewCards": "包含新卡片"
+    },
+    "help": {
+        "title": "說明",
+        "stroke": "筆順指南",
+        "tips": "iPad / 全螢幕提示",
+        "posAbbrev": "詞性縮寫說明",
+        "deviceTitle": "iPad / 全螢幕提示",
+        "generalRules": "基本規則",
+        "posTitle": "詞性縮寫說明",
+        "posDesc": "詞彙標有這些縮寫以表示其語法功能。",
+        "posN": "表示人、地方、事物或概念的詞（例如：學生、書）。",
+        "posV": "表示動作或狀態的詞（例如：學習、是）。",
+        "posA": "用來描述或修飾名詞的詞（例如：好、大）。",
+        "posD": "用來修飾動詞、形容詞或其他副詞的詞（例如：很、都）。",
+        "posR": "代替名詞的詞（例如：我、這）。",
+        "posC": "連接分句或句子的詞（例如：和、但是）。",
+        "posI": "具有比喻意義的固定表達（例如：一言為定）。",
+        "posL": "多詞表達或固定短語（例如：不客氣）。",
+        "rule1": "從上到下",
+        "rule2": "從左到右",
+        "rule3": "先橫後豎",
+        "rule4": "先外後內",
+        "rule5": "先內後封口",
+        "rule6": "先中間後兩邊",
+        "rule1Desc": "先寫上方筆畫，再寫中間，最後寫下方。",
+        "rule2Desc": "先寫左側豎畫，再寫中間，最後寫右側。",
+        "rule3Desc": "先寫橫畫，再寫豎畫。",
+        "rule4Desc": "先寫外框，再寫內部筆畫。",
+        "rule5Desc": "先寫框架，再寫裡面，最後封口。",
+        "rule6Desc": "先寫中間的鉤，再寫左右點。",
+        "tip1": "在 Safari 中透過分享 → 「加入主畫面」可無瀏覽器列地使用。",
+        "tip2": "在 Safari 中，稍微往下捲即可隱藏地址/分頁列，往上捲會再出現。",
+        "tip3": "橫向可獲得更多空間；版面會自動緊縮以減少捲動。",
+        "tip4": "使用 Apple Pencil 時保持筆尖接觸——手掌會被忽略，這裡也會阻擋縮放/捲動。"
+    },
+    "practice": {
+        "header": "逐個描寫字元",
+        "chars": "個字元",
+        "empty": "還沒有可描寫的字元。",
+        "charLabel": "第 {{index}} 個"
+    },
+    "flashcard": {
+        "reveal": "顯示拼音/釋義",
+        "hide": "隱藏拼音/釋義"
+    },
+    "toolbar": {
+        "queue": "佇列",
+        "again": "再來一次",
+        "hard": "困難",
+        "good": "良好",
+        "easy": "容易",
+        "skip": "跳過"
+    },
+    "controls": {
+        "undo": "復原",
+        "clear": "清除"
+    },
+    "sentence": {
+        "placeholder": "在這裡輸入短語或句子（例如 你好嗎）...",
+        "empty": "在上方輸入漢字以開始練習書寫。"
+    },
+    "nocards": {
+        "title": "沒有找到卡片",
+        "desc": "請在設定中調整篩選以查看更多詞彙。"
+    },
+    "stats": {
+        "available": "共有 {{count}} 個詞彙"
+    }
+}
