@@ -60,4 +60,4 @@ Note: Certain Apple Pencil hover features require Safari and recent iPad hardwar
 
 ## Credits
 
-Shout out to @drkameleon for the JSON vocabulary source: [@drkameleon’s HSK lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main) and @Steve-yuu for the font[YShi-Written](https://github.com/Steve-Yuu/YShi-Written). Thanks!
+Shout out to @drkameleon for the JSON vocabulary source: [@drkameleon’s HSK lists](https://github.com/drkameleon/complete-hsk-vocabulary/tree/main) and @Steve-yuu for the font [YShi-Written](https://github.com/Steve-Yuu/YShi-Written). Thanks!
