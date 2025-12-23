@@ -10,7 +10,7 @@ Master Chinese handwriting for the HSK.
 
 ## Use it here
 
-Access it here <https://nis057489.github.io/hsk-3.0-writing-trainer/>
+<https://nis057489.github.io/hsk-3.0-writing-trainer/>
 
 ![Home](img/1.PNG)
 ![Flashcard + Pad](img/2.PNG)
