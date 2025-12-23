@@ -14,6 +14,8 @@ Access it here: <https://nis057489.github.io/hsk-3.0-writing-trainer/>
 
 Tip: install it for offline use (see below)
 
+## Screenshots
+
 ![Home](img/1.PNG)
 ![Flashcard + Pad](img/2.PNG)
 ![Sentence Practice](img/3.PNG)
