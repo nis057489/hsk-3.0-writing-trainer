@@ -6,7 +6,7 @@
 </p>
 <!-- markdownlint-enable MD033 -->
 
-Practice handwriting for the HSK with a tablet-ready React app. Trace characters, drill with spaced repetition, and switch UI languages to match how you study.
+Master Chinese handwriting for the HSK.
 
 ## Use it here
 
@@ -28,8 +28,8 @@ Access it here <https://nis057489.github.io/hsk-3.0-writing-trainer/>
 ## How to use
 
 1) Open the menu (☰) → choose Flashcard or Sentence mode.  
-2) Flashcard mode: tap a card to reveal pinyin/meaning, then grade (Again/Hard/Good/Easy). Queue orders itself with spaced repetition.  
-3) Sentence mode: paste/type characters and trace each box.  
+2) Flashcard mode: tap a card to reveal pinyin/meaning, then grade (Again/Hard/Good/Easy). Spaced repetition will happen automatically as you go. Filter the words you want to see in the Settings.
+3) Sentence mode: paste/type characters and write or trace each box.  
 4) Toggle tracing mode for a light character watermark, and switch Simplified/Traditional display.  
 5) Set left-handed layout if you hold the iPad/Pencil on the left.
 
