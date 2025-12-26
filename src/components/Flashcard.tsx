@@ -20,10 +20,10 @@ export function Flashcard(props: {
             // iOS/iPadOS tends to support "Kaiti SC"/"Kaiti TC" when available.
             // If no Kai-style system font exists, fall back to our loaded handwriting fonts
             // (still CJK-capable) before generic serif.
-            return '"Kaiti SC", "Kaiti TC", "STKaiti", "KaiTi", "BiauKai", "DFKai-SB", "TW-Kai", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "Ma Shan Zheng", "ZCOOL KuaiLe", serif';
+            return '"TW-Kai", "Kaiti SC", "Kaiti TC", "STKaiti", "KaiTi", "BiauKai", "DFKai-SB", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "Ma Shan Zheng", "ZCOOL KuaiLe", serif';
         } else if (promptFont === "yshi") {
             // System font (Apple platforms) — falls back gracefully elsewhere.
-            return '"YShi-Written SC", "YShi-Written TC", "写意体SC", "写意体TC", "Kaiti SC", "Kaiti TC", "STKaiti", "KaiTi", "BiauKai", "DFKai-SB", "TW-Kai", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "Ma Shan Zheng", "ZCOOL KuaiLe", serif';
+            return '"YShi-Written SC", "YShi-Written TC", "写意体SC", "写意体TC", "TW-Kai", "Kaiti SC", "Kaiti TC", "STKaiti", "KaiTi", "BiauKai", "DFKai-SB", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "Ma Shan Zheng", "ZCOOL KuaiLe", serif';
         } else {
             // System UI fonts + common built-in CJK sans fallbacks.
             // - Apple: PingFang SC, Hiragino Sans GB

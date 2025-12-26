@@ -18,6 +18,14 @@
 }
 
 @font-face {
+    font-family: "TW-Kai";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/TW-Kai Regular.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "YShi-Written SC";
     font-style: normal;
     font-weight: 400;
