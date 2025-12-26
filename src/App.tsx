@@ -310,6 +310,7 @@ export default function App() {
     ]);
 
     const levels = useMemo(() => ([
+        { id: "radical", label: t("levels.radical") },
         { id: "new-1", label: t("levels.hsk1") },
         { id: "new-2", label: t("levels.hsk2") },
         { id: "new-3", label: t("levels.hsk3") },

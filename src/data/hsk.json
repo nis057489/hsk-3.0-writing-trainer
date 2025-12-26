@@ -1,5 +1,2623 @@
 [
   {
+    "id": "radical-000",
+    "hanzi": "阝",
+    "traditional": "阝",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-001",
+    "hanzi": "口",
+    "traditional": "口",
+    "pinyin": "kǒu",
+    "meaning": "mouth; classifier for things with mouths (people, domestic animals, cannons, wells etc); classifier for bites or mouthfuls (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-002",
+    "hanzi": "扌",
+    "traditional": "扌",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-003",
+    "hanzi": "疒",
+    "traditional": "疒",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-004",
+    "hanzi": "矢",
+    "traditional": "矢",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-005",
+    "hanzi": "艹",
+    "traditional": "艹",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-006",
+    "hanzi": "爫",
+    "traditional": "爫",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-007",
+    "hanzi": "石",
+    "traditional": "石",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-008",
+    "hanzi": "日",
+    "traditional": "日",
+    "pinyin": "Rì",
+    "meaning": "abbr. for 本, Japan (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-009",
+    "hanzi": "宀",
+    "traditional": "宀",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-010",
+    "hanzi": "山",
+    "traditional": "山",
+    "pinyin": "Shān",
+    "meaning": "surname Shan (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-011",
+    "hanzi": "木",
+    "traditional": "木",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-012",
+    "hanzi": "凵",
+    "traditional": "凵",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-013",
+    "hanzi": "灬",
+    "traditional": "灬",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-014",
+    "hanzi": "亻",
+    "traditional": "亻",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-015",
+    "hanzi": "大",
+    "traditional": "大",
+    "pinyin": "dà",
+    "meaning": "big; large; great; older (than another person); eldest (as in 姐); greatly; freely; fully; (dialect) father; (dialect) uncle (father's brother) (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-016",
+    "hanzi": "八",
+    "traditional": "八",
+    "pinyin": "bā",
+    "meaning": "eight; 8 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-017",
+    "hanzi": "革",
+    "traditional": "革",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-018",
+    "hanzi": "土",
+    "traditional": "土",
+    "pinyin": "Tǔ",
+    "meaning": "Tu (ethnic group); surname Tu (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-019",
+    "hanzi": "父",
+    "traditional": "父",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-020",
+    "hanzi": "雨",
+    "traditional": "雨",
+    "pinyin": "yǔ",
+    "meaning": "rain (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-021",
+    "hanzi": "巳",
+    "traditional": "巳",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-022",
+    "hanzi": "罒",
+    "traditional": "罒",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-023",
+    "hanzi": "手",
+    "traditional": "手",
+    "pinyin": "shǒu",
+    "meaning": "hand; (formal) to hold; person engaged in certain types of work; person skilled in certain types of work; personal(ly); convenient; classifier for skill (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-024",
+    "hanzi": "白",
+    "traditional": "白",
+    "pinyin": "Bái",
+    "meaning": "surname Bai (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-025",
+    "hanzi": "贝",
+    "traditional": "贝",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-026",
+    "hanzi": "王",
+    "traditional": "王",
+    "pinyin": "Wáng",
+    "meaning": "surname Wang (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-027",
+    "hanzi": "页",
+    "traditional": "頁",
+    "pinyin": "xié",
+    "meaning": "head (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-028",
+    "hanzi": "文",
+    "traditional": "文",
+    "pinyin": "Wén",
+    "meaning": "surname Wen (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-029",
+    "hanzi": "片",
+    "traditional": "片",
+    "pinyin": "piān",
+    "meaning": "disk; sheet (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-030",
+    "hanzi": "力",
+    "traditional": "力",
+    "pinyin": "Lì",
+    "meaning": "surname Li (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-031",
+    "hanzi": "十",
+    "traditional": "十",
+    "pinyin": "shí",
+    "meaning": "ten; 10 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-032",
+    "hanzi": "巾",
+    "traditional": "巾",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-033",
+    "hanzi": "纟",
+    "traditional": "纟",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-034",
+    "hanzi": "勹",
+    "traditional": "勹",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-035",
+    "hanzi": "火",
+    "traditional": "火",
+    "pinyin": "Huǒ",
+    "meaning": "surname Huo (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-036",
+    "hanzi": "饣",
+    "traditional": "饣",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-037",
+    "hanzi": "豸",
+    "traditional": "豸",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-038",
+    "hanzi": "心",
+    "traditional": "心",
+    "pinyin": "xīn",
+    "meaning": "heart; mind; intention; center; core (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-039",
+    "hanzi": "匕",
+    "traditional": "匕",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-040",
+    "hanzi": "夂",
+    "traditional": "夂",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-041",
+    "hanzi": "⺼",
+    "traditional": "⺼",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-042",
+    "hanzi": "衤",
+    "traditional": "衤",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-043",
+    "hanzi": "非",
+    "traditional": "非",
+    "pinyin": "Fēi",
+    "meaning": "abbr. for 洲, Africa (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-044",
+    "hanzi": "⺮",
+    "traditional": "⺮",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-045",
+    "hanzi": "用",
+    "traditional": "用",
+    "pinyin": "yòng",
+    "meaning": "to use; to employ; to have to; to eat or drink; expense or outlay; usefulness; hence; therefore (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-046",
+    "hanzi": "辶",
+    "traditional": "辶",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-047",
+    "hanzi": "足",
+    "traditional": "足",
+    "pinyin": "jù",
+    "meaning": "excessive (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-048",
+    "hanzi": "鼻",
+    "traditional": "鼻",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-049",
+    "hanzi": "比",
+    "traditional": "比",
+    "pinyin": "Bǐ",
+    "meaning": "Belgium; Belgian; abbr. for 比利时 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-050",
+    "hanzi": "彳",
+    "traditional": "彳",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-051",
+    "hanzi": "门",
+    "traditional": "門",
+    "pinyin": "Mén",
+    "meaning": "surname Men (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-052",
+    "hanzi": "廾",
+    "traditional": "廾",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-053",
+    "hanzi": "户",
+    "traditional": "戶",
+    "pinyin": "hù",
+    "meaning": "a household; door; family (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-054",
+    "hanzi": "又",
+    "traditional": "又",
+    "pinyin": "yòu",
+    "meaning": "(once) again; also; both... and...; and yet; (used for emphasis) anyway (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-055",
+    "hanzi": "辛",
+    "traditional": "辛",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-056",
+    "hanzi": "风",
+    "traditional": "風",
+    "pinyin": "fēng",
+    "meaning": "wind; news; style; custom; manner (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-057",
+    "hanzi": "衣",
+    "traditional": "衣",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-058",
+    "hanzi": "刂",
+    "traditional": "刂",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-059",
+    "hanzi": "彡",
+    "traditional": "彡",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-060",
+    "hanzi": "氵",
+    "traditional": "氵",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-061",
+    "hanzi": "冫",
+    "traditional": "冫",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-062",
+    "hanzi": "一",
+    "traditional": "一",
+    "pinyin": "yī",
+    "meaning": "one; single; a (article); as soon as; entire; whole; all; throughout; \"one\" radical in Chinese characters (Kangxi radical 1); also pr. [yāo] for greater clarity when spelling out numbers digit by digit (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-063",
+    "hanzi": "禾",
+    "traditional": "禾",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-064",
+    "hanzi": "干",
+    "traditional": "乹",
+    "pinyin": "gān",
+    "meaning": "old variant of 干 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-065",
+    "hanzi": "马",
+    "traditional": "馬",
+    "pinyin": "Mǎ",
+    "meaning": "surname Ma; abbr. for Malaysia 马来西亚 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-066",
+    "hanzi": "止",
+    "traditional": "止",
+    "pinyin": "zhǐ",
+    "meaning": "to stop; to prohibit; until; only (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-067",
+    "hanzi": "犭",
+    "traditional": "犭",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-068",
+    "hanzi": "釆",
+    "traditional": "釆",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-069",
+    "hanzi": "厶",
+    "traditional": "厶",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-070",
+    "hanzi": "食",
+    "traditional": "食",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-071",
+    "hanzi": "歹",
+    "traditional": "歹",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-072",
+    "hanzi": "忄",
+    "traditional": "忄",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-073",
+    "hanzi": "人",
+    "traditional": "人",
+    "pinyin": "rén",
+    "meaning": "person; people (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-074",
+    "hanzi": "舟",
+    "traditional": "舟",
+    "pinyin": "zhōu",
+    "meaning": "boat (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-075",
+    "hanzi": "冂",
+    "traditional": "冂",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-076",
+    "hanzi": "厂",
+    "traditional": "厂",
+    "pinyin": "hǎn",
+    "meaning": "\"cliff\" radical in Chinese characters (Kangxi radical 27), occurring in 原, 历, 压 etc (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-077",
+    "hanzi": "尸",
+    "traditional": "尸",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-078",
+    "hanzi": "曰",
+    "traditional": "曰",
+    "pinyin": "yuē",
+    "meaning": "to speak; to say (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-079",
+    "hanzi": "讠",
+    "traditional": "讠",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-080",
+    "hanzi": "工",
+    "traditional": "工",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-081",
+    "hanzi": "礻",
+    "traditional": "礻",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-082",
+    "hanzi": "亠",
+    "traditional": "亠",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-083",
+    "hanzi": "钅",
+    "traditional": "钅",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-084",
+    "hanzi": "⺌",
+    "traditional": "⺌",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-085",
+    "hanzi": "女",
+    "traditional": "女",
+    "pinyin": "nu:3",
+    "meaning": "female; woman; daughter (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-086",
+    "hanzi": "攵",
+    "traditional": "攵",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-087",
+    "hanzi": "走",
+    "traditional": "走",
+    "pinyin": "zǒu",
+    "meaning": "to walk; to go; to run; to move (of vehicle); to visit; to leave; to go away; to die (euph.); from; through; away (in compound verbs, such as 走); to change (shape, form, meaning) (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-088",
+    "hanzi": "月",
+    "traditional": "月",
+    "pinyin": "yuè",
+    "meaning": "moon; month; monthly (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-089",
+    "hanzi": "车",
+    "traditional": "車",
+    "pinyin": "Chē",
+    "meaning": "surname Che (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-090",
+    "hanzi": "戈",
+    "traditional": "戈",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-091",
+    "hanzi": "丿",
+    "traditional": "丿",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-092",
+    "hanzi": "耳",
+    "traditional": "耳",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-093",
+    "hanzi": "赤",
+    "traditional": "赤",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-094",
+    "hanzi": "羽",
+    "traditional": "羽",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-095",
+    "hanzi": "儿",
+    "traditional": "儿",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-096",
+    "hanzi": "虫",
+    "traditional": "虫",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-097",
+    "hanzi": "目",
+    "traditional": "目",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-098",
+    "hanzi": "自",
+    "traditional": "自",
+    "pinyin": "zì",
+    "meaning": "self; oneself; from; since; naturally; surely (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-099",
+    "hanzi": "刀",
+    "traditional": "刀",
+    "pinyin": "Dāo",
+    "meaning": "surname Dao (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-100",
+    "hanzi": "田",
+    "traditional": "田",
+    "pinyin": "Tián",
+    "meaning": "surname Tian (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-101",
+    "hanzi": "角",
+    "traditional": "角",
+    "pinyin": "Jué",
+    "meaning": "surname Jue (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-102",
+    "hanzi": "川",
+    "traditional": "川",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-103",
+    "hanzi": "穴",
+    "traditional": "穴",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-104",
+    "hanzi": "丨",
+    "traditional": "丨",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-105",
+    "hanzi": "广",
+    "traditional": "广",
+    "pinyin": "yǎn",
+    "meaning": "\"house on a cliff\" radical in Chinese characters (Kangxi radical 53), occurring in 店, 序, 底 etc (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-106",
+    "hanzi": "酉",
+    "traditional": "酉",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-107",
+    "hanzi": "瓦",
+    "traditional": "瓦",
+    "pinyin": "wǎ",
+    "meaning": "roof tile; abbr. for 特 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-108",
+    "hanzi": "舌",
+    "traditional": "舌",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-109",
+    "hanzi": "隹",
+    "traditional": "隹",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-110",
+    "hanzi": "欠",
+    "traditional": "欠",
+    "pinyin": "qiàn",
+    "meaning": "to owe; to lack; (literary) to be deficient in; (bound form) yawn; to raise slightly (a part of one's body) (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-111",
+    "hanzi": "米",
+    "traditional": "米",
+    "pinyin": "Mǐ",
+    "meaning": "surname Mi (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-112",
+    "hanzi": "子",
+    "traditional": "子",
+    "pinyin": "zǐ",
+    "meaning": "son; child; seed; egg; small thing; 1st earthly branch: 11 p.m.-1 a.m., midnight, 11th solar month (7th December to 5th January), year of the Rat; Viscount, fourth of five orders of nobility 位; ancient Chinese compass point: 0° (north); subsidiary; subordinate; sub- (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-113",
+    "hanzi": "寸",
+    "traditional": "寸",
+    "pinyin": "cùn",
+    "meaning": "a unit of length; inch; thumb (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-114",
+    "hanzi": "丷",
+    "traditional": "丷",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-115",
+    "hanzi": "弓",
+    "traditional": "弓",
+    "pinyin": "Gōng",
+    "meaning": "surname Gong (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-116",
+    "hanzi": "皿",
+    "traditional": "皿",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-117",
+    "hanzi": "癶",
+    "traditional": "癶",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-118",
+    "hanzi": "几",
+    "traditional": "几",
+    "pinyin": "jī",
+    "meaning": "small table (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-119",
+    "hanzi": "殳",
+    "traditional": "殳",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-120",
+    "hanzi": "刁",
+    "traditional": "刁",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-121",
+    "hanzi": "⺀",
+    "traditional": "⺀",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-122",
+    "hanzi": "斗",
+    "traditional": "斗",
+    "pinyin": "Dǒu",
+    "meaning": "abbr. for the Big Dipper constellation 星 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-123",
+    "hanzi": "豆",
+    "traditional": "豆",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-124",
+    "hanzi": "母",
+    "traditional": "母",
+    "pinyin": "mǔ",
+    "meaning": "mother; elderly female relative; origin; source; (of animals) female (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-125",
+    "hanzi": "立",
+    "traditional": "立",
+    "pinyin": "Lì",
+    "meaning": "surname Li (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-126",
+    "hanzi": "斤",
+    "traditional": "斤",
+    "pinyin": "jīn",
+    "meaning": "catty; (PRC) weight equal to 500 g; (Tw) weight equal to 600 g; (HK, Malaysia, Singapore) slightly over 604 g (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-127",
+    "hanzi": "夕",
+    "traditional": "夕",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-128",
+    "hanzi": "身",
+    "traditional": "身",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-129",
+    "hanzi": "鸟",
+    "traditional": "鳥",
+    "pinyin": "diǎo",
+    "meaning": "variant of 屌; penis (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-130",
+    "hanzi": "鱼",
+    "traditional": "魚",
+    "pinyin": "Yú",
+    "meaning": "surname Yu (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-131",
+    "hanzi": "而",
+    "traditional": "而",
+    "pinyin": "ér",
+    "meaning": "and; as well as; and so; but (not); yet (not); (indicates causal relation); (indicates change of state); (indicates contrast) (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-132",
+    "hanzi": "二",
+    "traditional": "二",
+    "pinyin": "èr",
+    "meaning": "two; 2; (Beijing dialect) stupid (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-133",
+    "hanzi": "糸",
+    "traditional": "糸",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-134",
+    "hanzi": "方",
+    "traditional": "方",
+    "pinyin": "Fāng",
+    "meaning": "surname Fang (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-135",
+    "hanzi": "飞",
+    "traditional": "飛",
+    "pinyin": "fēi",
+    "meaning": "to fly (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-136",
+    "hanzi": "匚",
+    "traditional": "匚",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-137",
+    "hanzi": "气",
+    "traditional": "氣",
+    "pinyin": "qì",
+    "meaning": "gas; air; smell; weather; to make angry; to annoy; to get angry; vital energy; qi (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-138",
+    "hanzi": "肉",
+    "traditional": "肉",
+    "pinyin": "ròu",
+    "meaning": "meat; flesh; pulp (of a fruit); (coll.) (of a fruit) squashy; (of a person) flabby; irresolute; Kangxi radical 130 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-139",
+    "hanzi": "夊",
+    "traditional": "夊",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-140",
+    "hanzi": "覀",
+    "traditional": "覀",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-141",
+    "hanzi": "甘",
+    "traditional": "甘",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-142",
+    "hanzi": "尢",
+    "traditional": "尢",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-143",
+    "hanzi": "缶",
+    "traditional": "缶",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-144",
+    "hanzi": "高",
+    "traditional": "高",
+    "pinyin": "Gāo",
+    "meaning": "surname Gao (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-145",
+    "hanzi": "耒",
+    "traditional": "耒",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-146",
+    "hanzi": "⺗",
+    "traditional": "⺗",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-147",
+    "hanzi": "骨",
+    "traditional": "骨",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-148",
+    "hanzi": "鼓",
+    "traditional": "皷",
+    "pinyin": "gǔ",
+    "meaning": "old variant of 鼓 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-149",
+    "hanzi": "囗",
+    "traditional": "囗",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-150",
+    "hanzi": "瓜",
+    "traditional": "瓜",
+    "pinyin": "guā",
+    "meaning": "melon; gourd; squash (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-151",
+    "hanzi": "见",
+    "traditional": "見",
+    "pinyin": "jiàn",
+    "meaning": "to see; to meet; to appear (to be sth); to interview; opinion; view (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-152",
+    "hanzi": "冖",
+    "traditional": "冖",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-153",
+    "hanzi": "彐",
+    "traditional": "彐",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-154",
+    "hanzi": "龟",
+    "traditional": "龜",
+    "pinyin": "guī",
+    "meaning": "tortoise; turtle (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-155",
+    "hanzi": "鬼",
+    "traditional": "鬼",
+    "pinyin": "guǐ",
+    "meaning": "disembodied spirit; ghost; devil; (suffix) person with a certain vice or addiction etc; sly; crafty; resourceful (variant of 诡); one of the 28 constellations of ancient Chinese astronomy (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-156",
+    "hanzi": "⺳",
+    "traditional": "⺳",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-157",
+    "hanzi": "毛",
+    "traditional": "毛",
+    "pinyin": "Máo",
+    "meaning": "surname Mao (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-158",
+    "hanzi": "豕",
+    "traditional": "豕",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-159",
+    "hanzi": "黑",
+    "traditional": "黑",
+    "pinyin": "Hēi",
+    "meaning": "abbr. for Heilongjiang province 黑龙江 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-160",
+    "hanzi": "行",
+    "traditional": "行",
+    "pinyin": "háng",
+    "meaning": "row; line; commercial firm; line of business; profession; to rank (first, second etc) among one's siblings (by age); (in data tables) row; (Tw) column (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-161",
+    "hanzi": "士",
+    "traditional": "士",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-162",
+    "hanzi": "虎",
+    "traditional": "虎",
+    "pinyin": "hǔ",
+    "meaning": "tiger (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-163",
+    "hanzi": "幺",
+    "traditional": "幺",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-164",
+    "hanzi": "黄",
+    "traditional": "黃",
+    "pinyin": "Huáng",
+    "meaning": "surname Huang or Hwang (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-165",
+    "hanzi": "谷",
+    "traditional": "谷",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-166",
+    "hanzi": "卩",
+    "traditional": "卩",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-167",
+    "hanzi": "旡",
+    "traditional": "旡",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-168",
+    "hanzi": "示",
+    "traditional": "示",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-169",
+    "hanzi": "小",
+    "traditional": "小",
+    "pinyin": "xiǎo",
+    "meaning": "small; tiny; few; young (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-170",
+    "hanzi": "廴",
+    "traditional": "廴",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-171",
+    "hanzi": "金",
+    "traditional": "金",
+    "pinyin": "Jīn",
+    "meaning": "surname Jin; surname Kim (Korean); Jurchen Jin dynasty (1115-1234) (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-172",
+    "hanzi": "丬",
+    "traditional": "丬",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-173",
+    "hanzi": "言",
+    "traditional": "言",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-174",
+    "hanzi": "青",
+    "traditional": "青",
+    "pinyin": "Qīng",
+    "meaning": "abbr. for 海, Qinghai Province (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-175",
+    "hanzi": "乙",
+    "traditional": "乙",
+    "pinyin": "yǐ",
+    "meaning": "second of the ten Heavenly Stems 干; second in order; letter \"B\" or Roman \"II\" in list \"A, B, C\", or \"I, II, III\" etc; second party (in legal contract, usually 方, as opposed to 方); ethyl; bent; winding; radical in Chinese characters (Kangxi radical 5); ancient Chinese compass point: 105° (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-176",
+    "hanzi": "臼",
+    "traditional": "臼",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-177",
+    "hanzi": "丶",
+    "traditional": "丶",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-178",
+    "hanzi": "㔾",
+    "traditional": "㔾",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-179",
+    "hanzi": "卜",
+    "traditional": "卜",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-180",
+    "hanzi": "耂",
+    "traditional": "耂",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-181",
+    "hanzi": "牛",
+    "traditional": "牛",
+    "pinyin": "Niú",
+    "meaning": "surname Niu (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-182",
+    "hanzi": "老",
+    "traditional": "老",
+    "pinyin": "lǎo",
+    "meaning": "prefix used before the surname of a person or a numeral indicating the order of birth of the children in a family or to indicate affection or familiarity; old (of people); venerable (person); experienced; of long standing; always; all the time; of the past; very; outdated; (of meat etc) tough (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-183",
+    "hanzi": "亅",
+    "traditional": "亅",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-184",
+    "hanzi": "禸",
+    "traditional": "禸",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-185",
+    "hanzi": "黍",
+    "traditional": "黍",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-186",
+    "hanzi": "里",
+    "traditional": "裏",
+    "pinyin": "lǐ",
+    "meaning": "variant of 里 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-187",
+    "hanzi": "艮",
+    "traditional": "艮",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-188",
+    "hanzi": "龙",
+    "traditional": "龍",
+    "pinyin": "Lóng",
+    "meaning": "surname Long (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-189",
+    "hanzi": "卤",
+    "traditional": "卤",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-190",
+    "hanzi": "鹿",
+    "traditional": "鹿",
+    "pinyin": "lù",
+    "meaning": "deer (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-191",
+    "hanzi": "玄",
+    "traditional": "玄",
+    "pinyin": "xuán",
+    "meaning": "black; mysterious (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-192",
+    "hanzi": "乚",
+    "traditional": "乚",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-193",
+    "hanzi": "麻",
+    "traditional": "蔴",
+    "pinyin": "má",
+    "meaning": "variant of 麻; hemp (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-194",
+    "hanzi": "麦",
+    "traditional": "麦",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-195",
+    "hanzi": "矛",
+    "traditional": "矛",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-196",
+    "hanzi": "羊",
+    "traditional": "羊",
+    "pinyin": "Yáng",
+    "meaning": "surname Yang (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-197",
+    "hanzi": "面",
+    "traditional": "面",
+    "pinyin": "miàn",
+    "meaning": "face; side; surface; aspect; top; classifier for objects with flat surfaces such as drums, mirrors, flags etc (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-198",
+    "hanzi": "民",
+    "traditional": "民",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-199",
+    "hanzi": "入",
+    "traditional": "入",
+    "pinyin": "rù",
+    "meaning": "to enter; to go into; to join; to become a member of; to confirm or agree with; abbr. for 入声 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-200",
+    "hanzi": "匸",
+    "traditional": "匸",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-201",
+    "hanzi": "虍",
+    "traditional": "虍",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-202",
+    "hanzi": "爪",
+    "traditional": "爪",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-203",
+    "hanzi": "皮",
+    "traditional": "皮",
+    "pinyin": "Pí",
+    "meaning": "surname Pi (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-204",
+    "hanzi": "齐",
+    "traditional": "齊",
+    "pinyin": "Qí",
+    "meaning": "(name of states and dynasties at several different periods); surname Qi (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-205",
+    "hanzi": "攴",
+    "traditional": "攴",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-206",
+    "hanzi": "氺",
+    "traditional": "氺",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-207",
+    "hanzi": "水",
+    "traditional": "水",
+    "pinyin": "Shuǐ",
+    "meaning": "surname Shui (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-208",
+    "hanzi": "犬",
+    "traditional": "犬",
+    "pinyin": "quǎn",
+    "meaning": "dog; Kangxi radical 94 (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-209",
+    "hanzi": "韦",
+    "traditional": "韦",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-210",
+    "hanzi": "鬲",
+    "traditional": "鬲",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-211",
+    "hanzi": "色",
+    "traditional": "色",
+    "pinyin": "sè",
+    "meaning": "color; look; appearance; sex (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-212",
+    "hanzi": "生",
+    "traditional": "生",
+    "pinyin": "shēng",
+    "meaning": "to be born; to give birth; life; to grow; raw; uncooked; student (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-213",
+    "hanzi": "弋",
+    "traditional": "弋",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-214",
+    "hanzi": "首",
+    "traditional": "首",
+    "pinyin": "shǒu",
+    "meaning": "head; chief; first (occasion, thing etc); classifier for poems, songs etc (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-215",
+    "hanzi": "疋",
+    "traditional": "疋",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-216",
+    "hanzi": "鼠",
+    "traditional": "鼠",
+    "pinyin": "shǔ",
+    "meaning": "(bound form) rat; mouse (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-217",
+    "hanzi": "爻",
+    "traditional": "爻",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-218",
+    "hanzi": "聿",
+    "traditional": "聿",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-219",
+    "hanzi": "屮",
+    "traditional": "屮",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-220",
+    "hanzi": "网",
+    "traditional": "網",
+    "pinyin": "wǎng",
+    "meaning": "net; network (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-221",
+    "hanzi": "乛",
+    "traditional": "乛",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-222",
+    "hanzi": "臣",
+    "traditional": "臣",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-223",
+    "hanzi": "无",
+    "traditional": "無",
+    "pinyin": "wú",
+    "meaning": "not to have; no; none; not; to lack; un-; -less (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-224",
+    "hanzi": "舛",
+    "traditional": "舛",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-225",
+    "hanzi": "西",
+    "traditional": "西",
+    "pinyin": "Xī",
+    "meaning": "the West; abbr. for Spain 牙; Spanish (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-226",
+    "hanzi": "香",
+    "traditional": "香",
+    "pinyin": "xiāng",
+    "meaning": "fragrant; sweet smelling; aromatic; savory or appetizing; (to eat) with relish; (of sleep) sound; perfume or spice; joss or incense stick (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-227",
+    "hanzi": "血",
+    "traditional": "血",
+    "pinyin": "xuè",
+    "meaning": "blood; colloquial pr. [xiě] (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-228",
+    "hanzi": "巛",
+    "traditional": "巛",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-229",
+    "hanzi": "牙",
+    "traditional": "牙",
+    "pinyin": "yá",
+    "meaning": "tooth; ivory (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-230",
+    "hanzi": "己",
+    "traditional": "己",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-231",
+    "hanzi": "音",
+    "traditional": "音",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-232",
+    "hanzi": "玉",
+    "traditional": "玉",
+    "pinyin": "yù",
+    "meaning": "jade (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-233",
+    "hanzi": "⺊",
+    "traditional": "⺊",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-234",
+    "hanzi": "长",
+    "traditional": "長",
+    "pinyin": "cháng",
+    "meaning": "length; long; forever; always; constantly (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-235",
+    "hanzi": "支",
+    "traditional": "支",
+    "pinyin": "Zhī",
+    "meaning": "surname Zhi (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-236",
+    "hanzi": "至",
+    "traditional": "至",
+    "pinyin": "zhì",
+    "meaning": "to arrive; most; to; until (Radical)",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
+    "id": "radical-237",
+    "hanzi": "竹",
+    "traditional": "竹",
+    "pinyin": "",
+    "meaning": "Radical",
+    "level": [
+      "radical"
+    ],
+    "pos": []
+  },
+  {
     "id": "hsk-00000",
     "hanzi": "阿拉伯语",
     "traditional": "阿拉伯語",

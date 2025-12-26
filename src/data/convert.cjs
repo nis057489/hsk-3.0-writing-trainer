@@ -47,5 +47,41 @@ const cards = data.map((entry, index) => {
     };
 });
 
-fs.writeFileSync(outputPath, JSON.stringify(cards, null, 2));
-console.log(`Converted ${cards.length} words to ${outputPath}`);
+// Extract unique radicals
+const radicalsSet = new Set();
+data.forEach(entry => {
+    if (entry.radical) {
+        radicalsSet.add(entry.radical);
+    }
+});
+
+// Create radical cards
+const radicalCards = Array.from(radicalsSet).map((radicalChar, index) => {
+    // Check if this radical exists as a normal card to reuse pinyin/meaning
+    const existingCard = cards.find(c => c.hanzi === radicalChar);
+    
+    let pinyin = "";
+    let meaning = "Radical";
+    let traditional = radicalChar;
+
+    if (existingCard) {
+        pinyin = existingCard.pinyin;
+        meaning = existingCard.meaning + " (Radical)";
+        traditional = existingCard.traditional;
+    }
+
+    return {
+        id: `radical-${String(index).padStart(3, '0')}`,
+        hanzi: radicalChar,
+        traditional: traditional,
+        pinyin: pinyin,
+        meaning: meaning,
+        level: ["radical"],
+        pos: []
+    };
+});
+
+const finalCards = [...radicalCards, ...cards];
+
+fs.writeFileSync(outputPath, JSON.stringify(finalCards, null, 2));
+console.log(`Converted ${cards.length} words and ${radicalCards.length} radicals to ${outputPath}`);
