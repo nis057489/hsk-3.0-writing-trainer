@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DrawingPad } from "./DrawingPad";
 
+type BrushType = "pencil" | "fountain" | "brush";
+
 interface PracticeAreaProps {
     text: string;
     tracingMode: boolean;
@@ -11,9 +13,10 @@ interface PracticeAreaProps {
     gridStyle?: "rice" | "field" | "none";
     gridVerticalShift?: boolean;
     alignRight?: boolean;
+    brushType?: BrushType;
 }
 
-export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, alignRight = false }: PracticeAreaProps) {
+export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, alignRight = false, brushType = "pencil" }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
 
@@ -29,6 +32,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
             traceFont: PracticeAreaProps["traceFont"];
             gridStyle: PracticeAreaProps["gridStyle"];
             gridVerticalShift: boolean;
+            brushType: BrushType;
         }) {
             const { t } = useTranslation();
             const [handler, setHandler] = useState<PadHandlerState>({ hasStrokes: false });
@@ -56,6 +60,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                             traceFont={props.traceFont}
                             gridStyle={props.gridStyle}
                             gridVerticalShift={props.gridVerticalShift}
+                            brushType={props.brushType}
                             onUndoClick={(undo, hasStrokes) => {
                                 setHandler((prev: PadHandlerState) => {
                                     if (prev.undo === undo && prev.hasStrokes === hasStrokes) return prev;
@@ -178,6 +183,7 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
                             traceFont={traceFont}
                             gridStyle={gridStyle}
                             gridVerticalShift={gridVerticalShift}
+                            brushType={brushType}
                         />
                     );
                 })}

@@ -7,6 +7,7 @@ type PadSizeChoice = "xs" | "small" | "medium" | "large";
 type TraceFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type GridStyleChoice = "rice" | "field" | "none";
+type BrushType = "pencil" | "fountain" | "brush";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -43,6 +44,8 @@ interface DrawerMenuProps {
     setGridStyle: (value: GridStyleChoice) => void;
     gridVerticalShift: boolean;
     setGridVerticalShift: (value: boolean) => void;
+    brushType: BrushType;
+    setBrushType: (value: BrushType) => void;
     characterMode: 'simplified' | 'traditional';
     setCharacterMode: (value: 'simplified' | 'traditional') => void;
     language: string;
@@ -70,6 +73,12 @@ export function DrawerMenu(props: DrawerMenuProps) {
         { value: "small", label: t("options.padSizeSmall") },
         { value: "medium", label: t("options.padSizeMedium") },
         { value: "large", label: t("options.padSizeLarge") }
+    ];
+
+    const brushOptions: { value: BrushType; label: string }[] = [
+        { value: "pencil", label: t("options.brushPencil") },
+        { value: "fountain", label: t("options.brushFountain") },
+        { value: "brush", label: t("options.brushCalligraphy") }
     ];
 
     const traceFontOptions: { value: TraceFontChoice; label: string }[] = [
@@ -282,6 +291,27 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             onChange={(e) => props.setShowDetailsDefault(e.target.checked)}
                         />
                         {t("options.showDetailsDefault")}
+                    </label>
+
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.brushType")}</span>
+                        <select
+                            value={props.brushType}
+                            onChange={(e) => props.setBrushType(e.target.value as BrushType)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.brushType")}
+                        >
+                            {brushOptions.map(o => (
+                                <option key={o.value} value={o.value}>{o.label}</option>
+                            ))}
+                        </select>
                     </label>
 
                     <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>

@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-type Point = { x: number; y: number };
+type Point = { x: number; y: number; pressure: number; time: number };
 type Stroke = Point[];
+type BrushType = "pencil" | "fountain" | "brush";
 
 interface DrawingPadProps {
     size?: number;
@@ -12,11 +13,12 @@ interface DrawingPadProps {
     traceFont?: "handwritten" | "kai" | "yshi" | "system";
     gridStyle?: "rice" | "field" | "none";
     gridVerticalShift?: boolean;
+    brushType?: BrushType;
     onUndoClick?: (undo: () => void, hasStrokes: boolean) => void;
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
 }
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, onUndoClick, onClearClick }: DrawingPadProps) {
+export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, brushType = "pencil", onUndoClick, onClearClick }: DrawingPadProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [canvasSize, setCanvasSize] = useState(size || 300);
@@ -31,6 +33,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
 
     const drawRafIdRef = useRef<number | null>(null);
     const lastDrawnIndexRef = useRef(0);
+    const lastWidthRef = useRef<number>(0);
 
     // Avoid effect → parent setState → rerender loops caused by callback identity changes.
     const onUndoClickRef = useRef(onUndoClick);
@@ -78,7 +81,9 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
         const r = el.getBoundingClientRect();
         return {
             x: (e.clientX - r.left) / r.width,
-            y: (e.clientY - r.top) / r.height
+            y: (e.clientY - r.top) / r.height,
+            pressure: e.pressure,
+            time: Date.now()
         };
     }
 
@@ -123,22 +128,91 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
         }
 
         // Draw strokes
-        ctx.save();
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.strokeStyle = "#111";
-        ctx.lineWidth = (canvasSize / 30) * dpr;
-
+        const baseWidth = (canvasSize / 30) * dpr;
+        
         for (const stroke of strokes) {
             if (stroke.length < 2) continue;
-            ctx.beginPath();
-            ctx.moveTo(stroke[0].x * s, stroke[0].y * s);
-            for (let i = 1; i < stroke.length; i++) {
-                ctx.lineTo(stroke[i].x * s, stroke[i].y * s);
+            
+            if (brushType === "pencil") {
+                ctx.save();
+                ctx.lineCap = "round";
+                ctx.lineJoin = "round";
+                ctx.strokeStyle = "#111";
+                ctx.lineWidth = baseWidth;
+                ctx.beginPath();
+                ctx.moveTo(stroke[0].x * s, stroke[0].y * s);
+                for (let i = 1; i < stroke.length; i++) {
+                    ctx.lineTo(stroke[i].x * s, stroke[i].y * s);
+                }
+                ctx.stroke();
+                ctx.restore();
+            } else {
+                // Variable width
+                const points = stroke.map(p => ({ x: p.x * s, y: p.y * s, pressure: p.pressure, time: p.time }));
+                const widths: number[] = [];
+                
+                for (let i = 0; i < points.length; i++) {
+                    const p = points[i];
+                    const prev = i > 0 ? points[i - 1] : p;
+                    
+                    let w = baseWidth;
+                    if (brushType === "fountain") {
+                        const dist = Math.hypot(p.x - prev.x, p.y - prev.y);
+                        const time = Math.max(1, p.time - prev.time);
+                        const v = dist / time; // pixels / ms
+                        const factor = Math.max(0.2, 1 - v * 0.5);
+                        w = baseWidth * factor;
+                    } else if (brushType === "brush") {
+                        let pressure = p.pressure;
+                        // Fallback for mouse (usually 0.5)
+                        if (pressure === 0.5) {
+                             const dist = Math.hypot(p.x - prev.x, p.y - prev.y);
+                             const time = Math.max(1, p.time - prev.time);
+                             const v = dist / time;
+                             // Slower = thicker
+                             pressure = Math.min(1, Math.max(0, 0.5 + (1 - v) * 0.5));
+                        }
+                        w = baseWidth * (0.2 + pressure * 1.8);
+                    }
+                    
+                    if (i > 0) {
+                        w = widths[i - 1] * 0.6 + w * 0.4;
+                    }
+                    widths.push(w);
+                }
+
+                ctx.fillStyle = "#111";
+                for (let i = 0; i < points.length - 1; i++) {
+                    const p1 = points[i];
+                    const p2 = points[i + 1];
+                    const w1 = widths[i];
+                    const w2 = widths[i + 1];
+                    
+                    const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+                    const sin = Math.sin(angle);
+                    const cos = Math.cos(angle);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x + sin * w1 / 2, p1.y - cos * w1 / 2);
+                    ctx.lineTo(p2.x + sin * w2 / 2, p2.y - cos * w2 / 2);
+                    ctx.lineTo(p2.x - sin * w2 / 2, p2.y + cos * w2 / 2);
+                    ctx.lineTo(p1.x - sin * w1 / 2, p1.y + cos * w1 / 2);
+                    ctx.fill();
+                    
+                    ctx.beginPath();
+                    ctx.arc(p1.x, p1.y, w1 / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                // Last cap
+                if (points.length > 0) {
+                    const last = points[points.length - 1];
+                    const lastW = widths[widths.length - 1];
+                    ctx.beginPath();
+                    ctx.arc(last.x, last.y, lastW / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-            ctx.stroke();
         }
-        ctx.restore();
     }
 
     // If web fonts load after initial render, the canvas may have already drawn with a fallback font.
@@ -182,7 +256,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
     useEffect(() => {
         redraw();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [strokes, tracingMode, character, traceFont]);
+    }, [strokes, tracingMode, character, traceFont, brushType]);
 
     useEffect(() => {
         const c = canvasRef.current;
@@ -203,22 +277,83 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             const endIndex = pts.length - 1;
             if (startIndex > endIndex) return;
 
-            ctx.save();
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.strokeStyle = "#111";
-            ctx.lineWidth = (canvasSize / 30) * dpr;
-            ctx.beginPath();
+            const baseWidth = (canvasSize / 30) * dpr;
 
-            const first = pts[startIndex - 1];
-            ctx.moveTo(first.x * s, first.y * s);
-            for (let i = startIndex; i <= endIndex; i++) {
-                const p = pts[i];
-                ctx.lineTo(p.x * s, p.y * s);
+            if (brushType === "pencil") {
+                ctx.save();
+                ctx.lineCap = "round";
+                ctx.lineJoin = "round";
+                ctx.strokeStyle = "#111";
+                ctx.lineWidth = baseWidth;
+                ctx.beginPath();
+
+                const first = pts[startIndex - 1];
+                ctx.moveTo(first.x * s, first.y * s);
+                for (let i = startIndex; i <= endIndex; i++) {
+                    const p = pts[i];
+                    ctx.lineTo(p.x * s, p.y * s);
+                }
+
+                ctx.stroke();
+                ctx.restore();
+            } else {
+                // Variable width incremental
+                ctx.fillStyle = "#111";
+                
+                for (let i = startIndex; i <= endIndex; i++) {
+                    const p = pts[i];
+                    const prev = pts[i - 1];
+                    
+                    let w = baseWidth;
+                    if (brushType === "fountain") {
+                        const dist = Math.hypot((p.x - prev.x) * s, (p.y - prev.y) * s);
+                        const time = Math.max(1, p.time - prev.time);
+                        const v = dist / time; 
+                        const factor = Math.max(0.2, 1 - v * 0.5);
+                        w = baseWidth * factor;
+                    } else if (brushType === "brush") {
+                        let pressure = p.pressure;
+                        if (pressure === 0.5) {
+                             const dist = Math.hypot((p.x - prev.x) * s, (p.y - prev.y) * s);
+                             const time = Math.max(1, p.time - prev.time);
+                             const v = dist / time;
+                             pressure = Math.min(1, Math.max(0, 0.5 + (1 - v) * 0.5));
+                        }
+                        w = baseWidth * (0.2 + pressure * 1.8);
+                    }
+
+                    if (i === 1) {
+                        lastWidthRef.current = w;
+                    } else {
+                        w = lastWidthRef.current * 0.6 + w * 0.4;
+                    }
+                    
+                    const prevW = lastWidthRef.current;
+                    lastWidthRef.current = w;
+
+                    const p1 = { x: prev.x * s, y: prev.y * s };
+                    const p2 = { x: p.x * s, y: p.y * s };
+                    
+                    const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+                    const sin = Math.sin(angle);
+                    const cos = Math.cos(angle);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x + sin * prevW / 2, p1.y - cos * prevW / 2);
+                    ctx.lineTo(p2.x + sin * w / 2, p2.y - cos * w / 2);
+                    ctx.lineTo(p2.x - sin * w / 2, p2.y + cos * w / 2);
+                    ctx.lineTo(p1.x - sin * prevW / 2, p1.y + cos * prevW / 2);
+                    ctx.fill();
+                    
+                    ctx.beginPath();
+                    ctx.arc(p1.x, p1.y, prevW / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.beginPath();
+                    ctx.arc(p2.x, p2.y, w / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-
-            ctx.stroke();
-            ctx.restore();
 
             lastDrawnIndexRef.current = pts.length - 1;
         };
@@ -229,6 +364,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             isDownRef.current = true;
             currentStroke.current = [getPos(e, c)];
             lastDrawnIndexRef.current = 0;
+            lastWidthRef.current = (canvasSize / 30) * dpr;
             setHoverPoint(null);
 
             // Draw dot
@@ -236,10 +372,19 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             if (!ctx) return;
             const s = canvasSize * dpr;
             const pt = currentStroke.current[0];
+            
+            let w = (canvasSize / 30) * dpr;
+            if (brushType === "brush") {
+                 let pressure = pt.pressure;
+                 if (pressure === 0.5) pressure = 0.5; 
+                 w = w * (0.2 + pressure * 1.8);
+            }
+            lastWidthRef.current = w;
+
             ctx.save();
             ctx.fillStyle = "#111";
             ctx.beginPath();
-            ctx.arc(pt.x * s, pt.y * s, (canvasSize / 60) * dpr, 0, Math.PI * 2);
+            ctx.arc(pt.x * s, pt.y * s, w / 2, 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
         };
@@ -341,7 +486,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             c.removeEventListener("pointerover", onPointerOver);
             c.removeEventListener("pointerleave", onPointerLeave);
         };
-    }, [dpr, canvasSize, showHoverIndicator]);
+    }, [dpr, canvasSize, showHoverIndicator, brushType]);
 
     const clear = React.useCallback(() => setStrokes([]), []);
     const undo = React.useCallback(() => setStrokes((prev: Stroke[]) => prev.slice(0, -1)), []);

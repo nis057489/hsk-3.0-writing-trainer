@@ -61,6 +61,7 @@ type PadSizeChoice = "xs" | "small" | "medium" | "large";
 type TraceFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type GridStyleChoice = "rice" | "field" | "none";
+type BrushType = "pencil" | "fountain" | "brush";
 
 type Prefs = {
     selectedLevels: string[];
@@ -81,6 +82,7 @@ type Prefs = {
     advancedPosFilter: boolean;
     gridStyle: GridStyleChoice;
     gridVerticalShift: boolean;
+    brushType: BrushType;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -200,7 +202,8 @@ export default function App() {
         promptFont: "system",
         advancedPosFilter: false,
         gridStyle: "rice",
-        gridVerticalShift: false
+        gridVerticalShift: false,
+        brushType: "pencil"
     };
 
     const storedPrefsRaw = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -424,6 +427,7 @@ export default function App() {
 
     const [gridStyle, setGridStyle] = useState<GridStyleChoice>(normalizeGridStyle(storedPrefs.gridStyle));
     const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
+    const [brushType, setBrushType] = useState<BrushType>(storedPrefs.brushType || "pencil");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
@@ -490,10 +494,11 @@ export default function App() {
             promptFont,
             advancedPosFilter,
             gridStyle,
-            gridVerticalShift
+            gridVerticalShift,
+            brushType
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, gridStyle, gridVerticalShift]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, gridStyle, gridVerticalShift, brushType]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
@@ -679,6 +684,8 @@ export default function App() {
                         setGridStyle={setGridStyle}
                         gridVerticalShift={gridVerticalShift}
                         setGridVerticalShift={setGridVerticalShift}
+                        brushType={brushType}
+                        setBrushType={setBrushType}
                         characterMode={characterMode}
                         setCharacterMode={setCharacterMode}
                         language={language}
@@ -726,6 +733,7 @@ export default function App() {
                                     traceFont={traceFont}
                                     gridStyle={gridStyle}
                                     gridVerticalShift={gridVerticalShift}
+                                    brushType={brushType}
                                     alignRight={leftHanded}
                                 />
                             </div>
@@ -772,6 +780,7 @@ export default function App() {
                             traceFont={traceFont}
                             gridStyle={gridStyle}
                             gridVerticalShift={gridVerticalShift}
+                            brushType={brushType}
                             alignRight={leftHanded}
                         />
                     )}
