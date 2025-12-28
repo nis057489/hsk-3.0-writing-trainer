@@ -323,7 +323,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
                                 { color: "#161718", label: t("colors.ink") },
                                 { color: "#A63D40", label: t("colors.maroon") },
                                 { color: "#2B7A41", label: t("colors.jade") },
-                                { color: "#092858", label: t("colors.hanBlue") }
+                                { color: "#446CCF", label: t("colors.hanBlue") }
                             ].map(c => (
                                 <button
                                     key={c.color}
