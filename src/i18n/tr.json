@@ -6,7 +6,8 @@
         "strokeGuide": "Vuruş sırası",
         "deviceTips": "Cihaz ipuçları",
         "posGuide": "Sözcük türleri",
-        "back": "Menüye dön"
+        "back": "Menüye dön",
+        "licenses": "Licenses"
     },
     "mode": {
         "title": "Mod",
@@ -25,7 +26,8 @@
         "hsk4": "HSK 4",
         "hsk5": "HSK 5",
         "hsk6": "HSK 6",
-        "hsk7": "HSK 7-9"
+        "hsk7": "HSK 7-9",
+        "radical": "Radicals"
     },
     "pos": {
         "title": "Sözcük türleri",
@@ -36,7 +38,41 @@
         "r": "Zamirler",
         "c": "Bağlaçlar",
         "i": "Deyimler",
-        "l": "İfadeler"
+        "l": "İfadeler",
+        "ad": "Adjective as adverbial",
+        "ag": "Adjective morpheme",
+        "an": "Adjective with nominal function",
+        "b": "Non-predicate adjective",
+        "dg": "Adverb morpheme",
+        "e": "Interjection",
+        "f": "Directional locality",
+        "g": "Morpheme",
+        "h": "Prefix",
+        "j": "Abbreviation",
+        "k": "Suffix",
+        "m": "Numeral",
+        "mg": "Numeric morpheme",
+        "ng": "Noun morpheme",
+        "nr": "Personal name",
+        "ns": "Place name",
+        "nt": "Organization name",
+        "nx": "Nominal character string",
+        "nz": "Other proper noun",
+        "o": "Onomatopoeia",
+        "p": "Preposition",
+        "q": "Classifier",
+        "rg": "Pronoun morpheme",
+        "s": "Space word",
+        "t": "Time word",
+        "tg": "Time word morpheme",
+        "u": "Auxiliary",
+        "vd": "Verb as adverbial",
+        "vg": "Verb morpheme",
+        "vn": "Verb with nominal function",
+        "w": "Symbol/punctuation",
+        "x": "Unclassified",
+        "y": "Modal particle",
+        "z": "Descriptive"
     },
     "options": {
         "title": "Ayarlar",
@@ -67,7 +103,16 @@
         "gridStyleRice": "Pirinç (米) - Geleneksel",
         "gridStyleField": "Tarla (田) - Basit",
         "gridVerticalShift": "40/60 dikey bölme kullan",
-        "showDetailsDefault": "Pinyin/anlamı varsayılan olarak göster"
+        "showDetailsDefault": "Pinyin/anlamı varsayılan olarak göster",
+        "brushType": "Brush Style",
+        "brushPencil": "Pencil (Standard)",
+        "brushFountain": "Fountain Pen",
+        "brushCalligraphy": "Calligraphy Brush",
+        "strokeColor": "Stroke Color",
+        "randomizeNext": "Randomize next card",
+        "reviewGrades": "Practice only these results",
+        "includeNewCards": "Include new cards",
+        "advancedPosFilter": "Show all detailed categories"
     },
     "help": {
         "title": "Yardım",
@@ -101,7 +146,41 @@
         "tip1": "Safari → Paylaş → \"Ana Ekrana Ekle\" ile ekleyip çubuksuz kullanın.",
         "tip2": "Safari'de hafif aşağı kaydırma adres/sekme çubuklarını gizler, yukarı kaydırınca geri gelir.",
         "tip3": "Daha çok alan için yatay döndürün; düzen kaydırmayı azaltmak için sıkışır.",
-        "tip4": "Apple Pencil: ucu ekranda tutun—avuç içi yok sayılır, yakınlaştırma/kaydırma burada engellenir."
+        "tip4": "Apple Pencil: ucu ekranda tutun—avuç içi yok sayılır, yakınlaştırma/kaydırma burada engellenir.",
+        "posAD": "Adjectives used as adverbials to modify verbs (e.g., 慢慢 mànmàn \"slowly\").",
+        "posAG": "Morphemes that form adjectives (linguistic building blocks).",
+        "posAN": "Adjectives that can function as nouns (e.g., 富人 fùrén \"the rich\").",
+        "posB": "Adjectives that cannot be used as predicates (must modify nouns directly).",
+        "posDG": "Morphemes that form adverbs (linguistic building blocks).",
+        "posE": "Exclamations and interjections (e.g., 哎 āi \"hey!\", 哎呀 āiyā \"oh!\").",
+        "posF": "Words indicating direction or location (e.g., 上 shàng \"up\", 里 lǐ \"inside\").",
+        "posG": "Basic linguistic morphemes (building blocks of words).",
+        "posH": "Prefixes attached to the beginning of words.",
+        "posJ": "Abbreviated forms of longer terms or names.",
+        "posK": "Suffixes attached to the end of words.",
+        "posM": "Numbers and numerals (e.g., 一 yī \"one\", 三 sān \"three\").",
+        "posMG": "Morphemes that form numerals (linguistic building blocks).",
+        "posNG": "Morphemes that form nouns (linguistic building blocks).",
+        "posNR": "Personal names (e.g., 王明 Wáng Míng).",
+        "posNS": "Place names and geographical locations (e.g., 北京 Běijīng \"Beijing\").",
+        "posNT": "Organization and institution names (e.g., 联合国 Liánhéguó \"United Nations\").",
+        "posNX": "Nominal strings of characters (technical linguistic category).",
+        "posNZ": "Proper nouns not categorized as personal or place names.",
+        "posO": "Onomatopoeia (sound-imitative words like 哈哈 hāhā \"haha\").",
+        "posP": "Prepositions indicating relationships (e.g., 在 zài \"at\", 从 cóng \"from\").",
+        "posQ": "Measure words and classifiers (e.g., 个 gè, 只 zhī, 本 běn).",
+        "posRG": "Morphemes that form pronouns (linguistic building blocks).",
+        "posS": "Space-related words indicating location or position.",
+        "posT": "Time words and temporal expressions (e.g., 今天 jīntiān \"today\", 明年 míngnián \"next year\").",
+        "posTG": "Morphemes that form time words (linguistic building blocks).",
+        "posU": "Auxiliary words (structural particles like 的 de, 得 de, 地 de).",
+        "posVD": "Verbs used as adverbials to modify other verbs.",
+        "posVG": "Morphemes that form verbs (linguistic building blocks).",
+        "posVN": "Verbs that can function as nouns (e.g., 学习 xuéxí \"study/learning\").",
+        "posW": "Symbols, punctuation marks, and non-sentential elements.",
+        "posX": "Words that don't fit standard categories (unclassified).",
+        "posY": "Modal particles expressing mood or tone (e.g., 吗 ma, 吧 ba, 呢 ne).",
+        "posZ": "Descriptive words and state verbs."
     },
     "practice": {
         "header": "Her karakteri çizin",
@@ -135,5 +214,12 @@
     },
     "stats": {
         "available": "{{count}} kelime mevcut"
+    },
+    "colors": {
+        "ink": "Ink Stick",
+        "maroon": "Maroon",
+        "jade": "Jade",
+        "hanBlue": "Han Blue",
+        "custom": "Custom Color"
     }
 }
