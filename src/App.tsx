@@ -443,14 +443,14 @@ export default function App() {
     useEffect(() => {
         const picked = pickDue(filteredCards, progressRef.current);
         let finalQueue = picked;
-        
+
         // If subset drilling is enabled, select a random subset and repeat it indefinitely
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
             const shuffled = [...picked].sort(() => Math.random() - 0.5);
             finalQueue = shuffled.slice(0, subsetSize);
         }
-        
+
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
@@ -463,17 +463,17 @@ export default function App() {
         if (mode !== 'flashcard') return;
         if (queue.length !== 0) return;
         if (filteredCards.length === 0) return;
-        
+
         const picked = pickDue(filteredCards, progressRef.current);
         let finalQueue = picked;
-        
+
         // If subset drilling is enabled, create a new random subset
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
             const shuffled = [...picked].sort(() => Math.random() - 0.5);
             finalQueue = shuffled.slice(0, subsetSize);
         }
-        
+
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
