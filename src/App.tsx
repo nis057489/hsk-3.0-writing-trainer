@@ -83,6 +83,7 @@ type Prefs = {
     gridStyle: GridStyleChoice;
     gridVerticalShift: boolean;
     brushType: BrushType;
+    strokeColor: string;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -203,7 +204,8 @@ export default function App() {
         advancedPosFilter: false,
         gridStyle: "rice",
         gridVerticalShift: false,
-        brushType: "pencil"
+        brushType: "pencil",
+        strokeColor: "#111"
     };
 
     const storedPrefsRaw = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -428,6 +430,7 @@ export default function App() {
     const [gridStyle, setGridStyle] = useState<GridStyleChoice>(normalizeGridStyle(storedPrefs.gridStyle));
     const [gridVerticalShift, setGridVerticalShift] = useState<boolean>(storedPrefs.gridVerticalShift ?? false);
     const [brushType, setBrushType] = useState<BrushType>(storedPrefs.brushType || "pencil");
+    const [strokeColor, setStrokeColor] = useState<string>(storedPrefs.strokeColor || "#111");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
     // Initialize queue when filters change
@@ -495,10 +498,11 @@ export default function App() {
             advancedPosFilter,
             gridStyle,
             gridVerticalShift,
-            brushType
+            brushType,
+            strokeColor
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, gridStyle, gridVerticalShift, brushType]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
@@ -735,6 +739,8 @@ export default function App() {
                                     gridVerticalShift={gridVerticalShift}
                                     brushType={brushType}
                                     alignRight={leftHanded}
+                                    strokeColor={strokeColor}
+                                    onStrokeColorChange={setStrokeColor}
                                 />
                             </div>
                         </>
@@ -780,6 +786,8 @@ export default function App() {
                             traceFont={traceFont}
                             gridStyle={gridStyle}
                             gridVerticalShift={gridVerticalShift}
+                            strokeColor={strokeColor}
+                            onStrokeColorChange={setStrokeColor}
                             brushType={brushType}
                             alignRight={leftHanded}
                         />
