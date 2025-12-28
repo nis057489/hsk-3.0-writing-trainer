@@ -690,6 +690,8 @@ export default function App() {
                         setGridVerticalShift={setGridVerticalShift}
                         brushType={brushType}
                         setBrushType={setBrushType}
+                        strokeColor={strokeColor}
+                        setStrokeColor={setStrokeColor}
                         characterMode={characterMode}
                         setCharacterMode={setCharacterMode}
                         language={language}
@@ -740,7 +742,6 @@ export default function App() {
                                     brushType={brushType}
                                     alignRight={leftHanded}
                                     strokeColor={strokeColor}
-                                    onStrokeColorChange={setStrokeColor}
                                 />
                             </div>
                         </>
@@ -787,7 +788,6 @@ export default function App() {
                             gridStyle={gridStyle}
                             gridVerticalShift={gridVerticalShift}
                             strokeColor={strokeColor}
-                            onStrokeColorChange={setStrokeColor}
                             brushType={brushType}
                             alignRight={leftHanded}
                         />

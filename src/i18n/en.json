@@ -95,6 +95,7 @@
         "brushPencil": "Pencil (Standard)",
         "brushFountain": "Fountain Pen",
         "brushCalligraphy": "Calligraphy Brush",
+        "strokeColor": "Stroke Color",
         "traceFont": "Trace character font style",
         "traceFontHandwritten": "Handwritten (Brush)",
         "traceFontKai": "Kai",
@@ -213,5 +214,12 @@
     },
     "stats": {
         "available": "{{count}} words available"
+    },
+    "colors": {
+        "ink": "Ink Stick",
+        "maroon": "Maroon",
+        "jade": "Jade",
+        "hanBlue": "Han Blue",
+        "custom": "Custom Color"
     }
 }

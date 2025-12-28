@@ -46,6 +46,8 @@ interface DrawerMenuProps {
     setGridVerticalShift: (value: boolean) => void;
     brushType: BrushType;
     setBrushType: (value: BrushType) => void;
+    strokeColor: string;
+    setStrokeColor: (value: string) => void;
     characterMode: 'simplified' | 'traditional';
     setCharacterMode: (value: 'simplified' | 'traditional') => void;
     language: string;
@@ -312,6 +314,55 @@ export function DrawerMenu(props: DrawerMenuProps) {
                                 <option key={o.value} value={o.value}>{o.label}</option>
                             ))}
                         </select>
+                    </label>
+
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.strokeColor")}</span>
+                        <div className="color-picker" style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                            {[
+                                { color: "#161718", label: t("colors.ink") },
+                                { color: "#A63D40", label: t("colors.maroon") },
+                                { color: "#2B7A41", label: t("colors.jade") },
+                                { color: "#092858", label: t("colors.hanBlue") }
+                            ].map(c => (
+                                <button
+                                    key={c.color}
+                                    onClick={() => props.setStrokeColor(c.color)}
+                                    style={{
+                                        width: 28,
+                                        height: 28,
+                                        borderRadius: "50%",
+                                        backgroundColor: c.color,
+                                        border: props.strokeColor === c.color ? "2px solid var(--text)" : "1px solid var(--border)",
+                                        cursor: "pointer",
+                                        padding: 0,
+                                        boxShadow: props.strokeColor === c.color ? "0 0 0 2px var(--surface)" : "none",
+                                        transition: "transform 0.1s"
+                                    }}
+                                    title={c.label}
+                                    aria-label={c.label}
+                                />
+                            ))}
+                            <div style={{ position: "relative", width: 28, height: 28, borderRadius: "50%", overflow: "hidden", border: "1px solid var(--border)", cursor: "pointer" }} title={t("colors.custom")}>
+                                <input
+                                    type="color"
+                                    value={props.strokeColor}
+                                    onChange={(e) => props.setStrokeColor(e.target.value)}
+                                    style={{
+                                        position: "absolute",
+                                        top: "50%",
+                                        left: "50%",
+                                        transform: "translate(-50%, -50%)",
+                                        width: "150%",
+                                        height: "150%",
+                                        padding: 0,
+                                        border: "none",
+                                        background: "none",
+                                        cursor: "pointer"
+                                    }}
+                                />
+                            </div>
+                        </div>
                     </label>
 
                     <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>

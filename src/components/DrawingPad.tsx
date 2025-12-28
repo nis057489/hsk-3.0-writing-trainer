@@ -284,7 +284,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                 ctx.save();
                 ctx.lineCap = "round";
                 ctx.lineJoin = "round";
-                ctx.strokeStyle = "#111";
+                ctx.strokeStyle = strokeColor;
                 ctx.lineWidth = baseWidth;
                 ctx.beginPath();
 
@@ -299,7 +299,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
                 ctx.restore();
             } else {
                 // Variable width incremental
-                ctx.fillStyle = "#111";
+                ctx.fillStyle = strokeColor;
 
                 for (let i = startIndex; i <= endIndex; i++) {
                     const p = pts[i];
@@ -383,7 +383,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             lastWidthRef.current = w;
 
             ctx.save();
-            ctx.fillStyle = "#111";
+            ctx.fillStyle = strokeColor;
             ctx.beginPath();
             ctx.arc(pt.x * s, pt.y * s, w / 2, 0, Math.PI * 2);
             ctx.fill();
@@ -487,7 +487,7 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             c.removeEventListener("pointerover", onPointerOver);
             c.removeEventListener("pointerleave", onPointerLeave);
         };
-    }, [dpr, canvasSize, showHoverIndicator, brushType]);
+    }, [dpr, canvasSize, showHoverIndicator, brushType, strokeColor]);
 
     const clear = React.useCallback(() => setStrokes([]), []);
     const undo = React.useCallback(() => setStrokes((prev: Stroke[]) => prev.slice(0, -1)), []);

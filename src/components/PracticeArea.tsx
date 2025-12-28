@@ -15,10 +15,9 @@ interface PracticeAreaProps {
     alignRight?: boolean;
     brushType?: BrushType;
     strokeColor?: string;
-    onStrokeColorChange?: (color: string) => void;
 }
 
-export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, alignRight = false, brushType = "pencil", strokeColor = "#111", onStrokeColorChange }: PracticeAreaProps) {
+export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, alignRight = false, brushType = "pencil", strokeColor = "#111" }: PracticeAreaProps) {
     const { t } = useTranslation();
     const [compact, setCompact] = useState(false);
 
@@ -169,53 +168,6 @@ export function PracticeArea({ text, tracingMode, padSizeChoice, showHoverIndica
             <div className="practice-header" style={{ alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
                     <div className="practice-kicker">{t("practice.header")}</div>
-                    {onStrokeColorChange && (
-                        <div className="color-picker" style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                            {[
-                                { color: "#161718", label: "Ink Stick" },
-                                { color: "#A63D40", label: "Maroon" },
-                                { color: "#63A375", label: "Jade" },
-                                { color: "#092858", label: "Han Blue" }
-                            ].map(c => (
-                                <button
-                                    key={c.color}
-                                    onClick={() => onStrokeColorChange(c.color)}
-                                    style={{
-                                        width: 22,
-                                        height: 22,
-                                        borderRadius: "50%",
-                                        backgroundColor: c.color,
-                                        border: strokeColor === c.color ? "2px solid var(--text)" : "1px solid var(--border)",
-                                        cursor: "pointer",
-                                        padding: 0,
-                                        boxShadow: strokeColor === c.color ? "0 0 0 2px var(--surface)" : "none",
-                                        transition: "transform 0.1s"
-                                    }}
-                                    title={c.label}
-                                    aria-label={c.label}
-                                />
-                            ))}
-                            <div style={{ position: "relative", width: 22, height: 22, borderRadius: "50%", overflow: "hidden", border: "1px solid var(--border)", cursor: "pointer" }} title="Custom Color">
-                                <input
-                                    type="color"
-                                    value={strokeColor}
-                                    onChange={(e) => onStrokeColorChange(e.target.value)}
-                                    style={{
-                                        position: "absolute",
-                                        top: "50%",
-                                        left: "50%",
-                                        transform: "translate(-50%, -50%)",
-                                        width: "150%",
-                                        height: "150%",
-                                        padding: 0,
-                                        border: "none",
-                                        background: "none",
-                                        cursor: "pointer"
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    )}
                 </div>
                 <div className="practice-count">{characters.length} {t("practice.chars")}</div>
             </div>
