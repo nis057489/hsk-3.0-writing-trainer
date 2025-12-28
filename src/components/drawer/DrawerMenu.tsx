@@ -387,27 +387,6 @@ export function DrawerMenu(props: DrawerMenuProps) {
                     </label>
 
                     <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
-                        <span style={{ color: "var(--muted)" }}>{t("options.traceFont")}</span>
-                        <select
-                            value={props.traceFont}
-                            onChange={(e) => props.setTraceFont(e.target.value as TraceFontChoice)}
-                            style={{
-                                padding: "8px 10px",
-                                borderRadius: 8,
-                                border: "1px solid var(--border)",
-                                background: "var(--surface)",
-                                color: "var(--text)",
-                                fontSize: 14
-                            }}
-                            aria-label={t("options.traceFont")}
-                        >
-                            {traceFontOptions.map(opt => (
-                                <option key={opt.value} value={opt.value}>{opt.label}</option>
-                            ))}
-                        </select>
-                    </label>
-
-                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
                         <span style={{ color: "var(--muted)" }}>{t("options.promptFont")}</span>
                         <select
                             value={props.promptFont}
@@ -423,6 +402,27 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             aria-label={t("options.promptFont")}
                         >
                             {promptFontOptions.map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13 }}>
+                        <span style={{ color: "var(--muted)" }}>{t("options.traceFont")}</span>
+                        <select
+                            value={props.traceFont}
+                            onChange={(e) => props.setTraceFont(e.target.value as TraceFontChoice)}
+                            style={{
+                                padding: "8px 10px",
+                                borderRadius: 8,
+                                border: "1px solid var(--border)",
+                                background: "var(--surface)",
+                                color: "var(--text)",
+                                fontSize: 14
+                            }}
+                            aria-label={t("options.traceFont")}
+                        >
+                            {traceFontOptions.map(opt => (
                                 <option key={opt.value} value={opt.value}>{opt.label}</option>
                             ))}
                         </select>
