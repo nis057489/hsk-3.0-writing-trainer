@@ -110,6 +110,8 @@
         "gridVerticalShift": "Usar división vertical 40/60",
         "showDetailsDefault": "Mostrar pinyin/significado por defecto",
         "randomizeNext": "Aleatorizar siguiente tarjeta",
+        "subsetDrilling": "Modo de perforación de subconjunto",
+        "subsetDrillingCount": "Número de palabras a perforar",
         "reviewGrades": "Practicar solo estos resultados",
         "includeNewCards": "Incluir tarjetas nuevas",
         "advancedPosFilter": "Mostrar todas las categorías detalladas"

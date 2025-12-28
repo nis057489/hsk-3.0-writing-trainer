@@ -84,6 +84,8 @@ type Prefs = {
     gridVerticalShift: boolean;
     brushType: BrushType;
     strokeColor: string;
+    subsetDrillingEnabled: boolean;
+    subsetDrillingCount: number;
 };
 
 function readPrefs<T>(key: string, fallback: T): T {
@@ -205,7 +207,9 @@ export default function App() {
         gridStyle: "rice",
         gridVerticalShift: false,
         brushType: "pencil",
-        strokeColor: "#111"
+        strokeColor: "#111",
+        subsetDrillingEnabled: false,
+        subsetDrillingCount: 20
     };
 
     const storedPrefsRaw = readPrefs<Prefs>("prefs.state", prefDefaults);
@@ -421,6 +425,8 @@ export default function App() {
     const [showDetailsDefault, setShowDetailsDefault] = useState<boolean>(storedPrefs.showDetailsDefault ?? false);
     const [traceFont, setTraceFont] = useState<TraceFontChoice>(storedPrefs.traceFont || "handwritten");
     const [promptFont, setPromptFont] = useState<PromptFontChoice>(storedPrefs.promptFont || "handwritten");
+    const [subsetDrillingEnabled, setSubsetDrillingEnabled] = useState<boolean>(storedPrefs.subsetDrillingEnabled ?? false);
+    const [subsetDrillingCount, setSubsetDrillingCount] = useState<number>(storedPrefs.subsetDrillingCount ?? 20);
     const normalizeGridStyle = (value: string | undefined): GridStyleChoice => {
         if (value === "field" || value === "rice" || value === "none") return value;
         if (value === "cross") return "field";
@@ -435,21 +441,43 @@ export default function App() {
 
     // Initialize queue when filters change
     useEffect(() => {
-        setQueue(pickDue(filteredCards, progressRef.current));
+        const picked = pickDue(filteredCards, progressRef.current);
+        let finalQueue = picked;
+        
+        // If subset drilling is enabled, select a random subset and repeat it indefinitely
+        if (subsetDrillingEnabled && picked.length > 0) {
+            const subsetSize = Math.min(subsetDrillingCount, picked.length);
+            const shuffled = [...picked].sort(() => Math.random() - 0.5);
+            finalQueue = shuffled.slice(0, subsetSize);
+        }
+        
+        setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [filteredCards, showDetailsDefault]);
+    }, [filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     // If the session queue is exhausted, refill it from the currently filtered pool.
     // This keeps the behavior Anki-like within a session, while still allowing continued practice.
+    // In subset drilling mode, refill with a new random subset.
     useEffect(() => {
         if (mode !== 'flashcard') return;
         if (queue.length !== 0) return;
         if (filteredCards.length === 0) return;
-        setQueue(pickDue(filteredCards, progressRef.current));
+        
+        const picked = pickDue(filteredCards, progressRef.current);
+        let finalQueue = picked;
+        
+        // If subset drilling is enabled, create a new random subset
+        if (subsetDrillingEnabled && picked.length > 0) {
+            const subsetSize = Math.min(subsetDrillingCount, picked.length);
+            const shuffled = [...picked].sort(() => Math.random() - 0.5);
+            finalQueue = shuffled.slice(0, subsetSize);
+        }
+        
+        setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [mode, queue.length, filteredCards, showDetailsDefault]);
+    }, [mode, queue.length, filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     useEffect(() => {
         setReveal(showDetailsDefault);
@@ -499,10 +527,12 @@ export default function App() {
             gridStyle,
             gridVerticalShift,
             brushType,
-            strokeColor
+            strokeColor,
+            subsetDrillingEnabled,
+            subsetDrillingCount
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
 
     const basePadSize = padSizeChoice === "xs"
         ? 90
@@ -581,7 +611,41 @@ export default function App() {
             return;
         }
 
-        // hard/good/easy: card is scheduled into the future, so remove it from the current session queue.
+        // In subset drilling mode, only remove "easy" cards from the subset.
+        // "hard" and "good" keep cycling in the subset
+        if (subsetDrillingEnabled && (g === "hard" || g === "good" || g === "easy")) {
+            setQueue((q: Card[]) => {
+                if (q.length === 0) return q;
+
+                const currentIndex = idx % q.length;
+                const copy = q.slice();
+
+                if (g === "easy") {
+                    // Remove the card from the subset when marked easy
+                    copy.splice(currentIndex, 1);
+
+                    if (copy.length === 0) {
+                        setIdx(0);
+                    } else if (randomizeNext) {
+                        setIdx(() => pickRandomIndex(copy.length, Math.min(currentIndex, copy.length - 1)));
+                    } else {
+                        setIdx(() => Math.min(currentIndex, copy.length - 1));
+                    }
+                } else {
+                    // For hard/good, just advance to the next card in the subset (card stays in subset)
+                    if (randomizeNext) {
+                        setIdx(() => pickRandomIndex(copy.length, Math.min(currentIndex, copy.length - 1)));
+                    } else {
+                        setIdx(() => (currentIndex + 1) % copy.length);
+                    }
+                }
+
+                return copy;
+            });
+            return;
+        }
+
+        // hard/good/easy (non-subset mode): card is scheduled into the future, so remove it from the current session queue.
         setQueue((q: Card[]) => {
             if (q.length === 0) return q;
 
@@ -599,7 +663,7 @@ export default function App() {
 
             return copy;
         });
-    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive]);
+    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, subsetDrillingEnabled]);
 
     const toggleLevel = (id: string) => {
         setSelectedLevels((prev: string[]) =>
@@ -698,6 +762,10 @@ export default function App() {
                         setLanguage={setLanguage}
                         theme={theme}
                         setTheme={setTheme}
+                        subsetDrillingEnabled={subsetDrillingEnabled}
+                        setSubsetDrillingEnabled={setSubsetDrillingEnabled}
+                        subsetDrillingCount={subsetDrillingCount}
+                        setSubsetDrillingCount={setSubsetDrillingCount}
                         filteredCardsCount={filteredCards.length}
                         onNavigate={setDrawerView}
                         onClose={() => setIsDrawerOpen(false)}

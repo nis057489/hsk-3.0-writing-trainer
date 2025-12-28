@@ -110,6 +110,8 @@
         "brushCalligraphy": "Calligraphy Brush",
         "strokeColor": "Stroke Color",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "Subset Drilling Mode",
+        "subsetDrillingCount": "Bilang ng mga salitang dapat i-drill",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"

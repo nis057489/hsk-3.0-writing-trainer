@@ -110,6 +110,8 @@
         "brushCalligraphy": "Calligraphy Brush",
         "strokeColor": "Stroke Color",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "सबसेट ड्रिलिंग मोड",
+        "subsetDrillingCount": "अभ्यास करने के लिए शब्दों की संख्या",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"

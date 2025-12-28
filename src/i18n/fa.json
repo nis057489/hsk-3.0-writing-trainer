@@ -110,6 +110,8 @@
         "brushCalligraphy": "Calligraphy Brush",
         "strokeColor": "Stroke Color",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "حالت حفر زیرمجموعه",
+        "subsetDrillingCount": "تعداد کلمات برای تمرین",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"

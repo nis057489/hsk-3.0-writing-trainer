@@ -110,6 +110,8 @@
         "strokeColor": "Couleur du trait",
         "gridStyleNone": "Pas de grille",
         "randomizeNext": "Aléatoire suivante",
+        "subsetDrilling": "Mode d'exercice de sous-ensemble",
+        "subsetDrillingCount": "Nombre de mots à pratiquer",
         "reviewGrades": "Pratiquer uniquement ces résultats",
         "includeNewCards": "Inclure les nouvelles cartes",
         "advancedPosFilter": "Afficher toutes les catégories détaillées"

@@ -54,6 +54,10 @@ interface DrawerMenuProps {
     setLanguage: (value: string) => void;
     theme: ThemeChoice;
     setTheme: (value: ThemeChoice) => void;
+    subsetDrillingEnabled: boolean;
+    setSubsetDrillingEnabled: (value: boolean) => void;
+    subsetDrillingCount: number;
+    setSubsetDrillingCount: (value: number) => void;
     filteredCardsCount: number;
     onNavigate: (view: 'help' | 'tips' | 'pos-help' | 'licenses') => void;
     onClose: () => void;
@@ -267,6 +271,40 @@ export function DrawerMenu(props: DrawerMenuProps) {
                         />
                         {t("options.randomizeNext")}
                     </label>
+
+                    <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                        <input
+                            type="checkbox"
+                            checked={props.subsetDrillingEnabled}
+                            onChange={(e) => props.setSubsetDrillingEnabled(e.target.checked)}
+                        />
+                        {t("options.subsetDrilling")}
+                    </label>
+
+                    {props.subsetDrillingEnabled && (
+                        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, paddingLeft: 28 }}>
+                            <span style={{ color: "var(--muted)" }}>{t("options.subsetDrillingCount")}</span>
+                            <input
+                                type="number"
+                                value={props.subsetDrillingCount}
+                                onChange={(e) => {
+                                    const val = Math.max(1, parseInt(e.target.value) || 1);
+                                    props.setSubsetDrillingCount(val);
+                                }}
+                                min="1"
+                                max="999"
+                                style={{
+                                    padding: "8px 10px",
+                                    borderRadius: 8,
+                                    border: "1px solid var(--border)",
+                                    background: "var(--surface)",
+                                    color: "var(--text)",
+                                    fontSize: 14
+                                }}
+                                aria-label={t("options.subsetDrillingCount")}
+                            />
+                        </label>
+                    )}
 
                     <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
                         <input

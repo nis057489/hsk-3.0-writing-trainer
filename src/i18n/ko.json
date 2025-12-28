@@ -110,6 +110,8 @@
         "brushCalligraphy": "Calligraphy Brush",
         "strokeColor": "Stroke Color",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "부분 집합 드릴링 모드",
+        "subsetDrillingCount": "연습할 단어 수",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"

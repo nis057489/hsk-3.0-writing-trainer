@@ -110,6 +110,8 @@
         "brushCalligraphy": "Calligraphy Brush",
         "strokeColor": "Stroke Color",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "Alt Küme Antrenman Modu",
+        "subsetDrillingCount": "Antrenman yapılacak kelime sayısı",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"

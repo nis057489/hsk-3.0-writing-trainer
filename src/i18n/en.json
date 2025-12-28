@@ -110,6 +110,8 @@
         "gridVerticalShift": "Use 40/60 vertical split",
         "showDetailsDefault": "Show pinyin/meaning by default",
         "randomizeNext": "Randomize next card",
+        "subsetDrilling": "Subset Drilling Mode",
+        "subsetDrillingCount": "Number of words to drill",
         "reviewGrades": "Practice only these results",
         "includeNewCards": "Include new cards",
         "advancedPosFilter": "Show all detailed categories"
