@@ -95,7 +95,6 @@ UI translations are available for:
 - اردو (ur)
 - Tiếng Việt (vi)
 
-
 ## Meaning translations
 
 The vocabulary meanings are English by default. Community translations can be added via PRs in `src/data/meanings/<lang>.json`. See CONTRIBUTING.md for details!
