@@ -105,6 +105,24 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
     return due.length ? due : cards;
 }
 
+function applyReviewFilter(
+    cards: Card[],
+    progressMap: Record<string, CardState>,
+    reviewGradesSet: Set<Grade>,
+    includeNewCards: boolean
+): Card[] {
+    const out: Card[] = [];
+    for (const card of cards) {
+        const state = ensureState(card.id, progressMap);
+        const isNew = !state.lastGrade;
+        const matches =
+            (includeNewCards && isNew) ||
+            (!!state.lastGrade && reviewGradesSet.has(state.lastGrade));
+        if (matches) out.push(card);
+    }
+    return out;
+}
+
 function shuffleInPlace<T>(arr: T[]) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -247,7 +265,6 @@ export default function App() {
     // Keep progress in a ref to avoid forcing global re-renders on each grade.
     // We only trigger recomputation when a UI feature actually depends on progress.
     const progressRef = useRef<Record<string, CardState>>(loadProgress());
-    const [progressVersion, setProgressVersion] = useState(0);
 
     // Debounce progress persistence to avoid repeatedly JSON-stringifying a large map.
     const saveProgressTimeoutRef = useRef<number | null>(null);
@@ -335,11 +352,10 @@ export default function App() {
     }, [selectedPos, advancedPosFilter]);
 
     // Filtered pool
-    const filteredCards = useMemo(() => {
-        const progressMap = progressRef.current;
-
+    // Base filtered pool (level + POS only). Review-grade filtering is applied when
+    // (re)building the session queue to avoid re-filtering the whole pool on every grade.
+    const baseFilteredCards = useMemo(() => {
         return levelFilteredCards.filter((card) => {
-            // POS filtering with simple/advanced mode
             let posMatch = true;
             if (selectedPos.length > 0 && card.pos) {
                 if (advancedPosFilter) {
@@ -348,28 +364,14 @@ export default function App() {
                     posMatch = card.pos.some((p) => allowedDetailedPosSet.has(p));
                 }
             }
-
-            let reviewMatch = true;
-            if (reviewFilteringActive) {
-                const state = ensureState(card.id, progressMap);
-                const isNew = !state.lastGrade;
-                reviewMatch =
-                    (includeNewCards && isNew) ||
-                    (!!state.lastGrade && reviewGradesSet.has(state.lastGrade));
-            }
-
-            return posMatch && reviewMatch;
+            return posMatch;
         });
     }, [
         levelFilteredCards,
         selectedPos.length,
         advancedPosFilter,
         selectedPosSet,
-        allowedDetailedPosSet,
-        reviewFilteringActive,
-        includeNewCards,
-        reviewGradesSet,
-        progressVersion
+        allowedDetailedPosSet
     ]);
 
     const levels = useMemo(() => ([
@@ -493,9 +495,21 @@ export default function App() {
     const [strokeColor, setStrokeColor] = useState<string>(storedPrefs.strokeColor || "#111");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
+    // Only compute the count when the drawer is open (it can require scanning the pool).
+    const filteredCardsCount = useMemo(() => {
+        if (!isDrawerOpen || drawerView !== 'menu') return 0;
+        const progressMap = progressRef.current;
+        if (!reviewFilteringActive) return baseFilteredCards.length;
+        return applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards).length;
+    }, [isDrawerOpen, drawerView, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards]);
+
     // Initialize queue when filters change
     useEffect(() => {
-        const picked = pickDue(filteredCards, progressRef.current);
+        const progressMap = progressRef.current;
+        const pool = reviewFilteringActive
+            ? applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards)
+            : baseFilteredCards;
+        const picked = pickDue(pool, progressMap);
         let finalQueue = picked;
 
         // If subset drilling is enabled, select a random subset and repeat it indefinitely
@@ -509,7 +523,7 @@ export default function App() {
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     // If the session queue is exhausted, refill it from the currently filtered pool.
     // This keeps the behavior Anki-like within a session, while still allowing continued practice.
@@ -517,9 +531,15 @@ export default function App() {
     useEffect(() => {
         if (mode !== 'flashcard') return;
         if (queue.length !== 0) return;
-        if (filteredCards.length === 0) return;
+        if (baseFilteredCards.length === 0) return;
 
-        const picked = pickDue(filteredCards, progressRef.current);
+        const progressMap = progressRef.current;
+        const pool = reviewFilteringActive
+            ? applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards)
+            : baseFilteredCards;
+        if (pool.length === 0) return;
+
+        const picked = pickDue(pool, progressMap);
         let finalQueue = picked;
 
         // If subset drilling is enabled, create a new random subset
@@ -533,7 +553,7 @@ export default function App() {
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [mode, queue.length, filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [mode, queue.length, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     useEffect(() => {
         setReveal(showDetailsDefault);
@@ -637,10 +657,29 @@ export default function App() {
         map[card.id] = updated;
         scheduleProgressSave();
 
-        // Only trigger a global recompute when the active filters depend on progress.
-        if (reviewFilteringActive) setProgressVersion((v) => v + 1);
-
         setReveal(showDetailsDefault);
+
+        // In review-filter mode, if this grade no longer matches the filter,
+        // drop the card from the session queue without re-filtering the whole pool.
+        if (reviewFilteringActive && !reviewGradesSet.has(g)) {
+            setQueue((q: Card[]) => {
+                if (q.length === 0) return q;
+                const currentIndex = idx % q.length;
+                const copy = q.slice();
+                copy.splice(currentIndex, 1);
+
+                if (copy.length === 0) {
+                    setIdx(0);
+                } else if (randomizeNext) {
+                    setIdx(() => pickRandomIndex(copy.length, Math.min(currentIndex, copy.length - 1)));
+                } else {
+                    setIdx(() => Math.min(currentIndex, copy.length - 1));
+                }
+
+                return copy;
+            });
+            return;
+        }
 
         if (g === "again") {
             setQueue((q: Card[]) => {
@@ -719,7 +758,7 @@ export default function App() {
 
             return copy;
         });
-    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, subsetDrillingEnabled, scheduleProgressSave]);
+    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, reviewGradesSet, subsetDrillingEnabled, scheduleProgressSave]);
 
     const toggleLevel = (id: string) => {
         setSelectedLevels((prev: string[]) =>
@@ -822,7 +861,7 @@ export default function App() {
                         setSubsetDrillingEnabled={setSubsetDrillingEnabled}
                         subsetDrillingCount={subsetDrillingCount}
                         setSubsetDrillingCount={setSubsetDrillingCount}
-                        filteredCardsCount={filteredCards.length}
+                        filteredCardsCount={filteredCardsCount}
                         onNavigate={setDrawerView}
                         onClose={() => setIsDrawerOpen(false)}
                     />
