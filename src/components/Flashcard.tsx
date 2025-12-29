@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Card } from "../lib/types";
 import { getLocalizedMeaning, hasMeaningTranslationsOptIn } from "../lib/meaningTranslations";

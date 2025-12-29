@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
 import { Toolbar } from "./components/Toolbar";
 import { Drawer } from "./components/Drawer";
@@ -104,31 +105,6 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
     return due.length ? due : cards;
 }
 
-function applyReviewFilter(
-    cards: Card[],
-    progressMap: Record<string, CardState>,
-    reviewGradesSet: Set<Grade>,
-    includeNewCards: boolean
-): Card[] {
-    const out: Card[] = [];
-    for (const card of cards) {
-        const state = ensureState(card.id, progressMap);
-        const isNew = !state.lastGrade;
-        const matches =
-            (includeNewCards && isNew) ||
-            (!!state.lastGrade && reviewGradesSet.has(state.lastGrade));
-        if (matches) out.push(card);
-    }
-    return out;
-}
-
-function shuffleInPlace<T>(arr: T[]) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-}
-
 const allCards = vocab as Card[];
 
 export default function App() {
@@ -211,7 +187,7 @@ export default function App() {
         };
     }, []);
 
-    const prefDefaults = useMemo<Prefs>(() => ({
+    const prefDefaults: Prefs = {
         selectedLevels: ["new-1"],
         selectedPos: [],
         characterMode: 'simplified',
@@ -234,10 +210,12 @@ export default function App() {
         strokeColor: "#111",
         subsetDrillingEnabled: false,
         subsetDrillingCount: 20
-    }), [i18n.resolvedLanguage]);
+    };
+
+    const storedPrefsRaw = readPrefs<Prefs>("prefs.state", prefDefaults);
 
     // Migrate old/invalid font choices (e.g. removed "cursive") to a supported value.
-    function normalizeFontChoice(v: any): TraceFontChoice {
+    const normalizeFontChoice = (v: any): TraceFontChoice => {
         switch (v) {
             case "handwritten":
             case "kai":
@@ -249,66 +227,18 @@ export default function App() {
             default:
                 return "system";
         }
-    }
+    };
 
-    // Read prefs once (localStorage is synchronous and expensive if done every render).
-    const [storedPrefs] = useState<Prefs>(() => {
-        const raw = readPrefs<Prefs>("prefs.state", prefDefaults);
-        return {
-            ...raw,
-            traceFont: normalizeFontChoice((raw as any).traceFont),
-            promptFont: normalizeFontChoice((raw as any).promptFont)
-        };
-    });
+    const storedPrefs: Prefs = {
+        ...storedPrefsRaw,
+        traceFont: normalizeFontChoice((storedPrefsRaw as any).traceFont),
+        promptFont: normalizeFontChoice((storedPrefsRaw as any).promptFont)
+    };
 
     // Keep progress in a ref to avoid forcing global re-renders on each grade.
     // We only trigger recomputation when a UI feature actually depends on progress.
     const progressRef = useRef<Record<string, CardState>>(loadProgress());
-
-    // Debounce progress persistence to avoid repeatedly JSON-stringifying a large map.
-    const saveProgressTimeoutRef = useRef<number | null>(null);
-
-    const flushProgressSave = useCallback(() => {
-        if (saveProgressTimeoutRef.current != null) {
-            window.clearTimeout(saveProgressTimeoutRef.current);
-            saveProgressTimeoutRef.current = null;
-        }
-        try {
-            saveProgress(progressRef.current);
-        } catch {
-            // ignore storage errors
-        }
-    }, []);
-
-    const scheduleProgressSave = useCallback((delayMs = 300) => {
-        if (saveProgressTimeoutRef.current != null) {
-            window.clearTimeout(saveProgressTimeoutRef.current);
-        }
-        saveProgressTimeoutRef.current = window.setTimeout(() => {
-            saveProgressTimeoutRef.current = null;
-            try {
-                saveProgress(progressRef.current);
-            } catch {
-                // ignore storage errors
-            }
-        }, delayMs);
-    }, []);
-
-    useEffect(() => {
-        const onVisibility = () => {
-            if (document.visibilityState === "hidden") flushProgressSave();
-        };
-        const onPageHide = () => flushProgressSave();
-
-        document.addEventListener("visibilitychange", onVisibility);
-        window.addEventListener("pagehide", onPageHide);
-
-        return () => {
-            document.removeEventListener("visibilitychange", onVisibility);
-            window.removeEventListener("pagehide", onPageHide);
-            flushProgressSave();
-        };
-    }, [flushProgressSave]);
+    const [progressVersion, setProgressVersion] = useState(0);
 
     // Filters
     const [selectedLevels, setSelectedLevels] = useState<string[]>(storedPrefs.selectedLevels || ["new-1"]);
@@ -351,10 +281,11 @@ export default function App() {
     }, [selectedPos, advancedPosFilter]);
 
     // Filtered pool
-    // Base filtered pool (level + POS only). Review-grade filtering is applied when
-    // (re)building the session queue to avoid re-filtering the whole pool on every grade.
-    const baseFilteredCards = useMemo(() => {
+    const filteredCards = useMemo(() => {
+        const progressMap = progressRef.current;
+
         return levelFilteredCards.filter((card) => {
+            // POS filtering with simple/advanced mode
             let posMatch = true;
             if (selectedPos.length > 0 && card.pos) {
                 if (advancedPosFilter) {
@@ -363,14 +294,28 @@ export default function App() {
                     posMatch = card.pos.some((p) => allowedDetailedPosSet.has(p));
                 }
             }
-            return posMatch;
+
+            let reviewMatch = true;
+            if (reviewFilteringActive) {
+                const state = ensureState(card.id, progressMap);
+                const isNew = !state.lastGrade;
+                reviewMatch =
+                    (includeNewCards && isNew) ||
+                    (!!state.lastGrade && reviewGradesSet.has(state.lastGrade));
+            }
+
+            return posMatch && reviewMatch;
         });
     }, [
         levelFilteredCards,
         selectedPos.length,
         advancedPosFilter,
         selectedPosSet,
-        allowedDetailedPosSet
+        allowedDetailedPosSet,
+        reviewFilteringActive,
+        includeNewCards,
+        reviewGradesSet,
+        progressVersion
     ]);
 
     const levels = useMemo(() => ([
@@ -494,35 +439,22 @@ export default function App() {
     const [strokeColor, setStrokeColor] = useState<string>(storedPrefs.strokeColor || "#111");
     const [reveal, setReveal] = useState(showDetailsDefault);
 
-    // Only compute the count when the drawer is open (it can require scanning the pool).
-    const filteredCardsCount = useMemo(() => {
-        if (!isDrawerOpen || drawerView !== 'menu') return 0;
-        const progressMap = progressRef.current;
-        if (!reviewFilteringActive) return baseFilteredCards.length;
-        return applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards).length;
-    }, [isDrawerOpen, drawerView, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards]);
-
     // Initialize queue when filters change
     useEffect(() => {
-        const progressMap = progressRef.current;
-        const pool = reviewFilteringActive
-            ? applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards)
-            : baseFilteredCards;
-        const picked = pickDue(pool, progressMap);
+        const picked = pickDue(filteredCards, progressRef.current);
         let finalQueue = picked;
 
         // If subset drilling is enabled, select a random subset and repeat it indefinitely
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
-            const shuffled = picked.slice();
-            shuffleInPlace(shuffled);
+            const shuffled = [...picked].sort(() => Math.random() - 0.5);
             finalQueue = shuffled.slice(0, subsetSize);
         }
 
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     // If the session queue is exhausted, refill it from the currently filtered pool.
     // This keeps the behavior Anki-like within a session, while still allowing continued practice.
@@ -530,29 +462,22 @@ export default function App() {
     useEffect(() => {
         if (mode !== 'flashcard') return;
         if (queue.length !== 0) return;
-        if (baseFilteredCards.length === 0) return;
+        if (filteredCards.length === 0) return;
 
-        const progressMap = progressRef.current;
-        const pool = reviewFilteringActive
-            ? applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards)
-            : baseFilteredCards;
-        if (pool.length === 0) return;
-
-        const picked = pickDue(pool, progressMap);
+        const picked = pickDue(filteredCards, progressRef.current);
         let finalQueue = picked;
 
         // If subset drilling is enabled, create a new random subset
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
-            const shuffled = picked.slice();
-            shuffleInPlace(shuffled);
+            const shuffled = [...picked].sort(() => Math.random() - 0.5);
             finalQueue = shuffled.slice(0, subsetSize);
         }
 
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [mode, queue.length, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [mode, queue.length, filteredCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     useEffect(() => {
         setReveal(showDetailsDefault);
@@ -609,6 +534,14 @@ export default function App() {
         localStorage.setItem("prefs.state", JSON.stringify(payload));
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
 
+    const basePadSize = padSizeChoice === "xs"
+        ? 90
+        : padSizeChoice === "small"
+            ? 110
+            : padSizeChoice === "large"
+                ? 190
+                : 150;
+
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
     const displayHanzi = card ? (characterMode === 'traditional' ? (card.traditional || card.hanzi) : card.hanzi) : "";
@@ -646,31 +579,12 @@ export default function App() {
         // Mutate the progress map in-place to avoid allocating/copying on every grade.
         const map = progressRef.current;
         map[card.id] = updated;
-        scheduleProgressSave();
+        saveProgress(map);
+
+        // Only trigger a global recompute when the active filters depend on progress.
+        if (reviewFilteringActive) setProgressVersion((v) => v + 1);
 
         setReveal(showDetailsDefault);
-
-        // In review-filter mode, if this grade no longer matches the filter,
-        // drop the card from the session queue without re-filtering the whole pool.
-        if (reviewFilteringActive && !reviewGradesSet.has(g)) {
-            setQueue((q: Card[]) => {
-                if (q.length === 0) return q;
-                const currentIndex = idx % q.length;
-                const copy = q.slice();
-                copy.splice(currentIndex, 1);
-
-                if (copy.length === 0) {
-                    setIdx(0);
-                } else if (randomizeNext) {
-                    setIdx(() => pickRandomIndex(copy.length, Math.min(currentIndex, copy.length - 1)));
-                } else {
-                    setIdx(() => Math.min(currentIndex, copy.length - 1));
-                }
-
-                return copy;
-            });
-            return;
-        }
 
         if (g === "again") {
             setQueue((q: Card[]) => {
@@ -749,7 +663,7 @@ export default function App() {
 
             return copy;
         });
-    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, reviewGradesSet, subsetDrillingEnabled, scheduleProgressSave]);
+    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, subsetDrillingEnabled]);
 
     const toggleLevel = (id: string) => {
         setSelectedLevels((prev: string[]) =>
@@ -852,7 +766,7 @@ export default function App() {
                         setSubsetDrillingEnabled={setSubsetDrillingEnabled}
                         subsetDrillingCount={subsetDrillingCount}
                         setSubsetDrillingCount={setSubsetDrillingCount}
-                        filteredCardsCount={filteredCardsCount}
+                        filteredCardsCount={filteredCards.length}
                         onNavigate={setDrawerView}
                         onClose={() => setIsDrawerOpen(false)}
                     />
