@@ -64,6 +64,8 @@ Translations of word meanings are welcome via PR's - see CONTRIBUTING.md for det
 
 UI translations are available for:
 
+- 简体中文 (zh)
+- 繁體中文 (zh-Hant)
 - العربية (ar)
 - বাংলা (bn)
 - བོད་སྐད་ / Tibetan (bo)
@@ -92,8 +94,7 @@ UI translations are available for:
 - Українська (uk)
 - اردو (ur)
 - Tiếng Việt (vi)
-- 简体中文 (zh)
-- 繁體中文 (zh-Hant)
+
 
 ## Meaning translations
 
