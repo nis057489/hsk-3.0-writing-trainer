@@ -1,0 +1,143 @@
+{
+    "app": {
+        "title": "HSK ཡིག་འབྲི་སྦྱོང་འཛུལ།",
+        "subtitle": "རྒྱ་ཡིག་ཡིག་འབྲུ་སྦྱོང་བ།",
+        "menu": "གདམ་ཐོ།",
+        "strokeGuide": "བྲིས་རིམ་ལམ་སྟོན།",
+        "deviceTips": "འཕྲུལ་ཆས་བསླབ་བྱ།",
+        "posGuide": "ཚིག་གི་རིགས།",
+        "licenses": "ཆོག་མཆན།",
+        "back": "གདམ་ཐོར་ལོག"
+    },
+    "mode": {
+        "title": "རྣམ་པ།",
+        "flashcard": "བྱང་བུ།",
+        "sentence": "ཚིག་སྦྱོར།"
+    },
+    "layout": {
+        "title": "བཀོད་སྒྲིག",
+        "leftHanded": "བྲི་ས་བརྗེ་བ"
+    },
+    "levels": {
+        "title": "རིམ་པ།",
+        "radical": "རྩ་ཡིག",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "ཚིག་གི་རིགས།"
+    },
+    "options": {
+        "title": "གདམ་གསེས",
+        "tracing": "དཔེ་བཤུས་རྣམ་པ",
+        "simplified": "སྟབས་བདེ",
+        "traditional": "སྲོལ་རྒྱུན",
+        "theme": "མདོག་སྒྲིག",
+        "language": "སྐད་ཡིག",
+        "themeLight": "དཀར་པོ",
+        "themeDark": "ནག་པོ",
+        "themeContrast": "ཁྱད་པར་ཆེ་བ",
+        "themeSystem": "སིས་ཊམ",
+        "hoverIndicator": "སྨྱུག་གུ hover མཚོན་རྟགས་སྟོན",
+        "padSize": "བྲི་སའི་ཆེ་ཆུང་།",
+        "padSizeXs": "ཁུག་མ (XS)",
+        "padSizeSmall": "དེབ་ཆུང་ (small)",
+        "padSizeMedium": "སྟབས་བདེ (medium)",
+        "padSizeLarge": "རིས་ཤོག (large)",
+        "brushType": "སྨྱུག་ཆས་རྣམ་པ",
+        "brushPencil": "སྨྱུག་གུ (Standard)",
+        "brushFountain": "སྣག་སྨྱུག",
+        "brushCalligraphy": "ཡིག་འབྲི་རྩི",
+        "strokeColor": "ཐིག་གི་མདོག",
+        "traceFont": "དཔེ་བཤུས་ཡིག་གཟུགས",
+        "traceFontHandwritten": "ལག་བྲིས (Brush)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "མགྱོགས་བྲིས (System)",
+        "traceFontSystem": "སིས་ཊམ (Sans-serif)",
+        "promptFont": "གསལ་བརྡ་ཡིག་གཟུགས",
+        "gridStyle": "སྦྱོང་གྲུ་རྣམ་པ",
+        "gridStyleRice": "Rice (米) - Traditional",
+        "gridStyleField": "Field (田) - Simple",
+        "gridStyleNone": "གྲུ་མེད",
+        "gridVerticalShift": "40/60 འཕྲེད་དབྱེ་བ་སྤྱོད",
+        "showDetailsDefault": "pinyin/meaning སྔོན་སྒྲིག་སྟོན",
+        "randomizeNext": "བྱང་བུ་རྗེས་མ་སྐབས་བསྟུན",
+        "subsetDrilling": "སྦྱོང་བ་མང་པོའི་རྣམ་པ",
+        "subsetDrillingCount": "ལས་སླ་བར་བྱེད་བར་སྦྱོང་བའི་ཚིག་གྲངས",
+        "reviewGrades": "འདི་དག་ཁོ་ན་སྦྱོང",
+        "includeNewCards": "བྱང་བུ་གསར་པ་ཚུད",
+        "advancedPosFilter": "ཞིབ་ཕྲའི་དབྱེ་ཁག་ཚང་མ་སྟོན"
+    },
+    "help": {
+        "title": "རོགས་རམ",
+        "stroke": "བྲིས་རིམ་ལམ་སྟོན།",
+        "tips": "iPad / ཡོངས་རྫོགས་མཐོང་སྟོན་བསླབ་བྱ།",
+        "posAbbrev": "ཚིག་གི་རིགས་ཀྱི་བསྡུས་ཚིག",
+        "deviceTitle": "iPad / ཡོངས་རྫོགས་མཐོང་སྟོན་བསླབ་བྱ།",
+        "generalRules": "སྤྱི་སྒྲིག",
+        "posTitle": "ཚིག་གི་རིགས་ཀྱི་བསྡུས་ཚིག",
+        "posDesc": "ཚིག་དེ་དག་ལ་བསྡུས་ཚིག་འདི་དག་གིས་བརྡ་སྟོན་བྱས་ཏེ་སྐད་ཡིག་ནང་གི་ལས་འགན་སྟོན་པ་ཡིན།",
+        "rule1": "སྟེང་ནས་འོག",
+        "rule2": "གཡོན་ནས་གཡས",
+        "rule3": "འཕྲེད་ཐིག་སྔོན་ལ། དྲང་ཐིག་རྗེས",
+        "rule4": "ཕྱི་ནས་ནང",
+        "rule5": "ནང་སྔོན་ལ། རྗེས་སུ་སྒོ་བརྒྱབ",
+        "rule6": "དབུས་སྔོན་ལ། རྗེས་སུ་ཟུར",
+        "rule1Desc": "སྟེང་གི་ཐིག་དང་པོ་བྲིས། དེ་ནས་དབུས། མཐར་འོག་གི་ཐིག་བྲིས།",
+        "rule2Desc": "གཡོན་གྱི་དྲང་ཐིག་སྔོན་ལ། དེ་ནས་དབུས། མཐར་གཡས་བྲིས།",
+        "rule3Desc": "འཕྲེད་ཐིག་སྔོན་ལ་བྲིས། དྲང་ཐིག་རྗེས་སུ་བྲིས།",
+        "rule4Desc": "ཕྱིའི་སྒྲོམ་སྔོན་ལ་བྲིས། ནང་གི་ཐིག་རྗེས་སུ་བྲིས།",
+        "rule5Desc": "སྒྲོམ་བྲིས། ནང་གི་ཐིག་བྲིས། མཐར་འོག་ནས་སྒོ་བརྒྱབ།",
+        "rule6Desc": "དབུས་ཀྱི་འཁྱུག་ཐིག་སྔོན་ལ་བྲིས། གཡོན་གྱི་ཐིག་ཆུང་དང་། མཐར་གཡས་བྲིས།",
+        "tip1": "Safari → Share → \"Add to Home Screen\" ལས་མཐའ་མར་སྣོན་ནས། བརྡ་ཐོ/འཛུལ་སྒོ་མེད་པར་སྤྱོད་ཐུབ།",
+        "tip2": "Safari ནང་དུ་ཉུང་ཙམ་འོག་ལ་འཕྲེད་ན། ཁ་བྱང/ཁ་སྟོན་རྒྱུན་མཚམས་སུ་སྦས་འགྲོ། ཡར་ལ་འཕྲེད་ན་སླར་མངོན།",
+        "tip3": "landscape ལ་བསྒྱུར་ནས་ས་ཆ་མང་པོ་ཐོབ། བཀོད་སྒྲིག་རང་འགྲུབ་ཀྱིས་འཕྲེད་མི་དགོས་པར་བསྐྱར་སྒྲིག་བྱེད།",
+        "tip4": "Apple Pencil: མཐིལ་གྱི་རེག་པ་མི་རྩི། འདི་ནང pinch/scroll བཀག་ཡོད་པས་སྣེ་མར་འཛིན་ནས་སྤྱོད།"
+    },
+    "practice": {
+        "header": "ཡིག་འབྲུ་རེ་རེ་དཔེ་བཤུས་བྲིས།",
+        "chars": "ཡིག་འབྲུ",
+        "empty": "ད་ལྟ་དཔེ་བཤུས་བྲི་རྒྱུ་མེད།",
+        "charLabel": "ཡིག་འབྲུ {{index}}"
+    },
+    "flashcard": {
+        "reveal": "pinyin/meaning སྟོན",
+        "hide": "pinyin/meaning སྦ"
+    },
+    "toolbar": {
+        "queue": "རིམ་པ",
+        "again": "སླར",
+        "hard": "དཀའ",
+        "good": "བཟང",
+        "easy": "ལས་སླ",
+        "skip": "མཆོང"
+    },
+    "controls": {
+        "undo": "ཕྱིར་འཐེན",
+        "clear": "གཙང་བཟོ"
+    },
+    "sentence": {
+        "placeholder": "འདིར་ཚིག་སྦྱོར་ཞིག་འཇུག་རོགས (དཔེར་ན 你好吗)...",
+        "empty": "གོང་དུ་རྒྱ་ཡིག་ཡིག་འབྲུ་འཇུག་ནས་བྲི་སྦྱོང་བྱོས།"
+    },
+    "nocards": {
+        "title": "བྱང་བུ་མ་རྙེད།",
+        "desc": "Settings ནང་གི་སེལ་ཚགས་འགྱུར་ནས་ཚིག་མང་པོ་མཐོང་ཐུབ།"
+    },
+    "stats": {
+        "available": "ཚིག {{count}} ཡོད"
+    },
+    "colors": {
+        "ink": "སྣག་རྩི",
+        "maroon": "དམར་སྨུག",
+        "jade": "མུ་ཏིག",
+        "hanBlue": "Han Blue",
+        "custom": "མདོག་རང་འདོད"
+    }
+}

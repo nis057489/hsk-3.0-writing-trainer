@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "Jurulatih Menulis HSK",
+        "subtitle": "Kuasai aksara Cina.",
+        "menu": "Menu",
+        "strokeGuide": "Urutan strok",
+        "deviceTips": "Petua peranti",
+        "posGuide": "Kelas kata",
+        "licenses": "Lesen",
+        "back": "Kembali ke menu"
+    },
+    "mode": {
+        "title": "Mod",
+        "flashcard": "Kad imbas",
+        "sentence": "Ayat"
+    },
+    "layout": {
+        "title": "Susun atur",
+        "leftHanded": "Tukar kawasan menulis"
+    },
+    "levels": {
+        "title": "Tahap",
+        "radical": "Radikal",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Kelas kata",
+        "n": "Kata nama",
+        "v": "Kata kerja",
+        "a": "Kata adjektif",
+        "d": "Kata keterangan",
+        "r": "Kata ganti nama",
+        "c": "Kata hubung",
+        "i": "Idiom",
+        "l": "Ungkapan tetap"
+    },
+    "options": {
+        "title": "Pilihan",
+        "tracing": "Mod jejak",
+        "simplified": "Ringkas",
+        "traditional": "Tradisional",
+        "theme": "Tema",
+        "language": "Bahasa",
+        "themeLight": "Cerah",
+        "themeDark": "Gelap",
+        "themeContrast": "Kontras tinggi",
+        "themeSystem": "Sistem",
+        "hoverIndicator": "Tunjukkan penunjuk hover pensel",
+        "padSize": "Saiz pad menulis",
+        "padSizeXs": "Poket (XS)",
+        "padSizeSmall": "Buku nota (kecil)",
+        "padSizeMedium": "Selesa (sederhana)",
+        "padSizeLarge": "Kanvas (besar)",
+        "brushType": "Gaya berus",
+        "brushPencil": "Pensel (standard)",
+        "brushFountain": "Pen mata",
+        "brushCalligraphy": "Berus kaligrafi",
+        "strokeColor": "Warna strok",
+        "traceFont": "Fon jejak",
+        "traceFontHandwritten": "Tulisan tangan (berus)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "Sistem (Sans-serif)",
+        "promptFont": "Fon prompt",
+        "gridStyle": "Gaya grid latihan",
+        "gridStyleRice": "Rice (米) - Tradisional",
+        "gridStyleField": "Field (田) - Ringkas",
+        "gridStyleNone": "Tiada grid",
+        "gridVerticalShift": "Guna pembahagian 40/60",
+        "showDetailsDefault": "Tunjukkan pinyin/makna secara lalai",
+        "randomizeNext": "Rawakkan kad seterusnya",
+        "subsetDrilling": "Mod drill",
+        "subsetDrillingCount": "Bilangan perkataan untuk drill",
+        "reviewGrades": "Latih hanya keputusan ini",
+        "includeNewCards": "Sertakan kad baharu",
+        "advancedPosFilter": "Tunjukkan semua kategori terperinci"
+    },
+    "help": {
+        "title": "Bantuan",
+        "stroke": "Panduan urutan strok",
+        "tips": "Petua iPad / skrin penuh",
+        "posAbbrev": "Singkatan kelas kata",
+        "deviceTitle": "Petua iPad / skrin penuh",
+        "generalRules": "Peraturan umum",
+        "posTitle": "Singkatan kelas kata"
+    },
+    "practice": {
+        "header": "Jejak setiap aksara",
+        "chars": "aksara",
+        "empty": "Tiada aksara untuk dijejak lagi.",
+        "charLabel": "Aksara {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Tunjukkan pinyin/makna",
+        "hide": "Sembunyikan pinyin/makna"
+    },
+    "toolbar": {
+        "queue": "Baris",
+        "again": "Lagi",
+        "hard": "Sukar",
+        "good": "Baik",
+        "easy": "Mudah",
+        "skip": "Langkau"
+    },
+    "controls": {
+        "undo": "Buat asal",
+        "clear": "Padam"
+    },
+    "sentence": {
+        "placeholder": "Taip frasa atau ayat di sini (cth. 你好吗)...",
+        "empty": "Taip aksara Cina di atas untuk berlatih menulis."
+    },
+    "nocards": {
+        "title": "Tiada kad dijumpai",
+        "desc": "Cuba laraskan penapis dalam Tetapan untuk melihat lebih banyak perkataan."
+    },
+    "stats": {
+        "available": "{{count}} perkataan tersedia"
+    },
+    "colors": {
+        "ink": "Dakwat",
+        "maroon": "Marun",
+        "jade": "Jed",
+        "hanBlue": "Han Blue",
+        "custom": "Warna tersuai"
+    }
+}

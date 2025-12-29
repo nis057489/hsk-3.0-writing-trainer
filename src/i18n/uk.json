@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "Тренажер письма HSK",
+        "subtitle": "Опануйте китайські ієрогліфи.",
+        "menu": "Меню",
+        "strokeGuide": "Порядок рисок",
+        "deviceTips": "Поради для пристрою",
+        "posGuide": "Частини мови",
+        "licenses": "Ліцензії",
+        "back": "Назад до меню"
+    },
+    "mode": {
+        "title": "Режим",
+        "flashcard": "Картки",
+        "sentence": "Речення"
+    },
+    "layout": {
+        "title": "Розкладка",
+        "leftHanded": "Поміняти місцями зону письма"
+    },
+    "levels": {
+        "title": "Рівні",
+        "radical": "Ключі",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Частини мови",
+        "n": "Іменник",
+        "v": "Дієслово",
+        "a": "Прикметник",
+        "d": "Прислівник",
+        "r": "Займенник",
+        "c": "Сполучник",
+        "i": "Ідіома",
+        "l": "Стала фраза"
+    },
+    "options": {
+        "title": "Параметри",
+        "tracing": "Режим обведення",
+        "simplified": "Спрощені",
+        "traditional": "Традиційні",
+        "theme": "Тема",
+        "language": "Мова",
+        "themeLight": "Світла",
+        "themeDark": "Темна",
+        "themeContrast": "Високий контраст",
+        "themeSystem": "Система",
+        "hoverIndicator": "Показувати індикатор наведення олівця",
+        "padSize": "Розмір поля письма",
+        "padSizeXs": "Кишеньковий (XS)",
+        "padSizeSmall": "Блокнот (малий)",
+        "padSizeMedium": "Комфорт (середній)",
+        "padSizeLarge": "Полотно (великий)",
+        "brushType": "Стиль пензля",
+        "brushPencil": "Олівець (стандарт)",
+        "brushFountain": "Пір'яна ручка",
+        "brushCalligraphy": "Каліграфічний пензель",
+        "strokeColor": "Колір рисок",
+        "traceFont": "Шрифт для обведення",
+        "traceFontHandwritten": "Рукописний (пензель)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "Система (Sans-serif)",
+        "promptFont": "Шрифт підказки",
+        "gridStyle": "Сітка для практики",
+        "gridStyleRice": "Rice (米) - Традиційна",
+        "gridStyleField": "Field (田) - Проста",
+        "gridStyleNone": "Без сітки",
+        "gridVerticalShift": "Використовувати поділ 40/60",
+        "showDetailsDefault": "Показувати піньїнь/значення за замовчуванням",
+        "randomizeNext": "Випадкова наступна картка",
+        "subsetDrilling": "Режим повторення",
+        "subsetDrillingCount": "Кількість слів до «легко»",
+        "reviewGrades": "Практикувати лише ці результати",
+        "includeNewCards": "Додавати нові картки",
+        "advancedPosFilter": "Показувати всі детальні категорії"
+    },
+    "help": {
+        "title": "Довідка",
+        "stroke": "Посібник з порядку рисок",
+        "tips": "Поради iPad / повний екран",
+        "posAbbrev": "Скорочення частин мови",
+        "deviceTitle": "Поради iPad / повний екран",
+        "generalRules": "Загальні правила",
+        "posTitle": "Скорочення частин мови"
+    },
+    "practice": {
+        "header": "Обведіть кожен ієрогліф",
+        "chars": "символів",
+        "empty": "Немає символів для обведення.",
+        "charLabel": "Символ {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Показати піньїнь/значення",
+        "hide": "Сховати піньїнь/значення"
+    },
+    "toolbar": {
+        "queue": "Черга",
+        "again": "Знову",
+        "hard": "Важко",
+        "good": "Добре",
+        "easy": "Легко",
+        "skip": "Пропустити"
+    },
+    "controls": {
+        "undo": "Скасувати",
+        "clear": "Очистити"
+    },
+    "sentence": {
+        "placeholder": "Введіть фразу або речення тут (напр. 你好吗)...",
+        "empty": "Введіть китайські символи вище, щоб тренуватися писати їх."
+    },
+    "nocards": {
+        "title": "Карток не знайдено",
+        "desc": "Спробуйте змінити фільтри в Налаштуваннях, щоб побачити більше слів."
+    },
+    "stats": {
+        "available": "Доступно слів: {{count}}"
+    },
+    "colors": {
+        "ink": "Чорнило",
+        "maroon": "Бордовый",
+        "jade": "Нефрит",
+        "hanBlue": "Han Blue",
+        "custom": "Власний колір"
+    }
+}

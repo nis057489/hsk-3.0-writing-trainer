@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "מאמן כתיבה HSK",
+        "subtitle": "למד/י לשלוט באותיות סיניות.",
+        "menu": "תפריט",
+        "strokeGuide": "סדר הקווים",
+        "deviceTips": "טיפים למכשיר",
+        "posGuide": "חלקי דיבר",
+        "licenses": "רישיונות",
+        "back": "חזרה לתפריט"
+    },
+    "mode": {
+        "title": "מצב",
+        "flashcard": "כרטיסיות",
+        "sentence": "משפט"
+    },
+    "layout": {
+        "title": "פריסה",
+        "leftHanded": "החלפת אזור הכתיבה"
+    },
+    "levels": {
+        "title": "רמות",
+        "radical": "רדיקלים",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "חלקי דיבר",
+        "n": "שם עצם",
+        "v": "פועל",
+        "a": "שם תואר",
+        "d": "תואר הפועל",
+        "r": "כינוי",
+        "c": "מילת קישור",
+        "i": "ניב",
+        "l": "ביטוי קבוע"
+    },
+    "options": {
+        "title": "אפשרויות",
+        "tracing": "מצב עקיבה",
+        "simplified": "מפושט",
+        "traditional": "מסורתי",
+        "theme": "ערכת נושא",
+        "language": "שפה",
+        "themeLight": "בהיר",
+        "themeDark": "כהה",
+        "themeContrast": "ניגודיות גבוהה",
+        "themeSystem": "מערכת",
+        "hoverIndicator": "הצג מחוון ריחוף של העט",
+        "padSize": "גודל משטח הכתיבה",
+        "padSizeXs": "כיס (XS)",
+        "padSizeSmall": "מחברת (קטן)",
+        "padSizeMedium": "נוח (בינוני)",
+        "padSizeLarge": "קנבס (גדול)",
+        "brushType": "סגנון מברשת",
+        "brushPencil": "עיפרון (סטנדרטי)",
+        "brushFountain": "עט נובע",
+        "brushCalligraphy": "מברשת קליגרפיה",
+        "strokeColor": "צבע הקו",
+        "traceFont": "גופן לעקיבה",
+        "traceFontHandwritten": "כתב יד (מברשת)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "מערכת (Sans-serif)",
+        "promptFont": "גופן לתצוגה",
+        "gridStyle": "סגנון רשת",
+        "gridStyleRice": "Rice (米) - מסורתי",
+        "gridStyleField": "Field (田) - פשוט",
+        "gridStyleNone": "ללא רשת",
+        "gridVerticalShift": "השתמש בחלוקה אנכית 40/60",
+        "showDetailsDefault": "הצג פין-יין/משמעות כברירת מחדל",
+        "randomizeNext": "ערבב כרטיס הבא",
+        "subsetDrilling": "מצב תרגול",
+        "subsetDrillingCount": "מספר מילים לתרגול עד קל",
+        "reviewGrades": "תרגל/י רק תוצאות אלו",
+        "includeNewCards": "כלול כרטיסים חדשים",
+        "advancedPosFilter": "הצג את כל הקטגוריות המפורטות"
+    },
+    "help": {
+        "title": "עזרה",
+        "stroke": "מדריך סדר קווים",
+        "tips": "טיפים ל‑iPad / מסך מלא",
+        "posAbbrev": "קיצורי חלקי דיבר",
+        "deviceTitle": "טיפים ל‑iPad / מסך מלא",
+        "generalRules": "כללים כלליים",
+        "posTitle": "קיצורי חלקי דיבר"
+    },
+    "practice": {
+        "header": "עקוב/י אחרי כל תו",
+        "chars": "תווים",
+        "empty": "אין תווים לעקיבה עדיין.",
+        "charLabel": "תו {{index}}"
+    },
+    "flashcard": {
+        "reveal": "הצג פין-יין/משמעות",
+        "hide": "הסתר פין-יין/משמעות"
+    },
+    "toolbar": {
+        "queue": "תור",
+        "again": "שוב",
+        "hard": "קשה",
+        "good": "טוב",
+        "easy": "קל",
+        "skip": "דלג"
+    },
+    "controls": {
+        "undo": "בטל",
+        "clear": "נקה"
+    },
+    "sentence": {
+        "placeholder": "הקלד/י כאן ביטוי או משפט (למשל 你好吗)...",
+        "empty": "הקלד/י תווים סיניים למעלה כדי לתרגל כתיבה."
+    },
+    "nocards": {
+        "title": "לא נמצאו כרטיסים",
+        "desc": "נסה/י לשנות את המסננים בהגדרות כדי לראות יותר מילים."
+    },
+    "stats": {
+        "available": "{{count}} מילים זמינות"
+    },
+    "colors": {
+        "ink": "דיו",
+        "maroon": "בורדו",
+        "jade": "ירקן",
+        "hanBlue": "Han Blue",
+        "custom": "צבע מותאם אישית"
+    }
+}

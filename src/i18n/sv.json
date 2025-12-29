@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "HSK skrivtränare",
+        "subtitle": "Bemästra kinesiska tecken.",
+        "menu": "Meny",
+        "strokeGuide": "Streckordning",
+        "deviceTips": "Enhetstips",
+        "posGuide": "Ordklasser",
+        "licenses": "Licenser",
+        "back": "Tillbaka till menyn"
+    },
+    "mode": {
+        "title": "Läge",
+        "flashcard": "Flashcards",
+        "sentence": "Mening"
+    },
+    "layout": {
+        "title": "Layout",
+        "leftHanded": "Byt skrivområde"
+    },
+    "levels": {
+        "title": "Nivåer",
+        "radical": "Radikaler",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Ordklasser",
+        "n": "Substantiv",
+        "v": "Verb",
+        "a": "Adjektiv",
+        "d": "Adverb",
+        "r": "Pronomen",
+        "c": "Konjunktion",
+        "i": "Idiom",
+        "l": "Fast uttryck"
+    },
+    "options": {
+        "title": "Alternativ",
+        "tracing": "Spårläge",
+        "simplified": "Förenklad",
+        "traditional": "Traditionell",
+        "theme": "Tema",
+        "language": "Språk",
+        "themeLight": "Ljus",
+        "themeDark": "Mörk",
+        "themeContrast": "Hög kontrast",
+        "themeSystem": "System",
+        "hoverIndicator": "Visa pennans hover-indikator",
+        "padSize": "Skrivplattans storlek",
+        "padSizeXs": "Ficka (XS)",
+        "padSizeSmall": "Anteckningsbok (liten)",
+        "padSizeMedium": "Komfort (medium)",
+        "padSizeLarge": "Canvas (stor)",
+        "brushType": "Penselstil",
+        "brushPencil": "Blyertspenna (standard)",
+        "brushFountain": "Reservoarpenna",
+        "brushCalligraphy": "Kalligrafipensel",
+        "strokeColor": "Streckfärg",
+        "traceFont": "Teckensnitt för spårning",
+        "traceFontHandwritten": "Handskrivet (pensel)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "System (Sans-serif)",
+        "promptFont": "Prompt-teckensnitt",
+        "gridStyle": "Övningsrutnät",
+        "gridStyleRice": "Rice (米) - Traditionellt",
+        "gridStyleField": "Field (田) - Enkelt",
+        "gridStyleNone": "Inget rutnät",
+        "gridVerticalShift": "Använd 40/60 vertikal delning",
+        "showDetailsDefault": "Visa pinyin/betydelse som standard",
+        "randomizeNext": "Slumpa nästa kort",
+        "subsetDrilling": "Drill-läge",
+        "subsetDrillingCount": "Antal ord att öva tills lätt",
+        "reviewGrades": "Öva endast dessa resultat",
+        "includeNewCards": "Inkludera nya kort",
+        "advancedPosFilter": "Visa alla detaljerade kategorier"
+    },
+    "help": {
+        "title": "Hjälp",
+        "stroke": "Guide för streckordning",
+        "tips": "iPad-/helskärmstips",
+        "posAbbrev": "Förkortningar för ordklasser",
+        "deviceTitle": "iPad-/helskärmstips",
+        "generalRules": "Allmänna regler",
+        "posTitle": "Förkortningar för ordklasser"
+    },
+    "practice": {
+        "header": "Spåra varje tecken",
+        "chars": "tecken",
+        "empty": "Inga tecken att spåra ännu.",
+        "charLabel": "Tecken {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Visa pinyin/betydelse",
+        "hide": "Dölj pinyin/betydelse"
+    },
+    "toolbar": {
+        "queue": "Kö",
+        "again": "Igen",
+        "hard": "Svårt",
+        "good": "Bra",
+        "easy": "Lätt",
+        "skip": "Hoppa över"
+    },
+    "controls": {
+        "undo": "Ångra",
+        "clear": "Rensa"
+    },
+    "sentence": {
+        "placeholder": "Skriv en fras eller mening här (t.ex. 你好吗)...",
+        "empty": "Skriv kinesiska tecken ovan för att öva att skriva dem."
+    },
+    "nocards": {
+        "title": "Inga kort hittades",
+        "desc": "Justera dina filter i Inställningar för att se fler ord."
+    },
+    "stats": {
+        "available": "{{count}} ord tillgängliga"
+    },
+    "colors": {
+        "ink": "Bläck",
+        "maroon": "Vinröd",
+        "jade": "Jade",
+        "hanBlue": "Han Blue",
+        "custom": "Anpassad färg"
+    }
+}

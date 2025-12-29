@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "HSK Schrijftrainer",
+        "subtitle": "Beheers Chinese karakters.",
+        "menu": "Menu",
+        "strokeGuide": "Penseelvolgorde",
+        "deviceTips": "Apparaattips",
+        "posGuide": "Woordsoorten",
+        "licenses": "Licenties",
+        "back": "Terug naar menu"
+    },
+    "mode": {
+        "title": "Modus",
+        "flashcard": "Flashcards",
+        "sentence": "Zin"
+    },
+    "layout": {
+        "title": "Layout",
+        "leftHanded": "Schrijfgebied omwisselen"
+    },
+    "levels": {
+        "title": "Niveaus",
+        "radical": "Radicalen",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Woordsoorten",
+        "n": "Zelfstandig naamwoord",
+        "v": "Werkwoord",
+        "a": "Bijvoeglijk naamwoord",
+        "d": "Bijwoord",
+        "r": "Voornaamwoord",
+        "c": "Voegwoord",
+        "i": "Idioom",
+        "l": "Vaste uitdrukking"
+    },
+    "options": {
+        "title": "Opties",
+        "tracing": "Overtrekmodus",
+        "simplified": "Vereenvoudigd",
+        "traditional": "Traditioneel",
+        "theme": "Thema",
+        "language": "Taal",
+        "themeLight": "Licht",
+        "themeDark": "Donker",
+        "themeContrast": "Hoog contrast",
+        "themeSystem": "Systeem",
+        "hoverIndicator": "Toon potlood-hover-indicator",
+        "padSize": "Schrijfvlakgrootte",
+        "padSizeXs": "Pocket (XS)",
+        "padSizeSmall": "Notitieboek (klein)",
+        "padSizeMedium": "Comfort (middel)",
+        "padSizeLarge": "Canvas (groot)",
+        "brushType": "Penseelstijl",
+        "brushPencil": "Potlood (standaard)",
+        "brushFountain": "Vulpen",
+        "brushCalligraphy": "Kalligrafiepenseel",
+        "strokeColor": "Lijnkleur",
+        "traceFont": "Lettertype voor overtrekken",
+        "traceFontHandwritten": "Handgeschreven (penseel)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "Systeem (Sans-serif)",
+        "promptFont": "Prompt-lettertype",
+        "gridStyle": "Oefenraster",
+        "gridStyleRice": "Rice (米) - Traditioneel",
+        "gridStyleField": "Field (田) - Eenvoudig",
+        "gridStyleNone": "Geen raster",
+        "gridVerticalShift": "Gebruik 40/60 verticale verdeling",
+        "showDetailsDefault": "Toon pinyin/betekenis standaard",
+        "randomizeNext": "Volgende kaart willekeurig",
+        "subsetDrilling": "Drillmodus",
+        "subsetDrillingCount": "Aantal woorden tot ‘makkelijk’",
+        "reviewGrades": "Oefen alleen deze resultaten",
+        "includeNewCards": "Nieuwe kaarten opnemen",
+        "advancedPosFilter": "Toon alle gedetailleerde categorieën"
+    },
+    "help": {
+        "title": "Help",
+        "stroke": "Gids voor penseelvolgorde",
+        "tips": "iPad-/fullscreen-tips",
+        "posAbbrev": "Afkortingen woordsoorten",
+        "deviceTitle": "iPad-/fullscreen-tips",
+        "generalRules": "Algemene regels",
+        "posTitle": "Afkortingen woordsoorten"
+    },
+    "practice": {
+        "header": "Trek elk teken over",
+        "chars": "tekens",
+        "empty": "Nog geen tekens om over te trekken.",
+        "charLabel": "Teken {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Toon pinyin/betekenis",
+        "hide": "Verberg pinyin/betekenis"
+    },
+    "toolbar": {
+        "queue": "Wachtrij",
+        "again": "Opnieuw",
+        "hard": "Moeilijk",
+        "good": "Goed",
+        "easy": "Makkelijk",
+        "skip": "Overslaan"
+    },
+    "controls": {
+        "undo": "Ongedaan maken",
+        "clear": "Wissen"
+    },
+    "sentence": {
+        "placeholder": "Typ hier een frase of zin (bijv. 你好吗)...",
+        "empty": "Typ hierboven Chinese tekens om te oefenen."
+    },
+    "nocards": {
+        "title": "Geen kaarten gevonden",
+        "desc": "Pas je filters in Instellingen aan om meer woorden te zien."
+    },
+    "stats": {
+        "available": "{{count}} woorden beschikbaar"
+    },
+    "colors": {
+        "ink": "Inkt",
+        "maroon": "Kastanjebruin",
+        "jade": "Jade",
+        "hanBlue": "Han-blauw",
+        "custom": "Aangepaste kleur"
+    }
+}

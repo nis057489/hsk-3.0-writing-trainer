@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "HSK লেখা প্রশিক্ষক",
+        "subtitle": "চীনা অক্ষর আয়ত্ত করুন।",
+        "menu": "মেনু",
+        "strokeGuide": "স্ট্রোকের ক্রম",
+        "deviceTips": "ডিভাইস টিপস",
+        "posGuide": "পদভেদ",
+        "licenses": "লাইসেন্স",
+        "back": "মেনুতে ফিরে যান"
+    },
+    "mode": {
+        "title": "মোড",
+        "flashcard": "ফ্ল্যাশকার্ড",
+        "sentence": "বাক্য"
+    },
+    "layout": {
+        "title": "লেআউট",
+        "leftHanded": "লেখার এলাকা অদলবদল করুন"
+    },
+    "levels": {
+        "title": "স্তর",
+        "radical": "র‌্যাডিক্যাল",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "পদভেদ",
+        "n": "বিশেষ্য",
+        "v": "ক্রিয়া",
+        "a": "বিশেষণ",
+        "d": "ক্রিয়া বিশেষণ",
+        "r": "সর্বনাম",
+        "c": "সমুচ্চয়",
+        "i": "বাগধারা",
+        "l": "স্থির অভিব্যক্তি"
+    },
+    "options": {
+        "title": "অপশন",
+        "tracing": "ট্রেসিং মোড",
+        "simplified": "সরলীকৃত",
+        "traditional": "প্রথাগত",
+        "theme": "থিম",
+        "language": "ভাষা",
+        "themeLight": "হালকা",
+        "themeDark": "গাঢ়",
+        "themeContrast": "উচ্চ কনট্রাস্ট",
+        "themeSystem": "সিস্টেম",
+        "hoverIndicator": "পেন্সিল হোভার নির্দেশক দেখান",
+        "padSize": "লেখার প্যাডের আকার",
+        "padSizeXs": "পকেট (XS)",
+        "padSizeSmall": "নোটবুক (ছোট)",
+        "padSizeMedium": "আরামদায়ক (মাঝারি)",
+        "padSizeLarge": "ক্যানভাস (বড়)",
+        "brushType": "ব্রাশ স্টাইল",
+        "brushPencil": "পেন্সিল (স্ট্যান্ডার্ড)",
+        "brushFountain": "ফাউন্টেন পেন",
+        "brushCalligraphy": "ক্যালিগ্রাফি ব্রাশ",
+        "strokeColor": "স্ট্রোকের রঙ",
+        "traceFont": "ট্রেস ফন্ট",
+        "traceFontHandwritten": "হাতের লেখা (ব্রাশ)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "সিস্টেম (Sans-serif)",
+        "promptFont": "প্রম্পট ফন্ট",
+        "gridStyle": "অনুশীলন গ্রিড",
+        "gridStyleRice": "Rice (米) - Traditional",
+        "gridStyleField": "Field (田) - Simple",
+        "gridStyleNone": "গ্রিড নেই",
+        "gridVerticalShift": "40/60 উল্লম্ব বিভাজন ব্যবহার করুন",
+        "showDetailsDefault": "ডিফল্টভাবে পিনইন/অর্থ দেখান",
+        "randomizeNext": "পরবর্তী কার্ড র‌্যান্ডম করুন",
+        "subsetDrilling": "ড্রিল মোড",
+        "subsetDrillingCount": "সহজ হওয়া পর্যন্ত অনুশীলনের শব্দসংখ্যা",
+        "reviewGrades": "শুধু এই ফলাফলগুলো অনুশীলন করুন",
+        "includeNewCards": "নতুন কার্ড অন্তর্ভুক্ত করুন",
+        "advancedPosFilter": "সব বিস্তারিত বিভাগ দেখান"
+    },
+    "help": {
+        "title": "সহায়তা",
+        "stroke": "স্ট্রোক অর্ডার গাইড",
+        "tips": "iPad / ফুলস্ক্রিন টিপস",
+        "posAbbrev": "পদভেদের সংক্ষিপ্ত রূপ",
+        "deviceTitle": "iPad / ফুলস্ক্রিন টিপস",
+        "generalRules": "সাধারণ নিয়ম",
+        "posTitle": "পদভেদের সংক্ষিপ্ত রূপ"
+    },
+    "practice": {
+        "header": "প্রতিটি অক্ষর ট্রেস করুন",
+        "chars": "অক্ষর",
+        "empty": "এখনও ট্রেস করার মতো অক্ষর নেই।",
+        "charLabel": "অক্ষর {{index}}"
+    },
+    "flashcard": {
+        "reveal": "পিনইন/অর্থ দেখান",
+        "hide": "পিনইন/অর্থ লুকান"
+    },
+    "toolbar": {
+        "queue": "কিউ",
+        "again": "আবার",
+        "hard": "কঠিন",
+        "good": "ভালো",
+        "easy": "সহজ",
+        "skip": "স্কিপ"
+    },
+    "controls": {
+        "undo": "আনডু",
+        "clear": "পরিষ্কার"
+    },
+    "sentence": {
+        "placeholder": "এখানে একটি বাক্যাংশ বা বাক্য লিখুন (যেমন 你好吗)...",
+        "empty": "উপরে চীনা অক্ষর লিখে লেখার অনুশীলন করুন।"
+    },
+    "nocards": {
+        "title": "কোনো কার্ড পাওয়া যায়নি",
+        "desc": "আরও শব্দ দেখতে সেটিংসের ফিল্টারগুলো পরিবর্তন করে দেখুন।"
+    },
+    "stats": {
+        "available": "{{count}}টি শব্দ উপলব্ধ"
+    },
+    "colors": {
+        "ink": "কালি",
+        "maroon": "মেরুন",
+        "jade": "জেড",
+        "hanBlue": "Han Blue",
+        "custom": "কাস্টম রঙ"
+    }
+}

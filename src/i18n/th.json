@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "HSK Writing Trainer",
+        "subtitle": "ฝึกเขียนอักษรจีนให้คล่อง",
+        "menu": "เมนู",
+        "strokeGuide": "ลำดับขีด",
+        "deviceTips": "เคล็ดลับอุปกรณ์",
+        "posGuide": "ชนิดของคำ",
+        "licenses": "สัญญาอนุญาต",
+        "back": "กลับไปที่เมนู"
+    },
+    "mode": {
+        "title": "โหมด",
+        "flashcard": "แฟลชการ์ด",
+        "sentence": "ประโยค"
+    },
+    "layout": {
+        "title": "เลย์เอาต์",
+        "leftHanded": "สลับพื้นที่เขียน"
+    },
+    "levels": {
+        "title": "ระดับ",
+        "radical": "ส่วนประกอบ",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "ชนิดของคำ",
+        "n": "คำนาม",
+        "v": "คำกริยา",
+        "a": "คำคุณศัพท์",
+        "d": "คำวิเศษณ์",
+        "r": "คำสรรพนาม",
+        "c": "คำสันธาน",
+        "i": "สำนวน",
+        "l": "วลีตายตัว"
+    },
+    "options": {
+        "title": "ตัวเลือก",
+        "tracing": "โหมดลากตามเส้น",
+        "simplified": "ตัวย่อ",
+        "traditional": "ตัวเต็ม",
+        "theme": "ธีม",
+        "language": "ภาษา",
+        "themeLight": "สว่าง",
+        "themeDark": "มืด",
+        "themeContrast": "คอนทราสต์สูง",
+        "themeSystem": "ระบบ",
+        "hoverIndicator": "แสดงตัวบ่งชี้เมื่อปากกาอยู่เหนือหน้าจอ",
+        "padSize": "ขนาดพื้นที่เขียน",
+        "padSizeXs": "พกพา (XS)",
+        "padSizeSmall": "สมุด (เล็ก)",
+        "padSizeMedium": "สบาย (กลาง)",
+        "padSizeLarge": "ผืนผ้าใบ (ใหญ่)",
+        "brushType": "สไตล์ปากกา",
+        "brushPencil": "ดินสอ (มาตรฐาน)",
+        "brushFountain": "ปากกาหมึกซึม",
+        "brushCalligraphy": "พู่กันคัดลายมือ",
+        "strokeColor": "สีเส้น",
+        "traceFont": "แบบอักษรสำหรับลากตาม",
+        "traceFontHandwritten": "ลายมือ (พู่กัน)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "ระบบ (Sans-serif)",
+        "promptFont": "แบบอักษรตัวอย่าง",
+        "gridStyle": "รูปแบบช่องฝึก",
+        "gridStyleRice": "Rice (米) - ดั้งเดิม",
+        "gridStyleField": "Field (田) - แบบง่าย",
+        "gridStyleNone": "ไม่มีช่อง",
+        "gridVerticalShift": "ใช้การแบ่งแนวตั้ง 40/60",
+        "showDetailsDefault": "แสดงพินอิน/ความหมายเป็นค่าเริ่มต้น",
+        "randomizeNext": "สุ่มการ์ดถัดไป",
+        "subsetDrilling": "โหมดฝึกซ้ำ",
+        "subsetDrillingCount": "จำนวนคำที่จะฝึกจนง่าย",
+        "reviewGrades": "ฝึกเฉพาะผลลัพธ์เหล่านี้",
+        "includeNewCards": "รวมการ์ดใหม่",
+        "advancedPosFilter": "แสดงหมวดหมู่แบบละเอียดทั้งหมด"
+    },
+    "help": {
+        "title": "ช่วยเหลือ",
+        "stroke": "คู่มือลำดับขีด",
+        "tips": "เคล็ดลับ iPad / เต็มจอ",
+        "posAbbrev": "ตัวย่อชนิดของคำ",
+        "deviceTitle": "เคล็ดลับ iPad / เต็มจอ",
+        "generalRules": "กฎทั่วไป",
+        "posTitle": "ตัวย่อชนิดของคำ"
+    },
+    "practice": {
+        "header": "ลากตามแต่ละตัวอักษร",
+        "chars": "ตัวอักษร",
+        "empty": "ยังไม่มีตัวอักษรให้ฝึก",
+        "charLabel": "ตัวอักษร {{index}}"
+    },
+    "flashcard": {
+        "reveal": "แสดงพินอิน/ความหมาย",
+        "hide": "ซ่อนพินอิน/ความหมาย"
+    },
+    "toolbar": {
+        "queue": "คิว",
+        "again": "อีกครั้ง",
+        "hard": "ยาก",
+        "good": "ดี",
+        "easy": "ง่าย",
+        "skip": "ข้าม"
+    },
+    "controls": {
+        "undo": "ย้อนกลับ",
+        "clear": "ล้าง"
+    },
+    "sentence": {
+        "placeholder": "พิมพ์วลีหรือประโยคที่นี่ (เช่น 你好吗)...",
+        "empty": "พิมพ์อักษรจีนด้านบนเพื่อฝึกเขียน"
+    },
+    "nocards": {
+        "title": "ไม่พบการ์ด",
+        "desc": "ลองปรับตัวกรองในการตั้งค่าเพื่อดูคำเพิ่มเติม"
+    },
+    "stats": {
+        "available": "มีคำให้ฝึก {{count}} คำ"
+    },
+    "colors": {
+        "ink": "หมึก",
+        "maroon": "น้ำตาลแดง",
+        "jade": "หยก",
+        "hanBlue": "น้ำเงินฮั่น",
+        "custom": "สีที่กำหนดเอง"
+    }
+}

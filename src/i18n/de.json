@@ -1,0 +1,150 @@
+{
+    "app": {
+        "title": "HSK Schreibtrainer",
+        "subtitle": "Beherrsche chinesische Schriftzeichen.",
+        "menu": "Menü",
+        "strokeGuide": "Strichreihenfolge",
+        "deviceTips": "Geräte-Tipps",
+        "posGuide": "Wortarten",
+        "licenses": "Lizenzen",
+        "back": "Zurück zum Menü"
+    },
+    "mode": {
+        "title": "Modus",
+        "flashcard": "Karteikarten",
+        "sentence": "Satz"
+    },
+    "layout": {
+        "title": "Layout",
+        "leftHanded": "Schreibbereich tauschen"
+    },
+    "levels": {
+        "title": "Stufen",
+        "radical": "Radikale",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Wortarten",
+        "a": "Adjektiv",
+        "d": "Adverb",
+        "n": "Substantiv",
+        "v": "Verb",
+        "r": "Pronomen",
+        "c": "Konjunktion",
+        "i": "Idiom",
+        "l": "Feste Wendung"
+    },
+    "options": {
+        "title": "Optionen",
+        "tracing": "Nachzeichnungsmodus",
+        "simplified": "Vereinfacht",
+        "traditional": "Traditionell",
+        "theme": "Design",
+        "language": "Sprache",
+        "themeLight": "Hell",
+        "themeDark": "Dunkel",
+        "themeContrast": "Hoher Kontrast",
+        "themeSystem": "System",
+        "hoverIndicator": "Stift-Hover-Indikator anzeigen",
+        "padSize": "Schreibfeldgröße",
+        "padSizeXs": "Pocket (XS)",
+        "padSizeSmall": "Notizbuch (klein)",
+        "padSizeMedium": "Komfort (mittel)",
+        "padSizeLarge": "Canvas (groß)",
+        "brushType": "Pinselstil",
+        "brushPencil": "Bleistift (Standard)",
+        "brushFountain": "Füller",
+        "brushCalligraphy": "Kalligrafiepinsel",
+        "strokeColor": "Strichfarbe",
+        "traceFont": "Schriftart für Nachzeichnen",
+        "traceFontHandwritten": "Handschriftlich (Pinsel)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "Kursiv (System)",
+        "traceFontSystem": "System (Sans-serif)",
+        "promptFont": "Schriftart für Vorlage",
+        "gridStyle": "Übungsgitter",
+        "gridStyleRice": "Rice (米) - Traditionell",
+        "gridStyleField": "Field (田) - Einfach",
+        "gridStyleNone": "Kein Gitter",
+        "gridVerticalShift": "40/60-Vertikalteilung verwenden",
+        "showDetailsDefault": "Pinyin/Bedeutung standardmäßig anzeigen",
+        "randomizeNext": "Nächste Karte mischen",
+        "subsetDrilling": "Drill-Modus",
+        "subsetDrillingCount": "Anzahl Wörter bis „einfach“",
+        "reviewGrades": "Nur diese Ergebnisse üben",
+        "includeNewCards": "Neue Karten einbeziehen",
+        "advancedPosFilter": "Alle Detailkategorien anzeigen"
+    },
+    "help": {
+        "title": "Hilfe",
+        "stroke": "Leitfaden zur Strichreihenfolge",
+        "tips": "iPad-/Vollbild-Tipps",
+        "posAbbrev": "Abkürzungen der Wortarten",
+        "deviceTitle": "iPad-/Vollbild-Tipps",
+        "generalRules": "Allgemeine Regeln",
+        "posTitle": "Abkürzungen der Wortarten",
+        "rule1": "Von oben nach unten",
+        "rule2": "Von links nach rechts",
+        "rule3": "Horizontal vor vertikal",
+        "rule4": "Außen vor innen",
+        "rule5": "Innen vor dem Schließen",
+        "rule6": "Mitte vor den Seiten",
+        "rule1Desc": "Zuerst den oberen Strich, dann den mittleren, dann den unteren.",
+        "rule2Desc": "Zuerst den linken vertikalen Strich, dann den mittleren, dann den rechten.",
+        "rule3Desc": "Zuerst den horizontalen Strich, dann den vertikalen.",
+        "rule4Desc": "Zuerst den äußeren Rahmen, dann die Striche innen.",
+        "rule5Desc": "Rahmen schreiben, dann innen, dann unten schließen.",
+        "rule6Desc": "Zuerst den Haken in der Mitte, dann den linken Punkt, dann den rechten.",
+        "tip1": "In Safari: Teilen → \"Zum Home-Bildschirm\" für eine eigenständige Ansicht.",
+        "tip2": "In Safari blendet ein kurzes Scrollen nach unten die Adress-/Tab-Leisten aus.",
+        "tip3": "Drehe ins Querformat für mehr Platz; das Layout wird automatisch kompakter.",
+        "tip4": "Apple Pencil: Spitze unten lassen — Handballen werden ignoriert, Pinch/Scroll ist hier gesperrt."
+    },
+    "practice": {
+        "header": "Zeichne jedes Zeichen nach",
+        "chars": "Zeichen",
+        "empty": "Noch keine Zeichen zum Nachzeichnen.",
+        "charLabel": "Zeichen {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Pinyin/Bedeutung anzeigen",
+        "hide": "Pinyin/Bedeutung ausblenden"
+    },
+    "toolbar": {
+        "queue": "Warteschlange",
+        "again": "Nochmal",
+        "hard": "Schwer",
+        "good": "Gut",
+        "easy": "Leicht",
+        "skip": "Überspringen"
+    },
+    "controls": {
+        "undo": "Rückgängig",
+        "clear": "Löschen"
+    },
+    "sentence": {
+        "placeholder": "Gib hier eine Phrase oder einen Satz ein (z. B. 你好吗)...",
+        "empty": "Tippe oben chinesische Zeichen ein, um sie zu üben."
+    },
+    "nocards": {
+        "title": "Keine Karten gefunden",
+        "desc": "Passe deine Filter in den Einstellungen an, um mehr Wörter zu sehen."
+    },
+    "stats": {
+        "available": "{{count}} Wörter verfügbar"
+    },
+    "colors": {
+        "ink": "Tintenstift",
+        "maroon": "Kastanienbraun",
+        "jade": "Jade",
+        "hanBlue": "Han-Blau",
+        "custom": "Benutzerdefinierte Farbe"
+    }
+}

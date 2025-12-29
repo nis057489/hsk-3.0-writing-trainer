@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "Trener pisania HSK",
+        "subtitle": "Opanuj chińskie znaki.",
+        "menu": "Menu",
+        "strokeGuide": "Kolejność kresek",
+        "deviceTips": "Wskazówki urządzenia",
+        "posGuide": "Części mowy",
+        "licenses": "Licencje",
+        "back": "Wróć do menu"
+    },
+    "mode": {
+        "title": "Tryb",
+        "flashcard": "Fiszki",
+        "sentence": "Zdanie"
+    },
+    "layout": {
+        "title": "Układ",
+        "leftHanded": "Zamień obszar pisania"
+    },
+    "levels": {
+        "title": "Poziomy",
+        "radical": "Radykały",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Części mowy",
+        "n": "Rzeczownik",
+        "v": "Czasownik",
+        "a": "Przymiotnik",
+        "d": "Przysłówek",
+        "r": "Zaimek",
+        "c": "Spójnik",
+        "i": "Idiom",
+        "l": "Wyrażenie stałe"
+    },
+    "options": {
+        "title": "Opcje",
+        "tracing": "Tryb kalki",
+        "simplified": "Uproszczone",
+        "traditional": "Tradycyjne",
+        "theme": "Motyw",
+        "language": "Język",
+        "themeLight": "Jasny",
+        "themeDark": "Ciemny",
+        "themeContrast": "Wysoki kontrast",
+        "themeSystem": "System",
+        "hoverIndicator": "Pokaż wskaźnik hover ołówka",
+        "padSize": "Rozmiar pola do pisania",
+        "padSizeXs": "Kieszeń (XS)",
+        "padSizeSmall": "Notatnik (mały)",
+        "padSizeMedium": "Komfort (średni)",
+        "padSizeLarge": "Płótno (duży)",
+        "brushType": "Styl pędzla",
+        "brushPencil": "Ołówek (standard)",
+        "brushFountain": "Pióro wieczne",
+        "brushCalligraphy": "Pędzel kaligraficzny",
+        "strokeColor": "Kolor kreski",
+        "traceFont": "Czcionka do kalki",
+        "traceFontHandwritten": "Odręczna (pędzel)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "System (Sans-serif)",
+        "promptFont": "Czcionka podpowiedzi",
+        "gridStyle": "Siatka ćwiczeń",
+        "gridStyleRice": "Rice (米) - Tradycyjna",
+        "gridStyleField": "Field (田) - Prosta",
+        "gridStyleNone": "Bez siatki",
+        "gridVerticalShift": "Użyj podziału 40/60",
+        "showDetailsDefault": "Domyślnie pokazuj pinyin/znaczenie",
+        "randomizeNext": "Losuj następną kartę",
+        "subsetDrilling": "Tryb powtórek",
+        "subsetDrillingCount": "Liczba słów do ćwiczenia",
+        "reviewGrades": "Ćwicz tylko te wyniki",
+        "includeNewCards": "Uwzględniaj nowe karty",
+        "advancedPosFilter": "Pokaż wszystkie szczegółowe kategorie"
+    },
+    "help": {
+        "title": "Pomoc",
+        "stroke": "Przewodnik kolejności kresek",
+        "tips": "Wskazówki iPad / pełny ekran",
+        "posAbbrev": "Skróty części mowy",
+        "deviceTitle": "Wskazówki iPad / pełny ekran",
+        "generalRules": "Ogólne zasady",
+        "posTitle": "Skróty części mowy"
+    },
+    "practice": {
+        "header": "Odrysuj każdy znak",
+        "chars": "znaków",
+        "empty": "Brak znaków do odrysowania.",
+        "charLabel": "Znak {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Pokaż pinyin/znaczenie",
+        "hide": "Ukryj pinyin/znaczenie"
+    },
+    "toolbar": {
+        "queue": "Kolejka",
+        "again": "Jeszcze raz",
+        "hard": "Trudne",
+        "good": "Dobrze",
+        "easy": "Łatwe",
+        "skip": "Pomiń"
+    },
+    "controls": {
+        "undo": "Cofnij",
+        "clear": "Wyczyść"
+    },
+    "sentence": {
+        "placeholder": "Wpisz tutaj frazę lub zdanie (np. 你好吗)...",
+        "empty": "Wpisz powyżej chińskie znaki, aby ćwiczyć ich pisanie."
+    },
+    "nocards": {
+        "title": "Nie znaleziono kart",
+        "desc": "Spróbuj zmienić filtry w Ustawieniach, aby zobaczyć więcej słów."
+    },
+    "stats": {
+        "available": "Dostępne słowa: {{count}}"
+    },
+    "colors": {
+        "ink": "Tusz",
+        "maroon": "Bordowy",
+        "jade": "Jadeit",
+        "hanBlue": "Han Blue",
+        "custom": "Własny kolor"
+    }
+}

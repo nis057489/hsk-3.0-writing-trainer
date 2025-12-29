@@ -1,0 +1,150 @@
+{
+    "app": {
+        "title": "HSK 書き取りトレーナー",
+        "subtitle": "中国語の漢字を身につけよう。",
+        "menu": "メニュー",
+        "strokeGuide": "筆順",
+        "deviceTips": "デバイスのヒント",
+        "posGuide": "品詞",
+        "licenses": "ライセンス",
+        "back": "メニューに戻る"
+    },
+    "mode": {
+        "title": "モード",
+        "flashcard": "フラッシュカード",
+        "sentence": "文"
+    },
+    "layout": {
+        "title": "レイアウト",
+        "leftHanded": "書くエリアを入れ替える"
+    },
+    "levels": {
+        "title": "レベル",
+        "radical": "部首",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "品詞",
+        "a": "形容詞",
+        "d": "副詞",
+        "n": "名詞",
+        "v": "動詞",
+        "r": "代名詞",
+        "c": "接続詞",
+        "i": "成語",
+        "l": "定型表現"
+    },
+    "options": {
+        "title": "オプション",
+        "tracing": "なぞり書き",
+        "simplified": "簡体字",
+        "traditional": "繁体字",
+        "theme": "テーマ",
+        "language": "言語",
+        "themeLight": "ライト",
+        "themeDark": "ダーク",
+        "themeContrast": "ハイコントラスト",
+        "themeSystem": "システム",
+        "hoverIndicator": "ペンのホバー表示を出す",
+        "padSize": "書き取りパッドのサイズ",
+        "padSizeXs": "ポケット (XS)",
+        "padSizeSmall": "ノート (小)",
+        "padSizeMedium": "快適 (中)",
+        "padSizeLarge": "キャンバス (大)",
+        "brushType": "ブラシスタイル",
+        "brushPencil": "鉛筆 (標準)",
+        "brushFountain": "万年筆",
+        "brushCalligraphy": "筆 (書道)",
+        "strokeColor": "線の色",
+        "traceFont": "なぞり用フォント",
+        "traceFontHandwritten": "手書き (筆)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "筆記体 (システム)",
+        "traceFontSystem": "システム (Sans-serif)",
+        "promptFont": "提示フォント",
+        "gridStyle": "練習グリッド",
+        "gridStyleRice": "Rice (米) - 伝統",
+        "gridStyleField": "Field (田) - シンプル",
+        "gridStyleNone": "グリッドなし",
+        "gridVerticalShift": "40/60 の縦分割を使う",
+        "showDetailsDefault": "ピンイン/意味を既定で表示",
+        "randomizeNext": "次のカードをランダム",
+        "subsetDrilling": "ドリルモード",
+        "subsetDrillingCount": "「簡単」になるまでの語数",
+        "reviewGrades": "この結果のみ練習",
+        "includeNewCards": "新しいカードを含める",
+        "advancedPosFilter": "詳細カテゴリをすべて表示"
+    },
+    "help": {
+        "title": "ヘルプ",
+        "stroke": "筆順ガイド",
+        "tips": "iPad / 全画面のヒント",
+        "posAbbrev": "品詞の略語",
+        "deviceTitle": "iPad / 全画面のヒント",
+        "generalRules": "基本ルール",
+        "posTitle": "品詞の略語",
+        "rule1": "上から下へ",
+        "rule2": "左から右へ",
+        "rule3": "横が先、縦が後",
+        "rule4": "外が先、内が後",
+        "rule5": "内が先、最後に閉じる",
+        "rule6": "中央が先、両側が後",
+        "rule1Desc": "上の画を先に書き、次に中央、最後に下を書きます。",
+        "rule2Desc": "左の縦画を先に書き、次に中央、最後に右を書きます。",
+        "rule3Desc": "横画を先に書き、その後に縦画を書きます。",
+        "rule4Desc": "外枠を先に書き、次に内側の画を書きます。",
+        "rule5Desc": "枠を書き、内側を書いてから、最後に下を閉じます。",
+        "rule6Desc": "中央のはね/かぎを先に書き、次に左の点、最後に右の点を書きます。",
+        "tip1": "Safari → 共有 → \"ホーム画面に追加\" で、アプリのように使えます。",
+        "tip2": "Safari では少し下にスクロールするとアドレス/タブバーが隠れます。",
+        "tip3": "横向きにすると広く使えます。レイアウトは自動で最適化されます。",
+        "tip4": "Apple Pencil: 先端を離さないでください。手のひらは無視され、ピンチ/スクロールはここでは無効です。"
+    },
+    "practice": {
+        "header": "各文字をなぞって練習",
+        "chars": "文字",
+        "empty": "まだ練習する文字がありません。",
+        "charLabel": "文字 {{index}}"
+    },
+    "flashcard": {
+        "reveal": "ピンイン/意味を表示",
+        "hide": "ピンイン/意味を隠す"
+    },
+    "toolbar": {
+        "queue": "キュー",
+        "again": "もう一度",
+        "hard": "難しい",
+        "good": "良い",
+        "easy": "簡単",
+        "skip": "スキップ"
+    },
+    "controls": {
+        "undo": "元に戻す",
+        "clear": "消去"
+    },
+    "sentence": {
+        "placeholder": "ここにフレーズや文を入力 (例: 你好吗)...",
+        "empty": "上に中国語の文字を入力して、書く練習をしてください。"
+    },
+    "nocards": {
+        "title": "カードが見つかりません",
+        "desc": "設定のフィルターを調整して、より多くの単語を表示してみてください。"
+    },
+    "stats": {
+        "available": "利用可能な単語: {{count}}"
+    },
+    "colors": {
+        "ink": "墨",
+        "maroon": "えんじ",
+        "jade": "翡翠",
+        "hanBlue": "漢青",
+        "custom": "カスタムカラー"
+    }
+}

@@ -122,7 +122,23 @@ export function DrawerMenu(props: DrawerMenuProps) {
         { value: "tr", label: "Türkçe" },
         { value: "hi", label: "हिन्दी" },
         { value: "fa", label: "فارسی" },
-        { value: "pt", label: "Português" }
+        { value: "pt", label: "Português" },
+        { value: "de", label: "Deutsch" },
+        { value: "it", label: "Italiano" },
+        { value: "ja", label: "日本語" },
+        { value: "id", label: "Bahasa Indonesia" },
+        { value: "ms", label: "Bahasa Melayu" },
+        { value: "th", label: "ไทย" },
+        { value: "nl", label: "Nederlands" },
+        { value: "pl", label: "Polski" },
+        { value: "uk", label: "Українська" },
+        { value: "sv", label: "Svenska" },
+        { value: "he", label: "עברית" },
+        { value: "bn", label: "বাংলা" },
+        { value: "ur", label: "اردو" },
+        { value: "ug", label: "ئۇيغۇرچە" },
+        { value: "mn", label: "Монгол" },
+        { value: "bo", label: "བོད་ཡིག" }
     ];
 
     return (

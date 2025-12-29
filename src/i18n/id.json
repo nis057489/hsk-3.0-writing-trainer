@@ -1,0 +1,150 @@
+{
+    "app": {
+        "title": "Pelatih Menulis HSK",
+        "subtitle": "Kuasai karakter Tionghoa.",
+        "menu": "Menu",
+        "strokeGuide": "Urutan goresan",
+        "deviceTips": "Tips perangkat",
+        "posGuide": "Kelas kata",
+        "licenses": "Lisensi",
+        "back": "Kembali ke menu"
+    },
+    "mode": {
+        "title": "Mode",
+        "flashcard": "Kartu",
+        "sentence": "Kalimat"
+    },
+    "layout": {
+        "title": "Tata letak",
+        "leftHanded": "Tukar area menulis"
+    },
+    "levels": {
+        "title": "Level",
+        "radical": "Radikal",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "Kelas kata",
+        "a": "Adjektiva",
+        "d": "Adverbia",
+        "n": "Nomina",
+        "v": "Verba",
+        "r": "Pronomina",
+        "c": "Konjungsi",
+        "i": "Idiom",
+        "l": "Ungkapan tetap"
+    },
+    "options": {
+        "title": "Opsi",
+        "tracing": "Mode meniru",
+        "simplified": "Sederhana",
+        "traditional": "Tradisional",
+        "theme": "Tema",
+        "language": "Bahasa",
+        "themeLight": "Terang",
+        "themeDark": "Gelap",
+        "themeContrast": "Kontras tinggi",
+        "themeSystem": "Sistem",
+        "hoverIndicator": "Tampilkan indikator hover pensil",
+        "padSize": "Ukuran papan tulis",
+        "padSizeXs": "Saku (XS)",
+        "padSizeSmall": "Buku catatan (kecil)",
+        "padSizeMedium": "Nyaman (sedang)",
+        "padSizeLarge": "Kanvas (besar)",
+        "brushType": "Gaya kuas",
+        "brushPencil": "Pensil (standar)",
+        "brushFountain": "Pulpen tinta",
+        "brushCalligraphy": "Kuas kaligrafi",
+        "strokeColor": "Warna goresan",
+        "traceFont": "Font untuk meniru",
+        "traceFontHandwritten": "Tulisan tangan (kuas)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontCursive": "Kursif (sistem)",
+        "traceFontSystem": "Sistem (Sans-serif)",
+        "promptFont": "Font prompt",
+        "gridStyle": "Gaya kotak latihan",
+        "gridStyleRice": "Rice (米) - Tradisional",
+        "gridStyleField": "Field (田) - Sederhana",
+        "gridStyleNone": "Tanpa kotak",
+        "gridVerticalShift": "Gunakan pembagian vertikal 40/60",
+        "showDetailsDefault": "Tampilkan pinyin/arti secara default",
+        "randomizeNext": "Acak kartu berikutnya",
+        "subsetDrilling": "Mode drill",
+        "subsetDrillingCount": "Jumlah kata sampai mudah",
+        "reviewGrades": "Latih hanya hasil ini",
+        "includeNewCards": "Sertakan kartu baru",
+        "advancedPosFilter": "Tampilkan semua kategori detail"
+    },
+    "help": {
+        "title": "Bantuan",
+        "stroke": "Panduan urutan goresan",
+        "tips": "Tips iPad / layar penuh",
+        "posAbbrev": "Singkatan kelas kata",
+        "deviceTitle": "Tips iPad / layar penuh",
+        "generalRules": "Aturan umum",
+        "posTitle": "Singkatan kelas kata",
+        "rule1": "Atas ke bawah",
+        "rule2": "Kiri ke kanan",
+        "rule3": "Horizontal sebelum vertikal",
+        "rule4": "Luar sebelum dalam",
+        "rule5": "Dalam sebelum menutup",
+        "rule6": "Tengah sebelum sisi",
+        "rule1Desc": "Tulis goresan atas dulu, lalu tengah, lalu bawah.",
+        "rule2Desc": "Tulis garis vertikal kiri dulu, lalu tengah, lalu kanan.",
+        "rule3Desc": "Tulis garis horizontal dulu, lalu vertikal.",
+        "rule4Desc": "Tulis bingkai luar dulu, lalu goresan di dalam.",
+        "rule5Desc": "Tulis bingkai, lalu goresan dalam, lalu tutup bagian bawah.",
+        "rule6Desc": "Tulis kait tengah dulu, lalu titik kiri, lalu titik kanan.",
+        "tip1": "Safari → Bagikan → \"Tambah ke Layar Utama\" untuk penggunaan seperti aplikasi.",
+        "tip2": "Di Safari, sedikit scroll ke bawah menyembunyikan bilah alamat/tab hingga Anda scroll ke atas.",
+        "tip3": "Putar ke lanskap untuk ruang lebih; tata letak akan menyesuaikan agar tidak perlu banyak scroll.",
+        "tip4": "Apple Pencil: biarkan ujung menempel—sentuhan telapak diabaikan dan pinch/scroll diblokir di sini."
+    },
+    "practice": {
+        "header": "Tiru setiap karakter",
+        "chars": "karakter",
+        "empty": "Belum ada karakter untuk ditiru.",
+        "charLabel": "Karakter {{index}}"
+    },
+    "flashcard": {
+        "reveal": "Tampilkan pinyin/arti",
+        "hide": "Sembunyikan pinyin/arti"
+    },
+    "toolbar": {
+        "queue": "Antrian",
+        "again": "Ulangi",
+        "hard": "Sulit",
+        "good": "Bagus",
+        "easy": "Mudah",
+        "skip": "Lewati"
+    },
+    "controls": {
+        "undo": "Urungkan",
+        "clear": "Hapus"
+    },
+    "sentence": {
+        "placeholder": "Ketik frasa atau kalimat di sini (mis. 你好吗)...",
+        "empty": "Ketik beberapa karakter Tionghoa di atas untuk berlatih menulisnya."
+    },
+    "nocards": {
+        "title": "Tidak ada kartu",
+        "desc": "Coba atur filter Anda di Pengaturan untuk melihat lebih banyak kata."
+    },
+    "stats": {
+        "available": "{{count}} kata tersedia"
+    },
+    "colors": {
+        "ink": "Tinta",
+        "maroon": "Marun",
+        "jade": "Giok",
+        "hanBlue": "Biru Han",
+        "custom": "Warna kustom"
+    }
+}

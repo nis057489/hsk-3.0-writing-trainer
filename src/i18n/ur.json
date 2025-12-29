@@ -1,0 +1,133 @@
+{
+    "app": {
+        "title": "HSK لکھائی ٹرینر",
+        "subtitle": "چینی حروف پر مہارت حاصل کریں۔",
+        "menu": "مینو",
+        "strokeGuide": "اسٹروک ترتیب",
+        "deviceTips": "ڈیوائس ٹپس",
+        "posGuide": "اقسامِ کلام",
+        "licenses": "لائسنس",
+        "back": "مینو پر واپس"
+    },
+    "mode": {
+        "title": "موڈ",
+        "flashcard": "فلیش کارڈز",
+        "sentence": "جملہ"
+    },
+    "layout": {
+        "title": "لے آؤٹ",
+        "leftHanded": "لکھنے کا حصہ تبدیل کریں"
+    },
+    "levels": {
+        "title": "سطحیں",
+        "radical": "ریڈیکلز",
+        "hsk1": "HSK 1",
+        "hsk2": "HSK 2",
+        "hsk3": "HSK 3",
+        "hsk4": "HSK 4",
+        "hsk5": "HSK 5",
+        "hsk6": "HSK 6",
+        "hsk7": "HSK 7-9"
+    },
+    "pos": {
+        "title": "اقسامِ کلام",
+        "n": "اسم",
+        "v": "فعل",
+        "a": "صفت",
+        "d": "حرفِ حال",
+        "r": "ضمیر",
+        "c": "حرفِ ربط",
+        "i": "محاورہ",
+        "l": "مقررہ عبارت"
+    },
+    "options": {
+        "title": "اختیارات",
+        "tracing": "ٹریسنگ موڈ",
+        "simplified": "سادہ",
+        "traditional": "روایتی",
+        "theme": "تھیم",
+        "language": "زبان",
+        "themeLight": "لائٹ",
+        "themeDark": "ڈارک",
+        "themeContrast": "ہائی کنٹراسٹ",
+        "themeSystem": "سسٹم",
+        "hoverIndicator": "پینسل ہوور اشارہ دکھائیں",
+        "padSize": "لکھنے کے پیڈ کا سائز",
+        "padSizeXs": "جیب (XS)",
+        "padSizeSmall": "نوٹ بک (چھوٹا)",
+        "padSizeMedium": "آرام دہ (درمیانہ)",
+        "padSizeLarge": "کینوس (بڑا)",
+        "brushType": "برش اسٹائل",
+        "brushPencil": "پینسل (معیاری)",
+        "brushFountain": "فاؤنٹین پین",
+        "brushCalligraphy": "خطاطی برش",
+        "strokeColor": "اسٹروک رنگ",
+        "traceFont": "ٹریس فونٹ",
+        "traceFontHandwritten": "ہاتھ کی لکھائی (برش)",
+        "traceFontKai": "Kai",
+        "traceFontYShi": "YShi-Written SC (写意体SC)",
+        "traceFontSystem": "سسٹم (Sans-serif)",
+        "promptFont": "پرومپٹ فونٹ",
+        "gridStyle": "مشق گرڈ",
+        "gridStyleRice": "Rice (米) - Traditional",
+        "gridStyleField": "Field (田) - Simple",
+        "gridStyleNone": "گرڈ نہیں",
+        "gridVerticalShift": "40/60 عمودی تقسیم استعمال کریں",
+        "showDetailsDefault": "ڈیفالٹ طور پر پین یِن/معنی دکھائیں",
+        "randomizeNext": "اگلا کارڈ رینڈم کریں",
+        "subsetDrilling": "ڈرل موڈ",
+        "subsetDrillingCount": "آسان ہونے تک مشق کے الفاظ کی تعداد",
+        "reviewGrades": "صرف یہ نتائج مشق کریں",
+        "includeNewCards": "نئے کارڈ شامل کریں",
+        "advancedPosFilter": "تمام تفصیلی زمروں کو دکھائیں"
+    },
+    "help": {
+        "title": "مدد",
+        "stroke": "اسٹروک آرڈر گائیڈ",
+        "tips": "iPad / فل اسکرین ٹپس",
+        "posAbbrev": "اقسامِ کلام کے مخففات",
+        "deviceTitle": "iPad / فل اسکرین ٹپس",
+        "generalRules": "عمومی قواعد",
+        "posTitle": "اقسامِ کلام کے مخففات"
+    },
+    "practice": {
+        "header": "ہر حرف کو ٹریس کریں",
+        "chars": "حروف",
+        "empty": "ابھی ٹریس کرنے کے لیے کوئی حروف نہیں۔",
+        "charLabel": "حرف {{index}}"
+    },
+    "flashcard": {
+        "reveal": "پین یِن/معنی دکھائیں",
+        "hide": "پین یِن/معنی چھپائیں"
+    },
+    "toolbar": {
+        "queue": "قطار",
+        "again": "دوبارہ",
+        "hard": "مشکل",
+        "good": "اچھا",
+        "easy": "آسان",
+        "skip": "اسکپ"
+    },
+    "controls": {
+        "undo": "واپس",
+        "clear": "صاف کریں"
+    },
+    "sentence": {
+        "placeholder": "یہاں کوئی فقرہ یا جملہ ٹائپ کریں (مثلاً 你好吗)...",
+        "empty": "اوپر چینی حروف لکھ کر لکھائی کی مشق کریں۔"
+    },
+    "nocards": {
+        "title": "کوئی کارڈ نہیں ملا",
+        "desc": "زیادہ الفاظ دیکھنے کے لیے سیٹنگز میں فلٹرز بدل کر دیکھیں۔"
+    },
+    "stats": {
+        "available": "{{count}} الفاظ دستیاب"
+    },
+    "colors": {
+        "ink": "سیاہی",
+        "maroon": "میرون",
+        "jade": "جیڈ",
+        "hanBlue": "Han Blue",
+        "custom": "کسٹم رنگ"
+    }
+}
