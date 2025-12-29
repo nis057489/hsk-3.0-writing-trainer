@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Grade } from "../../lib/types";
+import { setMeaningTranslationsOptIn } from "../../lib/meaningTranslations";
 
 type ThemeChoice = "light" | "dark" | "contrast" | "system";
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
@@ -545,7 +546,12 @@ export function DrawerMenu(props: DrawerMenuProps) {
                         <span style={{ color: "var(--muted)" }}>{t("options.language")}</span>
                         <select
                             value={props.language}
-                            onChange={(e) => props.setLanguage(e.target.value)}
+                            onChange={(e) => {
+                                // Only download optional meaning translations after the user
+                                // explicitly chooses a language (not just auto-detection).
+                                setMeaningTranslationsOptIn();
+                                props.setLanguage(e.target.value);
+                            }}
                             style={{
                                 padding: "8px 10px",
                                 borderRadius: 8,

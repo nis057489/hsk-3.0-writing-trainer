@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Card } from "../lib/types";
+import { getLocalizedMeaning, hasMeaningTranslationsOptIn } from "../lib/meaningTranslations";
+import { useEffect, useState } from "react";
 
 type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 
@@ -10,7 +12,8 @@ export function Flashcard(props: {
     promptFont?: PromptFontChoice;
 }) {
     const { card, reveal, promptFont = "handwritten" } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const [meaningText, setMeaningText] = useState<string>(card.meaning);
 
     const getFontFamily = () => {
         if (promptFont === "handwritten") {
@@ -33,6 +36,45 @@ export function Flashcard(props: {
         }
     };
 
+    useEffect(() => {
+        if (!reveal) {
+            setMeaningText(card.meaning);
+            return;
+        }
+
+        // Only download optional meaning translations after the user explicitly
+        // selects a UI language from the settings (not just auto-detection).
+        if (!hasMeaningTranslationsOptIn()) {
+            setMeaningText(card.meaning);
+            return;
+        }
+
+        let cancelled = false;
+
+        const run = async () => {
+            const language = i18n.resolvedLanguage || i18n.language || "en";
+
+            // Never download meaning maps for English.
+            if (language === "en") {
+                setMeaningText(card.meaning);
+                return;
+            }
+
+            const localized = await getLocalizedMeaning({
+                id: card.id,
+                defaultMeaning: card.meaning,
+                language
+            });
+            if (!cancelled) setMeaningText(localized);
+        };
+
+        void run();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [reveal, card.id, card.meaning, i18n.language, i18n.resolvedLanguage]);
+
     return (
         <div className="card">
             <div className="hanzi" style={{ fontFamily: getFontFamily() }}>{card.hanzi}</div>
@@ -52,7 +94,7 @@ export function Flashcard(props: {
                                 {card.pos.join(", ")}
                             </span>
                         )}
-                        {card.meaning}
+                        {meaningText}
                     </div>
                 </div>
             )}

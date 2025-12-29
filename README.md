@@ -24,7 +24,7 @@ Tip: install it for offline use (see below)
 
 - Spaced repetition flashcards plus sentence tracing to mimic HSK writing prompts
 - Character tracing, grid paper (rice, field, none), granular filtering
-- Multi-language UI: English, 简体中文, 繁體中文, Español, Français, Tiếng Việt, Filipino, 한국어, العربية, Русский, Türkçe, हिन्दी, فارسی, Português
+- Multi-language UI (30 languages) — see Supported languages below
 - Themes: Light, Dark, High Contrast, or follow system
 - Works offline (install as PWA - see below)
 - $0.00, 0 ads, 0 tracking, 0 notifications :)
@@ -57,6 +57,45 @@ Note: Certain Apple Pencil hover features require Safari and recent iPad hardwar
 
 ![Share and add to Home Screen](img/4.PNG)
 ![Adding as Web App](img/5.PNG)
+
+## Supported languages
+
+UI translations are available for:
+
+- العربية (ar)
+- বাংলা (bn)
+- བོད་སྐད་ / Tibetan (bo)
+- Deutsch (de)
+- English (en)
+- Español (es)
+- فارسی (fa)
+- Filipino (fil)
+- Français (fr)
+- עברית (he)
+- हिन्दी (hi)
+- Bahasa Indonesia (id)
+- Italiano (it)
+- 日本語 (ja)
+- 한국어 (ko)
+- Монгол (mn)
+- Bahasa Melayu (ms)
+- Nederlands (nl)
+- Polski (pl)
+- Português (pt)
+- Русский (ru)
+- Svenska (sv)
+- ไทย (th)
+- Türkçe (tr)
+- ئۇيغۇرچە (ug)
+- Українська (uk)
+- اردو (ur)
+- Tiếng Việt (vi)
+- 简体中文 (zh)
+- 繁體中文 (zh-Hant)
+
+## Meaning translations
+
+The vocabulary meanings are English by default. Community translations can be added via PRs in `src/data/meanings/<lang>.json`.
 
 ## Credits
 

@@ -6,7 +6,9 @@
     "scripts": {
         "dev": "vite --host 0.0.0.0 --port 5173",
         "build": "tsc -b && vite build",
-        "preview": "vite preview --host 0.0.0.0 --port 5173"
+        "preview": "vite preview --host 0.0.0.0 --port 5173",
+        "meanings:init": "node scripts/meanings.mjs init",
+        "meanings:validate": "node scripts/meanings.mjs validate"
     },
     "dependencies": {
         "react": "^18.3.1",

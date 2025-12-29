@@ -30,6 +30,29 @@ Yes. Vite builds a static site you can host on GitHub Pages for free. Minimal st
 
 Vocabulary lives in `src/data/hsk.json` (HSK 3.0 list). To swap in your own list, match the fields: `id`, `hanzi`, `pinyin`, `meaning`, and optional `level`/`pos` arrays.
 
+## Meaning translations (via PRs)
+
+The vocabulary meanings in `src/data/hsk.json` are English by default. Community translations can be contributed through PRs.
+
+How it works:
+
+- Create or edit a file in `src/data/meanings/<lang>.json` (for example `src/data/meanings/es.json`).
+- The file is a JSON object mapping card `id` → translated meaning string.
+- Only include entries you actually translate. Missing keys automatically fall back to the English meaning.
+
+Example:
+
+```json
+{
+ "hsk-03630": "en otras palabras"
+}
+```
+
+Local checks:
+
+- `npm run meanings:validate` (valid JSON, ids exist, no empty values)
+- `npm run build`
+
 ## i18n
 
 - All translations sit in `src/i18n/*.json`; register new locales in `src/i18n/index.ts`.
