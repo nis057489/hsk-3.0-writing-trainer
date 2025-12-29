@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { DrawingPad } from "./components/DrawingPad";
 import { Flashcard } from "./components/Flashcard";
 import { Toolbar } from "./components/Toolbar";
 import { Drawer } from "./components/Drawer";
@@ -609,14 +608,6 @@ export default function App() {
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
     }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
-
-    const basePadSize = padSizeChoice === "xs"
-        ? 90
-        : padSizeChoice === "small"
-            ? 110
-            : padSizeChoice === "large"
-                ? 190
-                : 150;
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;

@@ -19,7 +19,7 @@ interface DrawingPadProps {
     onClearClick?: (clear: () => void, hasStrokes: boolean) => void;
 }
 
-export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, brushType = "pencil", strokeColor = "#111", onUndoClick, onClearClick }: DrawingPadProps) {
+export function DrawingPad({ size, tracingMode, character, showHoverIndicator = false, traceFont = "handwritten", gridStyle = "rice", gridVerticalShift = false, brushType = "pencil", strokeColor = "#111", onUndoClick, onClearClick }: DrawingPadProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [canvasSize, setCanvasSize] = useState(size || 300);
