@@ -105,6 +105,13 @@ function pickDue(cards: Card[], progressMap: Record<string, any>) {
     return due.length ? due : cards;
 }
 
+function shuffleInPlace<T>(arr: T[]) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
+
 const allCards = vocab as Card[];
 
 export default function App() {
@@ -187,7 +194,7 @@ export default function App() {
         };
     }, []);
 
-    const prefDefaults: Prefs = {
+    const prefDefaults = useMemo<Prefs>(() => ({
         selectedLevels: ["new-1"],
         selectedPos: [],
         characterMode: 'simplified',
@@ -210,12 +217,10 @@ export default function App() {
         strokeColor: "#111",
         subsetDrillingEnabled: false,
         subsetDrillingCount: 20
-    };
-
-    const storedPrefsRaw = readPrefs<Prefs>("prefs.state", prefDefaults);
+    }), [i18n.resolvedLanguage]);
 
     // Migrate old/invalid font choices (e.g. removed "cursive") to a supported value.
-    const normalizeFontChoice = (v: any): TraceFontChoice => {
+    function normalizeFontChoice(v: any): TraceFontChoice {
         switch (v) {
             case "handwritten":
             case "kai":
@@ -227,18 +232,67 @@ export default function App() {
             default:
                 return "system";
         }
-    };
+    }
 
-    const storedPrefs: Prefs = {
-        ...storedPrefsRaw,
-        traceFont: normalizeFontChoice((storedPrefsRaw as any).traceFont),
-        promptFont: normalizeFontChoice((storedPrefsRaw as any).promptFont)
-    };
+    // Read prefs once (localStorage is synchronous and expensive if done every render).
+    const [storedPrefs] = useState<Prefs>(() => {
+        const raw = readPrefs<Prefs>("prefs.state", prefDefaults);
+        return {
+            ...raw,
+            traceFont: normalizeFontChoice((raw as any).traceFont),
+            promptFont: normalizeFontChoice((raw as any).promptFont)
+        };
+    });
 
     // Keep progress in a ref to avoid forcing global re-renders on each grade.
     // We only trigger recomputation when a UI feature actually depends on progress.
     const progressRef = useRef<Record<string, CardState>>(loadProgress());
     const [progressVersion, setProgressVersion] = useState(0);
+
+    // Debounce progress persistence to avoid repeatedly JSON-stringifying a large map.
+    const saveProgressTimeoutRef = useRef<number | null>(null);
+
+    const flushProgressSave = useCallback(() => {
+        if (saveProgressTimeoutRef.current != null) {
+            window.clearTimeout(saveProgressTimeoutRef.current);
+            saveProgressTimeoutRef.current = null;
+        }
+        try {
+            saveProgress(progressRef.current);
+        } catch {
+            // ignore storage errors
+        }
+    }, []);
+
+    const scheduleProgressSave = useCallback((delayMs = 300) => {
+        if (saveProgressTimeoutRef.current != null) {
+            window.clearTimeout(saveProgressTimeoutRef.current);
+        }
+        saveProgressTimeoutRef.current = window.setTimeout(() => {
+            saveProgressTimeoutRef.current = null;
+            try {
+                saveProgress(progressRef.current);
+            } catch {
+                // ignore storage errors
+            }
+        }, delayMs);
+    }, []);
+
+    useEffect(() => {
+        const onVisibility = () => {
+            if (document.visibilityState === "hidden") flushProgressSave();
+        };
+        const onPageHide = () => flushProgressSave();
+
+        document.addEventListener("visibilitychange", onVisibility);
+        window.addEventListener("pagehide", onPageHide);
+
+        return () => {
+            document.removeEventListener("visibilitychange", onVisibility);
+            window.removeEventListener("pagehide", onPageHide);
+            flushProgressSave();
+        };
+    }, [flushProgressSave]);
 
     // Filters
     const [selectedLevels, setSelectedLevels] = useState<string[]>(storedPrefs.selectedLevels || ["new-1"]);
@@ -447,7 +501,8 @@ export default function App() {
         // If subset drilling is enabled, select a random subset and repeat it indefinitely
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
-            const shuffled = [...picked].sort(() => Math.random() - 0.5);
+            const shuffled = picked.slice();
+            shuffleInPlace(shuffled);
             finalQueue = shuffled.slice(0, subsetSize);
         }
 
@@ -470,7 +525,8 @@ export default function App() {
         // If subset drilling is enabled, create a new random subset
         if (subsetDrillingEnabled && picked.length > 0) {
             const subsetSize = Math.min(subsetDrillingCount, picked.length);
-            const shuffled = [...picked].sort(() => Math.random() - 0.5);
+            const shuffled = picked.slice();
+            shuffleInPlace(shuffled);
             finalQueue = shuffled.slice(0, subsetSize);
         }
 
@@ -579,7 +635,7 @@ export default function App() {
         // Mutate the progress map in-place to avoid allocating/copying on every grade.
         const map = progressRef.current;
         map[card.id] = updated;
-        saveProgress(map);
+        scheduleProgressSave();
 
         // Only trigger a global recompute when the active filters depend on progress.
         if (reviewFilteringActive) setProgressVersion((v) => v + 1);
@@ -663,7 +719,7 @@ export default function App() {
 
             return copy;
         });
-    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, subsetDrillingEnabled]);
+    }, [card, idx, randomizeNext, showDetailsDefault, reviewFilteringActive, subsetDrillingEnabled, scheduleProgressSave]);
 
     const toggleLevel = (id: string) => {
         setSelectedLevels((prev: string[]) =>

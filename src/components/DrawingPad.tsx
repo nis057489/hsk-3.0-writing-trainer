@@ -516,28 +516,16 @@ export function DrawingPad({ size, showGrid, tracingMode, character, showHoverIn
             if (e.touches.length > 1) e.preventDefault();
         };
 
-        const blockGesture = (e: Event) => {
-            if (isControlTarget(e.target)) return;
-            e.preventDefault();
-        };
-
         container.addEventListener("touchstart", blockPinch, { passive: false });
         container.addEventListener("touchmove", blockPinch, { passive: false });
         container.addEventListener("touchmove", blockScroll, { passive: false });
         container.addEventListener("wheel", blockScroll, { passive: false });
-
-        window.addEventListener("gesturestart", blockGesture, { passive: false } as any);
-        window.addEventListener("gesturechange", blockGesture, { passive: false } as any);
-        window.addEventListener("gestureend", blockGesture, { passive: false } as any);
 
         return () => {
             container.removeEventListener("touchstart", blockPinch);
             container.removeEventListener("touchmove", blockPinch);
             container.removeEventListener("touchmove", blockScroll);
             container.removeEventListener("wheel", blockScroll);
-            window.removeEventListener("gesturestart", blockGesture as any);
-            window.removeEventListener("gesturechange", blockGesture as any);
-            window.removeEventListener("gestureend", blockGesture as any);
         };
     }, []);
 
