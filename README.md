@@ -1,4 +1,4 @@
-# HSK Writing Trainer (HSK 3.0 friendly)
+# HSK 3.0 Writing & Vocabulary Trainer
 
 <!-- markdownlint-disable MD033 -->
 <p align="center">
@@ -59,6 +59,8 @@ Note: Certain Apple Pencil hover features require Safari and recent iPad hardwar
 ![Adding as Web App](img/5.PNG)
 
 ## Supported languages
+
+Translations of word meanings are welcome via PR's - see CONTRIBUTING.md for details!
 
 UI translations are available for:
 
