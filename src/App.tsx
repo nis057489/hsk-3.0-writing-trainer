@@ -12,6 +12,7 @@ import { DrawerLicenses } from "./components/drawer/DrawerLicenses";
 import vocab from "./data/hsk.json";
 import { Card, CardState, Grade } from "./lib/types";
 import { ensureState, loadProgress, nextState, saveProgress } from "./lib/scheduler";
+import { ensureI18nLanguageLoaded } from "./i18n";
 
 // Map detailed POS codes to simple categories (module-level to avoid recreating each render)
 const POS_MAPPING: Record<string, string[]> = {
@@ -599,7 +600,15 @@ export default function App() {
 
     // Language application
     useEffect(() => {
-        i18n.changeLanguage(language);
+        let cancelled = false;
+        void (async () => {
+            const loaded = await ensureI18nLanguageLoaded(language);
+            if (cancelled) return;
+            await i18n.changeLanguage(loaded);
+        })();
+        return () => {
+            cancelled = true;
+        };
     }, [language, i18n]);
 
     // Persist user preferences
