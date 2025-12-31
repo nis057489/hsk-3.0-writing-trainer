@@ -18,6 +18,22 @@
 }
 
 @font-face {
+    font-family: "Ma Shan Zheng";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/MaShanZheng-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ZCOOL KuaiLe";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/ZCOOLKuaiLe-Regular.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "TW-Kai";
     font-style: normal;
     font-weight: 400;
