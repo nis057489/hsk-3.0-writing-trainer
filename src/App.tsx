@@ -641,7 +641,7 @@ export default function App() {
         if (!card) return;
 
         const cur = ensureState(card.id, progressRef.current);
-        const updated = nextState(cur, g);
+        const updated = nextState(cur, g, Date.now(), { practicedWriting: !tracingMode });
 
         // Mutate the progress map in-place to avoid allocating/copying on every grade.
         const map = progressRef.current;
