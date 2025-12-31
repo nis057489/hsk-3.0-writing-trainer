@@ -14,6 +14,8 @@ interface DrawerMenuProps {
     setMode: (mode: 'flashcard' | 'sentence') => void;
     randomizeNext: boolean;
     setRandomizeNext: (value: boolean) => void;
+    orderByFrequency: boolean;
+    setOrderByFrequency: (value: boolean) => void;
     reviewGrades: Grade[];
     setReviewGrades: (value: Grade[]) => void;
     includeNewCards: boolean;
@@ -311,6 +313,15 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             onChange={(e) => props.setRandomizeNext(e.target.checked)}
                         />
                         {t("options.randomizeNext")}
+                    </label>
+
+                    <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>
+                        <input
+                            type="checkbox"
+                            checked={props.orderByFrequency}
+                            onChange={(e) => props.setOrderByFrequency(e.target.checked)}
+                        />
+                        {t("options.orderByFrequency")}
                     </label>
 
                     <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, cursor: "pointer" }}>

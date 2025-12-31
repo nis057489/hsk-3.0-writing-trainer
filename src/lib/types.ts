@@ -4,6 +4,8 @@ export type Card = {
   traditional?: string;
   pinyin: string;
   meaning: string;
+  // Frequency rank (lower is more common). Optional because radicals and some entries may not have it.
+  frequency?: number;
   level?: string[];
   pos?: string[];
 };

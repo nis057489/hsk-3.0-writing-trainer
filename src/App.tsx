@@ -70,6 +70,7 @@ type Prefs = {
     tracingMode: boolean;
     mode: 'flashcard' | 'sentence';
     randomizeNext: boolean;
+    orderByFrequency: boolean;
     reviewGrades: Grade[];
     includeNewCards: boolean;
     language: string;
@@ -219,6 +220,7 @@ export default function App() {
         tracingMode: false,
         mode: 'flashcard',
         randomizeNext: false,
+        orderByFrequency: false,
         reviewGrades: [],
         includeNewCards: false,
         language: i18n.resolvedLanguage || "en",
@@ -324,6 +326,7 @@ export default function App() {
     // Flashcard filtering by last review result (Anki-like grades)
     const [reviewGrades, setReviewGrades] = useState<Grade[]>(storedPrefs.reviewGrades || []);
     const [includeNewCards, setIncludeNewCards] = useState<boolean>(storedPrefs.includeNewCards ?? false);
+    const [orderByFrequency, setOrderByFrequency] = useState<boolean>(storedPrefs.orderByFrequency ?? false);
 
     const reviewFilteringActive = reviewGrades.length > 0;
 
@@ -508,7 +511,17 @@ export default function App() {
         const pool = reviewFilteringActive
             ? applyReviewFilter(baseFilteredCards, progressMap, reviewGradesSet, includeNewCards)
             : baseFilteredCards;
-        const picked = pickDue(pool, progressMap);
+
+        const sortedPool = orderByFrequency
+            ? pool.slice().sort((a, b) => {
+                const aIsRadical = (a.level ?? []).includes("radical");
+                const bIsRadical = (b.level ?? []).includes("radical");
+                if (aIsRadical !== bIsRadical) return aIsRadical ? 1 : -1;
+                return (a.frequency ?? Number.POSITIVE_INFINITY) - (b.frequency ?? Number.POSITIVE_INFINITY);
+            })
+            : pool;
+
+        const picked = pickDue(sortedPool, progressMap);
         let finalQueue = picked;
 
         // If subset drilling is enabled, select a random subset and repeat it indefinitely
@@ -522,7 +535,7 @@ export default function App() {
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, orderByFrequency, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     // If the session queue is exhausted, refill it from the currently filtered pool.
     // This keeps the behavior Anki-like within a session, while still allowing continued practice.
@@ -538,7 +551,16 @@ export default function App() {
             : baseFilteredCards;
         if (pool.length === 0) return;
 
-        const picked = pickDue(pool, progressMap);
+        const sortedPool = orderByFrequency
+            ? pool.slice().sort((a, b) => {
+                const aIsRadical = (a.level ?? []).includes("radical");
+                const bIsRadical = (b.level ?? []).includes("radical");
+                if (aIsRadical !== bIsRadical) return aIsRadical ? 1 : -1;
+                return (a.frequency ?? Number.POSITIVE_INFINITY) - (b.frequency ?? Number.POSITIVE_INFINITY);
+            })
+            : pool;
+
+        const picked = pickDue(sortedPool, progressMap);
         let finalQueue = picked;
 
         // If subset drilling is enabled, create a new random subset
@@ -552,7 +574,7 @@ export default function App() {
         setQueue(finalQueue);
         setIdx(0);
         setReveal(showDetailsDefault);
-    }, [mode, queue.length, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [mode, queue.length, baseFilteredCards, reviewFilteringActive, reviewGradesSet, includeNewCards, orderByFrequency, showDetailsDefault, subsetDrillingEnabled, subsetDrillingCount]);
 
     useEffect(() => {
         setReveal(showDetailsDefault);
@@ -591,6 +613,7 @@ export default function App() {
             showHoverIndicator,
             mode,
             randomizeNext,
+            orderByFrequency,
             reviewGrades,
             includeNewCards,
             language,
@@ -607,7 +630,7 @@ export default function App() {
             subsetDrillingCount
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, orderByFrequency, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
@@ -808,6 +831,8 @@ export default function App() {
                         setMode={setMode}
                         randomizeNext={randomizeNext}
                         setRandomizeNext={setRandomizeNext}
+                        orderByFrequency={orderByFrequency}
+                        setOrderByFrequency={setOrderByFrequency}
                         reviewGrades={reviewGrades}
                         setReviewGrades={setReviewGrades}
                         includeNewCards={includeNewCards}

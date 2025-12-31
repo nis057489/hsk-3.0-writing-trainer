@@ -28,6 +28,8 @@ const cards = data.map((entry, index) => {
     const meanings = form && form.meanings || [];
     const meaning = meanings.join("; ");
 
+    const frequency = typeof entry.frequency === "number" ? entry.frequency : undefined;
+
     // Generate a stable ID.
     // We can use the index, but if the list changes, IDs change.
     // Using hanzi-pinyin might be better but pinyin can have spaces.
@@ -42,6 +44,7 @@ const cards = data.map((entry, index) => {
         traditional,
         pinyin,
         meaning,
+        frequency,
         level: entry.level || [],
         pos: entry.pos || []
     };
@@ -81,7 +84,9 @@ const radicalCards = Array.from(radicalsSet).map((radicalChar, index) => {
     };
 });
 
-const finalCards = [...radicalCards, ...cards];
+// Keep radicals available, but avoid them appearing first and "clogging" normal word flow
+// when users include both radicals and full words.
+const finalCards = [...cards, ...radicalCards];
 
 fs.writeFileSync(outputPath, JSON.stringify(finalCards, null, 2));
 console.log(`Converted ${cards.length} words and ${radicalCards.length} radicals to ${outputPath}`);
