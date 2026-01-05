@@ -35,6 +35,26 @@ function computeTopIds(cards, limit) {
   return out;
 }
 
+function computeBottomIds(cards, limit) {
+  const eligible = cards
+    .filter((c) => c && typeof c.id === "string")
+    .filter((c) => !Array.isArray(c.level) || !c.level.includes("radical"))
+    .filter((c) => isNumber(c.frequency));
+
+  // Higher rank = less common
+  eligible.sort((a, b) => b.frequency - a.frequency);
+
+  const out = [];
+  const seen = new Set();
+  for (const c of eligible) {
+    if (seen.has(c.id)) continue;
+    seen.add(c.id);
+    out.push(c.id);
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
 async function main() {
   const cards = await readJson(vocabPath);
   if (!Array.isArray(cards)) {
@@ -45,14 +65,23 @@ async function main() {
   const top3000 = computeTopIds(cards, 3000);
   const top5000 = computeTopIds(cards, 5000);
 
+  const bottom1000 = computeBottomIds(cards, 1000);
+  const bottom3000 = computeBottomIds(cards, 3000);
+  const bottom5000 = computeBottomIds(cards, 5000);
+
   const payload = {
     top1000,
     top3000,
-    top5000
+    top5000,
+    bottom1000,
+    bottom3000,
+    bottom5000
   };
 
   await fs.writeFile(outPath, JSON.stringify(payload, null, 2) + "\n", "utf8");
-  console.log(`Wrote ${path.relative(repoRoot, outPath)} (top1000=${top1000.length}, top3000=${top3000.length}, top5000=${top5000.length})`);
+  console.log(
+    `Wrote ${path.relative(repoRoot, outPath)} (top1000=${top1000.length}, top3000=${top3000.length}, top5000=${top5000.length}, bottom1000=${bottom1000.length}, bottom3000=${bottom3000.length}, bottom5000=${bottom5000.length})`
+  );
 }
 
 main().catch((e) => {

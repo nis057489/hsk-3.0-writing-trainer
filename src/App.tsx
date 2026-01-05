@@ -59,7 +59,7 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
-type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000";
+type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000" | "bottom1000" | "bottom3000" | "bottom5000";
 
 type TraceFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
@@ -348,7 +348,13 @@ export default function App() {
                 ? (frequencyTop as any).top1000
                 : commonWords === "top3000"
                     ? (frequencyTop as any).top3000
-                    : (frequencyTop as any).top5000;
+                    : commonWords === "top5000"
+                        ? (frequencyTop as any).top5000
+                        : commonWords === "bottom1000"
+                            ? (frequencyTop as any).bottom1000
+                            : commonWords === "bottom3000"
+                                ? (frequencyTop as any).bottom3000
+                                : (frequencyTop as any).bottom5000;
         return new Set<string>(Array.isArray(list) ? list : []);
     }, [commonWords]);
 

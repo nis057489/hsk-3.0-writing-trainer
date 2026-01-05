@@ -9,7 +9,7 @@ type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type GridStyleChoice = "rice" | "field" | "none";
 type BrushType = "pencil" | "fountain" | "brush";
 
-type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000";
+type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000" | "bottom1000" | "bottom3000" | "bottom5000";
 
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
@@ -78,7 +78,10 @@ export function DrawerMenu(props: DrawerMenuProps) {
         { value: "all", label: t("common.all") },
         { value: "top1000", label: t("common.top1000") },
         { value: "top3000", label: t("common.top3000") },
-        { value: "top5000", label: t("common.top5000") }
+        { value: "top5000", label: t("common.top5000") },
+        { value: "bottom1000", label: t("common.bottom1000") },
+        { value: "bottom3000", label: t("common.bottom3000") },
+        { value: "bottom5000", label: t("common.bottom5000") }
     ];
 
     const toggleGrade = (g: Grade) => {

@@ -34,7 +34,10 @@
         "all": "All words",
         "top1000": "Top 1000",
         "top3000": "Top 3000",
-        "top5000": "Top 5000"
+        "top5000": "Top 5000",
+        "bottom1000": "Bottom 1000 (least common)",
+        "bottom3000": "Bottom 3000 (least common)",
+        "bottom5000": "Bottom 5000 (least common)"
     },
     "pos": {
         "title": "Parts of Speech",
