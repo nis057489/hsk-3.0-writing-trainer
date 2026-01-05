@@ -9,6 +9,8 @@ type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type GridStyleChoice = "rice" | "field" | "none";
 type BrushType = "pencil" | "fountain" | "brush";
 
+type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000";
+
 interface DrawerMenuProps {
     mode: 'flashcard' | 'sentence';
     setMode: (mode: 'flashcard' | 'sentence') => void;
@@ -25,6 +27,10 @@ interface DrawerMenuProps {
     levels: Array<{ id: string; label: string }>;
     selectedLevels: string[];
     toggleLevel: (id: string) => void;
+
+    commonWords: CommonWordsChoice;
+    setCommonWords: (value: CommonWordsChoice) => void;
+
     posGroups: Array<{ id: string; label: string }>;
     selectedPos: string[];
     togglePos: (id: string) => void;
@@ -67,6 +73,13 @@ interface DrawerMenuProps {
 
 export function DrawerMenu(props: DrawerMenuProps) {
     const { t } = useTranslation();
+
+    const commonOptions: Array<{ value: CommonWordsChoice; label: string }> = [
+        { value: "all", label: t("common.all") },
+        { value: "top1000", label: t("common.top1000") },
+        { value: "top3000", label: t("common.top3000") },
+        { value: "top5000", label: t("common.top5000") }
+    ];
 
     const toggleGrade = (g: Grade) => {
         if (props.reviewGrades.includes(g)) {
@@ -242,6 +255,25 @@ export function DrawerMenu(props: DrawerMenuProps) {
                             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') props.toggleLevel(l.id); }}
                         >
                             {l.label}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="filter-section">
+                <h3>{t("common.title")}</h3>
+                <div className="filter-group" role="list">
+                    {commonOptions.map(opt => (
+                        <div
+                            key={opt.value}
+                            role="button"
+                            tabIndex={0}
+                            aria-pressed={props.commonWords === opt.value}
+                            className={`filter-chip ${props.commonWords === opt.value ? 'active' : ''}`}
+                            onClick={() => props.setCommonWords(opt.value)}
+                            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') props.setCommonWords(opt.value); }}
+                        >
+                            {opt.label}
                         </div>
                     ))}
                 </div>

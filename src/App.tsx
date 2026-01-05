@@ -10,6 +10,7 @@ import { DrawerTips } from "./components/drawer/DrawerTips";
 import { DrawerPosHelp } from "./components/drawer/DrawerPosHelp";
 import { DrawerLicenses } from "./components/drawer/DrawerLicenses";
 import vocab from "./data/hsk.json";
+import frequencyTop from "./data/frequencyTop.json";
 import { Card, CardState, Grade } from "./lib/types";
 import { ensureState, loadProgress, nextState, saveProgress } from "./lib/scheduler";
 import { ensureI18nLanguageLoaded } from "./i18n";
@@ -58,6 +59,8 @@ type ThemeChoice = "light" | "dark" | "contrast" | "system";
 
 type PadSizeChoice = "xs" | "small" | "medium" | "large";
 
+type CommonWordsChoice = "all" | "top1000" | "top3000" | "top5000";
+
 type TraceFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type PromptFontChoice = "handwritten" | "kai" | "yshi" | "system";
 type GridStyleChoice = "rice" | "field" | "none";
@@ -66,6 +69,7 @@ type BrushType = "pencil" | "fountain" | "brush";
 type Prefs = {
     selectedLevels: string[];
     selectedPos: string[];
+    commonWords: CommonWordsChoice;
     characterMode: 'simplified' | 'traditional';
     leftHanded: boolean;
     tracingMode: boolean;
@@ -216,6 +220,7 @@ export default function App() {
     const prefDefaults = useMemo<Prefs>(() => ({
         selectedLevels: ["new-1"],
         selectedPos: [],
+        commonWords: "all",
         characterMode: 'simplified',
         leftHanded: false,
         tracingMode: false,
@@ -316,6 +321,7 @@ export default function App() {
     // Filters
     const [selectedLevels, setSelectedLevels] = useState<string[]>(storedPrefs.selectedLevels || ["new-1"]);
     const [selectedPos, setSelectedPos] = useState<string[]>(storedPrefs.selectedPos || []);
+    const [commonWords, setCommonWords] = useState<CommonWordsChoice>(storedPrefs.commonWords || "all");
     const [advancedPosFilter, setAdvancedPosFilter] = useState<boolean>(storedPrefs.advancedPosFilter ?? false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [characterMode, setCharacterMode] = useState<'simplified' | 'traditional'>(storedPrefs.characterMode || 'simplified');
@@ -335,12 +341,28 @@ export default function App() {
     const selectedPosSet = useMemo(() => new Set(selectedPos), [selectedPos]);
     const reviewGradesSet = useMemo(() => new Set(reviewGrades), [reviewGrades]);
 
+    const commonWordsIdSet = useMemo(() => {
+        if (commonWords === "all") return null;
+        const list =
+            commonWords === "top1000"
+                ? (frequencyTop as any).top1000
+                : commonWords === "top3000"
+                    ? (frequencyTop as any).top3000
+                    : (frequencyTop as any).top5000;
+        return new Set<string>(Array.isArray(list) ? list : []);
+    }, [commonWords]);
+
     const levelFilteredCards = useMemo(() => {
         if (selectedLevels.length === 0) return allCards;
         return allCards.filter((card) =>
             !!card.level && card.level.some((l) => selectedLevelsSet.has(l))
         );
     }, [selectedLevels.length, selectedLevelsSet]);
+
+    const commonFilteredCards = useMemo(() => {
+        if (!commonWordsIdSet) return levelFilteredCards;
+        return levelFilteredCards.filter((card) => commonWordsIdSet.has(card.id));
+    }, [levelFilteredCards, commonWordsIdSet]);
 
     // In simple POS mode, build a set of allowed detailed tags (union of the selected categories).
     const allowedDetailedPosSet = useMemo(() => {
@@ -358,7 +380,7 @@ export default function App() {
     // Base filtered pool (level + POS only). Review-grade filtering is applied when
     // (re)building the session queue to avoid re-filtering the whole pool on every grade.
     const baseFilteredCards = useMemo(() => {
-        return levelFilteredCards.filter((card) => {
+        return commonFilteredCards.filter((card) => {
             let posMatch = true;
             if (selectedPos.length > 0 && card.pos) {
                 if (advancedPosFilter) {
@@ -370,7 +392,7 @@ export default function App() {
             return posMatch;
         });
     }, [
-        levelFilteredCards,
+        commonFilteredCards,
         selectedPos.length,
         advancedPosFilter,
         selectedPosSet,
@@ -455,7 +477,7 @@ export default function App() {
     // (one pass over levelFilteredCards instead of nested some() loops)
     const availablePosSet = useMemo(() => {
         const set = new Set<string>();
-        for (const card of levelFilteredCards) {
+        for (const card of commonFilteredCards) {
             if (!card.pos) continue;
             for (const tag of card.pos) {
                 if (advancedPosFilter) {
@@ -466,7 +488,7 @@ export default function App() {
             }
         }
         return set;
-    }, [levelFilteredCards, advancedPosFilter]);
+    }, [commonFilteredCards, advancedPosFilter]);
 
     const posGroups = useMemo(() => {
         const groups = advancedPosFilter ? advancedPosGroups : simplePosGroups;
@@ -616,6 +638,7 @@ export default function App() {
         const payload: Prefs = {
             selectedLevels,
             selectedPos,
+            commonWords,
             characterMode,
             leftHanded,
             tracingMode,
@@ -639,7 +662,7 @@ export default function App() {
             subsetDrillingCount
         };
         localStorage.setItem("prefs.state", JSON.stringify(payload));
-    }, [selectedLevels, selectedPos, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, orderByFrequency, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
+    }, [selectedLevels, selectedPos, commonWords, characterMode, leftHanded, tracingMode, showHoverIndicator, mode, randomizeNext, orderByFrequency, reviewGrades, includeNewCards, language, padSizeChoice, showDetailsDefault, traceFont, promptFont, advancedPosFilter, gridStyle, gridVerticalShift, brushType, strokeColor, subsetDrillingEnabled, subsetDrillingCount]);
 
     const card = queue[idx % Math.max(queue.length, 1)];
     const remaining = queue.length;
@@ -851,6 +874,8 @@ export default function App() {
                         levels={levels}
                         selectedLevels={selectedLevels}
                         toggleLevel={toggleLevel}
+                        commonWords={commonWords}
+                        setCommonWords={setCommonWords}
                         posGroups={posGroups}
                         selectedPos={selectedPos}
                         togglePos={togglePos}
