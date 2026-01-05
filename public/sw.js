@@ -4,7 +4,7 @@
   (e.g. GitHub Pages) uses short Cache-Control TTLs.
 */
 
-const CACHE_VERSION = "v4";
+const CACHE_VERSION = "v5";
 const ASSET_CACHE = `assets-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
@@ -19,7 +19,90 @@ const SCOPE_PATH = (() => {
 })();
 
 self.addEventListener("install", (event) => {
-    event.waitUntil(self.skipWaiting());
+    event.waitUntil(
+        (async () => {
+            // Precache the app shell (and its hashed assets) so an installed PWA can start offline
+            // without requiring a second online launch.
+            const assetCache = await caches.open(ASSET_CACHE);
+            const runtimeCache = await caches.open(RUNTIME_CACHE);
+
+            const indexPath = `${SCOPE_PATH}index.html`;
+            const rootPath = SCOPE_PATH;
+
+            // Fetch index.html from the network once, then store it under both / and /index.html
+            // so navigation requests can be satisfied regardless of how start_url resolves.
+            let indexResponse = null;
+            try {
+                indexResponse = await fetch(indexPath, { cache: "reload" });
+            } catch {
+                // ignore; install can still succeed and runtime caching may populate later
+            }
+
+            if (indexResponse && indexResponse.ok) {
+                await runtimeCache.put(indexPath, indexResponse.clone());
+                await runtimeCache.put(rootPath, indexResponse.clone());
+
+                // Parse index.html to discover hashed assets produced by Vite.
+                // This avoids needing a build-time manifest.
+                let html = "";
+                try {
+                    html = await indexResponse.clone().text();
+                } catch {
+                    html = "";
+                }
+
+                const urls = new Set([
+                    rootPath,
+                    indexPath,
+                    `${SCOPE_PATH}manifest.json`,
+                    `${SCOPE_PATH}icon.svg`
+                ]);
+
+                // Match src/href attributes that point at our scoped assets.
+                // Examples: /base/assets/index-xxxx.js, /base/assets/index-xxxx.css
+                const assetRe = /\b(?:src|href)\s*=\s*["']([^"']+)["']/g;
+                for (const m of html.matchAll(assetRe)) {
+                    const raw = m[1];
+                    if (!raw) continue;
+                    if (raw.startsWith("http:")) continue;
+                    if (raw.startsWith("https:")) continue;
+
+                    // Normalize relative URLs against the scope.
+                    const normalized = raw.startsWith("/") ? raw : new URL(raw, new URL(rootPath, self.location.origin)).pathname;
+
+                    if (normalized.startsWith(`${SCOPE_PATH}assets/`)) {
+                        urls.add(normalized);
+                    }
+                }
+
+                // Cache app shell dependencies. Use addAll on Requests for correctness.
+                await Promise.all(
+                    Array.from(urls).map(async (p) => {
+                        const req = new Request(p, { credentials: "same-origin" });
+                        // Store HTML in runtime, everything else in asset cache.
+                        if (p === rootPath || p === indexPath) return;
+                        try {
+                            await assetCache.add(req);
+                        } catch {
+                            // ignore individual failures
+                        }
+                    })
+                );
+            } else {
+                // Still cache manifest/icon when possible.
+                try {
+                    await assetCache.addAll([
+                        new Request(`${SCOPE_PATH}manifest.json`, { credentials: "same-origin" }),
+                        new Request(`${SCOPE_PATH}icon.svg`, { credentials: "same-origin" })
+                    ]);
+                } catch {
+                    // ignore
+                }
+            }
+
+            await self.skipWaiting();
+        })()
+    );
 });
 
 self.addEventListener("activate", (event) => {
@@ -74,10 +157,16 @@ self.addEventListener("fetch", (event) => {
                     return networkResponse;
                 } catch (error) {
                     const cache = await caches.open(RUNTIME_CACHE);
-                    const cachedResponse = await cache.match(req);
-                    if (cachedResponse) {
-                        return cachedResponse;
-                    }
+                    // Prefer a direct match first.
+                    const direct = await cache.match(req);
+                    if (direct) return direct;
+
+                    // Fall back to the cached app shell.
+                    const shell =
+                        (await cache.match(`${SCOPE_PATH}index.html`)) ||
+                        (await cache.match(SCOPE_PATH));
+                    if (shell) return shell;
+
                     throw error;
                 }
             })()
